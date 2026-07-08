@@ -119,6 +119,9 @@ loadMrpLiteV2();
     .chart-wrap{position:relative;height:400px}.mini-chart{position:relative;height:250px}@media(max-width:640px){.chart-wrap{height:330px}.mini-chart{height:240px}}
     .chip{border:1px solid rgb(226 232 240);border-radius:999px;padding:.4rem .7rem;font-size:.82rem;font-weight:800;background:white;color:#334155}.chip.active{background:#8f1d1d;color:#fff;border-color:#8f1d1d}
     input[type=number]{appearance:textfield} input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{appearance:none;margin:0}
+    .audit-only{display:none} body.audit-mode .audit-only{display:block}
+    .health-badge{display:inline-block;font-size:.68rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:.2rem .6rem;border-radius:999px}
+    .health-ok{background:#d1fae5;color:#065f46} .health-fallback{background:#fef3c7;color:#92400e} .health-error{background:#fee2e2;color:#991b1b} .health-pending{background:#e2e8f0;color:#475569}
   </style>
 </head>
 <body class="min-h-screen text-slate-900 antialiased">
@@ -137,42 +140,100 @@ loadMrpLiteV2();
       </div>
     </section>
 
-    <section class="mt-6 rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div><h2 class="text-xl font-black">Data source</h2><p id="dataStatus" class="mt-1 text-sm leading-6 text-slate-600">Automatically loading <code class="rounded bg-slate-100 px-1">data/polls_data.json</code>.</p></div>
-        <div class="flex flex-col gap-2 sm:flex-row"><button id="refreshBtn" class="rounded-2xl border border-rose-200 bg-white px-5 py-3 text-sm font-bold text-[#8f1d1d] hover:bg-rose-50">Refresh data</button><button id="exportScenarioBtn" class="rounded-2xl bg-[#8f1d1d] px-5 py-3 text-sm font-bold text-white hover:bg-[#751717]">Export scenario JSON</button></div>
-      </div>
-      <p class="mt-4 rounded-2xl bg-amber-50 p-4 text-sm leading-6 text-amber-950"><strong>Ethics guardrail:</strong> this prototype supports aggregate public-interest analysis only. It does not provide microtargeting, demographic persuasion, covert influence, or manipulative message recommendations.</p>
-    </section>
+    <nav class="sticky top-0 z-30 -mx-4 mb-4 flex items-center gap-2 overflow-x-auto border-b border-slate-200 bg-[#fbf7f2]/95 px-4 py-3 backdrop-blur sm:mx-0 sm:rounded-2xl sm:border sm:px-4">
+      <a href="#status" class="whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200 hover:ring-[#8f1d1d]">Overview</a>
+      <a href="#dashboard" class="whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200 hover:ring-[#8f1d1d]">Control room</a>
+      <a href="#data-quality" class="whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200 hover:ring-[#8f1d1d]">Data quality</a>
+      <a href="#sources" class="whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200 hover:ring-[#8f1d1d]">Sources</a>
+      <a href="#phase-history" class="whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200 hover:ring-[#8f1d1d]">Phase history</a>
+      <button id="modeToggleBtn" class="ml-auto whitespace-nowrap rounded-full bg-[#8f1d1d] px-4 py-2 text-xs font-black text-white">Audit mode: off</button>
+    </nav>
 
-    <section id="governancePanel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 0 governance layer</p>
-          <h2 class="mt-2 text-2xl font-black">Product boundaries and ethical use</h2>
-          <p id="governancePurpose" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Aggregate, source-transparent election intelligence only. Loading governance policy…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Status</p>
-          <p id="governanceVersion" class="text-slate-500">Prototype</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-3">
+    <section id="status" class="mt-2 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+      <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Overview</p>
+      <h2 class="mt-2 text-2xl font-black">What this is, and what it isn\u2019t</h2>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2">
         <div class="rounded-3xl bg-emerald-50 p-5 ring-1 ring-emerald-100">
-          <h3 class="font-black text-emerald-950">Allowed</h3>
-          <ul id="allowedUses" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-emerald-950"></ul>
+          <h3 class="font-black text-emerald-950">This is</h3>
+          <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-emerald-950">
+            <li>Aggregate, source-cited election-poll tracking</li>
+            <li>Transparent about which figures are hosted, which are missing, and how each record was verified</li>
+            <li>A sandbox for stress-testing coalition scenarios \u2014 not a prediction</li>
+          </ul>
         </div>
-        <div class="rounded-3xl bg-red-50 p-5 ring-1 ring-red-100">
-          <h3 class="font-black text-red-950">Not allowed</h3>
-          <ul id="prohibitedUses" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-red-950"></ul>
+        <div class="rounded-3xl bg-rose-50 p-5 ring-1 ring-rose-100">
+          <h3 class="font-black text-rose-950">This is not</h3>
+          <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-rose-950">
+            <li>Not a voter-targeting or persuasion tool</li>
+            <li>Not a certified or official IEBC/KNBS product</li>
+            <li>Not a seat or election forecast \u2014 scenario outputs are sensitivity tests only</li>
+          </ul>
         </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Model boundaries</h3>
-          <div id="modelBoundaries" class="mt-3 flex flex-wrap gap-2"></div>
-        </div>
+      </div>
+      <p id="dataStatus" class="mt-4 text-sm leading-6 text-slate-500">Automatically loading <code class="rounded bg-slate-100 px-1">data/polls_data.json</code>.</p>
+
+      <h3 class="mt-6 text-sm font-black uppercase tracking-widest text-slate-500">Data health</h3>
+      <div id="statusCards" class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100"><p class="text-xs font-bold text-slate-500">Checking\u2026</p></div>
+      </div>
+
+      <div class="mt-6 rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
+        <h3 class="font-black text-slate-900">What changed in this build</h3>
+        <p class="mt-2 text-sm leading-6 text-slate-600"><strong>New:</strong> removed 15 panels that referenced unpublished data and were stuck permanently loading; reordered the page so the working dashboard and data-quality summary come before the technical phase history; corrected poll-record labels that had overstated automated-extraction confidence; added this overview and an audit-mode toggle.</p>
+        <p class="mt-2 text-sm leading-6 text-slate-600"><strong>Still blocked by:</strong> no scheduled refresh workflow committed yet (updates are manual); poll coverage is single-pollster (TIFA) even though a second extractor is built; the constituency/forecast/MRP backend phases have code but no published output.</p>
       </div>
     </section>
 
+    <section id="loadingState" class="mt-6 hidden rounded-[2rem] border border-rose-100 bg-white p-8 text-center shadow-sm"><div class="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-rose-100 border-t-[#8f1d1d]"></div><p class="mt-4 font-bold text-slate-700">Loading hosted poll data…</p></section>
+    <section id="errorState" class="mt-6 hidden rounded-[2rem] border border-red-200 bg-red-50 p-6 text-red-900 shadow-sm"><h2 class="text-2xl font-black">Could not load poll data</h2><p id="errorMessage" class="mt-3 leading-7"></p></section>
+    <section id="emptyState" class="mt-6 hidden rounded-[2rem] border border-amber-200 bg-amber-50 p-6 text-amber-950 shadow-sm"><h2 class="text-2xl font-black">No approved poll records yet</h2><p class="mt-3 leading-7">The dashboard found the JSON file, but it does not contain approved compatible records. Check <code class="rounded bg-amber-100 px-1">review_queue.json</code> for ambiguous extractions.</p></section>
+    <section id="dashboard" class="mt-6 hidden space-y-6">
+      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
+        <h2 class="text-2xl font-black">Control room</h2>
+        <div class="mt-4 grid gap-4 lg:grid-cols-4">
+          <label><span class="mb-1 block text-sm font-bold text-slate-700">Poll type</span><select id="pollTypeFilter" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"></select></label>
+          <label><span class="mb-1 block text-sm font-bold text-slate-700">Pollster</span><select id="pollsterFilter" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"><option value="all">All pollsters</option></select></label>
+          <label><span class="mb-1 block text-sm font-bold text-slate-700">Start date</span><input id="startDateFilter" type="date" value="2025-06-01" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"></label>
+          <label><span class="mb-1 block text-sm font-bold text-slate-700">Scenario date</span><select id="scenarioDate" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"></select></label>
+        </div>
+        <div class="mt-4"><p class="mb-2 text-sm font-bold text-slate-700">Candidates shown</p><div id="candidateChips" class="flex flex-wrap gap-2"></div></div>
+      </section>
+      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><h2 class="text-2xl font-black">Latest metrics</h2><p class="mt-1 text-sm text-slate-600">Latest compatible record for each visible candidate.</p></div><p id="coverageNote" class="max-w-2xl text-sm font-semibold text-slate-500"></p></div>
+        <div id="metricsGrid" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-5"></div>
+      </section>
+      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
+        <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"><div><h2 class="text-2xl font-black">Historical trend</h2><p class="mt-1 text-sm text-slate-600">Selected compatible poll type, from the selected start date onward.</p></div><p id="trendRange" class="text-sm font-bold text-slate-500"></p></div>
+        <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+      </section>
+      <section class="grid gap-6 lg:grid-cols-2">
+        <div class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
+          <h2 class="text-2xl font-black">Coalition scenario lab</h2>
+          <p class="mt-1 text-sm text-slate-600">Simulates aggregate candidate combinations from the selected date. This is not a prediction; it is a sensitivity tool.</p>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2"><label><span class="mb-1 block text-sm font-bold">Uncertainty ± points</span><input id="uncertaintyInput" type="number" value="4.5" step="0.5" min="0" max="20" class="w-full rounded-2xl border border-slate-200 px-4 py-3 font-bold"></label><label><span class="mb-1 block text-sm font-bold">Monte Carlo runs</span><input id="runsInput" type="number" value="5000" step="1000" min="1000" max="50000" class="w-full rounded-2xl border border-slate-200 px-4 py-3 font-bold"></label></div>
+          <div class="mt-4"><div id="coalitionsEditor" class="space-y-3"></div><button id="addCoalitionBtn" class="mt-3 rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50">Add coalition</button><button id="runScenarioBtn" class="ml-2 mt-3 rounded-2xl bg-[#8f1d1d] px-4 py-2 text-sm font-bold text-white hover:bg-[#751717]">Run simulation</button></div>
+          <div id="scenarioResults" class="mt-5 space-y-3"></div>
+        </div>
+        <div class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
+          <h2 class="text-2xl font-black">Scenario chart</h2><p class="mt-1 text-sm text-slate-600">Latest selected-date aggregate share and simulated first-round probability.</p><div class="mini-chart mt-4"><canvas id="scenarioChart"></canvas></div></div>
+      </section>
+      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
+        <h2 class="text-2xl font-black">MP seats simulation workspace</h2>
+        <p class="mt-1 text-sm leading-6 text-slate-600">Paste constituency-level baseline data to estimate seats under a uniform swing model. For credible seat projections, replace this with constituency polls, past IEBC results, party/candidate incumbency, alliances, and local race ratings.</p>
+        <details class="mt-4 rounded-2xl bg-slate-50 p-4"><summary class="cursor-pointer font-black">Input format example</summary><pre class="mt-3 overflow-auto rounded-xl bg-slate-900 p-4 text-xs text-slate-100">[{"constituency":"Example North","region":"Example","baseline":{"Coalition A":42,"Coalition B":35,"Other":23}},{"constituency":"Example South","region":"Example","baseline":{"Coalition A":30,"Coalition B":44,"Other":26}}]</pre></details>
+        <textarea id="seatInput" class="mt-4 min-h-40 w-full rounded-2xl border border-slate-200 p-4 font-mono text-xs" placeholder='Paste constituency baseline JSON here. Leave blank to use data/constituency_baseline.json if available.'></textarea>
+        <div class="mt-3 flex flex-wrap gap-2"><button id="loadSeatBaselineBtn" class="rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50">Load hosted baseline</button><button id="simulateSeatsBtn" class="rounded-2xl bg-[#8f1d1d] px-4 py-2 text-sm font-bold text-white hover:bg-[#751717]">Simulate MP seats</button></div>
+        <div id="seatResults" class="mt-5"></div>
+      </section>
+    <div id="sources" class="space-y-6">
+      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6"><h2 class="text-2xl font-black">Source records</h2><div id="sourceList" class="mt-4 space-y-3"></div></section>
+      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6"><h2 class="text-2xl font-black">Analyst notes</h2><div id="analystNotes" class="mt-4 grid gap-4 md:grid-cols-3"></div></section>
+    </div>
+    </section>
+
+
+    <div id="data-quality">
+      <p class="mb-3 mt-8 text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Data quality</p>
     <section id="phase1Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
       <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
         <div>
@@ -203,7 +264,6 @@ loadMrpLiteV2();
         </div>
       </div>
     </section>
-
     <section id="phase2Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
       <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
         <div>
@@ -234,7 +294,6 @@ loadMrpLiteV2();
         </div>
       </div>
     </section>
-
     <section id="phase3Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
       <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
         <div>
@@ -264,69 +323,72 @@ loadMrpLiteV2();
         </div>
       </div>
     </section>
+    </div>
 
+    <details id="phase-history" class="audit-only mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+      <summary class="cursor-pointer text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase history &amp; full governance detail (audit mode)</summary>
+      <div class="mt-4 space-y-6">
+    <section id="governancePanel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+        <div>
+          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 0 governance layer</p>
+          <h2 class="mt-2 text-2xl font-black">Product boundaries and ethical use</h2>
+          <p id="governancePurpose" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Aggregate, source-transparent election intelligence only. Loading governance policy…</p>
+        </div>
+        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
+          <p class="font-black text-slate-700">Status</p>
+          <p id="governanceVersion" class="text-slate-500">Prototype</p>
+        </div>
+      </div>
+      <div class="mt-5 grid gap-4 lg:grid-cols-3">
+        <div class="rounded-3xl bg-emerald-50 p-5 ring-1 ring-emerald-100">
+          <h3 class="font-black text-emerald-950">Allowed</h3>
+          <ul id="allowedUses" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-emerald-950"></ul>
+        </div>
+        <div class="rounded-3xl bg-red-50 p-5 ring-1 ring-red-100">
+          <h3 class="font-black text-red-950">Not allowed</h3>
+          <ul id="prohibitedUses" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-red-950"></ul>
+        </div>
+        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
+          <h3 class="font-black text-slate-950">Model boundaries</h3>
+          <div id="modelBoundaries" class="mt-3 flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+    </section>
     <section class="mt-6 rounded-[2rem] border border-dashed border-slate-300 bg-slate-50 p-6 sm:p-8">
       <p class="text-xs font-black uppercase tracking-[0.25em] text-slate-500">Roadmap · Phases 4–18</p>
       <h2 class="mt-2 text-xl font-black text-slate-800">Constituency modeling, forecasting, and infrastructure phases are built but not yet publishing data</h2>
       <p class="mt-3 max-w-4xl text-sm leading-6 text-slate-600">The backend pipeline for ward/constituency modeling, coalition scenario diagnostics, presidential forecasting, strategic intelligence, the data warehouse, audit and release-readiness reporting, historical backfill, MRP-lite estimation, demographic poststratification, and poll crosstabs exists in <code class="rounded bg-slate-200 px-1">backend/</code>, but its output files have not been generated and committed yet, so those panels were removed from this page rather than shipped as permanently-loading placeholders. See <code class="rounded bg-slate-200 px-1">README.md</code> and <code class="rounded bg-slate-200 px-1">ARCHITECTURE_REWORK.md</code> for the full phase-by-phase methodology, and the repository’s Issues tab to report a data problem with what is currently live below.</p>
     </section>
+      </div>
+    </details>
 
-
-    <section id="loadingState" class="mt-6 hidden rounded-[2rem] border border-rose-100 bg-white p-8 text-center shadow-sm"><div class="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-rose-100 border-t-[#8f1d1d]"></div><p class="mt-4 font-bold text-slate-700">Loading hosted poll data…</p></section>
-    <section id="errorState" class="mt-6 hidden rounded-[2rem] border border-red-200 bg-red-50 p-6 text-red-900 shadow-sm"><h2 class="text-2xl font-black">Could not load poll data</h2><p id="errorMessage" class="mt-3 leading-7"></p></section>
-    <section id="emptyState" class="mt-6 hidden rounded-[2rem] border border-amber-200 bg-amber-50 p-6 text-amber-950 shadow-sm"><h2 class="text-2xl font-black">No approved poll records yet</h2><p class="mt-3 leading-7">The dashboard found the JSON file, but it does not contain approved compatible records. Check <code class="rounded bg-amber-100 px-1">review_queue.json</code> for ambiguous extractions.</p></section>
-
-    <section id="dashboard" class="mt-6 hidden space-y-6">
-      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-        <h2 class="text-2xl font-black">Control room</h2>
-        <div class="mt-4 grid gap-4 lg:grid-cols-4">
-          <label><span class="mb-1 block text-sm font-bold text-slate-700">Poll type</span><select id="pollTypeFilter" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"></select></label>
-          <label><span class="mb-1 block text-sm font-bold text-slate-700">Pollster</span><select id="pollsterFilter" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"><option value="all">All pollsters</option></select></label>
-          <label><span class="mb-1 block text-sm font-bold text-slate-700">Start date</span><input id="startDateFilter" type="date" value="2025-06-01" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"></label>
-          <label><span class="mb-1 block text-sm font-bold text-slate-700">Scenario date</span><select id="scenarioDate" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"></select></label>
-        </div>
-        <div class="mt-4"><p class="mb-2 text-sm font-bold text-slate-700">Candidates shown</p><div id="candidateChips" class="flex flex-wrap gap-2"></div></div>
-      </section>
-
-      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><h2 class="text-2xl font-black">Latest metrics</h2><p class="mt-1 text-sm text-slate-600">Latest compatible record for each visible candidate.</p></div><p id="coverageNote" class="max-w-2xl text-sm font-semibold text-slate-500"></p></div>
-        <div id="metricsGrid" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-5"></div>
-      </section>
-
-      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-        <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"><div><h2 class="text-2xl font-black">Historical trend</h2><p class="mt-1 text-sm text-slate-600">Selected compatible poll type, from the selected start date onward.</p></div><p id="trendRange" class="text-sm font-bold text-slate-500"></p></div>
-        <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
-      </section>
-
-      <section class="grid gap-6 lg:grid-cols-2">
-        <div class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-          <h2 class="text-2xl font-black">Coalition scenario lab</h2>
-          <p class="mt-1 text-sm text-slate-600">Simulates aggregate candidate combinations from the selected date. This is not a prediction; it is a sensitivity tool.</p>
-          <div class="mt-4 grid gap-3 sm:grid-cols-2"><label><span class="mb-1 block text-sm font-bold">Uncertainty ± points</span><input id="uncertaintyInput" type="number" value="4.5" step="0.5" min="0" max="20" class="w-full rounded-2xl border border-slate-200 px-4 py-3 font-bold"></label><label><span class="mb-1 block text-sm font-bold">Monte Carlo runs</span><input id="runsInput" type="number" value="5000" step="1000" min="1000" max="50000" class="w-full rounded-2xl border border-slate-200 px-4 py-3 font-bold"></label></div>
-          <div class="mt-4"><div id="coalitionsEditor" class="space-y-3"></div><button id="addCoalitionBtn" class="mt-3 rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50">Add coalition</button><button id="runScenarioBtn" class="ml-2 mt-3 rounded-2xl bg-[#8f1d1d] px-4 py-2 text-sm font-bold text-white hover:bg-[#751717]">Run simulation</button></div>
-          <div id="scenarioResults" class="mt-5 space-y-3"></div>
-        </div>
-        <div class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-          <h2 class="text-2xl font-black">Scenario chart</h2><p class="mt-1 text-sm text-slate-600">Latest selected-date aggregate share and simulated first-round probability.</p><div class="mini-chart mt-4"><canvas id="scenarioChart"></canvas></div></div>
-      </section>
-
-      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-        <h2 class="text-2xl font-black">MP seats simulation workspace</h2>
-        <p class="mt-1 text-sm leading-6 text-slate-600">Paste constituency-level baseline data to estimate seats under a uniform swing model. For credible seat projections, replace this with constituency polls, past IEBC results, party/candidate incumbency, alliances, and local race ratings.</p>
-        <details class="mt-4 rounded-2xl bg-slate-50 p-4"><summary class="cursor-pointer font-black">Input format example</summary><pre class="mt-3 overflow-auto rounded-xl bg-slate-900 p-4 text-xs text-slate-100">[{"constituency":"Example North","region":"Example","baseline":{"Coalition A":42,"Coalition B":35,"Other":23}},{"constituency":"Example South","region":"Example","baseline":{"Coalition A":30,"Coalition B":44,"Other":26}}]</pre></details>
-        <textarea id="seatInput" class="mt-4 min-h-40 w-full rounded-2xl border border-slate-200 p-4 font-mono text-xs" placeholder='Paste constituency baseline JSON here. Leave blank to use data/constituency_baseline.json if available.'></textarea>
-        <div class="mt-3 flex flex-wrap gap-2"><button id="loadSeatBaselineBtn" class="rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50">Load hosted baseline</button><button id="simulateSeatsBtn" class="rounded-2xl bg-[#8f1d1d] px-4 py-2 text-sm font-bold text-white hover:bg-[#751717]">Simulate MP seats</button></div>
-        <div id="seatResults" class="mt-5"></div>
-      </section>
-
-      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6"><h2 class="text-2xl font-black">Source records</h2><div id="sourceList" class="mt-4 space-y-3"></div></section>
-      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6"><h2 class="text-2xl font-black">Analyst notes</h2><div id="analystNotes" class="mt-4 grid gap-4 md:grid-cols-3"></div></section>
-    </section>
-
-
-  </main>
 
 <script>
+window.__health={governance:'pending',foundation:'pending',ingestion:'pending',model:'pending',polls:'pending'};
+document.getElementById('modeToggleBtn')?.addEventListener('click',()=>{
+  const on=document.body.classList.toggle('audit-mode');
+  document.getElementById('modeToggleBtn').textContent=`Audit mode: ${on?'on':'off'}`;
+  if(on){const d=document.getElementById('phase-history');if(d)d.open=true;}
+});
+function renderStatusOverview(){
+  const h=window.__health;
+  const rows=[
+    ['Poll data', h.polls==='ok'?`ok`:h.polls==='empty'?'fallback':h.polls==='error'?'error':'pending', h.polls==='ok'?`${(window.allRecords||[]).length} approved record(s), ${new Set((window.allRecords||[]).map(r=>r.pollster)).size} pollster(s)`:h.polls==='empty'?'File loaded but no approved records':h.polls==='error'?'Could not load data/polls_data.json':'Checking\\u2026'],
+    ['Governance rules', h.governance==='ok'?'ok':h.governance==='fallback'?'fallback':'pending', h.governance==='ok'?'Hosted governance_config.json loaded':h.governance==='fallback'?'Using built-in fallback rules (file not hosted)':'Checking\\u2026'],
+    ['Data foundation', h.foundation==='ok'?'ok':h.foundation==='error'?'error':'pending', h.foundation==='ok'?'Phase 1 normalized layer loaded':h.foundation==='error'?'Phase 1 files not hosted yet':'Checking\\u2026'],
+    ['Source ingestion', h.ingestion==='ok'?'ok':h.ingestion==='error'?'error':'pending', h.ingestion==='ok'?'Phase 2 ingestion/audit trail loaded':h.ingestion==='error'?'Phase 2 files not hosted yet':'Checking\\u2026'],
+    ['Polling model', h.model==='ok'?'ok':h.model==='error'?'error':'pending', h.model==='ok'?'Phase 3 weighted average loaded':h.model==='error'?'Phase 3 files not hosted yet':'Checking\\u2026'],
+    ['Constituency / forecast / MRP (Phases 4\\u201318)', 'fallback', 'Backend code exists; no hosted output yet \\u2014 see Phase history']
+  ];
+  const label={ok:'Available',fallback:'Partial',error:'Unavailable',pending:'Checking'};
+  document.getElementById('statusCards').innerHTML=rows.map(([name,state,detail])=>
+    `<div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100">
+      <p class="text-xs font-bold text-slate-500">${name}</p>
+      <p class="mt-1"><span class="health-badge health-${state}">${label[state]||state}</span></p>
+      <p class="mt-2 text-xs leading-5 text-slate-500">${detail}</p>
+    </div>`).join('');
+}
 const DATA_URL='data/polls_data.json';
 const BASELINE_URL='data/constituency_baseline.json';
 const GOVERNANCE_URL='data/governance_config.json';
@@ -405,6 +467,7 @@ function renderGovernance(){
 async function loadGovernance(){
   try{const res=await fetch(GOVERNANCE_URL,{cache:'no-store'});if(!res.ok)throw new Error('No hosted governance config');governanceConfig=await res.json();}
   catch(e){governanceConfig=null;}
+  window.__health.governance=governanceConfig?'ok':'fallback';
   renderGovernance();
 }
 
@@ -428,7 +491,9 @@ async function loadFoundationReport(){
     $('foundationGaps').innerHTML=gaps.slice(0,5).map(x=>`<li>${x}</li>`).join('');
     $('phase1Files').innerHTML=(manifest.files||[]).slice(0,12).map(f=>`<span class="rounded-full bg-white px-3 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200">${String(f).replace('data/foundation/','')}</span>`).join('');
     $('foundationDatasets').textContent=`Missingness flags: ${Object.entries(missing).map(([k,v])=>`${k}: ${v}`).join(' · ')||'none'}.`;
+    window.__health.foundation='ok';
   }catch(e){
+    window.__health.foundation='error';
     $('foundationStatus').textContent=`Phase 1 foundation files are not available yet. Run python backend/data_foundation.py or the GitHub Action. ${e.message}`;
     $('foundationGeneratedAt').textContent='Not generated';
     $('foundationApprovedRecords').textContent='—';
@@ -460,7 +525,9 @@ async function loadIngestionReport(){
     const statusCounts=report.processing_status_counts||{};
     $('ingestionStatusCounts').textContent=Object.entries(statusCounts).map(([k,v])=>`${String(k).replace(/_/g,' ')}: ${v}`).join(' · ')||'No registered-source processing statuses yet.';
     $('ingestionQualityGates').innerHTML=(report.quality_gates||[]).map(g=>`<span class="rounded-full bg-white px-3 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200">${g.gate}: ${g.status}</span>`).join('');
+    window.__health.ingestion='ok';
   }catch(e){
+    window.__health.ingestion='error';
     $('ingestionStatus').textContent=`Phase 2 ingestion files are not available yet. Run python backend/source_ingestion.py or the GitHub Action. ${e.message}`;
     $('ingestionGeneratedAt').textContent='Not generated';
     $('ingestionCatalogSources').textContent='—';
@@ -492,7 +559,9 @@ async function loadPollingModelReport(){
     const warnings=report.warnings||[];
     $('modelWarnings').innerHTML=warnings.length?warnings.slice(0,6).map(x=>`<li>${x}</li>`).join(''):'<li>No model warnings generated.</li>';
     $('modelAverageList').innerHTML=(Array.isArray(averages)?averages:[]).slice(0,8).map(row=>`<div class="flex items-center justify-between gap-3 rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><span class="font-black">${row.candidate}</span><span class="text-right"><strong>${Number(row.weighted_average).toFixed(1)}%</strong><br><span class="text-xs text-slate-500">95% range ${Number(row.lower_95).toFixed(1)}–${Number(row.upper_95).toFixed(1)}%</span></span></div>`).join('')||'<p>No weighted averages generated.</p>';
+    window.__health.model='ok';
   }catch(e){
+    window.__health.model='error';
     $('modelStatus').textContent=`Phase 3 polling model files are not available yet. Run python backend/polling_model.py or the GitHub Action. ${e.message}`;
     $('modelVersion').textContent='Not generated';
     $('modelAverageRows').textContent='—';
@@ -934,7 +1003,7 @@ async function loadHistoricalBaselineReport(){
   }
 }
 
-async function loadData(){setVisible('loadingState',true);setVisible('errorState',false);setVisible('emptyState',false);setVisible('dashboard',false);try{await loadGovernance();await loadFoundationReport();await loadIngestionReport();await loadPollingModelReport();await loadConstituencyModelReport();await loadScenarioAnalysisReport();await loadForecastBridgeReport();await loadPresidentialForecastReport();await loadStrategyReport();await loadDataStackReport();await loadProductionStackReport();await loadAuditabilityReport();await loadReleaseReadinessReport();await loadOfficialValidationReport();await loadVoterRegisterValidationReport();await loadHistoricalBaselineReport();const res=await fetch(DATA_URL,{cache:'no-store'});if(!res.ok)throw new Error(`HTTP ${res.status}`);const data=await res.json();if(!Array.isArray(data))throw new Error('polls_data.json must be an array');allRecords=data.filter(r=>r&&r.date&&r.figures&&typeof r.figures==='object');$('dataStatus').innerHTML=`Loaded automatically from <code class="rounded bg-slate-100 px-1">${DATA_URL}</code>.`;initDashboard();}catch(e){$('errorMessage').textContent=`${e.message}. Confirm ${DATA_URL} exists in the repository and GitHub Pages has redeployed.`;setVisible('errorState',true);}finally{setVisible('loadingState',false)}}
+async function loadData(){setVisible('loadingState',true);setVisible('errorState',false);setVisible('emptyState',false);setVisible('dashboard',false);try{await loadGovernance();await loadFoundationReport();await loadIngestionReport();await loadPollingModelReport();await loadConstituencyModelReport();await loadScenarioAnalysisReport();await loadForecastBridgeReport();await loadPresidentialForecastReport();await loadStrategyReport();await loadDataStackReport();await loadProductionStackReport();await loadAuditabilityReport();await loadReleaseReadinessReport();await loadOfficialValidationReport();await loadVoterRegisterValidationReport();await loadHistoricalBaselineReport();const res=await fetch(DATA_URL,{cache:'no-store'});if(!res.ok)throw new Error(`HTTP ${res.status}`);const data=await res.json();if(!Array.isArray(data))throw new Error('polls_data.json must be an array');allRecords=data.filter(r=>r&&r.date&&r.figures&&typeof r.figures==='object');window.allRecords=allRecords;window.__health.polls=allRecords.length?'ok':'empty';$('dataStatus').innerHTML=`Loaded automatically from <code class="rounded bg-slate-100 px-1">${DATA_URL}</code>.`;initDashboard();}catch(e){window.__health.polls='error';$('errorMessage').textContent=`${e.message}. Confirm ${DATA_URL} exists in the repository and GitHub Pages has redeployed.`;setVisible('errorState',true);}finally{setVisible('loadingState',false);renderStatusOverview();}}
 function initDashboard(){if(!allRecords.length){$('lastPollDate').textContent='—';$('pollsLoaded').textContent='0';$('candidatesLoaded').textContent='0';$('pollstersLoaded').textContent='0';setVisible('emptyState',true);return;}visibleCandidates=allCandidates(allRecords);selectedCandidates=new Set(visibleCandidates);populateFilters();renderCandidateChips();applyFilters();setVisible('dashboard',true);renderCoalitions();runScenario();renderNotes();}
 function populateFilters(){const types=unique(allRecords.map(r=>r.poll_type));$('pollTypeFilter').innerHTML=types.map(t=>`<option value="${t}">${pollLabel(t)}</option>`).join('');const pollsters=unique(allRecords.map(r=>r.pollster));$('pollsterFilter').innerHTML='<option value="all">All pollsters</option>'+pollsters.map(p=>`<option value="${p}">${p}</option>`).join('');const dates=unique(allRecords.map(r=>r.date)).sort();$('scenarioDate').innerHTML=dates.map(d=>`<option value="${d}">${fmtDate(d)}</option>`).join('');$('scenarioDate').value=dates[dates.length-1];}
 function renderCandidateChips(){$('candidateChips').innerHTML=visibleCandidates.map(c=>`<button class="chip active" data-candidate="${c}">${c}</button>`).join('');document.querySelectorAll('[data-candidate]').forEach(btn=>btn.onclick=()=>{const c=btn.dataset.candidate;if(selectedCandidates.has(c)){selectedCandidates.delete(c);btn.classList.remove('active')}else{selectedCandidates.add(c);btn.classList.add('active')}applyFilters();renderCoalitions();runScenario();});}
