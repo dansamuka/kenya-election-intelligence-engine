@@ -1,12 +1,12 @@
 [
   {
     "date": "2025-08-01",
-    "fieldwork_dates": "August 2025",
+    "fieldwork_dates": "23 August – 3 September 2025",
     "pollster": "TIFA Research",
     "poll_type": "preferred_presidential_aspirant",
-    "question_text": null,
+    "question_text": "Whether or not you have ever voted or intend to vote in the future, whom would you like to win the 2027 presidential election?",
     "geography": "Kenya",
-    "sample_size": null,
+    "sample_size": 2023,
     "figures": {
       "William Ruto": 28.0,
       "Kalonzo Musyoka": 21.0,
@@ -18,16 +18,16 @@
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "extraction_status": "MANUALLY_VERIFIED",
     "extraction_confidence": null,
-    "notes": "Extracted from TIFA grouped chart wave: August 2025 | Automated extraction failed (source fetch could not resolve DNS at build time; see data/sources_registry.json and data/review_queue.json for the failed attempt). Figures were entered manually and cross-checked against public news coverage of this release."
+    "notes": "Extracted from TIFA grouped chart wave: August 2025 | Automated extraction failed (source fetch could not resolve DNS at build time; see data/sources_registry.json and data/review_queue.json for the failed attempt). Figures were entered manually and cross-checked against public news coverage of this release. | Sample size and fieldwork dates confirmed via public reporting (Capital FM, 11 Sept 2025): n=2,023 across all 47 counties."
   },
   {
     "date": "2025-11-01",
-    "fieldwork_dates": "November 2025",
+    "fieldwork_dates": "10–17 November 2025",
     "pollster": "TIFA Research",
     "poll_type": "preferred_presidential_aspirant",
-    "question_text": null,
+    "question_text": "Whether or not you have ever voted or intend to vote in the future, whom would you like to win the 2027 presidential election?",
     "geography": "Kenya",
-    "sample_size": null,
+    "sample_size": 2053,
     "figures": {
       "William Ruto": 25.0,
       "Kalonzo Musyoka": 18.0,
@@ -39,7 +39,31 @@
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "extraction_status": "MANUALLY_VERIFIED",
     "extraction_confidence": null,
-    "notes": "Extracted from TIFA grouped chart wave: November 2025 | Automated extraction failed (source fetch could not resolve DNS at build time; see data/sources_registry.json and data/review_queue.json for the failed attempt). Figures were entered manually and cross-checked against public news coverage of this release."
+    "notes": "Extracted from TIFA grouped chart wave: November 2025 | Automated extraction failed (source fetch could not resolve DNS at build time; see data/sources_registry.json and data/review_queue.json for the failed attempt). Figures were entered manually and cross-checked against public news coverage of this release. | Sample size and fieldwork dates confirmed via public reporting (Nairobi Wire, 19 Dec 2025): n=2,053, margin of error ±2.16%."
+  },
+  {
+    "date": "2025-12-28",
+    "fieldwork_dates": "19–20 December 2025",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "question_text": null,
+    "geography": "Kenya",
+    "sample_size": 1000,
+    "figures": {
+      "William Ruto": 28.0,
+      "Kalonzo Musyoka": 12.0,
+      "Fred Matiang'i": 13.0,
+      "Rigathi Gachagua": 5.0,
+      "Edwin Sifuna": 0.2,
+      "Babu Owino": 7.0,
+      "Martha Karua": 2.0,
+      "David Maraga": 2.0
+    },
+    "source_title": "Infotrak National Survey: 2027 Presidential Candidates' Popularity (December 2025)",
+    "source_url": "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
+    "extraction_status": "MANUALLY_VERIFIED",
+    "extraction_confidence": null,
+    "notes": "Manually researched and cross-checked against five independent published reports (Daily Nation, The Standard, Tuko, Kenyans.co.ke, Nairobi Wire) of Infotrak's December 2025 national survey; figures consistent across all sources. Fieldwork 19-20 December 2025, n=1,000, CATI (Computer-Assisted Telephone Interviews) methodology, nationally representative. Automated scraping was not attempted for this record; added via manual research specifically to diversify pollster coverage beyond TIFA. Exact question wording not confirmed from available sources, so left blank rather than assumed."
   },
   {
     "date": "2026-05-14",

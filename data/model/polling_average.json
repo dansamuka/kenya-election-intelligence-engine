@@ -3,18 +3,20 @@
     "as_of": "2026-05-14",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "William Ruto",
-    "weighted_average": 24.72,
-    "lower_95": 21.22,
-    "upper_95": 28.22,
+    "weighted_average": 25.28,
+    "lower_95": 21.78,
+    "upper_95": 28.78,
     "uncertainty_margin": 3.5,
-    "effective_poll_count": 2.02,
-    "raw_poll_count": 3,
+    "effective_poll_count": 2.7,
+    "raw_poll_count": 4,
     "latest_poll_value": 24.0,
     "latest_poll_date": "2026-05-14",
     "pollsters_in_average": [
+      "Infotrak Research",
       "TIFA Research"
     ],
     "source_urls": [
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
       "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
     ],
     "model_status": "usable_with_caution"
@@ -23,18 +25,20 @@
     "as_of": "2026-05-14",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Kalonzo Musyoka",
-    "weighted_average": 19.04,
-    "lower_95": 15.54,
-    "upper_95": 22.54,
+    "weighted_average": 17.84,
+    "lower_95": 14.34,
+    "upper_95": 21.34,
     "uncertainty_margin": 3.5,
-    "effective_poll_count": 2.02,
-    "raw_poll_count": 3,
+    "effective_poll_count": 2.7,
+    "raw_poll_count": 4,
     "latest_poll_value": 19.0,
     "latest_poll_date": "2026-05-14",
     "pollsters_in_average": [
+      "Infotrak Research",
       "TIFA Research"
     ],
     "source_urls": [
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
       "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
     ],
     "model_status": "usable_with_caution"
@@ -43,18 +47,20 @@
     "as_of": "2026-05-14",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Fred Matiang'i",
-    "weighted_average": 16.38,
-    "lower_95": 12.88,
-    "upper_95": 19.88,
+    "weighted_average": 15.8,
+    "lower_95": 12.3,
+    "upper_95": 19.3,
     "uncertainty_margin": 3.5,
-    "effective_poll_count": 2.02,
-    "raw_poll_count": 3,
+    "effective_poll_count": 2.7,
+    "raw_poll_count": 4,
     "latest_poll_value": 16.0,
     "latest_poll_date": "2026-05-14",
     "pollsters_in_average": [
+      "Infotrak Research",
       "TIFA Research"
     ],
     "source_urls": [
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
       "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
     ],
     "model_status": "usable_with_caution"
@@ -63,18 +69,20 @@
     "as_of": "2026-05-14",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Edwin Sifuna",
-    "weighted_average": 9.85,
-    "lower_95": 6.35,
-    "upper_95": 13.35,
-    "uncertainty_margin": 3.5,
-    "effective_poll_count": 2.02,
-    "raw_poll_count": 3,
+    "weighted_average": 8.21,
+    "lower_95": 3.54,
+    "upper_95": 12.88,
+    "uncertainty_margin": 4.67,
+    "effective_poll_count": 2.7,
+    "raw_poll_count": 4,
     "latest_poll_value": 9.0,
     "latest_poll_date": "2026-05-14",
     "pollsters_in_average": [
+      "Infotrak Research",
       "TIFA Research"
     ],
     "source_urls": [
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
       "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
     ],
     "model_status": "usable_with_caution"
@@ -82,21 +90,83 @@
   {
     "as_of": "2026-05-14",
     "poll_type": "preferred_presidential_aspirant",
+    "candidate": "Babu Owino",
+    "weighted_average": 7.0,
+    "lower_95": 0.0,
+    "upper_95": 14.84,
+    "uncertainty_margin": 7.84,
+    "effective_poll_count": 1.0,
+    "raw_poll_count": 1,
+    "latest_poll_value": 7.0,
+    "latest_poll_date": "2025-12-28",
+    "pollsters_in_average": [
+      "Infotrak Research"
+    ],
+    "source_urls": [
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226"
+    ],
+    "model_status": "thin_series"
+  },
+  {
+    "as_of": "2026-05-14",
+    "poll_type": "preferred_presidential_aspirant",
     "candidate": "Rigathi Gachagua",
-    "weighted_average": 6.68,
-    "lower_95": 3.18,
-    "upper_95": 10.18,
+    "weighted_average": 6.4,
+    "lower_95": 2.9,
+    "upper_95": 9.9,
     "uncertainty_margin": 3.5,
-    "effective_poll_count": 2.02,
-    "raw_poll_count": 3,
+    "effective_poll_count": 2.7,
+    "raw_poll_count": 4,
     "latest_poll_value": 6.0,
     "latest_poll_date": "2026-05-14",
     "pollsters_in_average": [
+      "Infotrak Research",
       "TIFA Research"
     ],
     "source_urls": [
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
       "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
     ],
     "model_status": "usable_with_caution"
+  },
+  {
+    "as_of": "2026-05-14",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate": "David Maraga",
+    "weighted_average": 2.0,
+    "lower_95": 0.0,
+    "upper_95": 9.84,
+    "uncertainty_margin": 7.84,
+    "effective_poll_count": 1.0,
+    "raw_poll_count": 1,
+    "latest_poll_value": 2.0,
+    "latest_poll_date": "2025-12-28",
+    "pollsters_in_average": [
+      "Infotrak Research"
+    ],
+    "source_urls": [
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226"
+    ],
+    "model_status": "thin_series"
+  },
+  {
+    "as_of": "2026-05-14",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate": "Martha Karua",
+    "weighted_average": 2.0,
+    "lower_95": 0.0,
+    "upper_95": 9.84,
+    "uncertainty_margin": 7.84,
+    "effective_poll_count": 1.0,
+    "raw_poll_count": 1,
+    "latest_poll_value": 2.0,
+    "latest_poll_date": "2025-12-28",
+    "pollsters_in_average": [
+      "Infotrak Research"
+    ],
+    "source_urls": [
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226"
+    ],
+    "model_status": "thin_series"
   }
 ]

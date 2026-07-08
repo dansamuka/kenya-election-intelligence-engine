@@ -37,5 +37,19 @@
     "sha256": null,
     "processing_status": "needs_review_processing_error",
     "processing_error": "HTTPSConnectionPool(host='www.tifaresearch.com', port=443): Max retries exceeded with url: /wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf (Caused by NameResolutionError(\"HTTPSConnection(host='www.tifaresearch.com', port=443): Failed to resolve 'www.tifaresearch.com' ([Errno -3] Temporary failure in name resolution)\"))"
+  },
+  {
+    "source_id": "infotrak-dec2025-manual",
+    "pollster": "Infotrak Research",
+    "title": "Infotrak National Survey: 2027 Presidential Candidates' Popularity (December 2025)",
+    "page_url": "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
+    "pdf_url": null,
+    "published_date": "2025-12-28",
+    "first_seen_at": "2026-07-08T17:52:38+00:00",
+    "last_checked_at": "2026-07-08T17:52:38+00:00",
+    "sha256": null,
+    "processing_status": "manually_verified_external",
+    "processing_error": null,
+    "notes": "Not retrieved via automated scraper (no network access to infotrakresearch.com from the build environment). Verified manually against five independent news reports before being added to polls_data.json."
   }
 ]

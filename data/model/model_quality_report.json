@@ -1,17 +1,18 @@
 {
-  "generated_at": "2026-07-08T10:54:20+00:00",
+  "generated_at": "2026-07-08T17:52:50+00:00",
   "phase": "Phase 3 - Polling model",
   "model_version": "phase3.0-descriptive-weighted-average",
   "status": "generated_with_caveats",
   "records": {
-    "approved_poll_records": 3,
-    "polling_average_rows": 5,
-    "pollster_quality_rows": 1
+    "approved_poll_records": 4,
+    "polling_average_rows": 8,
+    "pollster_quality_rows": 2
   },
   "coverage": {
     "date_min": "2025-08-01",
     "date_max": "2026-05-14",
     "pollsters": [
+      "Infotrak Research",
       "TIFA Research"
     ],
     "poll_types": [
@@ -31,9 +32,7 @@
     "forecast_status": "Not a full election forecast; this is a polling-summary model."
   },
   "warnings": [
-    "Very thin polling series: weighted averages are descriptive summaries, not robust forecasts.",
-    "Only one pollster is represented in approved records; house effects cannot be estimated reliably.",
-    "No approved records currently include sample-size metadata; sample-size weighting is using conservative defaults."
+    "Very thin polling series: weighted averages are descriptive summaries, not robust forecasts."
   ],
   "next_requirements_for_higher_rigor": [
     "Add more pollsters and more polling waves.",
