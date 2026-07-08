@@ -5,113 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#8f1d1d" />
   <title>Kenya Election Intelligence Dashboard</title>
-  <script src="https://cdn.tailwindcss.com">
-async function loadHistoricalExtraction(){
-  if(!document.getElementById('historicalExtractionStatus')) return;
-  try{
-    const [summaryRes,auditRes]=await Promise.all([fetch('data/api/historical_extraction_summary.json'),fetch('data/phase13b_completion_audit.json')]);
-    if(!summaryRes.ok)throw new Error('Phase 13B historical-extraction files not hosted yet');
-    const summary=await summaryRes.json();
-    const audit=auditRes.ok?await auditRes.json():{};
-    const counts=summary.counts||{};
-    document.getElementById('historicalExtractionStatus').textContent=`Phase 13B loaded. ${summary.status||'partial extraction complete'}. 2017 county rows: ${counts['2017_county_official_rows']||0}; 2013 national rows: ${counts['2013_national_candidate_rows']||0}; 2013 county trend rows: ${counts['2013_county_trend_rows']||0}.`;
-    document.getElementById('historicalExtractionScore').textContent=`${Math.round(audit.extraction_completion_score_pct||0)}%`;
-    const cardData=[['2017 county rows',counts['2017_county_official_rows']||0],['2013 national rows',counts['2013_national_candidate_rows']||0],['2013 trend rows',counts['2013_county_trend_rows']||0],['2013 official county vote rows',counts['2013_official_county_candidate_vote_rows']||0]];
-    document.getElementById('historicalExtractionCards').innerHTML=cardData.map(([k,v])=>`<div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100"><div class="text-xs font-black uppercase tracking-widest text-slate-500">${k}</div><div class="mt-1 text-2xl font-black text-slate-950">${v}</div></div>`).join('');
-    document.getElementById('historicalExtractionWarnings').innerHTML=(summary.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 13B warnings generated.</li>';
-    document.getElementById('historicalExtractionCompletion').innerHTML=(audit.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.value?` · ${row.value}`:''}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 13B completion report generated.</p>';
-  }catch(e){
-    document.getElementById('historicalExtractionStatus').textContent=`Phase 13B historical-extraction files are not available yet. Run python backend/historical_results_extraction.py or the GitHub Action. ${e.message}`;
-  }
-}
-loadHistoricalExtraction();
-
-
-async function loadMrpLiteV2(){
-  if(!document.getElementById('mrpLiteV2Status')) return;
-  try{
-    const [summaryRes,auditRes]=await Promise.all([fetch('data/api/mrp_lite_v2_summary.json'),fetch('data/phase17_completion_audit.json')]);
-    if(!summaryRes.ok) throw new Error('Phase 17 MRP-lite v2 files not hosted yet');
-    const summary=await summaryRes.json();
-    const audit=auditRes.ok?await auditRes.json():{};
-    const counts=summary.counts||{};
-    document.getElementById('mrpLiteV2Status').textContent=`Phase 17 loaded. ${summary.status||'implemented as geography-only proxy'}. Constituency rows: ${counts.constituency_estimate_rows||0}; county rows: ${counts.county_estimate_rows||0}; reviewed crosstabs: ${counts.reviewed_crosstab_rows||0}; true demographic cells: ${counts.true_demographic_cells||0}.`;
-    document.getElementById('mrpLiteV2ReadinessScore').textContent=`${Math.round(summary.readiness_score_pct||audit.readiness_score_pct||0)}%`;
-    const cardData=[['Constituencies',counts.constituency_estimate_rows||0],['Counties',counts.county_estimate_rows||0],['Crosstab rows',counts.reviewed_crosstab_rows||0],['True demo cells',counts.true_demographic_cells||0]];
-    document.getElementById('mrpLiteV2Cards').innerHTML=cardData.map(([k,v])=>`<div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100"><div class="text-xs font-black uppercase tracking-widest text-slate-500">${k}</div><div class="mt-1 text-2xl font-black text-slate-950">${v}</div></div>`).join('');
-    document.getElementById('mrpLiteV2Warnings').innerHTML=(summary.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 17 warnings generated.</li>';
-    document.getElementById('mrpLiteV2Completion').innerHTML=(audit.line_by_line_completion||summary.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.note?` · ${row.note}`:''}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 17 completion report generated.</p>';
-  }catch(e){
-    document.getElementById('mrpLiteV2Status').textContent=`Phase 17 MRP-lite v2 files are not available yet. Run python backend/mrp_lite_v2.py or the GitHub Action. ${e.message}`;
-  }
-}
-loadMrpLiteV2();
-
-
-async function loadCalibrationReadiness(){
-  if(!document.getElementById('calibrationReadinessStatus')) return;
-  try{
-    const [summaryRes,auditRes,phase18bRes,phase18cRes]=await Promise.all([fetch('data/api/backtesting_calibration_summary.json'),fetch('data/phase18_completion_audit.json'),fetch('data/api/phase18b_reviewed_mrp_input_summary.json'),fetch('data/api/phase18c_external_input_summary.json')]);
-    if(!summaryRes.ok) throw new Error('Phase 18 calibration-readiness files not hosted yet');
-    const summary=await summaryRes.json();
-    const audit=auditRes.ok?await auditRes.json():{};
-    const counts=summary.counts||{};
-    document.getElementById('calibrationReadinessStatus').textContent=`Phase 18/18C loaded. ${summary.status||'implemented with external reviewed inputs pending'}. Counties back-tested: ${counts.counties_backtested_2017_to_2022||0}; external reviewed crosstab rows: ${counts.independent_reviewed_crosstab_rows||0}; accepted demographic cells: ${counts.accepted_demographic_cells_total||0}; true KNBS cells: ${counts.true_knbs_demographic_cells||0}. ${phase18c.action?`Input replacement: ${phase18c.action}.`:''}`;
-    document.getElementById('calibrationReadinessScore').textContent=`${Math.round(summary.calibration_readiness_score_pct||0)}%`;
-    const cardData=[['Backtest counties',counts.counties_backtested_2017_to_2022||0],['Crosstab rows',counts.reviewed_subgroup_crosstab_rows||0],['Accepted demo cells',counts.accepted_demographic_cells_total||counts.true_knbs_demographic_cells||0],['2013 county rows',counts.official_2013_county_candidate_vote_rows||0]];
-    document.getElementById('calibrationReadinessCards').innerHTML=cardData.map(([k,v])=>`<div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100"><div class="text-xs font-black uppercase tracking-widest text-slate-500">${k}</div><div class="mt-1 text-2xl font-black text-slate-950">${v}</div></div>`).join('');
-    document.getElementById('calibrationReadinessWarnings').innerHTML=(summary.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 18 warnings generated.</li>';
-    document.getElementById('calibrationReadinessCompletion').innerHTML=(audit.line_by_line_completion||summary.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.value!==undefined?` · ${row.value}`:''}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 18 completion report generated.</p>';
-  }catch(e){
-    document.getElementById('calibrationReadinessStatus').textContent=`Phase 18 calibration-readiness files are not available yet. Run python backend/backtesting_calibration_readiness.py or the GitHub Action. ${e.message}`;
-  }
-}
-loadCalibrationReadiness();
-
-</script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js">
-async function loadHistoricalExtraction(){
-  if(!document.getElementById('historicalExtractionStatus')) return;
-  try{
-    const [summaryRes,auditRes]=await Promise.all([fetch('data/api/historical_extraction_summary.json'),fetch('data/phase13b_completion_audit.json')]);
-    if(!summaryRes.ok)throw new Error('Phase 13B historical-extraction files not hosted yet');
-    const summary=await summaryRes.json();
-    const audit=auditRes.ok?await auditRes.json():{};
-    const counts=summary.counts||{};
-    document.getElementById('historicalExtractionStatus').textContent=`Phase 13B loaded. ${summary.status||'partial extraction complete'}. 2017 county rows: ${counts['2017_county_official_rows']||0}; 2013 national rows: ${counts['2013_national_candidate_rows']||0}; 2013 county trend rows: ${counts['2013_county_trend_rows']||0}.`;
-    document.getElementById('historicalExtractionScore').textContent=`${Math.round(audit.extraction_completion_score_pct||0)}%`;
-    const cardData=[['2017 county rows',counts['2017_county_official_rows']||0],['2013 national rows',counts['2013_national_candidate_rows']||0],['2013 trend rows',counts['2013_county_trend_rows']||0],['2013 official county vote rows',counts['2013_official_county_candidate_vote_rows']||0]];
-    document.getElementById('historicalExtractionCards').innerHTML=cardData.map(([k,v])=>`<div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100"><div class="text-xs font-black uppercase tracking-widest text-slate-500">${k}</div><div class="mt-1 text-2xl font-black text-slate-950">${v}</div></div>`).join('');
-    document.getElementById('historicalExtractionWarnings').innerHTML=(summary.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 13B warnings generated.</li>';
-    document.getElementById('historicalExtractionCompletion').innerHTML=(audit.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.value?` · ${row.value}`:''}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 13B completion report generated.</p>';
-  }catch(e){
-    document.getElementById('historicalExtractionStatus').textContent=`Phase 13B historical-extraction files are not available yet. Run python backend/historical_results_extraction.py or the GitHub Action. ${e.message}`;
-  }
-}
-loadHistoricalExtraction();
-
-
-async function loadMrpLiteV2(){
-  if(!document.getElementById('mrpLiteV2Status')) return;
-  try{
-    const [summaryRes,auditRes]=await Promise.all([fetch('data/api/mrp_lite_v2_summary.json'),fetch('data/phase17_completion_audit.json')]);
-    if(!summaryRes.ok) throw new Error('Phase 17 MRP-lite v2 files not hosted yet');
-    const summary=await summaryRes.json();
-    const audit=auditRes.ok?await auditRes.json():{};
-    const counts=summary.counts||{};
-    document.getElementById('mrpLiteV2Status').textContent=`Phase 17 loaded. ${summary.status||'implemented as geography-only proxy'}. Constituency rows: ${counts.constituency_estimate_rows||0}; county rows: ${counts.county_estimate_rows||0}; reviewed crosstabs: ${counts.reviewed_crosstab_rows||0}; true demographic cells: ${counts.true_demographic_cells||0}.`;
-    document.getElementById('mrpLiteV2ReadinessScore').textContent=`${Math.round(summary.readiness_score_pct||audit.readiness_score_pct||0)}%`;
-    const cardData=[['Constituencies',counts.constituency_estimate_rows||0],['Counties',counts.county_estimate_rows||0],['Crosstab rows',counts.reviewed_crosstab_rows||0],['True demo cells',counts.true_demographic_cells||0]];
-    document.getElementById('mrpLiteV2Cards').innerHTML=cardData.map(([k,v])=>`<div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100"><div class="text-xs font-black uppercase tracking-widest text-slate-500">${k}</div><div class="mt-1 text-2xl font-black text-slate-950">${v}</div></div>`).join('');
-    document.getElementById('mrpLiteV2Warnings').innerHTML=(summary.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 17 warnings generated.</li>';
-    document.getElementById('mrpLiteV2Completion').innerHTML=(audit.line_by_line_completion||summary.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.note?` · ${row.note}`:''}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 17 completion report generated.</p>';
-  }catch(e){
-    document.getElementById('mrpLiteV2Status').textContent=`Phase 17 MRP-lite v2 files are not available yet. Run python backend/mrp_lite_v2.py or the GitHub Action. ${e.message}`;
-  }
-}
-loadMrpLiteV2();
-
-</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
     :root{--burgundy:#8f1d1d;--deep:#0b1020;--cream:#fff7f4;--ink:#0f172a}
     html{scroll-behavior:smooth} body{background:linear-gradient(180deg,#fff 0%,#f8fafc 52%,#fff7f4 100%)}
@@ -119,13 +14,11 @@ loadMrpLiteV2();
     .chart-wrap{position:relative;height:400px}.mini-chart{position:relative;height:250px}@media(max-width:640px){.chart-wrap{height:330px}.mini-chart{height:240px}}
     .chip{border:1px solid rgb(226 232 240);border-radius:999px;padding:.4rem .7rem;font-size:.82rem;font-weight:800;background:white;color:#334155}.chip.active{background:#8f1d1d;color:#fff;border-color:#8f1d1d}
     input[type=number]{appearance:textfield} input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{appearance:none;margin:0}
-    .audit-only{display:none} body.audit-mode .audit-only{display:block}
-    .health-badge{display:inline-block;font-size:.68rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:.2rem .6rem;border-radius:999px}
-    .health-ok{background:#d1fae5;color:#065f46} .health-fallback{background:#fef3c7;color:#92400e} .health-error{background:#fee2e2;color:#991b1b} .health-pending{background:#e2e8f0;color:#475569}
   </style>
 </head>
 <body class="min-h-screen text-slate-900 antialiased">
   <main class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 safe-bottom">
+
     <section class="overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#9b1c1f] via-[#811b23] to-[#090919] p-6 text-white shadow-2xl sm:p-10">
       <div class="max-w-5xl">
         <p class="mb-4 text-xs font-black uppercase tracking-[0.35em] text-rose-100 sm:text-sm">Ethical election intelligence prototype</p>
@@ -140,56 +33,16 @@ loadMrpLiteV2();
       </div>
     </section>
 
-    <nav class="sticky top-0 z-30 -mx-4 mb-4 flex items-center gap-2 overflow-x-auto border-b border-slate-200 bg-[#fbf7f2]/95 px-4 py-3 backdrop-blur sm:mx-0 sm:rounded-2xl sm:border sm:px-4">
-      <a href="#status" class="whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200 hover:ring-[#8f1d1d]">Overview</a>
-      <a href="#dashboard" class="whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200 hover:ring-[#8f1d1d]">Control room</a>
-      <a href="#data-quality" class="whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200 hover:ring-[#8f1d1d]">Data quality</a>
-      <a href="#sources" class="whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200 hover:ring-[#8f1d1d]">Sources</a>
-      <a href="#phase-history" class="whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200 hover:ring-[#8f1d1d]">Phase history</a>
-      <button id="modeToggleBtn" class="ml-auto whitespace-nowrap rounded-full bg-[#8f1d1d] px-4 py-2 text-xs font-black text-white">Audit mode: off</button>
-    </nav>
-
-    <section id="status" class="mt-2 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Overview</p>
-      <h2 class="mt-2 text-2xl font-black">What this is, and what it isn\u2019t</h2>
-      <div class="mt-4 grid gap-4 sm:grid-cols-2">
-        <div class="rounded-3xl bg-emerald-50 p-5 ring-1 ring-emerald-100">
-          <h3 class="font-black text-emerald-950">This is</h3>
-          <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-emerald-950">
-            <li>Aggregate, source-cited election-poll tracking</li>
-            <li>Transparent about which figures are hosted, which are missing, and how each record was verified</li>
-            <li>A sandbox for stress-testing coalition scenarios \u2014 not a prediction</li>
-          </ul>
-        </div>
-        <div class="rounded-3xl bg-rose-50 p-5 ring-1 ring-rose-100">
-          <h3 class="font-black text-rose-950">This is not</h3>
-          <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-rose-950">
-            <li>Not a voter-targeting or persuasion tool</li>
-            <li>Not a certified or official IEBC/KNBS product</li>
-            <li>Not a seat or election forecast \u2014 scenario outputs are sensitivity tests only</li>
-          </ul>
-        </div>
-      </div>
-      <p id="dataStatus" class="mt-4 text-sm leading-6 text-slate-500">Automatically loading <code class="rounded bg-slate-100 px-1">data/polls_data.json</code>.</p>
-
-      <h3 class="mt-6 text-sm font-black uppercase tracking-widest text-slate-500">Data health</h3>
-      <div id="statusCards" class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100"><p class="text-xs font-bold text-slate-500">Checking\u2026</p></div>
-      </div>
-
-      <div class="mt-6 rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-        <h3 class="font-black text-slate-900">What changed in this build</h3>
-        <p class="mt-2 text-sm leading-6 text-slate-600"><strong>New:</strong> removed 15 panels that referenced unpublished data and were stuck permanently loading; reordered the page so the working dashboard and data-quality summary come before the technical phase history; corrected poll-record labels that had overstated automated-extraction confidence; added this overview and an audit-mode toggle.</p>
-        <p class="mt-2 text-sm leading-6 text-slate-600"><strong>Still blocked by:</strong> no scheduled refresh workflow committed yet (updates are manual); poll coverage is single-pollster (TIFA) even though a second extractor is built; the constituency/forecast/MRP backend phases have code but no published output.</p>
-      </div>
-    </section>
-
     <section id="loadingState" class="mt-6 hidden rounded-[2rem] border border-rose-100 bg-white p-8 text-center shadow-sm"><div class="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-rose-100 border-t-[#8f1d1d]"></div><p class="mt-4 font-bold text-slate-700">Loading hosted poll data…</p></section>
     <section id="errorState" class="mt-6 hidden rounded-[2rem] border border-red-200 bg-red-50 p-6 text-red-900 shadow-sm"><h2 class="text-2xl font-black">Could not load poll data</h2><p id="errorMessage" class="mt-3 leading-7"></p></section>
     <section id="emptyState" class="mt-6 hidden rounded-[2rem] border border-amber-200 bg-amber-50 p-6 text-amber-950 shadow-sm"><h2 class="text-2xl font-black">No approved poll records yet</h2><p class="mt-3 leading-7">The dashboard found the JSON file, but it does not contain approved compatible records. Check <code class="rounded bg-amber-100 px-1">review_queue.json</code> for ambiguous extractions.</p></section>
+
     <section id="dashboard" class="mt-6 hidden space-y-6">
       <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-        <h2 class="text-2xl font-black">Control room</h2>
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <h2 class="text-2xl font-black">Control room</h2>
+          <button id="refreshBtn" class="rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50">Refresh data</button>
+        </div>
         <div class="mt-4 grid gap-4 lg:grid-cols-4">
           <label><span class="mb-1 block text-sm font-bold text-slate-700">Poll type</span><select id="pollTypeFilter" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"></select></label>
           <label><span class="mb-1 block text-sm font-bold text-slate-700">Pollster</span><select id="pollsterFilter" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"><option value="all">All pollsters</option></select></label>
@@ -198,18 +51,52 @@ loadMrpLiteV2();
         </div>
         <div class="mt-4"><p class="mb-2 text-sm font-bold text-slate-700">Candidates shown</p><div id="candidateChips" class="flex flex-wrap gap-2"></div></div>
       </section>
+
       <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><h2 class="text-2xl font-black">Latest metrics</h2><p class="mt-1 text-sm text-slate-600">Latest compatible record for each visible candidate.</p></div><p id="coverageNote" class="max-w-2xl text-sm font-semibold text-slate-500"></p></div>
         <div id="metricsGrid" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-5"></div>
       </section>
+
       <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
         <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"><div><h2 class="text-2xl font-black">Historical trend</h2><p class="mt-1 text-sm text-slate-600">Selected compatible poll type, from the selected start date onward.</p></div><p id="trendRange" class="text-sm font-bold text-slate-500"></p></div>
         <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
       </section>
+
+      <section id="modelPanel" class="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+        <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+          <div>
+            <h2 class="text-2xl font-black">Model results</h2>
+            <p id="modelStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading weighted-average model output…</p>
+          </div>
+          <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
+            <p class="font-black text-slate-700">Model version</p>
+            <p id="modelVersion" class="text-slate-500">—</p>
+          </div>
+        </div>
+        <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Average rows</p><p id="modelAverageRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
+          <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Pollster-quality rows</p><p id="modelPollsterRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
+          <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Date coverage</p><p id="modelDateCoverage" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
+          <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Forecast status</p><p id="modelForecastStatus" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
+        </div>
+        <div class="mt-5 grid gap-4 lg:grid-cols-2">
+          <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
+            <h3 class="font-black text-amber-950">Model warnings</h3>
+            <ul id="modelWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
+          </div>
+          <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
+            <h3 class="font-black text-slate-950">Current weighted average</h3>
+            <div id="modelAverageList" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
+          </div>
+        </div>
+      </section>
+
       <section class="grid gap-6 lg:grid-cols-2">
         <div class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-          <h2 class="text-2xl font-black">Coalition scenario lab</h2>
-          <p class="mt-1 text-sm text-slate-600">Simulates aggregate candidate combinations from the selected date. This is not a prediction; it is a sensitivity tool.</p>
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <h2 class="text-2xl font-black">Coalition scenario lab</h2>
+            <button id="exportScenarioBtn" class="rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50">Export scenario</button>
+          </div>
           <div class="mt-4 grid gap-3 sm:grid-cols-2"><label><span class="mb-1 block text-sm font-bold">Uncertainty ± points</span><input id="uncertaintyInput" type="number" value="4.5" step="0.5" min="0" max="20" class="w-full rounded-2xl border border-slate-200 px-4 py-3 font-bold"></label><label><span class="mb-1 block text-sm font-bold">Monte Carlo runs</span><input id="runsInput" type="number" value="5000" step="1000" min="1000" max="50000" class="w-full rounded-2xl border border-slate-200 px-4 py-3 font-bold"></label></div>
           <div class="mt-4"><div id="coalitionsEditor" class="space-y-3"></div><button id="addCoalitionBtn" class="mt-3 rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50">Add coalition</button><button id="runScenarioBtn" class="ml-2 mt-3 rounded-2xl bg-[#8f1d1d] px-4 py-2 text-sm font-bold text-white hover:bg-[#751717]">Run simulation</button></div>
           <div id="scenarioResults" class="mt-5 space-y-3"></div>
@@ -217,341 +104,48 @@ loadMrpLiteV2();
         <div class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
           <h2 class="text-2xl font-black">Scenario chart</h2><p class="mt-1 text-sm text-slate-600">Latest selected-date aggregate share and simulated first-round probability.</p><div class="mini-chart mt-4"><canvas id="scenarioChart"></canvas></div></div>
       </section>
+
       <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
         <h2 class="text-2xl font-black">MP seats simulation workspace</h2>
-        <p class="mt-1 text-sm leading-6 text-slate-600">Paste constituency-level baseline data to estimate seats under a uniform swing model. For credible seat projections, replace this with constituency polls, past IEBC results, party/candidate incumbency, alliances, and local race ratings.</p>
+        <p class="mt-1 text-sm text-slate-600">Paste a constituency baseline, or load the hosted one, and apply the current scenario's national swing.</p>
         <details class="mt-4 rounded-2xl bg-slate-50 p-4"><summary class="cursor-pointer font-black">Input format example</summary><pre class="mt-3 overflow-auto rounded-xl bg-slate-900 p-4 text-xs text-slate-100">[{"constituency":"Example North","region":"Example","baseline":{"Coalition A":42,"Coalition B":35,"Other":23}},{"constituency":"Example South","region":"Example","baseline":{"Coalition A":30,"Coalition B":44,"Other":26}}]</pre></details>
         <textarea id="seatInput" class="mt-4 min-h-40 w-full rounded-2xl border border-slate-200 p-4 font-mono text-xs" placeholder='Paste constituency baseline JSON here. Leave blank to use data/constituency_baseline.json if available.'></textarea>
         <div class="mt-3 flex flex-wrap gap-2"><button id="loadSeatBaselineBtn" class="rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50">Load hosted baseline</button><button id="simulateSeatsBtn" class="rounded-2xl bg-[#8f1d1d] px-4 py-2 text-sm font-bold text-white hover:bg-[#751717]">Simulate MP seats</button></div>
         <div id="seatResults" class="mt-5"></div>
       </section>
-    <div id="sources" class="space-y-6">
-      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6"><h2 class="text-2xl font-black">Source records</h2><div id="sourceList" class="mt-4 space-y-3"></div></section>
-      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6"><h2 class="text-2xl font-black">Analyst notes</h2><div id="analystNotes" class="mt-4 grid gap-4 md:grid-cols-3"></div></section>
-    </div>
     </section>
 
-
-    <div id="data-quality">
-      <p class="mb-3 mt-8 text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Data quality</p>
-    <section id="phase1Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 1 data foundation</p>
-          <h2 class="mt-2 text-2xl font-black">Structured national data layer</h2>
-          <p id="foundationStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading normalized data-quality report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Generated</p>
-          <p id="foundationGeneratedAt" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Approved poll records</p><p id="foundationApprovedRecords" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Candidate-result rows</p><p id="foundationLongRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">County entities</p><p id="foundationCounties" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Pollsters in data</p><p id="foundationPollsters" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Known gaps before national-grade modeling</h3>
-          <ul id="foundationGaps" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Generated foundation files</h3>
-          <div id="phase1Files" class="mt-3 flex flex-wrap gap-2"></div>
-          <p id="foundationDatasets" class="mt-4 text-sm leading-6 text-slate-600"></p>
-        </div>
-      </div>
-    </section>
-    <section id="phase2Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 2 source ingestion</p>
-          <h2 class="mt-2 text-2xl font-black">Discovery, extraction audit, and review routing</h2>
-          <p id="ingestionStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading ingestion health report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Generated</p>
-          <p id="ingestionGeneratedAt" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Catalog sources</p><p id="ingestionCatalogSources" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Registered sources</p><p id="ingestionRegisteredSources" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Review items</p><p id="ingestionReviewItems" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">High-priority review</p><p id="ingestionHighPriority" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Ingestion warnings</h3>
-          <ul id="ingestionWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Processing mix</h3>
-          <p id="ingestionStatusCounts" class="mt-3 text-sm leading-6 text-slate-600"></p>
-          <div id="ingestionQualityGates" class="mt-4 flex flex-wrap gap-2"></div>
-        </div>
-      </div>
-    </section>
-    <section id="phase3Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 3 polling model</p>
-          <h2 class="mt-2 text-2xl font-black">Weighted polling average and uncertainty</h2>
-          <p id="modelStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading model-quality report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Model version</p>
-          <p id="modelVersion" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Average rows</p><p id="modelAverageRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Pollster-quality rows</p><p id="modelPollsterRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Date coverage</p><p id="modelDateCoverage" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Forecast status</p><p id="modelForecastStatus" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Model warnings</h3>
-          <ul id="modelWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Current weighted average</h3>
-          <div id="modelAverageList" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
-    </section>
-    </div>
-
-    <details id="phase-history" class="audit-only mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <summary class="cursor-pointer text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase history &amp; full governance detail (audit mode)</summary>
-      <div class="mt-4 space-y-6">
-    <section id="governancePanel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 0 governance layer</p>
-          <h2 class="mt-2 text-2xl font-black">Product boundaries and ethical use</h2>
-          <p id="governancePurpose" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Aggregate, source-transparent election intelligence only. Loading governance policy…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Status</p>
-          <p id="governanceVersion" class="text-slate-500">Prototype</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-3">
-        <div class="rounded-3xl bg-emerald-50 p-5 ring-1 ring-emerald-100">
-          <h3 class="font-black text-emerald-950">Allowed</h3>
-          <ul id="allowedUses" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-emerald-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-red-50 p-5 ring-1 ring-red-100">
-          <h3 class="font-black text-red-950">Not allowed</h3>
-          <ul id="prohibitedUses" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-red-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Model boundaries</h3>
-          <div id="modelBoundaries" class="mt-3 flex flex-wrap gap-2"></div>
-        </div>
-      </div>
-    </section>
-    <section class="mt-6 rounded-[2rem] border border-dashed border-slate-300 bg-slate-50 p-6 sm:p-8">
-      <p class="text-xs font-black uppercase tracking-[0.25em] text-slate-500">Roadmap · Phases 4–18</p>
-      <h2 class="mt-2 text-xl font-black text-slate-800">Constituency modeling, forecasting, and infrastructure phases are built but not yet publishing data</h2>
-      <p class="mt-3 max-w-4xl text-sm leading-6 text-slate-600">The backend pipeline for ward/constituency modeling, coalition scenario diagnostics, presidential forecasting, strategic intelligence, the data warehouse, audit and release-readiness reporting, historical backfill, MRP-lite estimation, demographic poststratification, and poll crosstabs exists in <code class="rounded bg-slate-200 px-1">backend/</code>, but its output files have not been generated and committed yet, so those panels were removed from this page rather than shipped as permanently-loading placeholders. See <code class="rounded bg-slate-200 px-1">README.md</code> and <code class="rounded bg-slate-200 px-1">ARCHITECTURE_REWORK.md</code> for the full phase-by-phase methodology, and the repository’s Issues tab to report a data problem with what is currently live below.</p>
-    </section>
-      </div>
-    </details>
-
+  </main>
 
 <script>
-window.__health={governance:'pending',foundation:'pending',ingestion:'pending',model:'pending',polls:'pending'};
-document.getElementById('modeToggleBtn')?.addEventListener('click',()=>{
-  const on=document.body.classList.toggle('audit-mode');
-  document.getElementById('modeToggleBtn').textContent=`Audit mode: ${on?'on':'off'}`;
-  if(on){const d=document.getElementById('phase-history');if(d)d.open=true;}
-});
-function renderStatusOverview(){
-  const h=window.__health;
-  const rows=[
-    ['Poll data', h.polls==='ok'?`ok`:h.polls==='empty'?'fallback':h.polls==='error'?'error':'pending', h.polls==='ok'?`${(window.allRecords||[]).length} approved record(s), ${new Set((window.allRecords||[]).map(r=>r.pollster)).size} pollster(s)`:h.polls==='empty'?'File loaded but no approved records':h.polls==='error'?'Could not load data/polls_data.json':'Checking\\u2026'],
-    ['Governance rules', h.governance==='ok'?'ok':h.governance==='fallback'?'fallback':'pending', h.governance==='ok'?'Hosted governance_config.json loaded':h.governance==='fallback'?'Using built-in fallback rules (file not hosted)':'Checking\\u2026'],
-    ['Data foundation', h.foundation==='ok'?'ok':h.foundation==='error'?'error':'pending', h.foundation==='ok'?'Phase 1 normalized layer loaded':h.foundation==='error'?'Phase 1 files not hosted yet':'Checking\\u2026'],
-    ['Source ingestion', h.ingestion==='ok'?'ok':h.ingestion==='error'?'error':'pending', h.ingestion==='ok'?'Phase 2 ingestion/audit trail loaded':h.ingestion==='error'?'Phase 2 files not hosted yet':'Checking\\u2026'],
-    ['Polling model', h.model==='ok'?'ok':h.model==='error'?'error':'pending', h.model==='ok'?'Phase 3 weighted average loaded':h.model==='error'?'Phase 3 files not hosted yet':'Checking\\u2026'],
-    ['Constituency / forecast / MRP (Phases 4\\u201318)', 'fallback', 'Backend code exists; no hosted output yet \\u2014 see Phase history']
-  ];
-  const label={ok:'Available',fallback:'Partial',error:'Unavailable',pending:'Checking'};
-  document.getElementById('statusCards').innerHTML=rows.map(([name,state,detail])=>
-    `<div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100">
-      <p class="text-xs font-bold text-slate-500">${name}</p>
-      <p class="mt-1"><span class="health-badge health-${state}">${label[state]||state}</span></p>
-      <p class="mt-2 text-xs leading-5 text-slate-500">${detail}</p>
-    </div>`).join('');
-}
-const DATA_URL='data/polls_data.json';
-const BASELINE_URL='data/constituency_baseline.json';
-const GOVERNANCE_URL='data/governance_config.json';
-const FOUNDATION_REPORT_URL='data/foundation/data_quality_report.json';
-const FOUNDATION_MANIFEST_URL='data/foundation/manifest.json';
-const INGESTION_REPORT_URL='data/ingestion/source_health_report.json';
-const MODEL_REPORT_URL='data/model/model_quality_report.json';
-const POLLING_AVERAGE_URL='data/model/polling_average.json';
-const CONSTITUENCY_REPORT_URL='data/constituency/constituency_model_quality_report.json';
-const NATIONAL_PRESIDENTIAL_MODEL_URL='data/constituency/national_presidential_model.json';
-const COUNTY_THRESHOLD_MODEL_URL='data/constituency/county_threshold_model.json';
-const SEAT_PROJECTION_URL='data/constituency/seat_projection.json';
-const REGIONAL_SWING_URL='data/constituency/regional_swing_simulation.json';
-const WARD_QUALITY_URL='data/elections/ward_data_quality_report.json';
-const SCENARIO_QUALITY_URL='data/scenarios/scenario_quality_report.json';
-const SCENARIO_RESULTS_URL='data/scenarios/scenario_simulation_results.json';
-const SCENARIO_SENSITIVITY_URL='data/scenarios/scenario_sensitivity_report.json';
-const FORECAST_READINESS_URL='data/forecast/forecast_readiness_report.json';
-const FORECAST_MRP_LITE_URL='data/forecast/mrp_lite_constituency_estimates.json';
-const FORECAST_WARD_PROVISIONAL_URL='data/elections/presidential_2022_ward_provisional.json';
-const FORECAST_CONSTITUENCY_PROVISIONAL_URL='data/elections/presidential_2022_constituency_provisional.json';
-const PRESIDENTIAL_FORECAST_SUMMARY_URL='data/forecast/presidential_forecast_summary.json';
-const PRESIDENTIAL_FORECAST_NATIONAL_URL='data/forecast/presidential_forecast_national.json';
-const PRESIDENTIAL_FORECAST_UNCERTAINTY_URL='data/forecast/presidential_forecast_uncertainty.json';
-const PRESIDENTIAL_FORECAST_QUALITY_URL='data/forecast/presidential_forecast_quality_report.json';
-const STRATEGY_BRIEF_URL='data/strategy/strategic_brief.json';
-const STRATEGY_QUALITY_URL='data/strategy/strategy_quality_report.json';
-const STRATEGY_COUNTY_PRIORITY_URL='data/strategy/county_priority_scores.json';
-const STRATEGY_BATTLEGROUND_URL='data/strategy/battleground_matrix.json';
-const STRATEGY_ISSUE_URL='data/strategy/issue_environment_tracker.json';
-const DATA_STACK_QUALITY_URL='data/warehouse/warehouse_quality_report.json';
-const DATA_STACK_MANIFEST_URL='data/warehouse/warehouse_manifest.json';
-const DATA_STACK_API_CONTRACT_URL='data/api/api_contract.json';
-const PROD_STACK_QUALITY_URL='data/warehouse/production_stack_quality_report.json';
-const PROD_STACK_RUNTIME_URL='data/api/runtime_config.json';
-const AUDIT_MANIFEST_URL='data/audit/audit_manifest.json';
-const AUDIT_QUALITY_URL='data/audit/data_quality_scoreboard.json';
-const AUDIT_CAVEATS_URL='data/audit/caveat_registry.json';
-const AUDIT_LINEAGE_URL='data/audit/model_lineage.json';
-const RELEASE_MANIFEST_URL='data/release/release_manifest.json';
-const RELEASE_READINESS_URL='data/release/production_readiness_scorecard.json';
-const RELEASE_GATES_URL='data/release/validation_gate_report.json';
-const RELEASE_GAPS_URL='data/release/final_gap_register.json';
-const RELEASE_TESTS_URL='data/release/acceptance_test_plan.json';
-const VALIDATION_SUMMARY_URL='data/api/official_validation_summary.json';
-const VALIDATION_QUALITY_URL='data/validation/phase11_quality_report.json';
-const VOTER_REGISTER_SUMMARY_URL='data/api/voter_register_validation_summary.json';
-const VOTER_REGISTER_SCORECARD_URL='data/validation/voter_register_validation_scorecard.json';
-const LAKEHOUSE_MANIFEST_URL='data/lakehouse/manifest.json';
-const HISTORICAL_SUMMARY_URL='data/api/historical_baseline_summary.json';
-const HISTORICAL_GAP_URL='data/validation/historical_baseline_gap_report.json';
-const HISTORICAL_AUDIT_URL='data/phase13_completion_audit.json';
-
-
-
-const COMPATIBLE_POLL_TYPES=['preferred_presidential_aspirant','preferred_presidential_candidate','popularity_rating','approval_rating'];
-let allRecords=[], filteredRecords=[], visibleCandidates=[], selectedCandidates=new Set(), trendChart=null, scenarioChart=null, lastScenario=[], governanceConfig=null;
-const $=id=>document.getElementById(id);
-const fmtDate=s=>{if(!s)return '—';const d=new Date(s+'T00:00:00');return d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});};
-const pollLabel=s=>(s||'unknown').replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
-const pct=v=>Number.isFinite(v)?`${v.toFixed(1)}%`:'—';
+function $(id){return document.getElementById(id)}
 function setVisible(id,show){$(id).classList.toggle('hidden',!show)}
 function unique(arr){return [...new Set(arr.filter(Boolean))]}
 function allCandidates(records){return unique(records.flatMap(r=>Object.keys(r.figures||{}))).sort((a,b)=>a.localeCompare(b));}
 function values(records,candidate){return records.map(r=>({record:r,value:Number(r.figures?.[candidate])})).filter(x=>Number.isFinite(x.value));}
+const fmtDate=s=>{if(!s)return '—';const d=new Date(s+'T00:00:00');return d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});};
+const pollLabel=s=>(s||'unknown').replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+const pct=v=>Number.isFinite(v)?`${v.toFixed(1)}%`:'—';
 
-function renderGovernance(){
-  const fallback={governance_version:'phase-0.1',product_status:'rudimentary_prototype',purpose:'Aggregate, source-transparent election intelligence for public-interest and advisory analysis.',allowed_uses:['Aggregate polling trend analysis','Source-provenance review','Coalition and runoff scenario stress testing using public data'],prohibited_uses:['Individual voter profiling or microtargeting','Sensitive-trait targeting','Voter suppression or covert persuasion'],model_boundaries:['Scenario outputs are sensitivity tests, not forecasts.','Poll types must remain separated.','Ambiguous extractions must go to review.']};
-  const g=governanceConfig||fallback;
-  $('governancePurpose').textContent=g.purpose||fallback.purpose;
-  $('governanceVersion').textContent=`${g.governance_version||'phase-0'} · ${String(g.product_status||'prototype').replace(/_/g,' ')}`;
-  $('allowedUses').innerHTML=(g.allowed_uses||fallback.allowed_uses).slice(0,6).map(x=>`<li>${x}</li>`).join('');
-  $('prohibitedUses').innerHTML=(g.prohibited_uses||fallback.prohibited_uses).slice(0,6).map(x=>`<li>${x}</li>`).join('');
-  $('modelBoundaries').innerHTML=(g.model_boundaries||fallback.model_boundaries).slice(0,5).map(x=>`<span class="rounded-full bg-white px-3 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200">${x}</span>`).join('');
-}
-async function loadGovernance(){
-  try{const res=await fetch(GOVERNANCE_URL,{cache:'no-store'});if(!res.ok)throw new Error('No hosted governance config');governanceConfig=await res.json();}
-  catch(e){governanceConfig=null;}
-  window.__health.governance=governanceConfig?'ok':'fallback';
-  renderGovernance();
-}
+const DATA_URL='data/polls_data.json';
+const BASELINE_URL='data/constituency_baseline.json';
+const MODEL_REPORT_URL='data/model/model_quality_report.json';
+const POLLING_AVERAGE_URL='data/model/polling_average.json';
 
-async function loadFoundationReport(){
-  try{
-    const [reportRes,manifestRes]=await Promise.all([
-      fetch(FOUNDATION_REPORT_URL,{cache:'no-store'}),
-      fetch(FOUNDATION_MANIFEST_URL,{cache:'no-store'})
-    ]);
-    if(!reportRes.ok)throw new Error('Phase 1 report not hosted yet');
-    const report=await reportRes.json();
-    const manifest=manifestRes.ok?await manifestRes.json():{files:[]};
-    const coverage=report.coverage||{}, records=report.records||{}, missing=report.missingness||{};
-    $('foundationStatus').textContent=`Normalized data foundation loaded. Date coverage: ${coverage.date_min||'—'} to ${coverage.date_max||'—'}.`;
-    $('foundationGeneratedAt').textContent=report.generated_at?new Date(report.generated_at).toLocaleString():'—';
-    $('foundationApprovedRecords').textContent=records.approved_poll_records??'0';
-    $('foundationLongRows').textContent=records.poll_results_long_rows??'0';
-    $('foundationCounties').textContent='47';
-    $('foundationPollsters').textContent=Object.keys(coverage.pollsters||{}).length;
-    const gaps=report.quality_flags||[];
-    $('foundationGaps').innerHTML=gaps.slice(0,5).map(x=>`<li>${x}</li>`).join('');
-    $('phase1Files').innerHTML=(manifest.files||[]).slice(0,12).map(f=>`<span class="rounded-full bg-white px-3 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200">${String(f).replace('data/foundation/','')}</span>`).join('');
-    $('foundationDatasets').textContent=`Missingness flags: ${Object.entries(missing).map(([k,v])=>`${k}: ${v}`).join(' · ')||'none'}.`;
-    window.__health.foundation='ok';
-  }catch(e){
-    window.__health.foundation='error';
-    $('foundationStatus').textContent=`Phase 1 foundation files are not available yet. Run python backend/data_foundation.py or the GitHub Action. ${e.message}`;
-    $('foundationGeneratedAt').textContent='Not generated';
-    $('foundationApprovedRecords').textContent='—';
-    $('foundationLongRows').textContent='—';
-    $('foundationCounties').textContent='—';
-    $('foundationPollsters').textContent='—';
-    $('foundationGaps').innerHTML='<li>Foundation report unavailable.</li>';
-    $('phase1Files').innerHTML='';
-    $('foundationDatasets').textContent='';
-  }
-}
+let allRecords=[], filteredRecords=[], visibleCandidates=[], selectedCandidates=new Set(), trendChart=null, scenarioChart=null, lastScenario=[];
 
-
-
-async function loadIngestionReport(){
-  try{
-    const res=await fetch(INGESTION_REPORT_URL,{cache:'no-store'});
-    if(!res.ok)throw new Error('Phase 2 ingestion report not hosted yet');
-    const report=await res.json();
-    const summary=report.summary||{};
-    $('ingestionStatus').textContent='Source ingestion layer loaded. Discovery, classification, extraction audit, and review routing are active.';
-    $('ingestionGeneratedAt').textContent=report.generated_at?new Date(report.generated_at).toLocaleString():'—';
-    $('ingestionCatalogSources').textContent=summary.catalog_sources??'0';
-    $('ingestionRegisteredSources').textContent=summary.registered_sources??'0';
-    $('ingestionReviewItems').textContent=summary.review_queue_items??'0';
-    $('ingestionHighPriority').textContent=summary.high_priority_review_items??'0';
-    const warnings=report.warnings||[];
-    $('ingestionWarnings').innerHTML=warnings.length?warnings.slice(0,6).map(x=>`<li>${x}</li>`).join(''):'<li>No ingestion warnings generated.</li>';
-    const statusCounts=report.processing_status_counts||{};
-    $('ingestionStatusCounts').textContent=Object.entries(statusCounts).map(([k,v])=>`${String(k).replace(/_/g,' ')}: ${v}`).join(' · ')||'No registered-source processing statuses yet.';
-    $('ingestionQualityGates').innerHTML=(report.quality_gates||[]).map(g=>`<span class="rounded-full bg-white px-3 py-2 text-xs font-black text-slate-700 ring-1 ring-slate-200">${g.gate}: ${g.status}</span>`).join('');
-    window.__health.ingestion='ok';
-  }catch(e){
-    window.__health.ingestion='error';
-    $('ingestionStatus').textContent=`Phase 2 ingestion files are not available yet. Run python backend/source_ingestion.py or the GitHub Action. ${e.message}`;
-    $('ingestionGeneratedAt').textContent='Not generated';
-    $('ingestionCatalogSources').textContent='—';
-    $('ingestionRegisteredSources').textContent='—';
-    $('ingestionReviewItems').textContent='—';
-    $('ingestionHighPriority').textContent='—';
-    $('ingestionWarnings').innerHTML='<li>Ingestion health report unavailable.</li>';
-    $('ingestionStatusCounts').textContent='';
-    $('ingestionQualityGates').innerHTML='';
-  }
-}
-
-async function loadPollingModelReport(){
+async function loadModelResults(){
   try{
     const [reportRes,avgRes]=await Promise.all([
       fetch(MODEL_REPORT_URL,{cache:'no-store'}),
       fetch(POLLING_AVERAGE_URL,{cache:'no-store'})
     ]);
-    if(!reportRes.ok)throw new Error('Phase 3 model report not hosted yet');
+    if(!reportRes.ok)throw new Error('Model report not hosted yet');
     const report=await reportRes.json();
     const averages=avgRes.ok?await avgRes.json():[];
     const records=report.records||{}, coverage=report.coverage||{}, methodology=report.methodology||{};
-    $('modelStatus').textContent=`Polling model loaded. ${methodology.forecast_status||'Descriptive polling-summary model only.'}`;
-    $('modelVersion').textContent=report.model_version||'phase3';
+    $('modelStatus').textContent=`Model output loaded. ${methodology.forecast_status||'Descriptive polling-summary model only.'}`;
+    $('modelVersion').textContent=report.model_version||'—';
     $('modelAverageRows').textContent=records.polling_average_rows??'0';
     $('modelPollsterRows').textContent=records.pollster_quality_rows??'0';
     $('modelDateCoverage').textContent=`${coverage.date_min||'—'} → ${coverage.date_max||'—'}`;
@@ -559,611 +153,80 @@ async function loadPollingModelReport(){
     const warnings=report.warnings||[];
     $('modelWarnings').innerHTML=warnings.length?warnings.slice(0,6).map(x=>`<li>${x}</li>`).join(''):'<li>No model warnings generated.</li>';
     $('modelAverageList').innerHTML=(Array.isArray(averages)?averages:[]).slice(0,8).map(row=>`<div class="flex items-center justify-between gap-3 rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><span class="font-black">${row.candidate}</span><span class="text-right"><strong>${Number(row.weighted_average).toFixed(1)}%</strong><br><span class="text-xs text-slate-500">95% range ${Number(row.lower_95).toFixed(1)}–${Number(row.upper_95).toFixed(1)}%</span></span></div>`).join('')||'<p>No weighted averages generated.</p>';
-    window.__health.model='ok';
   }catch(e){
-    window.__health.model='error';
-    $('modelStatus').textContent=`Phase 3 polling model files are not available yet. Run python backend/polling_model.py or the GitHub Action. ${e.message}`;
+    $('modelStatus').textContent=`Model output files are not available yet. Run python backend/polling_model.py or the GitHub Action. ${e.message}`;
     $('modelVersion').textContent='Not generated';
     $('modelAverageRows').textContent='—';
     $('modelPollsterRows').textContent='—';
     $('modelDateCoverage').textContent='—';
     $('modelForecastStatus').textContent='—';
-    $('modelWarnings').innerHTML='<li>Polling model report unavailable.</li>';
+    $('modelWarnings').innerHTML='<li>Model report unavailable.</li>';
     $('modelAverageList').innerHTML='';
   }
 }
 
-
-async function loadConstituencyModelReport(){
-  if(!document.getElementById('constituencyStatus')) return;
-  try{
-    const [reportRes,nationalRes,countyRes,seatsRes,regionalRes,wardQualityRes]=await Promise.all([
-      fetch(CONSTITUENCY_REPORT_URL,{cache:'no-store'}),
-      fetch(NATIONAL_PRESIDENTIAL_MODEL_URL,{cache:'no-store'}),
-      fetch(COUNTY_THRESHOLD_MODEL_URL,{cache:'no-store'}),
-      fetch(SEAT_PROJECTION_URL,{cache:'no-store'}),
-      fetch(REGIONAL_SWING_URL,{cache:'no-store'}),
-      fetch(WARD_QUALITY_URL,{cache:'no-store'})
-    ]);
-    if(!reportRes.ok)throw new Error('Phase 4 constituency report not hosted yet');
-    const report=await reportRes.json();
-    const national=nationalRes.ok?await nationalRes.json():{};
-    const county=countyRes.ok?await countyRes.json():{};
-    const seats=seatsRes.ok?await seatsRes.json():{};
-    const regional=regionalRes.ok?await regionalRes.json():{};
-    const wardQuality=wardQualityRes.ok?await wardQualityRes.json():{};
-    $('constituencyStatus').textContent=`Constituency model loaded. ${report.status||'Scaffold with national threshold diagnostic.'}`;
-    $('constituencyModelVersion').textContent=report.model_version||'phase4';
-    const leader=national.leader||{};
-    $('constituencyLeader').textContent=leader.candidate?`${leader.candidate} · ${Number(leader.weighted_average||0).toFixed(1)}%`:'Not available';
-    $('constituencyRunoff').textContent=String(national.runoff_status||'not estimated').replace(/_/g,' ');
-    $('countyThresholdStatus').textContent=String(county.status||'not generated').replace(/_/g,' ');
-    $('seatModelStatus').textContent=String(seats.status||'not generated').replace(/_/g,' ');
-    $('wardRowsIntegrated').textContent=(wardQuality.ward_rows||0).toLocaleString();
-    $('wardRegisteredVoters').textContent=(wardQuality.registered_voters_2022_total||0).toLocaleString();
-    const counts=county.estimated_counties_above_25_percent||{};
-    $('countyThresholdCounts').textContent=`${counts.Incumbent??'—'} / ${counts['Strategic Alliance']??'—'}`;
-    $('proxyConstituencies').textContent=(seats.constituency_baseline_rows||0).toLocaleString();
-    const nat=regional.national||{};
-    const shares=nat.shares||{};
-    $('regionalSwingSummary').innerHTML=(regional.clusters||[]).slice(0,6).map(c=>`<div class="rounded-2xl bg-white p-4 ring-1 ring-slate-100"><p class="font-black text-slate-900">${c.cluster}</p><p class="mt-1 text-sm text-slate-500">Proxy winner: <strong>${c.winner_proxy||'—'}</strong></p><p class="text-sm text-slate-500">Projected votes: ${(c.projected_votes_2027||0).toLocaleString()}</p><p class="text-sm text-slate-500">Inc ${Number(c.shares?.Incumbent||0).toFixed(1)}% · SA ${Number(c.shares?.['Strategic Alliance']||0).toFixed(1)}%</p></div>`).join('')||`<p class="text-sm text-slate-500">Regional swing simulation unavailable.</p>`;
-    const warnings=report.warnings||[];
-    $('constituencyWarnings').innerHTML=warnings.length?warnings.slice(0,8).map(x=>`<li>${x}</li>`).join(''):'<li>No constituency-model warnings generated.</li>';
-    $('constituencyCompletion').innerHTML=(report.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 4 completion report generated.</p>';
-  }catch(e){
-    $('constituencyStatus').textContent=`Phase 4 constituency model files are not available yet. Run python backend/constituency_model.py or the GitHub Action. ${e.message}`;
-    $('constituencyModelVersion').textContent='Not generated';
-    $('constituencyLeader').textContent='—';
-    $('constituencyRunoff').textContent='—';
-    $('countyThresholdStatus').textContent='—';
-    $('seatModelStatus').textContent='—';
-    $('wardRowsIntegrated').textContent='—';
-    $('wardRegisteredVoters').textContent='—';
-    $('countyThresholdCounts').textContent='—';
-    $('proxyConstituencies').textContent='—';
-    $('regionalSwingSummary').innerHTML='';
-    $('constituencyWarnings').innerHTML='<li>Constituency model report unavailable.</li>';
-    $('constituencyCompletion').innerHTML='';
-  }
-}
-
-
-async function loadScenarioAnalysisReport(){
-  if(!document.getElementById('scenarioModelStatus')) return;
-  try{
-    const [qualityRes,resultsRes,sensitivityRes]=await Promise.all([
-      fetch(SCENARIO_QUALITY_URL,{cache:'no-store'}),
-      fetch(SCENARIO_RESULTS_URL,{cache:'no-store'}),
-      fetch(SCENARIO_SENSITIVITY_URL,{cache:'no-store'})
-    ]);
-    if(!qualityRes.ok)throw new Error('Phase 5 scenario report not hosted yet');
-    const quality=await qualityRes.json();
-    const results=resultsRes.ok?await resultsRes.json():[];
-    const sensitivity=sensitivityRes.ok?await sensitivityRes.json():{};
-    $('scenarioModelStatus').textContent=`Scenario engine loaded. ${String(quality.status||'Scenario diagnostics active').replace(/_/g,' ')}.`;
-    $('scenarioModelVersion').textContent=quality.model_version||'phase5';
-    $('phase5ScenarioCount').textContent=quality.scenario_count??(Array.isArray(results)?results.length:0);
-    $('phase5CandidateInputs').textContent=quality.candidate_inputs??'0';
-    const ranked=sensitivity.ranked_scenarios||[];
-    const top=ranked[0]||{};
-    $('phase5TopScenario').textContent=top.name?`${top.leader_proxy||'—'} · ${Number(top.leader_share_proxy||0).toFixed(1)}%`:'—';
-    $('phase5RunoffProxy').textContent=top.runoff_probability_proxy!==undefined?`${Number(top.runoff_probability_proxy*100).toFixed(1)}%`:'—';
-    $('phase5SensitivityRows').innerHTML=ranked.slice(0,6).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.name}</strong><br><span class="text-slate-600">Leader: ${row.leader_proxy||'—'} · ${Number(row.leader_share_proxy||0).toFixed(1)}% · runoff proxy ${row.runoff_probability_proxy!==undefined?Number(row.runoff_probability_proxy*100).toFixed(1)+'%':'—'}</span></div>`).join('')||'<p>No scenario sensitivity rows generated.</p>';
-    $('phase5Warnings').innerHTML=(quality.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No scenario warnings generated.</li>';
-    $('phase5Completion').innerHTML=(quality.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 5 completion report generated.</p>';
-  }catch(e){
-    $('scenarioModelStatus').textContent=`Phase 5 scenario-analysis files are not available yet. Run python backend/scenario_analysis.py or the GitHub Action. ${e.message}`;
-    $('scenarioModelVersion').textContent='Not generated';
-    $('phase5ScenarioCount').textContent='—';
-    $('phase5CandidateInputs').textContent='—';
-    $('phase5TopScenario').textContent='—';
-    $('phase5RunoffProxy').textContent='—';
-    $('phase5SensitivityRows').innerHTML='';
-    $('phase5Warnings').innerHTML='<li>Scenario analysis report unavailable.</li>';
-    $('phase5Completion').innerHTML='';
-  }
-}
-
-async function loadForecastBridgeReport(){
-  if(!document.getElementById('forecastBridgeStatus')) return;
-  try{
-    const [readinessRes,mrpRes,wardRes,constRes]=await Promise.all([
-      fetch(FORECAST_READINESS_URL,{cache:'no-store'}),
-      fetch(FORECAST_MRP_LITE_URL,{cache:'no-store'}),
-      fetch(FORECAST_WARD_PROVISIONAL_URL,{cache:'no-store'}),
-      fetch(FORECAST_CONSTITUENCY_PROVISIONAL_URL,{cache:'no-store'})
-    ]);
-    if(!readinessRes.ok)throw new Error('Phase 6A forecast bridge not hosted yet');
-    const readiness=await readinessRes.json();
-    const mrp=mrpRes.ok?await mrpRes.json():[];
-    const ward=wardRes.ok?await wardRes.json():[];
-    const cons=constRes.ok?await constRes.json():[];
-    $('forecastBridgeStatus').textContent=`Forecast bridge loaded. ${String(readiness.status||'MRP-lite only').replace(/_/g,' ')}. ${readiness.what_changed||''}`;
-    $('forecastReadinessScore').textContent=readiness.readiness_score_percent!==undefined?`${Number(readiness.readiness_score_percent).toFixed(1)}%`:'—';
-    $('forecastWardProxyRows').textContent=Array.isArray(ward)?ward.length.toLocaleString():'—';
-    $('forecastConstituencyRows').textContent=Array.isArray(cons)?cons.length.toLocaleString():'—';
-    $('forecastMrpRows').textContent=Array.isArray(mrp)?mrp.length.toLocaleString():'—';
-    const inputs=readiness.inputs_present||{};
-    $('forecastTrueMrpStatus').textContent=inputs.poll_crosstabs_or_microdata&&inputs.demographic_poststratification_cells?'possible':'not implemented';
-    $('forecastMrpSamples').innerHTML=(Array.isArray(mrp)?mrp.slice(0,6):[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.constituency}, ${row.county}</strong><br><span class="text-slate-600">Proxy winner: ${row.winner_proxy||'—'} · ${Number(row.winner_share_proxy||0).toFixed(1)}% · margin ${Number(row.margin_proxy||0).toFixed(1)} pts</span></div>`).join('')||'<p>No MRP-lite rows generated.</p>';
-    $('forecastWarnings').innerHTML=(readiness.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No forecast bridge warnings generated.</li>';
-    $('forecastCompletion').innerHTML=(readiness.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 6A completion report generated.</p>';
-  }catch(e){
-    $('forecastBridgeStatus').textContent=`Phase 6A forecast bridge files are not available yet. Run python backend/forecast_data_bridge.py or the GitHub Action. ${e.message}`;
-    $('forecastReadinessScore').textContent='—';
-    $('forecastWardProxyRows').textContent='—';
-    $('forecastConstituencyRows').textContent='—';
-    $('forecastMrpRows').textContent='—';
-    $('forecastTrueMrpStatus').textContent='—';
-    $('forecastMrpSamples').innerHTML='';
-    $('forecastWarnings').innerHTML='<li>Forecast bridge report unavailable.</li>';
-    $('forecastCompletion').innerHTML='';
-  }
-}
-
-
-
-async function loadPresidentialForecastReport(){
-  if(!document.getElementById('presidentialForecastStatus')) return;
-  try{
-    const [summaryRes,nationalRes,uncertaintyRes,qualityRes]=await Promise.all([
-      fetch(PRESIDENTIAL_FORECAST_SUMMARY_URL,{cache:'no-store'}),
-      fetch(PRESIDENTIAL_FORECAST_NATIONAL_URL,{cache:'no-store'}),
-      fetch(PRESIDENTIAL_FORECAST_UNCERTAINTY_URL,{cache:'no-store'}),
-      fetch(PRESIDENTIAL_FORECAST_QUALITY_URL,{cache:'no-store'})
-    ]);
-    if(!summaryRes.ok)throw new Error('Phase 6B presidential forecast files not hosted yet');
-    const summary=await summaryRes.json();
-    const national=nationalRes.ok?await nationalRes.json():{};
-    const uncertainty=uncertaintyRes.ok?await uncertaintyRes.json():{};
-    const quality=qualityRes.ok?await qualityRes.json():{};
-    const h=summary.headline||{};
-    $('presidentialForecastStatus').textContent=`Phase 6B loaded. ${String(summary.status||'provisional diagnostic').replace(/_/g,' ')}.`;
-    $('presidentialForecastModelStatus').textContent=String(national.model_status||quality.status||'provisional').replace(/_/g,' ');
-    $('presidentialForecastLeader').textContent=h.leader_proxy?`${h.leader_proxy} · ${Number(h.leader_share_proxy||0).toFixed(1)}%`:'—';
-    $('presidentialForecastFirstRound').textContent=String(h.first_round_status_proxy||'—').replace(/_/g,' ');
-    $('presidentialForecastRunoff').textContent=h.runoff_probability_proxy!==undefined?`${Number(h.runoff_probability_proxy*100).toFixed(1)}%`:'—';
-    $('presidentialForecastConstituencies').textContent=summary.counts?.constituencies?.toLocaleString?.()||summary.counts?.constituencies||'—';
-    const thresholds=national.constitutional_threshold_proxy||{};
-    $('presidentialForecastThresholdRows').innerHTML=Object.entries(thresholds).map(([cand,row])=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${cand}</strong><br><span class="text-slate-600">${row.counties_over_25_percent||0}/47 counties over 25% · ${row.meets_24_county_threshold_proxy?'meets proxy threshold':'below proxy threshold'}</span></div>`).join('')||'<p>No county threshold proxy generated.</p>';
-    $('presidentialForecastBattlegrounds').innerHTML=(uncertainty.battleground_constituencies_proxy||[]).slice(0,8).map(r=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${r.constituency}, ${r.county}</strong><br><span class="text-slate-600">${r.winner_proxy} vs ${r.runner_up_proxy} · margin ${Number(r.margin_proxy_pp||0).toFixed(1)} pts · ${String(r.competitiveness_proxy||'').replace(/_/g,' ')}</span></div>`).join('')||'<p>No battleground proxy generated.</p>';
-    $('presidentialForecastWarnings').innerHTML=(quality.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 6B warnings generated.</li>';
-    $('presidentialForecastCompletion').innerHTML=(quality.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 6B completion report generated.</p>';
-  }catch(e){
-    $('presidentialForecastStatus').textContent=`Phase 6B presidential forecast files are not available yet. Run python backend/presidential_forecast.py or the GitHub Action. ${e.message}`;
-    $('presidentialForecastModelStatus').textContent='Not generated';
-    $('presidentialForecastLeader').textContent='—';
-    $('presidentialForecastFirstRound').textContent='—';
-    $('presidentialForecastRunoff').textContent='—';
-    $('presidentialForecastConstituencies').textContent='—';
-    $('presidentialForecastThresholdRows').innerHTML='';
-    $('presidentialForecastBattlegrounds').innerHTML='';
-    $('presidentialForecastWarnings').innerHTML='<li>Phase 6B forecast report unavailable.</li>';
-    $('presidentialForecastCompletion').innerHTML='';
-  }
-}
-
-
-async function loadStrategyReport(){
-  if(!document.getElementById('strategyStatus')) return;
-  try{
-    const [briefRes,qualityRes,countyRes,battleRes,issueRes]=await Promise.all([
-      fetch(STRATEGY_BRIEF_URL,{cache:'no-store'}),
-      fetch(STRATEGY_QUALITY_URL,{cache:'no-store'}),
-      fetch(STRATEGY_COUNTY_PRIORITY_URL,{cache:'no-store'}),
-      fetch(STRATEGY_BATTLEGROUND_URL,{cache:'no-store'}),
-      fetch(STRATEGY_ISSUE_URL,{cache:'no-store'})
-    ]);
-    if(!briefRes.ok)throw new Error('Phase 7 strategic intelligence files not hosted yet');
-    const brief=await briefRes.json();
-    const quality=qualityRes.ok?await qualityRes.json():{};
-    const counties=countyRes.ok?await countyRes.json():[];
-    const battle=battleRes.ok?await battleRes.json():{};
-    const issue=issueRes.ok?await issueRes.json():{};
-    $('strategyStatus').textContent=`Phase 7 loaded. ${String(brief.status||'strategic diagnostics active').replace(/_/g,' ')}.`;
-    $('strategyModelVersion').textContent=brief.model_version||'phase7';
-    $('strategyTopCounty').textContent=brief.headline?.top_county_priority_proxy||counties?.[0]?.county||'—';
-    $('strategyBattlegroundCount').textContent=brief.headline?.battleground_constituencies_listed ?? (battle.constituency_battlegrounds_proxy||[]).length;
-    $('strategyIssueStatus').textContent=String(issue.model_status||'scaffold').replace(/_/g,' ');
-    $('strategyEthicalScope').textContent='Aggregate only';
-    $('strategyCountyRows').innerHTML=(Array.isArray(counties)?counties.slice(0,8):[]).map(r=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${r.county}</strong><br><span class="text-slate-600">Score ${Number(r.priority_score_proxy||0).toFixed(1)} · ${String(r.priority_tier_proxy||'').replace(/_/g,' ')} · ${r.leader_proxy||'—'} +${Number(r.margin_proxy_pp||0).toFixed(1)} pts</span></div>`).join('')||'<p>No county priority rows generated.</p>';
-    $('strategyBattlegroundRows').innerHTML=(battle.constituency_battlegrounds_proxy||[]).slice(0,8).map(r=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${r.constituency}, ${r.county}</strong><br><span class="text-slate-600">${r.winner_proxy||'—'} vs ${r.runner_up_proxy||'—'} · margin ${Number(r.margin_proxy_pp||0).toFixed(1)} pts · ${String(r.competitiveness_proxy||'').replace(/_/g,' ')}</span></div>`).join('')||'<p>No battleground proxy rows generated.</p>';
-    $('strategyWarnings').innerHTML=(quality.warnings||brief.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 7 warnings generated.</li>';
-    $('strategyCompletion').innerHTML=(quality.line_by_line_completion||brief.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 7 completion report generated.</p>';
-  }catch(e){
-    $('strategyStatus').textContent=`Phase 7 strategic intelligence files are not available yet. Run python backend/strategic_intelligence.py or the GitHub Action. ${e.message}`;
-    $('strategyModelVersion').textContent='Not generated';
-    $('strategyTopCounty').textContent='—';
-    $('strategyBattlegroundCount').textContent='—';
-    $('strategyIssueStatus').textContent='—';
-    $('strategyEthicalScope').textContent='—';
-    $('strategyCountyRows').innerHTML='';
-    $('strategyBattlegroundRows').innerHTML='';
-    $('strategyWarnings').innerHTML='<li>Phase 7 report unavailable.</li>';
-    $('strategyCompletion').innerHTML='';
-  }
-}
-
-
-async function loadDataStackReport(){
-  if(!document.getElementById('dataStackStatus')) return;
-  try{
-    const [qualityRes,manifestRes,apiRes]=await Promise.all([
-      fetch(DATA_STACK_QUALITY_URL,{cache:'no-store'}),
-      fetch(DATA_STACK_MANIFEST_URL,{cache:'no-store'}),
-      fetch(DATA_STACK_API_CONTRACT_URL,{cache:'no-store'})
-    ]);
-    if(!qualityRes.ok)throw new Error('Phase 8 data-stack files not hosted yet');
-    const quality=await qualityRes.json();
-    const manifest=manifestRes.ok?await manifestRes.json():{};
-    const api=apiRes.ok?await apiRes.json():{};
-    const wh=quality.warehouse||{};
-    const counts=wh.table_counts||{};
-    $('dataStackStatus').textContent=`Phase 8 loaded. ${String(quality.status||'data stack scaffold').replace(/_/g,' ')}.`;
-    $('dataStackMode').textContent=api.delivery_mode?String(api.delivery_mode).replace(/_/g,' '):'static warehouse scaffold';
-    $('dataStackSourceFiles').textContent=wh.source_file_count?.toLocaleString?.()||wh.source_file_count||'—';
-    $('dataStackTables').textContent=Object.keys(counts).length||'—';
-    $('dataStackApiSnapshots').textContent=api.endpoints?.length||manifest.api_outputs?.length||'—';
-    $('dataStackProductionDb').textContent='Not deployed';
-    $('dataStackTableRows').innerHTML=Object.entries(counts).map(([k,v])=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${k}</strong><br><span class="text-slate-600">${Number(v||0).toLocaleString()} row(s)</span></div>`).join('')||'<p>No warehouse table counts generated.</p>';
-    $('dataStackApiRows').innerHTML=(api.endpoints||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.path}</strong><br><span class="text-slate-600">${row.static_file} · ${String(row.status||'').replace(/_/g,' ')}</span></div>`).join('')||'<p>No API contract generated.</p>';
-    $('dataStackWarnings').innerHTML=(quality.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 8 warnings generated.</li>';
-    $('dataStackCompletion').innerHTML=(quality.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 8 completion report generated.</p>';
-  }catch(e){
-    $('dataStackStatus').textContent=`Phase 8 data-stack files are not available yet. Run python backend/data_stack.py or the GitHub Action. ${e.message}`;
-    $('dataStackMode').textContent='Not generated';
-    $('dataStackSourceFiles').textContent='—';
-    $('dataStackTables').textContent='—';
-    $('dataStackApiSnapshots').textContent='—';
-    $('dataStackTableRows').innerHTML='';
-    $('dataStackApiRows').innerHTML='';
-    $('dataStackWarnings').innerHTML='<li>Phase 8 data-stack report unavailable.</li>';
-    $('dataStackCompletion').innerHTML='';
-  }
-}
-
-
-async function loadProductionStackReport(){
-  if(!document.getElementById('prodStackStatus')) return;
-  try{
-    const [qualityRes,runtimeRes,lakeRes]=await Promise.all([
-      fetch(PROD_STACK_QUALITY_URL,{cache:'no-store'}),
-      fetch(PROD_STACK_RUNTIME_URL,{cache:'no-store'}),
-      fetch(LAKEHOUSE_MANIFEST_URL,{cache:'no-store'})
-    ]);
-    if(!qualityRes.ok)throw new Error('Phase 8B production-stack files not hosted yet');
-    const quality=await qualityRes.json();
-    const runtime=runtimeRes.ok?await runtimeRes.json():{};
-    const lake=lakeRes.ok?await lakeRes.json():{};
-    const duck=runtime.database_modes?.duckdb||{};
-    const postgis=runtime.database_modes?.postgres_postgis||{};
-    const endpoints=runtime.fastapi?.endpoints||[];
-    const datasets=lake.datasets||[];
-    $('prodStackStatus').textContent=`Phase 8B loaded. ${String(quality.status||'production stack scaffold').replace(/_/g,' ')}.`;
-    $('prodStackMode').textContent=runtime.fastapi?.entrypoint||'backend.api_service:app';
-    $('prodDuckTables').textContent=Object.keys(duck.table_counts||{}).length||'—';
-    $('prodLakehouseDatasets').textContent=datasets.length||'—';
-    $('prodApiEndpoints').textContent=endpoints.length||'—';
-    $('prodPostgisStatus').textContent=String(postgis.status||'schema included').replace(/_/g,' ');
-    $('prodApiRows').innerHTML=endpoints.map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.method||'GET'} ${row.path}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}</span></div>`).join('')||'<p>No runtime endpoints generated.</p>';
-    $('prodLakehouseRows').innerHTML=datasets.map(ds=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${ds.dataset}</strong><br><span class="text-slate-600">${Number(ds.row_count||0).toLocaleString()} rows · ${String(ds.status||'').replace(/_/g,' ')}</span></div>`).join('')||'<p>No lakehouse datasets generated.</p>';
-    $('prodStackWarnings').innerHTML=(quality.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 8B warnings generated.</li>';
-    $('prodStackCompletion').innerHTML=(quality.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 8B completion report generated.</p>';
-  }catch(e){
-    $('prodStackStatus').textContent=`Phase 8B production-stack files are not available yet. Run python backend/production_stack.py or the GitHub Action. ${e.message}`;
-    $('prodStackMode').textContent='Not generated';
-    $('prodDuckTables').textContent='—';
-    $('prodLakehouseDatasets').textContent='—';
-    $('prodApiEndpoints').textContent='—';
-    $('prodPostgisStatus').textContent='—';
-    $('prodApiRows').innerHTML='';
-    $('prodLakehouseRows').innerHTML='';
-    $('prodStackWarnings').innerHTML='<li>Phase 8B report unavailable.</li>';
-    $('prodStackCompletion').innerHTML='';
-  }
-}
-
-
-async function loadAuditabilityReport(){
-  if(!document.getElementById('auditStatus')) return;
-  try{
-    const [manifestRes,qualityRes,caveatsRes,lineageRes]=await Promise.all([
-      fetch(AUDIT_MANIFEST_URL,{cache:'no-store'}),
-      fetch(AUDIT_QUALITY_URL,{cache:'no-store'}),
-      fetch(AUDIT_CAVEATS_URL,{cache:'no-store'}),
-      fetch(AUDIT_LINEAGE_URL,{cache:'no-store'})
-    ]);
-    if(!manifestRes.ok)throw new Error('Phase 9 audit files not hosted yet');
-    const manifest=await manifestRes.json();
-    const quality=qualityRes.ok?await qualityRes.json():{};
-    const caveats=caveatsRes.ok?await caveatsRes.json():{};
-    const lineage=lineageRes.ok?await lineageRes.json():{};
-    const layers=manifest.layers||{};
-    const modelCaveats=caveats.model_caveats||[];
-    const steps=lineage.pipeline_steps||[];
-    $('auditStatus').textContent=`Phase 9 loaded. ${String(manifest.status||'audit layer').replace(/_/g,' ')}.`;
-    $('auditScore').textContent=(quality.audit_confidence_score??manifest.audit_confidence_score??'—')+'%';
-    $('auditFiles').textContent=Number(manifest.file_count||0).toLocaleString();
-    $('auditLayers').textContent=Object.keys(layers).length||'—';
-    $('auditCaveats').textContent=modelCaveats.length||'—';
-    $('auditLineage').textContent=steps.length||'—';
-    $('auditWarnings').innerHTML=(quality.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 9 warnings generated.</li>';
-    $('auditCompletion').innerHTML=(quality.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 9 completion report generated.</p>';
-  }catch(e){
-    $('auditStatus').textContent=`Phase 9 audit files are not available yet. Run python backend/auditability.py or the GitHub Action. ${e.message}`;
-    $('auditScore').textContent='—';
-    $('auditFiles').textContent='—';
-    $('auditLayers').textContent='—';
-    $('auditCaveats').textContent='—';
-    $('auditLineage').textContent='—';
-    $('auditWarnings').innerHTML='<li>Phase 9 report unavailable.</li>';
-    $('auditCompletion').innerHTML='';
-  }
-}
-
-
-async function loadReleaseReadinessReport(){
-  if(!document.getElementById('releaseStatus')) return;
-  try{
-    const [manifestRes,readinessRes,gatesRes,gapsRes,testsRes]=await Promise.all([
-      fetch(RELEASE_MANIFEST_URL,{cache:'no-store'}),
-      fetch(RELEASE_READINESS_URL,{cache:'no-store'}),
-      fetch(RELEASE_GATES_URL,{cache:'no-store'}),
-      fetch(RELEASE_GAPS_URL,{cache:'no-store'}),
-      fetch(RELEASE_TESTS_URL,{cache:'no-store'})
-    ]);
-    if(!manifestRes.ok)throw new Error('Phase 10 release files not hosted yet');
-    const manifest=await manifestRes.json();
-    const readiness=readinessRes.ok?await readinessRes.json():{};
-    const gates=gatesRes.ok?await gatesRes.json():{};
-    const gaps=gapsRes.ok?await gapsRes.json():{};
-    const tests=testsRes.ok?await testsRes.json():{};
-    const gateRows=gates.gates||[];
-    const gapRows=gaps.gaps||[];
-    const testRows=tests.tests||[];
-    $('releaseStatus').textContent=`Phase 10 loaded. ${String(manifest.status||'release readiness').replace(/_/g,' ')}.`;
-    $('releaseDecision').textContent=String(readiness.release_decision||manifest.release_decision||'—').replace(/_/g,' ');
-    $('releaseScore').textContent=(readiness.release_readiness_score??manifest.release_readiness_score??'—')+'%';
-    $('releaseGates').textContent=gateRows.length||'—';
-    $('releaseGaps').textContent=gaps.open_gap_count??gapRows.length??'—';
-    $('releaseTests').textContent=testRows.length||'—';
-    const warnings=[...(readiness.warnings||[]),...gapRows.slice(0,3).map(g=>`${g.gap_id}: ${g.description}`)];
-    $('releaseWarnings').innerHTML=warnings.slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 10 warnings generated.</li>';
-    $('releaseCompletion').innerHTML=(readiness.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.value!==undefined?` · ${row.value}%`:''}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 10 completion report generated.</p>';
-  }catch(e){
-    $('releaseStatus').textContent=`Phase 10 release-readiness files are not available yet. Run python backend/release_readiness.py or the GitHub Action. ${e.message}`;
-    $('releaseDecision').textContent='—';
-    $('releaseScore').textContent='—';
-    $('releaseGates').textContent='—';
-    $('releaseGaps').textContent='—';
-    $('releaseTests').textContent='—';
-    $('releaseWarnings').innerHTML='<li>Phase 10 report unavailable.</li>';
-    $('releaseCompletion').innerHTML='';
-  }
-}
-
-
-async function loadOfficialValidationReport(){
-  if(!document.getElementById('validationStatus')) return;
-  try{
-    const [summaryRes,qualityRes]=await Promise.all([
-      fetch(VALIDATION_SUMMARY_URL,{cache:'no-store'}),
-      fetch(VALIDATION_QUALITY_URL,{cache:'no-store'})
-    ]);
-    if(!summaryRes.ok)throw new Error('Phase 11 official-validation files not hosted yet');
-    const summary=await summaryRes.json();
-    const quality=qualityRes.ok?await qualityRes.json():{};
-    const head=summary.headline||{};
-    $('validationStatus').textContent=`Phase 11B loaded. ${String(summary.status||'official validation bridge').replace(/_/g,' ')}.`;
-    $('validationState').textContent=String(summary.status||'—').replace(/_/g,' ');
-    $('validationOfficialRows').textContent=head.official_rows_available??'—';
-    $('validationCompared').textContent=head.counties_compared??'—';
-    $('validationValidated').textContent=head.validated_counties??'—';
-    $('validationMissing').textContent=head.major_mismatch_counties??head.missing_official_rows??'—';
-    $('validationWarnings').innerHTML=(summary.warnings||quality.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 11B warnings generated.</li>';
-    $('validationCompletion').innerHTML=(quality.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 11 completion report generated.</p>';
-  }catch(e){
-    $('validationStatus').textContent=`Phase 11 official-validation files are not available yet. Run python backend/official_validation.py or the GitHub Action. ${e.message}`;
-    $('validationState').textContent='—';
-    $('validationOfficialRows').textContent='—';
-    $('validationCompared').textContent='—';
-    $('validationValidated').textContent='—';
-    $('validationMissing').textContent='—';
-    $('validationWarnings').innerHTML='<li>Phase 11 report unavailable.</li>';
-    $('validationCompletion').innerHTML='';
-  }
-}
-
-
-async function loadHistoricalBaselineReport(){
-  if(!document.getElementById('historicalStatus')) return;
-  try{
-    const [summaryRes,gapRes,auditRes]=await Promise.all([
-      fetch(HISTORICAL_SUMMARY_URL,{cache:'no-store'}),
-      fetch(HISTORICAL_GAP_URL,{cache:'no-store'}),
-      fetch(HISTORICAL_AUDIT_URL,{cache:'no-store'})
-    ]);
-    if(!summaryRes.ok)throw new Error('Phase 13 historical-baseline files not hosted yet');
-    const summary=await summaryRes.json();
-    const gap=gapRes.ok?await gapRes.json():{};
-    const audit=auditRes.ok?await auditRes.json():{};
-    const h=summary.headline||{};
-    $('historicalStatus').textContent=`Phase 13 loaded. ${String(summary.status||'historical baseline layer').replace(/_/g,' ')}.`;
-    $('histCountyRows').textContent=h['2022_presidential_county_official_rows']??'—';
-    $('histConstituencyRows').textContent=h['2022_presidential_constituency_proxy_rows']??'—';
-    $('histPendingYears').textContent=(h.historical_years_pending||[]).join(', ')||'—';
-    $('histElasticityRows').textContent=h.high_elasticity_proxy_counties??'—';
-    $('historicalWarnings').innerHTML=(summary.warnings||gap.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 13 warnings generated.</li>';
-    $('historicalCompletion').innerHTML=(audit.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.value?` · ${row.value}`:''}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 13 completion report generated.</p>';
-  }catch(e){
-    $('historicalStatus').textContent=`Phase 13 historical-baseline files are not available yet. Run python backend/historical_baselines.py or the GitHub Action. ${e.message}`;
-    $('histCountyRows').textContent='—';$('histConstituencyRows').textContent='—';$('histPendingYears').textContent='—';$('histElasticityRows').textContent='—';
-    $('historicalWarnings').innerHTML='<li>Phase 13 report unavailable.</li>';
-    $('historicalCompletion').innerHTML='';
-  }
-}
-
-async function loadData(){setVisible('loadingState',true);setVisible('errorState',false);setVisible('emptyState',false);setVisible('dashboard',false);try{await loadGovernance();await loadFoundationReport();await loadIngestionReport();await loadPollingModelReport();await loadConstituencyModelReport();await loadScenarioAnalysisReport();await loadForecastBridgeReport();await loadPresidentialForecastReport();await loadStrategyReport();await loadDataStackReport();await loadProductionStackReport();await loadAuditabilityReport();await loadReleaseReadinessReport();await loadOfficialValidationReport();await loadVoterRegisterValidationReport();await loadHistoricalBaselineReport();const res=await fetch(DATA_URL,{cache:'no-store'});if(!res.ok)throw new Error(`HTTP ${res.status}`);const data=await res.json();if(!Array.isArray(data))throw new Error('polls_data.json must be an array');allRecords=data.filter(r=>r&&r.date&&r.figures&&typeof r.figures==='object');window.allRecords=allRecords;window.__health.polls=allRecords.length?'ok':'empty';$('dataStatus').innerHTML=`Loaded automatically from <code class="rounded bg-slate-100 px-1">${DATA_URL}</code>.`;initDashboard();}catch(e){window.__health.polls='error';$('errorMessage').textContent=`${e.message}. Confirm ${DATA_URL} exists in the repository and GitHub Pages has redeployed.`;setVisible('errorState',true);}finally{setVisible('loadingState',false);renderStatusOverview();}}
-function initDashboard(){if(!allRecords.length){$('lastPollDate').textContent='—';$('pollsLoaded').textContent='0';$('candidatesLoaded').textContent='0';$('pollstersLoaded').textContent='0';setVisible('emptyState',true);return;}visibleCandidates=allCandidates(allRecords);selectedCandidates=new Set(visibleCandidates);populateFilters();renderCandidateChips();applyFilters();setVisible('dashboard',true);renderCoalitions();runScenario();renderNotes();}
 function populateFilters(){const types=unique(allRecords.map(r=>r.poll_type));$('pollTypeFilter').innerHTML=types.map(t=>`<option value="${t}">${pollLabel(t)}</option>`).join('');const pollsters=unique(allRecords.map(r=>r.pollster));$('pollsterFilter').innerHTML='<option value="all">All pollsters</option>'+pollsters.map(p=>`<option value="${p}">${p}</option>`).join('');const dates=unique(allRecords.map(r=>r.date)).sort();$('scenarioDate').innerHTML=dates.map(d=>`<option value="${d}">${fmtDate(d)}</option>`).join('');$('scenarioDate').value=dates[dates.length-1];}
-function renderCandidateChips(){$('candidateChips').innerHTML=visibleCandidates.map(c=>`<button class="chip active" data-candidate="${c}">${c}</button>`).join('');document.querySelectorAll('[data-candidate]').forEach(btn=>btn.onclick=()=>{const c=btn.dataset.candidate;if(selectedCandidates.has(c)){selectedCandidates.delete(c);btn.classList.remove('active')}else{selectedCandidates.add(c);btn.classList.add('active')}applyFilters();renderCoalitions();runScenario();});}
-function applyFilters(){const type=$('pollTypeFilter').value,pollster=$('pollsterFilter').value,start=$('startDateFilter').value||'2025-06-01';filteredRecords=allRecords.filter(r=>r.date>=start&&r.poll_type===type&&(pollster==='all'||r.pollster===pollster)).sort((a,b)=>a.date.localeCompare(b.date));renderSummary();renderMetrics();renderTrend();renderSources();renderNotes();}
 
-async function loadVoterRegisterValidationReport(){
-  if(!document.getElementById('voterRegisterStatus')) return;
-  try{
-    const [summaryRes,scoreRes]=await Promise.all([
-      fetch(VOTER_REGISTER_SUMMARY_URL,{cache:'no-store'}),
-      fetch(VOTER_REGISTER_SCORECARD_URL,{cache:'no-store'})
-    ]);
-    if(!summaryRes.ok)throw new Error('Phase 12 / 12B voter-register validation files not hosted yet');
-    const summary=await summaryRes.json();
-    const score=scoreRes.ok?await scoreRes.json():summary;
-    const head=summary.headline||{};
-    const scores=summary.scores||{};
-    $('voterRegisterStatus').textContent=`Phase 12/12B loaded. ${String(summary.status||'voter-register validation').replace(/_/g,' ')}.`;
-    $('voterRegisterState').textContent=String(summary.status||'—').replace(/_/g,' ');
-    $('voterRegisterScore').textContent=scores.composite_voter_register_validation_score_percent!==undefined?`${scores.composite_voter_register_validation_score_percent}%`:'—';
-    $('voterRegisterCompared').textContent=head.county_rows_compared??'—';
-    $('voterRegisterInvalid').textContent=head.invalid_hierarchy_rows??'—';
-    $('voterRegisterWardOfficial').textContent=head.ward_official_rows_available??'—';
-    $('voterRegisterWarnings').innerHTML=(summary.warnings||score.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 12 warnings generated.</li>';
-    $('voterRegisterCompletion').innerHTML=(score.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.value?` · ${row.value}`:''}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 12 completion report generated.</p>';
-  }catch(e){
-    $('voterRegisterStatus').textContent=`Phase 12 / 12B voter-register validation files are not available yet. Run python backend/voter_register_validation.py or the GitHub Action. ${e.message}`;
-    $('voterRegisterState').textContent='—';
-    $('voterRegisterScore').textContent='—';
-    $('voterRegisterCompared').textContent='—';
-    $('voterRegisterInvalid').textContent='—';
-    $('voterRegisterWardOfficial').textContent='—';
-    $('voterRegisterWarnings').innerHTML='<li>Phase 12 report unavailable.</li>';
-    $('voterRegisterCompletion').innerHTML='';
-  }
-}
+function initDashboard(){if(!allRecords.length){$('lastPollDate').textContent='—';$('pollsLoaded').textContent='0';$('candidatesLoaded').textContent='0';$('pollstersLoaded').textContent='0';setVisible('emptyState',true);return;}visibleCandidates=allCandidates(allRecords);selectedCandidates=new Set(visibleCandidates);populateFilters();renderCandidateChips();applyFilters();setVisible('dashboard',true);renderCoalitions();runScenario();}
+
+function renderCandidateChips(){$('candidateChips').innerHTML=visibleCandidates.map(c=>`<button class="chip active" data-candidate="${c}">${c}</button>`).join('');document.querySelectorAll('[data-candidate]').forEach(btn=>btn.onclick=()=>{const c=btn.dataset.candidate;if(selectedCandidates.has(c)){selectedCandidates.delete(c);btn.classList.remove('active')}else{selectedCandidates.add(c);btn.classList.add('active')}applyFilters();renderCoalitions();runScenario();});}
+
+function applyFilters(){const type=$('pollTypeFilter').value,pollster=$('pollsterFilter').value,start=$('startDateFilter').value||'2025-06-01';filteredRecords=allRecords.filter(r=>r.date>=start&&r.poll_type===type&&(pollster==='all'||r.pollster===pollster)).sort((a,b)=>a.date.localeCompare(b.date));renderSummary();renderMetrics();renderTrend();}
+
 function renderSummary(){const latest=[...filteredRecords].sort((a,b)=>a.date.localeCompare(b.date)).pop();$('lastPollDate').textContent=latest?fmtDate(latest.date):'—';$('pollsLoaded').textContent=filteredRecords.length;$('candidatesLoaded').textContent=visibleCandidates.length;$('pollstersLoaded').textContent=unique(filteredRecords.map(r=>r.pollster)).length;$('coverageNote').textContent=`Coverage: ${unique(filteredRecords.map(r=>r.pollster)).join(', ')||'none'} · ${filteredRecords.length} compatible record(s).`;}
+
 function renderMetrics(){const grid=$('metricsGrid');const candidates=[...selectedCandidates];if(!filteredRecords.length){grid.innerHTML='<div class="rounded-3xl bg-slate-50 p-6 text-slate-600">No compatible records for the selected filters.</div>';return;}grid.innerHTML=candidates.map(c=>{const series=values(filteredRecords,c);const latest=series[series.length-1];const prev=series[series.length-2];const delta=latest&&prev?latest.value-prev.value:null;const cls=delta>0?'text-emerald-700':delta<0?'text-red-700':'text-slate-500';return `<article class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><h3 class="font-black">${c}</h3><p class="mt-4 text-4xl font-black text-[#8f1d1d]">${latest?pct(latest.value):'—'}</p><p class="mt-2 text-sm font-black ${cls}">${delta===null?'No prior':`${delta>0?'+':''}${delta.toFixed(1)} pts`}</p><p class="mt-5 text-sm text-slate-500">${latest?.record.pollster||'—'}</p><p class="text-sm text-slate-500">${latest?fmtDate(latest.record.date):'—'}</p></article>`}).join('');}
+
 function renderTrend(){const labels=unique(filteredRecords.map(r=>r.date)).sort();$('trendRange').textContent=labels.length?`${fmtDate(labels[0])} – ${fmtDate(labels[labels.length-1])}`:'No compatible records';const datasets=[...selectedCandidates].map(c=>({label:c,data:labels.map(d=>{const r=filteredRecords.find(x=>x.date===d);const v=Number(r?.figures?.[c]);return Number.isFinite(v)?v:null;}),tension:.28,borderWidth:3,pointRadius:4,spanGaps:true}));if(trendChart)trendChart.destroy();trendChart=new Chart($('trendChart'),{type:'line',data:{labels:labels.map(fmtDate),datasets},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y?.toFixed(1)}%`}}},scales:{y:{min:0,suggestedMax:45,ticks:{callback:v=>v+'%'},grid:{color:'rgba(15,23,42,.1)'}},x:{grid:{color:'rgba(15,23,42,.06)'}}}}});}
-function renderSources(){const list=$('sourceList');list.innerHTML=[...filteredRecords].sort((a,b)=>b.date.localeCompare(a.date)).map(r=>`<div class="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm"><div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between"><div><h3 class="font-black">${r.source_title||'Source record'}</h3><p class="mt-1 text-sm text-slate-500">${r.pollster} · ${fmtDate(r.date)} · ${pollLabel(r.poll_type)}</p></div><span class="rounded-full bg-rose-50 px-3 py-1 text-sm font-black text-[#8f1d1d]">Confidence ${Math.round((r.extraction_confidence||0)*100)}%</span></div><a class="mt-4 inline-block font-black text-[#8f1d1d] underline decoration-rose-200" href="${r.source_url}" target="_blank" rel="noopener">Open source</a></div>`).join('');}
+
 function selectedDateRecord(){const date=$('scenarioDate').value,type=$('pollTypeFilter').value;const pollster=$('pollsterFilter').value;const pool=allRecords.filter(r=>r.date<=date&&r.poll_type===type&&(pollster==='all'||r.pollster===pollster)).sort((a,b)=>a.date.localeCompare(b.date));return pool[pool.length-1]||null;}
+
 function defaultCoalitions(){const cs=visibleCandidates;const ruto=cs.find(c=>/ruto/i.test(c));const opp=cs.filter(c=>!/ruto/i.test(c));return [{name:'Incumbent lane',members:ruto?[ruto]:[]},{name:'United opposition lane',members:opp.slice(0,4)}];}
+
 function renderCoalitions(coals=defaultCoalitions()){const ed=$('coalitionsEditor');ed.innerHTML=coals.map((coal,i)=>`<div class="rounded-2xl border border-slate-200 p-4" data-coalition="${i}"><input class="coal-name w-full rounded-xl border border-slate-200 px-3 py-2 font-bold" value="${coal.name}"><div class="mt-3 grid gap-2 sm:grid-cols-2">${visibleCandidates.map(c=>`<label class="flex items-center gap-2 text-sm"><input type="checkbox" class="coal-member" value="${c}" ${coal.members.includes(c)?'checked':''}> ${c}</label>`).join('')}</div></div>`).join('');}
+
 function readCoalitions(){return [...document.querySelectorAll('[data-coalition]')].map(box=>({name:box.querySelector('.coal-name').value||'Coalition',members:[...box.querySelectorAll('.coal-member:checked')].map(i=>i.value)})).filter(c=>c.members.length);}
 function randn(){let u=0,v=0;while(u===0)u=Math.random();while(v===0)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
 function runScenario(){const rec=selectedDateRecord();const coals=readCoalitions();if(!rec||!coals.length){$('scenarioResults').innerHTML='<p class="text-sm text-slate-500">No scenario data for selected filters.</p>';return;}const uncertainty=Math.max(0,Number($('uncertaintyInput').value)||0);const runs=Math.min(50000,Math.max(1000,Number($('runsInput').value)||5000));const base=coals.map(c=>({name:c.name,share:c.members.reduce((sum,m)=>sum+(Number(rec.figures?.[m])||0),0),members:c.members}));const wins=Object.fromEntries(base.map(b=>[b.name,0]));let firstRound=0;for(let i=0;i<runs;i++){const draw=base.map(b=>({name:b.name,share:Math.max(0,b.share+randn()*uncertainty)})).sort((a,b)=>b.share-a.share);const total=draw.reduce((s,d)=>s+d.share,0)||1;draw.forEach(d=>d.norm=d.share/total*100);if(draw[0].norm>50){wins[draw[0].name]++;firstRound++;}}
 lastScenario=base.map(b=>({name:b.name,share:b.share,winProb:wins[b.name]/runs*100,members:b.members}));$('scenarioResults').innerHTML=lastScenario.sort((a,b)=>b.share-a.share).map(r=>`<div class="rounded-2xl bg-slate-50 p-4"><div class="flex items-center justify-between gap-3"><div><p class="font-black">${r.name}</p><p class="text-xs text-slate-500">${r.members.join(' + ')}</p></div><div class="text-right"><p class="text-2xl font-black text-[#8f1d1d]">${r.share.toFixed(1)}%</p><p class="text-xs font-bold text-slate-500">First-round win ${r.winProb.toFixed(1)}%</p></div></div></div>`).join('')+`<p class="text-xs text-slate-500">Runoff-likely simulation share: ${(100-firstRound/runs*100).toFixed(1)}%. Model uses simple normal polling error; not a forecast.</p>`;renderScenarioChart();}
 function renderScenarioChart(){if(scenarioChart)scenarioChart.destroy();scenarioChart=new Chart($('scenarioChart'),{type:'bar',data:{labels:lastScenario.map(x=>x.name),datasets:[{label:'Aggregate share',data:lastScenario.map(x=>x.share),borderWidth:1},{label:'First-round win probability',data:lastScenario.map(x=>x.winProb),borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},scales:{y:{beginAtZero:true,ticks:{callback:v=>v+'%'}}}}});}
+
 async function loadSeatBaseline(){try{const res=await fetch(BASELINE_URL,{cache:'no-store'});if(!res.ok)throw new Error('No hosted baseline found');$('seatInput').value=JSON.stringify(await res.json(),null,2);}catch(e){$('seatResults').innerHTML=`<p class="rounded-2xl bg-amber-50 p-4 text-sm text-amber-950">${e.message}. Paste a baseline JSON manually.</p>`}}
 function simulateSeats(){let rows=[];try{rows=JSON.parse($('seatInput').value||'[]')}catch(e){$('seatResults').innerHTML='<p class="rounded-2xl bg-red-50 p-4 text-sm text-red-900">Invalid JSON.</p>';return;}if(!Array.isArray(rows)||!rows.length){$('seatResults').innerHTML='<p class="rounded-2xl bg-slate-50 p-4 text-sm text-slate-600">No constituency baseline provided.</p>';return;}const coals=lastScenario.length?lastScenario:readCoalitions().map(c=>({name:c.name,share:0}));const national=Object.fromEntries(coals.map(c=>[c.name,c.share]));const seats={};rows.forEach(row=>{const base=row.baseline||{};const adjusted={};Object.keys(base).forEach(k=>{adjusted[k]=Math.max(0,(base[k]||0)+(national[k]||0)-(base.__national?.[k]||0));});const winner=Object.entries(adjusted).sort((a,b)=>b[1]-a[1])[0]?.[0]||'Unknown';seats[winner]=(seats[winner]||0)+1;});$('seatResults').innerHTML='<div class="grid gap-3 sm:grid-cols-3">'+Object.entries(seats).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="rounded-2xl bg-slate-50 p-4"><p class="font-black">${k}</p><p class="text-3xl font-black text-[#8f1d1d]">${v}</p><p class="text-xs text-slate-500">Projected seats</p></div>`).join('')+'</div>';}
-function renderNotes(){const notes=[['Single-source risk',`Currently compatible records come from ${unique(filteredRecords.map(r=>r.pollster)).join(', ')||'no pollster'}. Treat this as a source-limited signal, not a consensus average.`],['Uncertainty matters','Use scenario uncertainty to test whether apparent leads survive plausible polling error, undecided movement, and turnout shifts.'],['Seat modeling caution','MP-seat estimates need constituency baselines and local race ratings. National swing alone is a rough stress test, not a full model.']];$('analystNotes').innerHTML=notes.map(n=>`<div class="rounded-3xl bg-slate-50 p-5"><h3 class="font-black">${n[0]}</h3><p class="mt-2 text-sm leading-6 text-slate-600">${n[1]}</p></div>`).join('');}
-$('refreshBtn').onclick=loadData;$('pollTypeFilter').onchange=()=>{applyFilters();runScenario();};$('pollsterFilter').onchange=()=>{applyFilters();runScenario();};$('startDateFilter').onchange=applyFilters;$('scenarioDate').onchange=runScenario;$('addCoalitionBtn').onclick=()=>{const coals=readCoalitions();coals.push({name:'New coalition',members:[]});renderCoalitions(coals)};$('runScenarioBtn').onclick=runScenario;$('loadSeatBaselineBtn').onclick=loadSeatBaseline;$('simulateSeatsBtn').onclick=simulateSeats;$('exportScenarioBtn').onclick=()=>{const blob=new Blob([JSON.stringify({generatedAt:new Date().toISOString(),governanceVersion:governanceConfig?.governance_version||'phase-0.1',intendedUse:'aggregate_scenario_sensitivity_only',filters:{pollType:$('pollTypeFilter').value,pollster:$('pollsterFilter').value,startDate:$('startDateFilter').value,scenarioDate:$('scenarioDate').value},coalitions:readCoalitions(),results:lastScenario},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='scenario_export.json';a.click();URL.revokeObjectURL(a.href)};
+
+async function loadData(){
+  setVisible('loadingState',true);setVisible('errorState',false);setVisible('emptyState',false);setVisible('dashboard',false);
+  await loadModelResults();
+  try{
+    const res=await fetch(DATA_URL,{cache:'no-store'});
+    if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    const data=await res.json();
+    if(!Array.isArray(data))throw new Error('polls_data.json must be an array');
+    allRecords=data.filter(r=>r&&r.date&&r.figures&&typeof r.figures==='object');
+    initDashboard();
+  }catch(e){
+    $('errorMessage').textContent=`${e.message}. Confirm ${DATA_URL} exists in the repository and GitHub Pages has redeployed.`;
+    setVisible('errorState',true);
+  }finally{
+    setVisible('loadingState',false);
+  }
+}
+
+$('refreshBtn').onclick=loadData;
+$('pollTypeFilter').onchange=()=>{applyFilters();runScenario();};
+$('pollsterFilter').onchange=()=>{applyFilters();runScenario();};
+$('startDateFilter').onchange=applyFilters;
+$('scenarioDate').onchange=runScenario;
+$('addCoalitionBtn').onclick=()=>{const coals=readCoalitions();coals.push({name:'New coalition',members:[]});renderCoalitions(coals)};
+$('runScenarioBtn').onclick=runScenario;
+$('loadSeatBaselineBtn').onclick=loadSeatBaseline;
+$('simulateSeatsBtn').onclick=simulateSeats;
+$('exportScenarioBtn').onclick=()=>{
+  const blob=new Blob([JSON.stringify({generatedAt:new Date().toISOString(),intendedUse:'aggregate_scenario_sensitivity_only',filters:{pollType:$('pollTypeFilter').value,pollster:$('pollsterFilter').value,startDate:$('startDateFilter').value,scenarioDate:$('scenarioDate').value},coalitions:readCoalitions(),results:lastScenario},null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='scenario_export.json';a.click();URL.revokeObjectURL(a.href);
+};
+
 loadData();
-
-async function loadHistoricalExtraction(){
-  if(!document.getElementById('historicalExtractionStatus')) return;
-  try{
-    const [summaryRes,auditRes]=await Promise.all([fetch('data/api/historical_extraction_summary.json'),fetch('data/phase13b_completion_audit.json')]);
-    if(!summaryRes.ok)throw new Error('Phase 13B historical-extraction files not hosted yet');
-    const summary=await summaryRes.json();
-    const audit=auditRes.ok?await auditRes.json():{};
-    const counts=summary.counts||{};
-    document.getElementById('historicalExtractionStatus').textContent=`Phase 13B loaded. ${summary.status||'partial extraction complete'}. 2017 county rows: ${counts['2017_county_official_rows']||0}; 2013 national rows: ${counts['2013_national_candidate_rows']||0}; 2013 county trend rows: ${counts['2013_county_trend_rows']||0}.`;
-    document.getElementById('historicalExtractionScore').textContent=`${Math.round(audit.extraction_completion_score_pct||0)}%`;
-    const cardData=[['2017 county rows',counts['2017_county_official_rows']||0],['2013 national rows',counts['2013_national_candidate_rows']||0],['2013 trend rows',counts['2013_county_trend_rows']||0],['2013 official county vote rows',counts['2013_official_county_candidate_vote_rows']||0]];
-    document.getElementById('historicalExtractionCards').innerHTML=cardData.map(([k,v])=>`<div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100"><div class="text-xs font-black uppercase tracking-widest text-slate-500">${k}</div><div class="mt-1 text-2xl font-black text-slate-950">${v}</div></div>`).join('');
-    document.getElementById('historicalExtractionWarnings').innerHTML=(summary.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 13B warnings generated.</li>';
-    document.getElementById('historicalExtractionCompletion').innerHTML=(audit.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.value?` · ${row.value}`:''}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 13B completion report generated.</p>';
-  }catch(e){
-    document.getElementById('historicalExtractionStatus').textContent=`Phase 13B historical-extraction files are not available yet. Run python backend/historical_results_extraction.py or the GitHub Action. ${e.message}`;
-  }
-}
-loadHistoricalExtraction();
-
-
-
-async function loadMpSeatBaseline(){
-  if(!document.getElementById('mpSeatBaselineStatus')) return;
-  try{
-    const [summaryRes,auditRes]=await Promise.all([fetch('data/api/mp_seat_baseline_summary.json'),fetch('data/phase14_completion_audit.json')]);
-    if(!summaryRes.ok) throw new Error('Phase 14 MP-seat files not hosted yet');
-    const summary=await summaryRes.json();
-    const audit=auditRes.ok?await auditRes.json():{};
-    const counts=summary.counts||{};
-    document.getElementById('mpSeatBaselineStatus').textContent=`Phase 14 loaded. ${summary.status||'implemented with data gaps'}. MP rows with winner/party: ${counts.mp_rows_with_winner_or_party||0}; rows with vote margins: ${counts.mp_rows_with_vote_margins||0}; constituencies represented: ${counts.constituencies_total||0}.`;
-    document.getElementById('mpSeatReadinessScore').textContent=`${Math.round(summary.readiness_score_pct||0)}%`;
-    const cardData=[['Constituencies',counts.constituencies_total||0],['Winner/party rows',counts.mp_rows_with_winner_or_party||0],['Vote-margin rows',counts.mp_rows_with_vote_margins||0],['Missing MP rows',counts.missing_mp_rows||0]];
-    document.getElementById('mpSeatBaselineCards').innerHTML=cardData.map(([k,v])=>`<div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100"><div class="text-xs font-black uppercase tracking-widest text-slate-500">${k}</div><div class="mt-1 text-2xl font-black text-slate-950">${v}</div></div>`).join('');
-    document.getElementById('mpSeatBaselineWarnings').innerHTML=(summary.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 14 warnings generated.</li>';
-    document.getElementById('mpSeatBaselineCompletion').innerHTML=(audit.line_by_line_completion||summary.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.value?` · ${row.value}`:''}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 14 completion report generated.</p>';
-  }catch(e){
-    document.getElementById('mpSeatBaselineStatus').textContent=`Phase 14 MP-seat files are not available yet. Run python backend/mp_seat_baseline.py or the GitHub Action. ${e.message}`;
-  }
-}
-loadMpSeatBaseline();
-
-
-async function loadDemographicPoststratification(){
-  if(!document.getElementById('demographicPoststratificationStatus')) return;
-  try{
-    const [summaryRes,auditRes]=await Promise.all([fetch('data/api/demographic_poststratification_summary.json'),fetch('data/phase15_completion_audit.json')]);
-    if(!summaryRes.ok) throw new Error('Phase 15 demographic files not hosted yet');
-    const summary=await summaryRes.json();
-    const audit=auditRes.ok?await auditRes.json():{};
-    const counts=summary.counts||{};
-    document.getElementById('demographicPoststratificationStatus').textContent=`Phase 15 loaded. ${summary.status||'implemented with KNBS inputs pending'}. Poststratification cells: ${counts.poststratification_cells||0}; true demographic cells: ${counts.true_demographic_cells||0}; reviewed KNBS population rows: ${counts.reviewed_knbs_population_rows||0}.`;
-    document.getElementById('demographicReadinessScore').textContent=`${Math.round(summary.readiness_score_pct||audit.data_readiness_score_pct||0)}%`;
-    const cardData=[['Constituencies',counts.constituencies||0],['Bridge cells',counts.poststratification_cells||0],['True demo cells',counts.true_demographic_cells||0],['KNBS rows',counts.reviewed_knbs_population_rows||0]];
-    document.getElementById('demographicPoststratificationCards').innerHTML=cardData.map(([k,v])=>`<div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100"><div class="text-xs font-black uppercase tracking-widest text-slate-500">${k}</div><div class="mt-1 text-2xl font-black text-slate-950">${v}</div></div>`).join('');
-    document.getElementById('demographicPoststratificationWarnings').innerHTML=(summary.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 15 warnings generated.</li>';
-    document.getElementById('demographicPoststratificationCompletion').innerHTML=(audit.line_by_line_completion||summary.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.value?` · ${row.value}`:''}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 15 completion report generated.</p>';
-  }catch(e){
-    document.getElementById('demographicPoststratificationStatus').textContent=`Phase 15 demographic files are not available yet. Run python backend/demographic_poststratification.py or the GitHub Action. ${e.message}`;
-  }
-}
-loadDemographicPoststratification();
-
-
-async function loadPollCrosstabs(){
-  if(!document.getElementById('pollCrosstabStatus')) return;
-  try{
-    const [summaryRes,auditRes]=await Promise.all([fetch('data/api/poll_crosstab_summary.json'),fetch('data/phase16_completion_audit.json')]);
-    if(!summaryRes.ok) throw new Error('Phase 16 crosstab files not hosted yet');
-    const summary=await summaryRes.json();
-    const audit=auditRes.ok?await auditRes.json():{};
-    const counts=summary.counts||{};
-    document.getElementById('pollCrosstabStatus').textContent=`Phase 16 loaded. ${summary.status||'implemented with crosstab data pending'}. Source inventory: ${counts.crosstab_source_inventory_rows||0}; reviewed crosstab rows: ${counts.reviewed_crosstab_rows||0}; dimensions with reviewed rows: ${counts.dimensions_with_reviewed_rows||0}.`;
-    document.getElementById('pollCrosstabReadinessScore').textContent=`${Math.round(summary.readiness_score_pct||audit.data_readiness_score_pct||0)}%`;
-    const cardData=[['Poll records',counts.headline_poll_records||0],['Source inventory',counts.crosstab_source_inventory_rows||0],['Reviewed rows',counts.reviewed_crosstab_rows||0],['Dimensions',counts.dimensions_with_reviewed_rows||0]];
-    document.getElementById('pollCrosstabCards').innerHTML=cardData.map(([k,v])=>`<div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100"><div class="text-xs font-black uppercase tracking-widest text-slate-500">${k}</div><div class="mt-1 text-2xl font-black text-slate-950">${v}</div></div>`).join('');
-    document.getElementById('pollCrosstabWarnings').innerHTML=(summary.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 16 warnings generated.</li>';
-    document.getElementById('pollCrosstabCompletion').innerHTML=(audit.line_by_line_completion||summary.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.value!==undefined?` · ${row.value}`:''}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 16 completion report generated.</p>';
-  }catch(e){
-    document.getElementById('pollCrosstabStatus').textContent=`Phase 16 poll-crosstab files are not available yet. Run python backend/poll_crosstab_extraction.py or the GitHub Action. ${e.message}`;
-  }
-}
-loadPollCrosstabs();
-
-
-async function loadMrpLiteV2(){
-  if(!document.getElementById('mrpLiteV2Status')) return;
-  try{
-    const [summaryRes,auditRes]=await Promise.all([fetch('data/api/mrp_lite_v2_summary.json'),fetch('data/phase17_completion_audit.json')]);
-    if(!summaryRes.ok) throw new Error('Phase 17 MRP-lite v2 files not hosted yet');
-    const summary=await summaryRes.json();
-    const audit=auditRes.ok?await auditRes.json():{};
-    const counts=summary.counts||{};
-    document.getElementById('mrpLiteV2Status').textContent=`Phase 17 loaded. ${summary.status||'implemented as geography-only proxy'}. Constituency rows: ${counts.constituency_estimate_rows||0}; county rows: ${counts.county_estimate_rows||0}; reviewed crosstabs: ${counts.reviewed_crosstab_rows||0}; true demographic cells: ${counts.true_demographic_cells||0}.`;
-    document.getElementById('mrpLiteV2ReadinessScore').textContent=`${Math.round(summary.readiness_score_pct||audit.readiness_score_pct||0)}%`;
-    const cardData=[['Constituencies',counts.constituency_estimate_rows||0],['Counties',counts.county_estimate_rows||0],['Crosstab rows',counts.reviewed_crosstab_rows||0],['True demo cells',counts.true_demographic_cells||0]];
-    document.getElementById('mrpLiteV2Cards').innerHTML=cardData.map(([k,v])=>`<div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100"><div class="text-xs font-black uppercase tracking-widest text-slate-500">${k}</div><div class="mt-1 text-2xl font-black text-slate-950">${v}</div></div>`).join('');
-    document.getElementById('mrpLiteV2Warnings').innerHTML=(summary.warnings||[]).slice(0,8).map(x=>`<li>${x}</li>`).join('')||'<li>No Phase 17 warnings generated.</li>';
-    document.getElementById('mrpLiteV2Completion').innerHTML=(audit.line_by_line_completion||summary.line_by_line_completion||[]).map(row=>`<div class="rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><strong>${row.item}</strong><br><span class="text-slate-600">${String(row.status||'').replace(/_/g,' ')}${row.note?` · ${row.note}`:''}${row.caveat?` · ${row.caveat}`:''}</span></div>`).join('')||'<p>No Phase 17 completion report generated.</p>';
-  }catch(e){
-    document.getElementById('mrpLiteV2Status').textContent=`Phase 17 MRP-lite v2 files are not available yet. Run python backend/mrp_lite_v2.py or the GitHub Action. ${e.message}`;
-  }
-}
-loadMrpLiteV2();
-
 </script>
 </body>
 </html>
-<!-- pages build trigger Wed Jul  8 16:29:46 UTC 2026 -->
