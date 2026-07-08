@@ -52,6 +52,12 @@ DEFAULT_POLLSTER_PRIORS = {
         "methodology_score": 0.70,
         "notes": "Primary-source archive monitored; only compatible candidate/popularity data should enter averages.",
     },
+    "Stats Kenya": {
+        "quality_score": 0.65,
+        "transparency_score": 0.55,
+        "methodology_score": 0.55,
+        "notes": "Newly added, no primary-source archive monitored yet (no extractor built); verified only via secondary press write-ups, no sample size confirmed, no direct methodology document reviewed. Prior set conservatively below TIFA/Infotrak until a primary source and a longer track record are available; should be revisited once more releases are observed.",
+    },
 }
 
 COMPATIBLE_POLL_TYPES = {

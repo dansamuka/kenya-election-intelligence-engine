@@ -1,18 +1,19 @@
 {
-  "generated_at": "2026-07-08T18:14:59+00:00",
+  "generated_at": "2026-07-08T18:24:41+00:00",
   "phase": "Phase 3 - Polling model",
   "model_version": "phase3.0-descriptive-weighted-average",
   "status": "generated_with_caveats",
   "records": {
-    "approved_poll_records": 4,
-    "polling_average_rows": 8,
-    "pollster_quality_rows": 2
+    "approved_poll_records": 5,
+    "polling_average_rows": 10,
+    "pollster_quality_rows": 3
   },
   "coverage": {
     "date_min": "2025-08-01",
     "date_max": "2026-05-14",
     "pollsters": [
       "Infotrak Research",
+      "Stats Kenya",
       "TIFA Research"
     ],
     "poll_types": [
@@ -31,9 +32,7 @@
     "uncertainty_method": "Weighted empirical variation with a minimum ±3.5 point floor for polling/model error.",
     "forecast_status": "Not a full election forecast; this is a polling-summary model."
   },
-  "warnings": [
-    "Very thin polling series: weighted averages are descriptive summaries, not robust forecasts."
-  ],
+  "warnings": [],
   "next_requirements_for_higher_rigor": [
     "Add more pollsters and more polling waves.",
     "Add fieldwork dates, sample sizes, sampling mode and weighting method for each poll.",

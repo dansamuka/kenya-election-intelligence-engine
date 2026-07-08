@@ -2,14 +2,14 @@
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Edwin Sifuna",
-    "observations": 4,
+    "observations": 5,
     "first_date": "2025-08-01",
     "latest_date": "2026-05-14",
     "first_value": 14.0,
     "latest_value": 9.0,
     "change_from_first": -5.0,
-    "change_from_previous": 8.8,
-    "volatility": 5.04,
+    "change_from_previous": 1.56,
+    "volatility": 4.52,
     "trend_label": "falling",
     "series": [
       {
@@ -25,6 +25,10 @@
         "value": 0.2
       },
       {
+        "date": "2026-03-01",
+        "value": 7.44
+      },
+      {
         "date": "2026-05-14",
         "value": 9.0
       }
@@ -33,14 +37,14 @@
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "William Ruto",
-    "observations": 4,
+    "observations": 5,
     "first_date": "2025-08-01",
     "latest_date": "2026-05-14",
     "first_value": 28.0,
     "latest_value": 24.0,
     "change_from_first": -4.0,
-    "change_from_previous": -4.0,
-    "volatility": 1.79,
+    "change_from_previous": 0.59,
+    "volatility": 1.96,
     "trend_label": "falling",
     "series": [
       {
@@ -56,6 +60,10 @@
         "value": 28.0
       },
       {
+        "date": "2026-03-01",
+        "value": 23.41
+      },
+      {
         "date": "2026-05-14",
         "value": 24.0
       }
@@ -64,14 +72,14 @@
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Fred Matiang'i",
-    "observations": 4,
+    "observations": 5,
     "first_date": "2025-08-01",
     "latest_date": "2026-05-14",
     "first_value": 19.0,
     "latest_value": 16.0,
     "change_from_first": -3.0,
-    "change_from_previous": 3.0,
-    "volatility": 2.12,
+    "change_from_previous": 3.75,
+    "volatility": 2.42,
     "trend_label": "falling",
     "series": [
       {
@@ -87,6 +95,10 @@
         "value": 13.0
       },
       {
+        "date": "2026-03-01",
+        "value": 12.25
+      },
+      {
         "date": "2026-05-14",
         "value": 16.0
       }
@@ -95,14 +107,14 @@
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Kalonzo Musyoka",
-    "observations": 4,
+    "observations": 5,
     "first_date": "2025-08-01",
     "latest_date": "2026-05-14",
     "first_value": 21.0,
     "latest_value": 19.0,
     "change_from_first": -2.0,
-    "change_from_previous": 7.0,
-    "volatility": 3.35,
+    "change_from_previous": 10.83,
+    "volatility": 4.79,
     "trend_label": "falling",
     "series": [
       {
@@ -118,6 +130,10 @@
         "value": 12.0
       },
       {
+        "date": "2026-03-01",
+        "value": 8.17
+      },
+      {
         "date": "2026-05-14",
         "value": 19.0
       }
@@ -126,14 +142,14 @@
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Rigathi Gachagua",
-    "observations": 4,
+    "observations": 5,
     "first_date": "2025-08-01",
     "latest_date": "2026-05-14",
     "first_value": 8.0,
     "latest_value": 6.0,
     "change_from_first": -2.0,
-    "change_from_previous": 1.0,
-    "volatility": 1.3,
+    "change_from_previous": 2.01,
+    "volatility": 1.6,
     "trend_label": "falling",
     "series": [
       {
@@ -149,8 +165,35 @@
         "value": 5.0
       },
       {
+        "date": "2026-03-01",
+        "value": 3.99
+      },
+      {
         "date": "2026-05-14",
         "value": 6.0
+      }
+    ]
+  },
+  {
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate": "David Maraga",
+    "observations": 2,
+    "first_date": "2025-12-28",
+    "latest_date": "2026-03-01",
+    "first_value": 2.0,
+    "latest_value": 1.45,
+    "change_from_first": -0.55,
+    "change_from_previous": -0.55,
+    "volatility": 0.28,
+    "trend_label": "stable",
+    "series": [
+      {
+        "date": "2025-12-28",
+        "value": 2.0
+      },
+      {
+        "date": "2026-03-01",
+        "value": 1.45
       }
     ]
   },
@@ -175,7 +218,7 @@
   },
   {
     "poll_type": "preferred_presidential_aspirant",
-    "candidate": "David Maraga",
+    "candidate": "Martha Karua",
     "observations": 1,
     "first_date": "2025-12-28",
     "latest_date": "2025-12-28",
@@ -194,20 +237,39 @@
   },
   {
     "poll_type": "preferred_presidential_aspirant",
-    "candidate": "Martha Karua",
+    "candidate": "Oburu Odinga",
     "observations": 1,
-    "first_date": "2025-12-28",
-    "latest_date": "2025-12-28",
-    "first_value": 2.0,
-    "latest_value": 2.0,
+    "first_date": "2026-03-01",
+    "latest_date": "2026-03-01",
+    "first_value": 1.0,
+    "latest_value": 1.0,
     "change_from_first": 0.0,
     "change_from_previous": null,
     "volatility": 0.0,
     "trend_label": "stable",
     "series": [
       {
-        "date": "2025-12-28",
-        "value": 2.0
+        "date": "2026-03-01",
+        "value": 1.0
+      }
+    ]
+  },
+  {
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate": "Okiya Omtata",
+    "observations": 1,
+    "first_date": "2026-03-01",
+    "latest_date": "2026-03-01",
+    "first_value": 0.36,
+    "latest_value": 0.36,
+    "change_from_first": 0.0,
+    "change_from_previous": null,
+    "volatility": 0.0,
+    "trend_label": "stable",
+    "series": [
+      {
+        "date": "2026-03-01",
+        "value": 0.36
       }
     ]
   }

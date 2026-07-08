@@ -198,6 +198,94 @@
     "source_url": "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226"
   },
   {
+    "poll_id": "2026_03_01_stats_kenya_preferred_presidential_aspirant_https_thekenyatimes_com_politics_ruto_in_early_lead_in_new_poll_as_opposition_split_emerges",
+    "date": "2026-03-01",
+    "pollster": "Stats Kenya",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "david_maraga",
+    "candidate": "David Maraga",
+    "metric": "percentage",
+    "value": 1.45,
+    "source_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/"
+  },
+  {
+    "poll_id": "2026_03_01_stats_kenya_preferred_presidential_aspirant_https_thekenyatimes_com_politics_ruto_in_early_lead_in_new_poll_as_opposition_split_emerges",
+    "date": "2026-03-01",
+    "pollster": "Stats Kenya",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "edwin_sifuna",
+    "candidate": "Edwin Sifuna",
+    "metric": "percentage",
+    "value": 7.44,
+    "source_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/"
+  },
+  {
+    "poll_id": "2026_03_01_stats_kenya_preferred_presidential_aspirant_https_thekenyatimes_com_politics_ruto_in_early_lead_in_new_poll_as_opposition_split_emerges",
+    "date": "2026-03-01",
+    "pollster": "Stats Kenya",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "fred_matiang_i",
+    "candidate": "Fred Matiang'i",
+    "metric": "percentage",
+    "value": 12.25,
+    "source_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/"
+  },
+  {
+    "poll_id": "2026_03_01_stats_kenya_preferred_presidential_aspirant_https_thekenyatimes_com_politics_ruto_in_early_lead_in_new_poll_as_opposition_split_emerges",
+    "date": "2026-03-01",
+    "pollster": "Stats Kenya",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "kalonzo_musyoka",
+    "candidate": "Kalonzo Musyoka",
+    "metric": "percentage",
+    "value": 8.17,
+    "source_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/"
+  },
+  {
+    "poll_id": "2026_03_01_stats_kenya_preferred_presidential_aspirant_https_thekenyatimes_com_politics_ruto_in_early_lead_in_new_poll_as_opposition_split_emerges",
+    "date": "2026-03-01",
+    "pollster": "Stats Kenya",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "oburu_odinga",
+    "candidate": "Oburu Odinga",
+    "metric": "percentage",
+    "value": 1.0,
+    "source_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/"
+  },
+  {
+    "poll_id": "2026_03_01_stats_kenya_preferred_presidential_aspirant_https_thekenyatimes_com_politics_ruto_in_early_lead_in_new_poll_as_opposition_split_emerges",
+    "date": "2026-03-01",
+    "pollster": "Stats Kenya",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "okiya_omtata",
+    "candidate": "Okiya Omtata",
+    "metric": "percentage",
+    "value": 0.36,
+    "source_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/"
+  },
+  {
+    "poll_id": "2026_03_01_stats_kenya_preferred_presidential_aspirant_https_thekenyatimes_com_politics_ruto_in_early_lead_in_new_poll_as_opposition_split_emerges",
+    "date": "2026-03-01",
+    "pollster": "Stats Kenya",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "rigathi_gachagua",
+    "candidate": "Rigathi Gachagua",
+    "metric": "percentage",
+    "value": 3.99,
+    "source_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/"
+  },
+  {
+    "poll_id": "2026_03_01_stats_kenya_preferred_presidential_aspirant_https_thekenyatimes_com_politics_ruto_in_early_lead_in_new_poll_as_opposition_split_emerges",
+    "date": "2026-03-01",
+    "pollster": "Stats Kenya",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "william_ruto",
+    "candidate": "William Ruto",
+    "metric": "percentage",
+    "value": 23.41,
+    "source_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/"
+  },
+  {
     "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
     "date": "2026-05-14",
     "pollster": "TIFA Research",

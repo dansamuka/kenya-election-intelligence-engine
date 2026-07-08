@@ -10,6 +10,16 @@
     "notes": "Phase 1 creates the pollster entity; scoring is a Phase 2/3 modeling task."
   },
   {
+    "pollster_id": "stats_kenya",
+    "name": "Stats Kenya",
+    "country": "Kenya",
+    "quality_rating": "unrated",
+    "transparency_score": null,
+    "methodology_score": null,
+    "historical_accuracy_score": null,
+    "notes": "Phase 1 creates the pollster entity; scoring is a Phase 2/3 modeling task."
+  },
+  {
     "pollster_id": "tifa_research",
     "name": "TIFA Research",
     "country": "Kenya",

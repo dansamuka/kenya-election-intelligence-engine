@@ -108,5 +108,19 @@
     "last_checked_at": "2026-07-08T18:04:29+00:00",
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "processing_status": "processed"
+  },
+  {
+    "source_id": "statskenya-mar2026-manual",
+    "pollster": "Stats Kenya",
+    "title": "Ruto Takes Early Lead In 2027 Race As Kalonzo Comes Distant Third",
+    "page_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
+    "pdf_url": null,
+    "published_date": "2026-05-06",
+    "first_seen_at": "2026-07-08T18:24:23+00:00",
+    "last_checked_at": "2026-07-08T18:24:23+00:00",
+    "sha256": null,
+    "processing_status": "manually_verified_external",
+    "processing_error": null,
+    "notes": "No automated extractor exists yet for Stats Kenya (no scaffolding in backend/extractors/). Verified manually against two independent write-ups before being added to polls_data.json."
   }
 ]

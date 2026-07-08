@@ -65,6 +65,26 @@
     "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
   },
   {
+    "candidate_id": "oburu_odinga",
+    "canonical_name": "Oburu Odinga",
+    "aliases": [
+      "Oburu Odinga"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  },
+  {
+    "candidate_id": "okiya_omtata",
+    "canonical_name": "Okiya Omtata",
+    "aliases": [
+      "Okiya Omtata"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  },
+  {
     "candidate_id": "rigathi_gachagua",
     "canonical_name": "Rigathi Gachagua",
     "aliases": [

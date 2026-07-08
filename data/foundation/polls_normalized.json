@@ -54,6 +54,24 @@
     "notes": "Manually researched and cross-checked against five independent published reports (Daily Nation, The Standard, Tuko, Kenyans.co.ke, Nairobi Wire) of Infotrak's December 2025 national survey; figures consistent across all sources. Fieldwork 19-20 December 2025, n=1,000, CATI (Computer-Assisted Telephone Interviews) methodology, nationally representative. Automated scraping was not attempted for this record; added via manual research specifically to diversify pollster coverage beyond TIFA. Exact question wording not confirmed from available sources, so left blank rather than assumed."
   },
   {
+    "poll_id": "2026_03_01_stats_kenya_preferred_presidential_aspirant_https_thekenyatimes_com_politics_ruto_in_early_lead_in_new_poll_as_opposition_split_emerges",
+    "date": "2026-03-01",
+    "fieldwork_dates": "March 2026",
+    "pollster_id": "stats_kenya",
+    "pollster": "Stats Kenya",
+    "poll_type": "preferred_presidential_aspirant",
+    "compatible_group": "presidential_horse_race",
+    "question_text": null,
+    "geography_id": "kenya",
+    "geography": "Kenya",
+    "sample_size": null,
+    "source_title": "Ruto Takes Early Lead In 2027 Race As Kalonzo Comes Distant Third",
+    "source_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
+    "extraction_status": "MANUALLY_VERIFIED",
+    "extraction_confidence": null,
+    "notes": "Manually researched and cross-checked against a second independent write-up (OmarosaOmarosa, 29 Apr 2026) reporting the same Stats Kenya survey with matching figures at coarser rounding (23.4%, 12.3%, 8.2%, 7.4%, 4%). Methodology: telephone interviews, conducted March 2026. Exact fieldwork dates and sample size were not confirmed from available sources, so left blank rather than assumed. Automated scraping was not attempted for this record; added via manual research to further diversify pollster and methodology coverage (telephone, distinct from TIFA's face-to-face and Infotrak's CATI)."
+  },
+  {
     "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
     "date": "2026-05-14",
     "fieldwork_dates": "May 2026",

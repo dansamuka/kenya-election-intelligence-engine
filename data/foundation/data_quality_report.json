@@ -1,20 +1,21 @@
 {
-  "generated_at": "2026-07-08T18:14:56+00:00",
+  "generated_at": "2026-07-08T18:24:41+00:00",
   "phase": "phase_1_data_foundation",
   "prototype_status": "data_foundation_scaffold_with_normalized_poll_layer",
   "records": {
-    "approved_poll_records": 4,
-    "source_registry_records": 9,
+    "approved_poll_records": 5,
+    "source_registry_records": 10,
     "review_queue_records": 5,
-    "poll_results_long_rows": 23
+    "poll_results_long_rows": 31
   },
   "coverage": {
     "pollsters": {
       "TIFA Research": 3,
-      "Infotrak Research": 1
+      "Infotrak Research": 1,
+      "Stats Kenya": 1
     },
     "poll_types": {
-      "preferred_presidential_aspirant": 4
+      "preferred_presidential_aspirant": 5
     },
     "candidates": [
       "Babu Owino",
@@ -23,6 +24,8 @@
       "Fred Matiang'i",
       "Kalonzo Musyoka",
       "Martha Karua",
+      "Oburu Odinga",
+      "Okiya Omtata",
       "Rigathi Gachagua",
       "William Ruto"
     ],
@@ -34,8 +37,9 @@
     ]
   },
   "missingness": {
-    "extraction_confidence": 4,
-    "question_text": 1
+    "extraction_confidence": 5,
+    "question_text": 2,
+    "sample_size": 1
   },
   "quality_flags": [
     "Only public approved poll records are included in the normalized poll layer.",
