@@ -1,0 +1,31 @@
+{
+  "preferred_presidential_aspirant": {
+    "compatible_group": "presidential_horse_race",
+    "can_average_with": [
+      "preferred_presidential_candidate",
+      "popularity_rating"
+    ],
+    "description": "A direct or near-direct national preference measure for presidential aspirants/candidates."
+  },
+  "preferred_presidential_candidate": {
+    "compatible_group": "presidential_horse_race",
+    "can_average_with": [
+      "preferred_presidential_aspirant",
+      "popularity_rating"
+    ],
+    "description": "A direct national presidential vote/preference measure."
+  },
+  "popularity_rating": {
+    "compatible_group": "presidential_horse_race_when_question_text_matches",
+    "can_average_with": [
+      "preferred_presidential_aspirant",
+      "preferred_presidential_candidate"
+    ],
+    "description": "Use with horse-race polls only when the question text clearly indicates candidate preference/popularity in the presidential context."
+  },
+  "approval_rating": {
+    "compatible_group": "approval",
+    "can_average_with": [],
+    "description": "Approval/performance ratings must not be blended with vote intention or aspirant-preference polls."
+  }
+}

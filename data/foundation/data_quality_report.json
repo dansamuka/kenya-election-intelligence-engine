@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-07-08T10:54:09+00:00",
+  "phase": "phase_1_data_foundation",
+  "prototype_status": "data_foundation_scaffold_with_normalized_poll_layer",
+  "records": {
+    "approved_poll_records": 3,
+    "source_registry_records": 3,
+    "review_queue_records": 3,
+    "poll_results_long_rows": 15
+  },
+  "coverage": {
+    "pollsters": {
+      "TIFA Research": 3
+    },
+    "poll_types": {
+      "preferred_presidential_aspirant": 3
+    },
+    "candidates": [
+      "Edwin Sifuna",
+      "Fred Matiang'i",
+      "Kalonzo Musyoka",
+      "Rigathi Gachagua",
+      "William Ruto"
+    ],
+    "date_min": "2025-08-01",
+    "date_max": "2026-05-14",
+    "geography_levels_available": [
+      "country",
+      "county_entities_without_values"
+    ]
+  },
+  "missingness": {
+    "sample_size": 3,
+    "question_text": 3
+  },
+  "quality_flags": [
+    "Only public approved poll records are included in the normalized poll layer.",
+    "Sample sizes and question text are missing for some records and should be ingested from source methodology pages/PDFs.",
+    "County, constituency, ward, voter-registration, demographic, and historical election-result value layers are scaffolded but not yet populated with public official datasets.",
+    "Phase 1 improves data structure and auditability; it does not yet provide a polling average or forecast model."
+  ],
+  "next_public_datasets_to_ingest": [
+    "IEBC historical presidential results by county/constituency/polling station where available",
+    "IEBC registered voters by county, constituency, ward and polling station",
+    "KNBS 2019 census population and demographic indicators by county/sub-county",
+    "Parliamentary constituency and ward boundary reference tables",
+    "Pollster methodology files: sample size, field dates, sponsor, mode, weighting and question wording"
+  ],
+  "source_files": [
+    "data/polls_data.json",
+    "data/sources_registry.json",
+    "data/review_queue.json"
+  ]
+}

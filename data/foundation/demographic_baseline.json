@@ -1,0 +1,12 @@
+{
+  "dataset": "demographic_baseline",
+  "description": "Public demographic and socio-economic indicators for geographic modeling.",
+  "status": "schema_defined_values_pending_public_ingestion",
+  "expected_grain": "county/subcounty/constituency where available x indicator",
+  "public_sources_to_ingest": [
+    "KNBS 2019 census tables",
+    "KNBS economic surveys",
+    "public county statistical abstracts"
+  ],
+  "records": []
+}

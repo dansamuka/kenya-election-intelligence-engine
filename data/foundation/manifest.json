@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-07-08T10:54:09+00:00",
+  "phase": "phase_1_data_foundation",
+  "files": [
+    "data/foundation/candidates.json",
+    "data/foundation/pollsters.json",
+    "data/foundation/polls_normalized.json",
+    "data/foundation/poll_results_long.json",
+    "data/foundation/geographies.json",
+    "data/foundation/source_catalog.json",
+    "data/foundation/poll_type_compatibility.json",
+    "data/foundation/data_quality_report.json",
+    "data/foundation/election_results_baseline.json",
+    "data/foundation/voter_registration_baseline.json",
+    "data/foundation/demographic_baseline.json"
+  ],
+  "notes": [
+    "This manifest describes normalized data assets generated from public approved poll records and placeholder schemas for official datasets pending ingestion.",
+    "No private, individual-level or sensitive-trait data is used or generated."
+  ]
+}

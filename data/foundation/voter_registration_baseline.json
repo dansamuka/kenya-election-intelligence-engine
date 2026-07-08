@@ -1,0 +1,11 @@
+{
+  "dataset": "voter_registration_baseline",
+  "description": "Registered-voter baselines for turnout and target calculations.",
+  "status": "schema_defined_values_pending_public_ingestion",
+  "expected_grain": "county/constituency/ward/polling_station x election_year",
+  "public_sources_to_ingest": [
+    "IEBC register of voters reports",
+    "IEBC ward/constituency voter registration releases"
+  ],
+  "records": []
+}

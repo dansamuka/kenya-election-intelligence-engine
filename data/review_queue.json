@@ -1,0 +1,32 @@
+[
+  {
+    "source_id": "bdf83a5d845f6f7b50e9",
+    "pollster": "TIFA Research",
+    "title": "TIFA National Poll 2026: Political Alignments and 2027 Election Prospects",
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+    "reason": "Processing failed: HTTPSConnectionPool(host='www.tifaresearch.com', port=443): Max retries exceeded with url: /wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf (Caused by NameResolutionError(\"HTTPSConnection(host='www.tifaresearch.com', port=443): Failed to resolve 'www.tifaresearch.com' ([Errno -3] Temporary failure in name resolution)\"))",
+    "extracted_candidates": {},
+    "raw_snippet": "",
+    "created_at": "2026-07-08T10:34:56+00:00"
+  },
+  {
+    "source_id": "e299a44d39950380ed68",
+    "pollster": "Infotrak Research",
+    "title": "Infotrak Voice of the People Poll – September 2025",
+    "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Infotrak-VOP-Poll_Sep-2025_Phase-One2.pdf",
+    "reason": "Processing failed: HTTPSConnectionPool(host='www.infotrakresearch.com', port=443): Max retries exceeded with url: /wp-content/uploads/2025/09/Infotrak-VOP-Poll_Sep-2025_Phase-One2.pdf (Caused by NameResolutionError(\"HTTPSConnection(host='www.infotrakresearch.com', port=443): Failed to resolve 'www.infotrakresearch.com' ([Errno -3] Temporary failure in name resolution)\"))",
+    "extracted_candidates": {},
+    "raw_snippet": "",
+    "created_at": "2026-07-08T10:34:56+00:00"
+  },
+  {
+    "source_id": "f98574cfd387a9fd4a1c",
+    "pollster": "Infotrak Research",
+    "title": "Mulembe Nation Poll December 2025",
+    "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Mulembe-Nation-Poll-Report_Internal_Report_Media_Release_Final-1.pdf",
+    "reason": "Processing failed: HTTPSConnectionPool(host='www.infotrakresearch.com', port=443): Max retries exceeded with url: /wp-content/uploads/2025/09/Mulembe-Nation-Poll-Report_Internal_Report_Media_Release_Final-1.pdf (Caused by NameResolutionError(\"HTTPSConnection(host='www.infotrakresearch.com', port=443): Failed to resolve 'www.infotrakresearch.com' ([Errno -3] Temporary failure in name resolution)\"))",
+    "extracted_candidates": {},
+    "raw_snippet": "",
+    "created_at": "2026-07-08T10:35:01+00:00"
+  }
+]

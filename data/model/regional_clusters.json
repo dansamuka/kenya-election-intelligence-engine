@@ -1,0 +1,74 @@
+[
+  {
+    "cluster": "Coast/Joho",
+    "wards": 110,
+    "counties": 5,
+    "constituencies": 22,
+    "registered_voters_2022": 1781317,
+    "registered_voters_2027_projected": 1873889,
+    "projected_votes_2027": 1086800,
+    "ruto_2022_projected_vote_share_percent": 29.909,
+    "raila_2022_projected_vote_share_percent": 67.155,
+    "scenario_role": "regional swing cluster used for assumption-driven simulations"
+  },
+  {
+    "cluster": "Eastern/Ukambani",
+    "wards": 165,
+    "counties": 6,
+    "constituencies": 33,
+    "registered_voters_2022": 2434328,
+    "registered_voters_2027_projected": 2560830,
+    "projected_votes_2027": 1792511,
+    "ruto_2022_projected_vote_share_percent": 26.215,
+    "raila_2022_projected_vote_share_percent": 71.095,
+    "scenario_role": "regional swing cluster used for assumption-driven simulations"
+  },
+  {
+    "cluster": "Mountain Rebel",
+    "wards": 265,
+    "counties": 9,
+    "constituencies": 53,
+    "registered_voters_2022": 4716120,
+    "registered_voters_2027_projected": 4961221,
+    "projected_votes_2027": 3373500,
+    "ruto_2022_projected_vote_share_percent": 75.623,
+    "raila_2022_projected_vote_share_percent": 22.709,
+    "scenario_role": "regional swing cluster used for assumption-driven simulations"
+  },
+  {
+    "cluster": "Nyanza Split",
+    "wards": 254,
+    "counties": 7,
+    "constituencies": 49,
+    "registered_voters_2022": 3537488,
+    "registered_voters_2027_projected": 3721298,
+    "projected_votes_2027": 2418735,
+    "ruto_2022_projected_vote_share_percent": 14.014,
+    "raila_2022_projected_vote_share_percent": 83.715,
+    "scenario_role": "regional swing cluster used for assumption-driven simulations"
+  },
+  {
+    "cluster": "Rift Valley Anchor",
+    "wards": 450,
+    "counties": 16,
+    "constituencies": 90,
+    "registered_voters_2022": 5416777,
+    "registered_voters_2027_projected": 5698221,
+    "projected_votes_2027": 4102498,
+    "ruto_2022_projected_vote_share_percent": 73.218,
+    "raila_2022_projected_vote_share_percent": 24.738,
+    "scenario_role": "regional swing cluster used for assumption-driven simulations"
+  },
+  {
+    "cluster": "Urban/Protest",
+    "wards": 213,
+    "counties": 4,
+    "constituencies": 43,
+    "registered_voters_2022": 4216502,
+    "registered_voters_2027_projected": 4435655,
+    "projected_votes_2027": 2439510,
+    "ruto_2022_projected_vote_share_percent": 43.944,
+    "raila_2022_projected_vote_share_percent": 53.217,
+    "scenario_role": "regional swing cluster used for assumption-driven simulations"
+  }
+]

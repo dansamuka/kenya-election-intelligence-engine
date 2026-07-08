@@ -1,0 +1,20 @@
+{
+  "phase": "phase_1_national_data_foundation",
+  "status": "complete_against_phase_1_scope",
+  "audited_at": "2026-07-08T09:25:00+00:00",
+  "completed_deliverables": [
+    "backend/data_foundation.py",
+    "data/foundation/polls_normalized.json",
+    "data/foundation/poll_results_long.json",
+    "data/foundation/candidates.json",
+    "data/foundation/pollsters.json",
+    "data/foundation/geographies.json",
+    "data/foundation/source_catalog.json",
+    "data/foundation/poll_type_compatibility.json",
+    "data/foundation/data_quality_report.json",
+    "data/foundation/manifest.json",
+    "frontend Phase 1 panel",
+    "GitHub Actions foundation build step"
+  ],
+  "explicit_caveat": "This is repository/package completeness, not legal certification and not confirmation that all public national datasets have been ingested. Pending public data remains flagged as pending."
+}

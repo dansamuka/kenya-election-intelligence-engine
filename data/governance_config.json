@@ -1,0 +1,62 @@
+{
+  "governance_version": "phase-1.0",
+  "product_status": "phase_1_data_foundation_prototype",
+  "last_reviewed": "2026-07-08",
+  "purpose": "Aggregate, source-transparent election intelligence for public-interest and advisory analysis.",
+  "allowed_uses": [
+    "Aggregate polling trend analysis",
+    "Source-provenance review",
+    "Coalition and runoff scenario stress testing using public data",
+    "County/constituency planning at aggregate level once official baselines are added",
+    "Methodology comparison and data-quality monitoring",
+    "Public-interest transparency reporting"
+  ],
+  "prohibited_uses": [
+    "Individual voter profiling or microtargeting",
+    "Ethnic, religious, health, or sensitive-trait targeting",
+    "Voter suppression, intimidation, or turnout-depression strategy",
+    "Covert persuasion or deceptive influence operations",
+    "Psychological manipulation or dark-pattern messaging",
+    "Use of private, hacked, purchased, or non-consensual personal data"
+  ],
+  "model_boundaries": [
+    "Scenario outputs are sensitivity tests, not forecasts.",
+    "Seat projections require constituency-level baselines before being treated as decision-grade.",
+    "Poll types are not interchangeable; approval, popularity, candidate preference, and party support must remain separated.",
+    "Every public value must retain source URL, pollster, date, extraction status, and confidence score.",
+    "Ambiguous extractions must go to review_queue.json and must not be automatically published.",
+    "Phase 1 normalized tables are structural scaffolds; missing official baseline values must not be treated as zero or estimated values."
+  ],
+  "minimum_publication_rules": {
+    "require_source_url": true,
+    "require_pollster": true,
+    "require_poll_date": true,
+    "require_poll_type": true,
+    "require_extraction_confidence": true,
+    "minimum_candidate_values": 2,
+    "reject_all_zero_records": true,
+    "require_review_for_unknown_poll_type": true
+  },
+  "sensitive_data_policy": {
+    "individual_level_data": "not_allowed",
+    "private_contact_data": "not_allowed",
+    "ethnicity_religion_health_inference": "not_allowed",
+    "aggregate_public_geographic_data": "allowed_with_caveats"
+  },
+  "review_roles": [
+    "Data reviewer",
+    "Methodology reviewer",
+    "Ethics reviewer"
+  ],
+  "implemented_phases": [
+    "phase_0_product_rules_and_ethics",
+    "phase_1_national_data_foundation"
+  ],
+  "minimum_foundation_rules": {
+    "normalize_poll_records": true,
+    "store_candidate_results_long_format": true,
+    "define_candidate_pollster_geography_entities": true,
+    "explicitly_flag_missing_sample_size_question_text_and_baselines": true,
+    "do_not_fill_historical_results_or_demographics_without_public_source": true
+  }
+}

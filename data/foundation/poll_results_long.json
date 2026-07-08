@@ -1,0 +1,167 @@
+[
+  {
+    "poll_id": "2025_08_01_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2025-08-01",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "edwin_sifuna",
+    "candidate": "Edwin Sifuna",
+    "metric": "percentage",
+    "value": 14.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2025_08_01_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2025-08-01",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "fred_matiang_i",
+    "candidate": "Fred Matiang'i",
+    "metric": "percentage",
+    "value": 19.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2025_08_01_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2025-08-01",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "kalonzo_musyoka",
+    "candidate": "Kalonzo Musyoka",
+    "metric": "percentage",
+    "value": 21.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2025_08_01_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2025-08-01",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "rigathi_gachagua",
+    "candidate": "Rigathi Gachagua",
+    "metric": "percentage",
+    "value": 8.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2025_08_01_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2025-08-01",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "william_ruto",
+    "candidate": "William Ruto",
+    "metric": "percentage",
+    "value": 28.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2025_11_01_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2025-11-01",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "edwin_sifuna",
+    "candidate": "Edwin Sifuna",
+    "metric": "percentage",
+    "value": 10.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2025_11_01_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2025-11-01",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "fred_matiang_i",
+    "candidate": "Fred Matiang'i",
+    "metric": "percentage",
+    "value": 16.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2025_11_01_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2025-11-01",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "kalonzo_musyoka",
+    "candidate": "Kalonzo Musyoka",
+    "metric": "percentage",
+    "value": 18.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2025_11_01_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2025-11-01",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "rigathi_gachagua",
+    "candidate": "Rigathi Gachagua",
+    "metric": "percentage",
+    "value": 8.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2025_11_01_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2025-11-01",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "william_ruto",
+    "candidate": "William Ruto",
+    "metric": "percentage",
+    "value": 25.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2026-05-14",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "edwin_sifuna",
+    "candidate": "Edwin Sifuna",
+    "metric": "percentage",
+    "value": 9.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2026-05-14",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "fred_matiang_i",
+    "candidate": "Fred Matiang'i",
+    "metric": "percentage",
+    "value": 16.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2026-05-14",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "kalonzo_musyoka",
+    "candidate": "Kalonzo Musyoka",
+    "metric": "percentage",
+    "value": 19.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2026-05-14",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "rigathi_gachagua",
+    "candidate": "Rigathi Gachagua",
+    "metric": "percentage",
+    "value": 6.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2026-05-14",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "william_ruto",
+    "candidate": "William Ruto",
+    "metric": "percentage",
+    "value": 24.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  }
+]

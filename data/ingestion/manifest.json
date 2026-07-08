@@ -1,0 +1,45 @@
+{
+  "phase": "phase_2_source_ingestion",
+  "generated_at": "2026-07-08T10:54:06+00:00",
+  "description": "Auditable source-ingestion layer for discovery, classification, extraction audit, and human review routing.",
+  "source_feeds": [
+    {
+      "feed_id": "tifa_polls_archive",
+      "pollster": "TIFA Research",
+      "feed_url": "https://www.tifaresearch.com/polls/",
+      "feed_type": "official_poll_archive",
+      "status": "enabled"
+    },
+    {
+      "feed_id": "infotrak_all_polls",
+      "pollster": "Infotrak Research",
+      "feed_url": "https://www.infotrakresearch.com/all-infotrak-polls/",
+      "feed_type": "official_poll_archive",
+      "status": "enabled"
+    },
+    {
+      "feed_id": "infotrak_political_polls",
+      "pollster": "Infotrak Research",
+      "feed_url": "https://www.infotrakresearch.com/category/political-polls/",
+      "feed_type": "official_category_archive",
+      "status": "enabled_by_infotrak_extractor_when_available"
+    }
+  ],
+  "files": [
+    "data/ingestion/discovery_catalog.json",
+    "data/ingestion/source_classification.json",
+    "data/ingestion/extraction_audit.json",
+    "data/ingestion/review_workbench.json",
+    "data/ingestion/source_health_report.json",
+    "data/ingestion/manifest.json"
+  ],
+  "summary": {
+    "catalog_sources": 3,
+    "registered_sources": 3,
+    "approved_poll_records": 3,
+    "approved_source_urls": 1,
+    "review_queue_items": 3,
+    "high_priority_review_items": 0
+  },
+  "next_phase_dependency": "Phase 3 polling model should use ingestion health and source quality scores before calculating weighted averages."
+}

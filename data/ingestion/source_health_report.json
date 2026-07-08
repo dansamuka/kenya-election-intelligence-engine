@@ -1,0 +1,47 @@
+{
+  "phase": "phase_2_source_ingestion",
+  "generated_at": "2026-07-08T10:54:06+00:00",
+  "summary": {
+    "catalog_sources": 3,
+    "registered_sources": 3,
+    "approved_poll_records": 3,
+    "approved_source_urls": 1,
+    "review_queue_items": 3,
+    "high_priority_review_items": 0
+  },
+  "processing_status_counts": {
+    "needs_review_processing_error": 3
+  },
+  "source_class_counts": {
+    "official_pdf_report_candidate": 3
+  },
+  "pollster_catalog_counts": {
+    "TIFA Research": 1,
+    "Infotrak Research": 2
+  },
+  "warnings": [
+    "Published polling remains single-pollster or narrow-source; avoid consensus claims."
+  ],
+  "quality_gates": [
+    {
+      "gate": "official_source_only",
+      "status": "implemented",
+      "description": "Discovery modules restrict sources to known pollster domains and block social-share/admin links."
+    },
+    {
+      "gate": "review_before_publication",
+      "status": "implemented",
+      "description": "Only AUTO_ACCEPTED parser records enter polls_data.json; uncertain records enter review outputs."
+    },
+    {
+      "gate": "source_provenance",
+      "status": "implemented",
+      "description": "Source URL, SHA-256 hash where available, extraction status, and confidence are retained."
+    },
+    {
+      "gate": "human_review_workbench",
+      "status": "implemented",
+      "description": "Review items receive priority scores and recommended review actions."
+    }
+  ]
+}

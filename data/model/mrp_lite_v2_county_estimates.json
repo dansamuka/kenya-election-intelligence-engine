@@ -1,0 +1,1177 @@
+[
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Baringo",
+    "constituencies": 6,
+    "projected_votes_2027": 212856,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 5.12,
+      "Fred Matiang'i": 8.514,
+      "Kalonzo Musyoka": 9.897,
+      "Rigathi Gachagua": 3.472,
+      "William Ruto": 72.996
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 10898,
+      "Fred Matiang'i": 18123,
+      "Kalonzo Musyoka": 21067,
+      "Rigathi Gachagua": 7390,
+      "William Ruto": 155376
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 63.099,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Bomet",
+    "constituencies": 5,
+    "projected_votes_2027": 285522,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 4.951,
+      "Fred Matiang'i": 8.233,
+      "Kalonzo Musyoka": 9.57,
+      "Rigathi Gachagua": 3.358,
+      "William Ruto": 73.887
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 14136,
+      "Fred Matiang'i": 23507,
+      "Kalonzo Musyoka": 27325,
+      "Rigathi Gachagua": 9588,
+      "William Ruto": 210964
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 64.317,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Bungoma",
+    "constituencies": 9,
+    "projected_votes_2027": 374084,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 11.567,
+      "Fred Matiang'i": 19.236,
+      "Kalonzo Musyoka": 22.359,
+      "Rigathi Gachagua": 7.845,
+      "William Ruto": 38.993
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 43271,
+      "Fred Matiang'i": 71959,
+      "Kalonzo Musyoka": 83643,
+      "Rigathi Gachagua": 29348,
+      "William Ruto": 145868
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 16.634,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Busia",
+    "constituencies": 7,
+    "projected_votes_2027": 284948,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 13.014,
+      "Fred Matiang'i": 21.641,
+      "Kalonzo Musyoka": 25.156,
+      "Rigathi Gachagua": 8.826,
+      "William Ruto": 31.362
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 37084,
+      "Fred Matiang'i": 61665,
+      "Kalonzo Musyoka": 71682,
+      "Rigathi Gachagua": 25150,
+      "William Ruto": 89365
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 6.206,
+    "competitiveness_proxy": "competitive_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Elgeyo/Marakwet",
+    "constituencies": 4,
+    "projected_votes_2027": 161988,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 4.894,
+      "Fred Matiang'i": 8.138,
+      "Kalonzo Musyoka": 9.459,
+      "Rigathi Gachagua": 3.319,
+      "William Ruto": 74.189
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 7928,
+      "Fred Matiang'i": 13183,
+      "Kalonzo Musyoka": 15323,
+      "Rigathi Gachagua": 5376,
+      "William Ruto": 120178
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 64.73,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Embu",
+    "constituencies": 4,
+    "projected_votes_2027": 239130,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 10.392,
+      "Fred Matiang'i": 17.28,
+      "Kalonzo Musyoka": 20.087,
+      "Rigathi Gachagua": 7.048,
+      "William Ruto": 45.193
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 24851,
+      "Fred Matiang'i": 41322,
+      "Kalonzo Musyoka": 48035,
+      "Rigathi Gachagua": 16854,
+      "William Ruto": 108071
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 25.106,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Garissa",
+    "constituencies": 6,
+    "projected_votes_2027": 152580,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 6.452,
+      "Fred Matiang'i": 10.729,
+      "Kalonzo Musyoka": 12.472,
+      "Rigathi Gachagua": 4.375,
+      "William Ruto": 65.972
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 9845,
+      "Fred Matiang'i": 16370,
+      "Kalonzo Musyoka": 19030,
+      "Rigathi Gachagua": 6676,
+      "William Ruto": 100660
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 53.5,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Homa Bay",
+    "constituencies": 8,
+    "projected_votes_2027": 376792,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 16.028,
+      "Fred Matiang'i": 26.654,
+      "Kalonzo Musyoka": 30.982,
+      "Rigathi Gachagua": 10.869,
+      "William Ruto": 15.467
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 60392,
+      "Fred Matiang'i": 100429,
+      "Kalonzo Musyoka": 116738,
+      "Rigathi Gachagua": 40952,
+      "William Ruto": 58277
+    },
+    "leader_proxy": "Kalonzo Musyoka",
+    "runner_up_proxy": "Fred Matiang'i",
+    "margin_proxy_pp": 4.328,
+    "competitiveness_proxy": "competitive_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Isiolo",
+    "constituencies": 2,
+    "projected_votes_2027": 65903,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 10.107,
+      "Fred Matiang'i": 16.807,
+      "Kalonzo Musyoka": 19.538,
+      "Rigathi Gachagua": 6.856,
+      "William Ruto": 46.693
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 6661,
+      "Fred Matiang'i": 11076,
+      "Kalonzo Musyoka": 12876,
+      "Rigathi Gachagua": 4518,
+      "William Ruto": 30772
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 27.155,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Kajiado",
+    "constituencies": 5,
+    "projected_votes_2027": 341136,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 9.164,
+      "Fred Matiang'i": 15.239,
+      "Kalonzo Musyoka": 17.715,
+      "Rigathi Gachagua": 6.215,
+      "William Ruto": 51.667
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 31262,
+      "Fred Matiang'i": 51986,
+      "Kalonzo Musyoka": 60432,
+      "Rigathi Gachagua": 21201,
+      "William Ruto": 176255
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 33.952,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Kakamega",
+    "constituencies": 12,
+    "projected_votes_2027": 488614,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 12.923,
+      "Fred Matiang'i": 21.49,
+      "Kalonzo Musyoka": 24.981,
+      "Rigathi Gachagua": 8.764,
+      "William Ruto": 31.843
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 63143,
+      "Fred Matiang'i": 105005,
+      "Kalonzo Musyoka": 122062,
+      "Rigathi Gachagua": 42822,
+      "William Ruto": 155589
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 6.862,
+    "competitiveness_proxy": "competitive_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Kericho",
+    "constituencies": 6,
+    "projected_votes_2027": 324212,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 4.656,
+      "Fred Matiang'i": 7.743,
+      "Kalonzo Musyoka": 9.001,
+      "Rigathi Gachagua": 3.158,
+      "William Ruto": 75.442
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 15096,
+      "Fred Matiang'i": 25104,
+      "Kalonzo Musyoka": 29181,
+      "Rigathi Gachagua": 10239,
+      "William Ruto": 244593
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 66.441,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Kiambu",
+    "constituencies": 12,
+    "projected_votes_2027": 912036,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 10.636,
+      "Fred Matiang'i": 17.685,
+      "Kalonzo Musyoka": 20.558,
+      "Rigathi Gachagua": 7.212,
+      "William Ruto": 43.909
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 97004,
+      "Fred Matiang'i": 161293,
+      "Kalonzo Musyoka": 187497,
+      "Rigathi Gachagua": 65778,
+      "William Ruto": 400465
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 23.351,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Kilifi",
+    "constituencies": 7,
+    "projected_votes_2027": 359115,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 11.007,
+      "Fred Matiang'i": 18.304,
+      "Kalonzo Musyoka": 21.276,
+      "Rigathi Gachagua": 7.464,
+      "William Ruto": 41.948
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 39528,
+      "Fred Matiang'i": 65732,
+      "Kalonzo Musyoka": 76405,
+      "Rigathi Gachagua": 26804,
+      "William Ruto": 150641
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 20.672,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Kirinyaga",
+    "constituencies": 4,
+    "projected_votes_2027": 268959,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 10.225,
+      "Fred Matiang'i": 17.003,
+      "Kalonzo Musyoka": 19.764,
+      "Rigathi Gachagua": 6.934,
+      "William Ruto": 46.074
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 27500,
+      "Fred Matiang'i": 45731,
+      "Kalonzo Musyoka": 53158,
+      "Rigathi Gachagua": 18650,
+      "William Ruto": 123920
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 26.31,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Kisii",
+    "constituencies": 9,
+    "projected_votes_2027": 435543,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 13.534,
+      "Fred Matiang'i": 22.505,
+      "Kalonzo Musyoka": 26.16,
+      "Rigathi Gachagua": 9.178,
+      "William Ruto": 28.624
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 58947,
+      "Fred Matiang'i": 98019,
+      "Kalonzo Musyoka": 113937,
+      "Rigathi Gachagua": 39975,
+      "William Ruto": 124670
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 2.464,
+    "competitiveness_proxy": "toss_up_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Kisumu",
+    "constituencies": 7,
+    "projected_votes_2027": 414873,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 15.564,
+      "Fred Matiang'i": 25.881,
+      "Kalonzo Musyoka": 30.085,
+      "Rigathi Gachagua": 10.555,
+      "William Ruto": 17.916
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 64571,
+      "Fred Matiang'i": 107373,
+      "Kalonzo Musyoka": 124814,
+      "Rigathi Gachagua": 43791,
+      "William Ruto": 74329
+    },
+    "leader_proxy": "Kalonzo Musyoka",
+    "runner_up_proxy": "Fred Matiang'i",
+    "margin_proxy_pp": 4.204,
+    "competitiveness_proxy": "competitive_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Kitui",
+    "constituencies": 8,
+    "projected_votes_2027": 392291,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 15.373,
+      "Fred Matiang'i": 25.564,
+      "Kalonzo Musyoka": 29.715,
+      "Rigathi Gachagua": 10.426,
+      "William Ruto": 18.922
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 60307,
+      "Fred Matiang'i": 100285,
+      "Kalonzo Musyoka": 116570,
+      "Rigathi Gachagua": 40899,
+      "William Ruto": 74230
+    },
+    "leader_proxy": "Kalonzo Musyoka",
+    "runner_up_proxy": "Fred Matiang'i",
+    "margin_proxy_pp": 4.151,
+    "competitiveness_proxy": "competitive_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Kwale",
+    "constituencies": 4,
+    "projected_votes_2027": 200270,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 10.615,
+      "Fred Matiang'i": 17.652,
+      "Kalonzo Musyoka": 20.519,
+      "Rigathi Gachagua": 7.199,
+      "William Ruto": 44.015
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 21259,
+      "Fred Matiang'i": 35352,
+      "Kalonzo Musyoka": 41093,
+      "Rigathi Gachagua": 14417,
+      "William Ruto": 88148
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 23.496,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Laikipia",
+    "constituencies": 3,
+    "projected_votes_2027": 188136,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 11.092,
+      "Fred Matiang'i": 18.445,
+      "Kalonzo Musyoka": 21.441,
+      "Rigathi Gachagua": 7.523,
+      "William Ruto": 41.499
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 20868,
+      "Fred Matiang'i": 34701,
+      "Kalonzo Musyoka": 40338,
+      "Rigathi Gachagua": 14154,
+      "William Ruto": 78075
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 20.058,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Lamu",
+    "constituencies": 2,
+    "projected_votes_2027": 49691,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 6.104,
+      "Fred Matiang'i": 10.149,
+      "Kalonzo Musyoka": 11.797,
+      "Rigathi Gachagua": 4.14,
+      "William Ruto": 67.813
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 3033,
+      "Fred Matiang'i": 5043,
+      "Kalonzo Musyoka": 5862,
+      "Rigathi Gachagua": 2057,
+      "William Ruto": 33697
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 56.016,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Machakos",
+    "constituencies": 8,
+    "projected_votes_2027": 506289,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 14.971,
+      "Fred Matiang'i": 24.896,
+      "Kalonzo Musyoka": 28.94,
+      "Rigathi Gachagua": 10.154,
+      "William Ruto": 21.039
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 75796,
+      "Fred Matiang'i": 126046,
+      "Kalonzo Musyoka": 146522,
+      "Rigathi Gachagua": 51409,
+      "William Ruto": 106520
+    },
+    "leader_proxy": "Kalonzo Musyoka",
+    "runner_up_proxy": "Fred Matiang'i",
+    "margin_proxy_pp": 4.044,
+    "competitiveness_proxy": "competitive_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Makueni",
+    "constituencies": 6,
+    "projected_votes_2027": 353009,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 15.572,
+      "Fred Matiang'i": 25.895,
+      "Kalonzo Musyoka": 30.101,
+      "Rigathi Gachagua": 10.561,
+      "William Ruto": 17.871
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 54971,
+      "Fred Matiang'i": 91412,
+      "Kalonzo Musyoka": 106260,
+      "Rigathi Gachagua": 37281,
+      "William Ruto": 63086
+    },
+    "leader_proxy": "Kalonzo Musyoka",
+    "runner_up_proxy": "Fred Matiang'i",
+    "margin_proxy_pp": 4.206,
+    "competitiveness_proxy": "competitive_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Mandera",
+    "constituencies": 6,
+    "projected_votes_2027": 164358,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 6.189,
+      "Fred Matiang'i": 10.29,
+      "Kalonzo Musyoka": 11.96,
+      "Rigathi Gachagua": 4.197,
+      "William Ruto": 67.364
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 10172,
+      "Fred Matiang'i": 16912,
+      "Kalonzo Musyoka": 19658,
+      "Rigathi Gachagua": 6898,
+      "William Ruto": 110718
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 55.404,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Marsabit",
+    "constituencies": 4,
+    "projected_votes_2027": 126408,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 7.739,
+      "Fred Matiang'i": 12.871,
+      "Kalonzo Musyoka": 14.961,
+      "Rigathi Gachagua": 5.25,
+      "William Ruto": 59.181
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 9783,
+      "Fred Matiang'i": 16270,
+      "Kalonzo Musyoka": 18912,
+      "Rigathi Gachagua": 6636,
+      "William Ruto": 74809
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 44.22,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Meru",
+    "constituencies": 9,
+    "projected_votes_2027": 552319,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 10.258,
+      "Fred Matiang'i": 17.059,
+      "Kalonzo Musyoka": 19.829,
+      "Rigathi Gachagua": 6.957,
+      "William Ruto": 45.897
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 56657,
+      "Fred Matiang'i": 94220,
+      "Kalonzo Musyoka": 109519,
+      "Rigathi Gachagua": 38425,
+      "William Ruto": 253498
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 26.068,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Migori",
+    "constituencies": 8,
+    "projected_votes_2027": 320683,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 15.414,
+      "Fred Matiang'i": 25.632,
+      "Kalonzo Musyoka": 29.795,
+      "Rigathi Gachagua": 10.453,
+      "William Ruto": 18.707
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 49430,
+      "Fred Matiang'i": 82196,
+      "Kalonzo Musyoka": 95546,
+      "Rigathi Gachagua": 33521,
+      "William Ruto": 59990
+    },
+    "leader_proxy": "Kalonzo Musyoka",
+    "runner_up_proxy": "Fred Matiang'i",
+    "margin_proxy_pp": 4.163,
+    "competitiveness_proxy": "competitive_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Mombasa",
+    "constituencies": 6,
+    "projected_votes_2027": 391644,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 10.348,
+      "Fred Matiang'i": 17.209,
+      "Kalonzo Musyoka": 20.004,
+      "Rigathi Gachagua": 7.018,
+      "William Ruto": 45.419
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 40529,
+      "Fred Matiang'i": 67398,
+      "Kalonzo Musyoka": 78346,
+      "Rigathi Gachagua": 27485,
+      "William Ruto": 177879
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 25.415,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Murang'A",
+    "constituencies": 7,
+    "projected_votes_2027": 444160,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 10.028,
+      "Fred Matiang'i": 16.676,
+      "Kalonzo Musyoka": 19.385,
+      "Rigathi Gachagua": 6.801,
+      "William Ruto": 47.11
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 44540,
+      "Fred Matiang'i": 74069,
+      "Kalonzo Musyoka": 86101,
+      "Rigathi Gachagua": 30208,
+      "William Ruto": 209242
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 27.725,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Nairobi City",
+    "constituencies": 17,
+    "projected_votes_2027": 1397436,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 11.817,
+      "Fred Matiang'i": 19.651,
+      "Kalonzo Musyoka": 22.844,
+      "Rigathi Gachagua": 8.014,
+      "William Ruto": 37.673
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 165138,
+      "Fred Matiang'i": 274609,
+      "Kalonzo Musyoka": 319230,
+      "Rigathi Gachagua": 111991,
+      "William Ruto": 526459
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 14.829,
+    "competitiveness_proxy": "lean_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Nakuru",
+    "constituencies": 11,
+    "projected_votes_2027": 798943,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 7.863,
+      "Fred Matiang'i": 13.076,
+      "Kalonzo Musyoka": 15.199,
+      "Rigathi Gachagua": 5.332,
+      "William Ruto": 58.53
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 62821,
+      "Fred Matiang'i": 104469,
+      "Kalonzo Musyoka": 121431,
+      "Rigathi Gachagua": 42599,
+      "William Ruto": 467620
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 43.331,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Nandi",
+    "constituencies": 6,
+    "projected_votes_2027": 307715,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 4.973,
+      "Fred Matiang'i": 8.269,
+      "Kalonzo Musyoka": 9.613,
+      "Rigathi Gachagua": 3.373,
+      "William Ruto": 73.773
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 15303,
+      "Fred Matiang'i": 25444,
+      "Kalonzo Musyoka": 29580,
+      "Rigathi Gachagua": 10379,
+      "William Ruto": 227011
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 64.16,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Narok",
+    "constituencies": 6,
+    "projected_votes_2027": 302027,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 6.566,
+      "Fred Matiang'i": 10.919,
+      "Kalonzo Musyoka": 12.692,
+      "Rigathi Gachagua": 4.453,
+      "William Ruto": 65.371
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 19831,
+      "Fred Matiang'i": 32977,
+      "Kalonzo Musyoka": 38333,
+      "Rigathi Gachagua": 13448,
+      "William Ruto": 197437
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 52.679,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Nyamira",
+    "constituencies": 4,
+    "projected_votes_2027": 221045,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 13.778,
+      "Fred Matiang'i": 22.913,
+      "Kalonzo Musyoka": 26.634,
+      "Rigathi Gachagua": 9.344,
+      "William Ruto": 27.33
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 30456,
+      "Fred Matiang'i": 50649,
+      "Kalonzo Musyoka": 58873,
+      "Rigathi Gachagua": 20655,
+      "William Ruto": 60412
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 0.696,
+    "competitiveness_proxy": "toss_up_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Nyandarua",
+    "constituencies": 5,
+    "projected_votes_2027": 258342,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 10.091,
+      "Fred Matiang'i": 16.781,
+      "Kalonzo Musyoka": 19.506,
+      "Rigathi Gachagua": 6.844,
+      "William Ruto": 46.777
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 26069,
+      "Fred Matiang'i": 43352,
+      "Kalonzo Musyoka": 50392,
+      "Rigathi Gachagua": 17682,
+      "William Ruto": 120844
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 27.271,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Nyeri",
+    "constituencies": 6,
+    "projected_votes_2027": 344517,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 9.961,
+      "Fred Matiang'i": 16.565,
+      "Kalonzo Musyoka": 19.256,
+      "Rigathi Gachagua": 6.756,
+      "William Ruto": 47.462
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 34318,
+      "Fred Matiang'i": 57070,
+      "Kalonzo Musyoka": 66340,
+      "Rigathi Gachagua": 23276,
+      "William Ruto": 163515
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 28.206,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Samburu",
+    "constituencies": 3,
+    "projected_votes_2027": 75741,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 5.933,
+      "Fred Matiang'i": 9.864,
+      "Kalonzo Musyoka": 11.468,
+      "Rigathi Gachagua": 4.024,
+      "William Ruto": 68.71
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 4494,
+      "Fred Matiang'i": 7471,
+      "Kalonzo Musyoka": 8686,
+      "Rigathi Gachagua": 3048,
+      "William Ruto": 52042
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 57.242,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Siaya",
+    "constituencies": 6,
+    "projected_votes_2027": 364851,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 15.977,
+      "Fred Matiang'i": 26.568,
+      "Kalonzo Musyoka": 30.883,
+      "Rigathi Gachagua": 10.835,
+      "William Ruto": 15.737
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 58291,
+      "Fred Matiang'i": 96933,
+      "Kalonzo Musyoka": 112677,
+      "Rigathi Gachagua": 39533,
+      "William Ruto": 57417
+    },
+    "leader_proxy": "Kalonzo Musyoka",
+    "runner_up_proxy": "Fred Matiang'i",
+    "margin_proxy_pp": 4.315,
+    "competitiveness_proxy": "competitive_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Taita Taveta",
+    "constituencies": 4,
+    "projected_votes_2027": 133883,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 11.457,
+      "Fred Matiang'i": 19.052,
+      "Kalonzo Musyoka": 22.146,
+      "Rigathi Gachagua": 7.769,
+      "William Ruto": 39.574
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 15339,
+      "Fred Matiang'i": 25507,
+      "Kalonzo Musyoka": 29650,
+      "Rigathi Gachagua": 10402,
+      "William Ruto": 52983
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 17.428,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Tana River",
+    "constituencies": 3,
+    "projected_votes_2027": 86080,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 7.493,
+      "Fred Matiang'i": 12.463,
+      "Kalonzo Musyoka": 14.484,
+      "Rigathi Gachagua": 5.081,
+      "William Ruto": 60.48
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 6450,
+      "Fred Matiang'i": 10728,
+      "Kalonzo Musyoka": 12468,
+      "Rigathi Gachagua": 4374,
+      "William Ruto": 52061
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 45.996,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Tharaka - Nithi",
+    "constituencies": 3,
+    "projected_votes_2027": 165901,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 10.081,
+      "Fred Matiang'i": 16.765,
+      "Kalonzo Musyoka": 19.487,
+      "Rigathi Gachagua": 6.837,
+      "William Ruto": 46.83
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 16725,
+      "Fred Matiang'i": 27813,
+      "Kalonzo Musyoka": 32329,
+      "Rigathi Gachagua": 11342,
+      "William Ruto": 77691
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 27.343,
+    "competitiveness_proxy": "likely_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Trans Nzoia",
+    "constituencies": 5,
+    "projected_votes_2027": 302182,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 7.649,
+      "Fred Matiang'i": 12.721,
+      "Kalonzo Musyoka": 14.786,
+      "Rigathi Gachagua": 5.187,
+      "William Ruto": 59.657
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 23115,
+      "Fred Matiang'i": 38440,
+      "Kalonzo Musyoka": 44681,
+      "Rigathi Gachagua": 15674,
+      "William Ruto": 180273
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 44.871,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Turkana",
+    "constituencies": 6,
+    "projected_votes_2027": 180644,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 9.224,
+      "Fred Matiang'i": 15.338,
+      "Kalonzo Musyoka": 17.829,
+      "Rigathi Gachagua": 6.257,
+      "William Ruto": 51.354
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 16662,
+      "Fred Matiang'i": 27708,
+      "Kalonzo Musyoka": 32207,
+      "Rigathi Gachagua": 11302,
+      "William Ruto": 92768
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 33.525,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Uasin Gishu",
+    "constituencies": 6,
+    "projected_votes_2027": 383348,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 5.19,
+      "Fred Matiang'i": 8.63,
+      "Kalonzo Musyoka": 10.031,
+      "Rigathi Gachagua": 3.52,
+      "William Ruto": 72.63
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 19896,
+      "Fred Matiang'i": 33083,
+      "Kalonzo Musyoka": 38453,
+      "Rigathi Gachagua": 13493,
+      "William Ruto": 278425
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 62.599,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Vihiga",
+    "constituencies": 5,
+    "projected_votes_2027": 179376,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 13.745,
+      "Fred Matiang'i": 22.854,
+      "Kalonzo Musyoka": 26.566,
+      "Rigathi Gachagua": 9.321,
+      "William Ruto": 27.516
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 24655,
+      "Fred Matiang'i": 40994,
+      "Kalonzo Musyoka": 47653,
+      "Rigathi Gachagua": 16720,
+      "William Ruto": 49357
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 0.95,
+    "competitiveness_proxy": "toss_up_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "Wajir",
+    "constituencies": 6,
+    "projected_votes_2027": 157339,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 6.965,
+      "Fred Matiang'i": 11.583,
+      "Kalonzo Musyoka": 13.462,
+      "Rigathi Gachagua": 4.722,
+      "William Ruto": 63.268
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 10958,
+      "Fred Matiang'i": 18224,
+      "Kalonzo Musyoka": 21181,
+      "Rigathi Gachagua": 7430,
+      "William Ruto": 99546
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 49.806,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  },
+  {
+    "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+    "county": "West Pokot",
+    "constituencies": 4,
+    "projected_votes_2027": 166635,
+    "candidate_share_percent": {
+      "Edwin Sifuna": 5.247,
+      "Fred Matiang'i": 8.721,
+      "Kalonzo Musyoka": 10.138,
+      "Rigathi Gachagua": 3.557,
+      "William Ruto": 72.336
+    },
+    "candidate_projected_votes": {
+      "Edwin Sifuna": 8743,
+      "Fred Matiang'i": 14533,
+      "Kalonzo Musyoka": 16893,
+      "Rigathi Gachagua": 5928,
+      "William Ruto": 120537
+    },
+    "leader_proxy": "William Ruto",
+    "runner_up_proxy": "Kalonzo Musyoka",
+    "margin_proxy_pp": 62.198,
+    "competitiveness_proxy": "safe_proxy",
+    "caveat": "County aggregate derived from constituency-level MRP-lite v2 proxy rows; not true MRP."
+  }
+]

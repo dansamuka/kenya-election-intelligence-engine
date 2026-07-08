@@ -1,0 +1,59 @@
+{
+  "phase": "Phase 17 — MRP-lite v2 Aggregate Estimator",
+  "generated_at": "2026-07-08T14:48:49Z",
+  "model_version": "phase17_mrp_lite_v2_with_external_reviewed_inputs",
+  "model_status": "implemented_as_aggregate_proxy_with_external_reviewed_inputs_not_true_mrp",
+  "projected_votes_2027": 15213554,
+  "candidate_share_percent": {
+    "Edwin Sifuna": 10.64,
+    "Fred Matiang'i": 17.693,
+    "Kalonzo Musyoka": 20.567,
+    "Rigathi Gachagua": 7.216,
+    "William Ruto": 43.884
+  },
+  "candidate_projected_votes": {
+    "Edwin Sifuna": 1618726,
+    "Fred Matiang'i": 2691785,
+    "Kalonzo Musyoka": 3128989,
+    "Rigathi Gachagua": 1097778,
+    "William Ruto": 6676283
+  },
+  "ranked_candidates": [
+    {
+      "candidate": "William Ruto",
+      "share_percent": 43.884,
+      "projected_votes": 6676283
+    },
+    {
+      "candidate": "Kalonzo Musyoka",
+      "share_percent": 20.567,
+      "projected_votes": 3128989
+    },
+    {
+      "candidate": "Fred Matiang'i",
+      "share_percent": 17.693,
+      "projected_votes": 2691785
+    },
+    {
+      "candidate": "Edwin Sifuna",
+      "share_percent": 10.64,
+      "projected_votes": 1618726
+    },
+    {
+      "candidate": "Rigathi Gachagua",
+      "share_percent": 7.216,
+      "projected_votes": 1097778
+    }
+  ],
+  "leader_proxy": "William Ruto",
+  "runner_up_proxy": "Kalonzo Musyoka",
+  "leader_margin_pp": 23.317,
+  "first_round_status_proxy": "below_first_round_threshold_proxy",
+  "basis": [
+    "Phase 6B constituency forecast diagnostic",
+    "Phase 15 geography-only poststratification cells plus Phase 18C external KNBS national cells",
+    "Phase 16/18 reviewed crosstab inventory/readiness",
+    "Phase 13B historical turnout features"
+  ],
+  "caveat": "This is MRP-lite v2 infrastructure with external reviewed pollster zone crosstabs and limited KNBS national cells. It is not true demographic MRP, not a certified forecast, and not suitable for microtargeting."
+}

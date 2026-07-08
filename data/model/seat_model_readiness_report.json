@@ -1,0 +1,31 @@
+{
+  "model_status": "phase14_seat_model_readiness",
+  "generated_at": "2026-07-08T13:27:29.346223+00:00",
+  "readiness_status": "not_ready_for_validated_seat_model",
+  "readiness_score_pct": 15.0,
+  "counts": {
+    "constituencies_total": 290,
+    "mp_rows_with_winner_or_party": 0,
+    "mp_rows_with_vote_margins": 0,
+    "missing_mp_rows": 290,
+    "presidential_proxy_rows_available": 290
+  },
+  "minimum_data_required_for_validated_seat_model": [
+    "winner_candidate_2022",
+    "winner_party_2022",
+    "runner_up_candidate_2022",
+    "runner_up_party_2022",
+    "winner_votes_2022",
+    "runner_up_votes_2022",
+    "valid_votes_2022",
+    "registered_voters_2022",
+    "incumbency_status",
+    "party_or_coalition_mapping"
+  ],
+  "warnings": [
+    "No reviewed MP 2022 constituency CSV was found; all constituency MP rows are represented as official-data-pending.",
+    "A validated MP-seat forecast requires winner party, runner-up party, votes, valid votes, margin, incumbency and party/coalition mapping for each constituency.",
+    "Presidential constituency proxies are kept separate and must not be treated as MP-seat results."
+  ],
+  "next_best_step": "Supply or extract official/reviewed 2022 National Assembly constituency results before calling this a seat forecast."
+}

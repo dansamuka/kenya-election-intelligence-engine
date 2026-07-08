@@ -1,0 +1,10 @@
+{
+  "model_status": "phase14_seat_projection_scaffold",
+  "generated_at": "2026-07-08T13:27:29.346223+00:00",
+  "constituencies_total": 290,
+  "mp_baseline_rows_with_winner_or_party": 0,
+  "mp_baseline_rows_with_vote_margins": 0,
+  "party_seat_counts_2022_if_reviewed_rows_exist": {},
+  "seat_projection_status": "not_computable_without_mp_winner_party_baseline",
+  "caveat": "This is a seat-baseline scaffold. It does not estimate MP outcomes without reviewed constituency result rows and local race assumptions."
+}

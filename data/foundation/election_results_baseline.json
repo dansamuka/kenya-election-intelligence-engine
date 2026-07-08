@@ -1,0 +1,12 @@
+{
+  "dataset": "election_results_baseline",
+  "description": "Historical official election results by geography, candidate, party and race.",
+  "status": "schema_defined_values_pending_public_ingestion",
+  "expected_grain": "county/constituency/ward/polling_station x election x race x candidate",
+  "public_sources_to_ingest": [
+    "IEBC official election results",
+    "IEBC gazetted results",
+    "official constituency-level result forms where available"
+  ],
+  "records": []
+}

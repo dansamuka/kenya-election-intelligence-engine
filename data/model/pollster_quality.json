@@ -1,0 +1,13 @@
+[
+  {
+    "pollster": "TIFA Research",
+    "quality_score": 0.766,
+    "prior_quality_score": 0.82,
+    "transparency_score": 0.78,
+    "methodology_score": 0.72,
+    "approved_records": 3,
+    "unique_sources": 1,
+    "records_with_sample_size": 0,
+    "notes": "Primary-source PDF present; sample-size/method details may require manual audit per release."
+  }
+]

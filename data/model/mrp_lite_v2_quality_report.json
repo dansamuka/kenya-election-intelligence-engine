@@ -1,0 +1,67 @@
+{
+  "phase": "Phase 17 — MRP-lite v2 Aggregate Estimator",
+  "generated_at": "2026-07-08T14:48:49Z",
+  "readiness_score_pct": 66,
+  "counts": {
+    "constituency_estimate_rows": 290,
+    "county_estimate_rows": 47,
+    "poststratification_cells": 290,
+    "accepted_demographic_cells_total": 3,
+    "full_demographic_grid_cells": 10440,
+    "full_demographic_grid_estimated_cells": 10440,
+    "demographic_seed_cells": 0,
+    "independent_true_knbs_cells": 3,
+    "independent_true_knbs_constituencies": 0,
+    "reviewed_crosstab_rows": 90,
+    "candidates_modelled": 5
+  },
+  "data_dependencies": {
+    "constituency_forecast_rows": 290,
+    "poststratification_quality_status": "implemented_with_geography_only_cells_and_knbs_inputs_pending",
+    "phase19_full_grid_quality_status": true,
+    "phase19_full_grid_source_certification": false,
+    "crosstab_quality_status": "implemented_with_crosstab_data_pending"
+  },
+  "warnings": [
+    "Phase 19 full-dimensional demographic grid is present, but it is a constrained estimate, not certified true KNBS constituency cells.",
+    "MRP-lite v2 is an aggregate diagnostic and should not be used for individual voter profiling or microtargeting.",
+    "Official 2013 county candidate-vote rows and MP results remain incomplete, limiting back-test calibration."
+  ],
+  "line_by_line_completion": [
+    {
+      "item": "MRP-lite v2 backend estimator",
+      "status": "complete",
+      "note": "Generates national, county, and constituency aggregate proxy estimates."
+    },
+    {
+      "item": "Poststratification integration",
+      "status": "complete_with_phase19_full_grid_caveat",
+      "note": "290 geography-only constituency bridge cells, 3 accepted demographic cells, and 10440 Phase 19 full-grid cells; estimated full-grid cells: 10440; independent true KNBS cells: 3; constituency coverage from true KNBS cells: 0/290."
+    },
+    {
+      "item": "Poll crosstab integration",
+      "status": "complete_with_external_reviewed_rows",
+      "note": "Reviewed crosstab rows available: 90."
+    },
+    {
+      "item": "Constituency estimates",
+      "status": "complete_as_proxy",
+      "note": "290 constituency rows generated."
+    },
+    {
+      "item": "County aggregation",
+      "status": "complete_as_proxy",
+      "note": "47 county rows generated."
+    },
+    {
+      "item": "True demographic MRP",
+      "status": "not_complete",
+      "note": "Phase 19 supplies a full-dimensional estimated grid, but true MRP still requires certified KNBS constituency/sub-county cells and model validation."
+    },
+    {
+      "item": "Back-tested calibration",
+      "status": "not_complete",
+      "note": "Requires complete 2013/2017 historical rows and pre-election poll archive."
+    }
+  ]
+}

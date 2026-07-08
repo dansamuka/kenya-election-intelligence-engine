@@ -1,0 +1,60 @@
+[
+  {
+    "candidate_id": "edwin_sifuna",
+    "canonical_name": "Edwin Sifuna",
+    "aliases": [
+      "Sifuna",
+      "Edwin Sifuna"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  },
+  {
+    "candidate_id": "fred_matiang_i",
+    "canonical_name": "Fred Matiang'i",
+    "aliases": [
+      "Matiang'i",
+      "Matiang’i",
+      "Fred Matiang'i",
+      "Fred Matiang’i"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  },
+  {
+    "candidate_id": "kalonzo_musyoka",
+    "canonical_name": "Kalonzo Musyoka",
+    "aliases": [
+      "Kalonzo",
+      "Kalonzo Musyoka"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  },
+  {
+    "candidate_id": "rigathi_gachagua",
+    "canonical_name": "Rigathi Gachagua",
+    "aliases": [
+      "Gachagua",
+      "Rigathi Gachagua"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  },
+  {
+    "candidate_id": "william_ruto",
+    "canonical_name": "William Ruto",
+    "aliases": [
+      "Ruto",
+      "William Ruto",
+      "President Ruto"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  }
+]

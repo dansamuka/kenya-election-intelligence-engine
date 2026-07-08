@@ -1,0 +1,34 @@
+{
+  "generated_at": "2026-07-08T10:54:17+00:00",
+  "source": "Scenario Inputs sheet in Kenya_Ward_Electoral_Database_v3_COMPLETE.xlsx",
+  "model_use": "assumption layer for regional swing scenario analysis; not observed results",
+  "simulation_parameters": {
+    "Total Registered Voters 2027": 28500000.0,
+    "National Target Turnout": 0.62,
+    "Monte Carlo Iterations": 1000.0,
+    "Error Std Dev (σ per ward)": 0.05,
+    "Intra-constituency correlation (r)": 0.65
+  },
+  "cluster_turnout_rates_percent": {
+    "Urban/Protest": 55.0,
+    "Mountain Rebel (GEMA)": 68.0,
+    "Coast/Joho": 58.0,
+    "Rift Valley Anchor": 72.0,
+    "Eastern/Ukambani": 70.0,
+    "Nyanza Split": 65.0
+  },
+  "swing_parameters_percent_points_or_floors": {
+    "Urban/Protest — SA swing (pp)": 12.0,
+    "Mountain Rebel — Gachagua transfer %": 60.0,
+    "Coast/Joho — Incumbent swing (pp)": 30.0,
+    "Rift Valley — Incumbent floor": 65.0,
+    "Eastern/Ukambani — SA swing (pp)": 20.0,
+    "Nyanza Split — SA swing (pp)": 10.0
+  },
+  "alliance_cohesion_sensitivity_percent": {
+    "Gachagua GEMA transfer (pessimistic)": 40.0,
+    "Gachagua GEMA transfer (optimistic)": 80.0,
+    "Kalonzo Ukambani floor": 55.0,
+    "Joho coastal floor (Incumbent)": 50.0
+  }
+}

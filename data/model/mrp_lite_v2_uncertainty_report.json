@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-07-08T14:48:49Z",
+  "summary": {
+    "median_uncertainty_margin_pp": 10.5,
+    "min_uncertainty_margin_pp": 8.5,
+    "max_uncertainty_margin_pp": 10.5
+  },
+  "drivers": [
+    "Only one external pollster zone crosstab release is available; this still widens uncertainty.",
+    "National-only KNBS cells still widen uncertainty versus a full constituency/sub-county poststratification grid.",
+    "Historical turnout volatility widens uncertainty in volatile counties."
+  ],
+  "caveat": "Uncertainty intervals are descriptive diagnostics, not calibrated statistical credible intervals."
+}
