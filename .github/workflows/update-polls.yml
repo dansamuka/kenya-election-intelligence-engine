@@ -1,0 +1,55 @@
+name: Update Kenya Polls Data
+
+on:
+  schedule:
+    # Runs every Monday at 06:00 UTC. GitHub Actions runners have normal
+    # internet access, unlike the sandbox this pipeline was originally
+    # built in, so the scraper steps below can actually reach pollster
+    # websites here even though they could not during development.
+    - cron: '0 6 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install backend dependencies
+        run: pip install -r backend/requirements.txt
+
+      - name: Run source discovery and extraction
+        run: python backend/poll_tracker.py
+        continue-on-error: true
+
+      - name: Run source ingestion audit
+        run: python backend/source_ingestion.py
+        continue-on-error: true
+
+      - name: Run data foundation build
+        run: python backend/data_foundation.py
+        continue-on-error: true
+
+      - name: Rebuild polling model
+        run: python backend/polling_model.py
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Automated data refresh: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
