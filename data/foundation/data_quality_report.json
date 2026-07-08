@@ -1,24 +1,28 @@
 {
-  "generated_at": "2026-07-08T10:54:09+00:00",
+  "generated_at": "2026-07-08T18:05:32+00:00",
   "phase": "phase_1_data_foundation",
   "prototype_status": "data_foundation_scaffold_with_normalized_poll_layer",
   "records": {
-    "approved_poll_records": 3,
-    "source_registry_records": 3,
-    "review_queue_records": 3,
-    "poll_results_long_rows": 15
+    "approved_poll_records": 4,
+    "source_registry_records": 9,
+    "review_queue_records": 5,
+    "poll_results_long_rows": 23
   },
   "coverage": {
     "pollsters": {
-      "TIFA Research": 3
+      "TIFA Research": 3,
+      "Infotrak Research": 1
     },
     "poll_types": {
-      "preferred_presidential_aspirant": 3
+      "preferred_presidential_aspirant": 4
     },
     "candidates": [
+      "Babu Owino",
+      "David Maraga",
       "Edwin Sifuna",
       "Fred Matiang'i",
       "Kalonzo Musyoka",
+      "Martha Karua",
       "Rigathi Gachagua",
       "William Ruto"
     ],
@@ -30,8 +34,8 @@
     ]
   },
   "missingness": {
-    "sample_size": 3,
-    "question_text": 3
+    "extraction_confidence": 3,
+    "question_text": 2
   },
   "quality_flags": [
     "Only public approved poll records are included in the normalized poll layer.",

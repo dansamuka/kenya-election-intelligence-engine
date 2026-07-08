@@ -2,58 +2,36 @@
   {
     "as_of": "2026-05-14",
     "poll_type": "preferred_presidential_aspirant",
-    "candidate": "William Ruto",
-    "weighted_average": 25.28,
-    "lower_95": 21.78,
-    "upper_95": 28.78,
-    "uncertainty_margin": 3.5,
-    "effective_poll_count": 2.7,
-    "raw_poll_count": 4,
-    "latest_poll_value": 24.0,
-    "latest_poll_date": "2026-05-14",
-    "pollsters_in_average": [
-      "Infotrak Research",
-      "TIFA Research"
-    ],
-    "source_urls": [
-      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
-      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
-    ],
-    "model_status": "usable_with_caution"
-  },
-  {
-    "as_of": "2026-05-14",
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate": "Kalonzo Musyoka",
-    "weighted_average": 17.84,
-    "lower_95": 14.34,
-    "upper_95": 21.34,
-    "uncertainty_margin": 3.5,
-    "effective_poll_count": 2.7,
-    "raw_poll_count": 4,
-    "latest_poll_value": 19.0,
-    "latest_poll_date": "2026-05-14",
-    "pollsters_in_average": [
-      "Infotrak Research",
-      "TIFA Research"
-    ],
-    "source_urls": [
-      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
-      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
-    ],
-    "model_status": "usable_with_caution"
-  },
-  {
-    "as_of": "2026-05-14",
-    "poll_type": "preferred_presidential_aspirant",
     "candidate": "Fred Matiang'i",
-    "weighted_average": 15.8,
-    "lower_95": 12.3,
-    "upper_95": 19.3,
+    "weighted_average": 14.63,
+    "lower_95": 11.13,
+    "upper_95": 18.13,
     "uncertainty_margin": 3.5,
-    "effective_poll_count": 2.7,
+    "effective_poll_count": 2.43,
     "raw_poll_count": 4,
-    "latest_poll_value": 16.0,
+    "latest_poll_value": 14.0,
+    "latest_poll_date": "2026-05-14",
+    "pollsters_in_average": [
+      "Infotrak Research",
+      "TIFA Research"
+    ],
+    "source_urls": [
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+    ],
+    "model_status": "usable_with_caution"
+  },
+  {
+    "as_of": "2026-05-14",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate": "William Ruto",
+    "weighted_average": 12.02,
+    "lower_95": 0.0,
+    "upper_95": 27.39,
+    "uncertainty_margin": 15.37,
+    "effective_poll_count": 2.43,
+    "raw_poll_count": 4,
+    "latest_poll_value": 2.0,
     "latest_poll_date": "2026-05-14",
     "pollsters_in_average": [
       "Infotrak Research",
@@ -69,11 +47,55 @@
     "as_of": "2026-05-14",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Edwin Sifuna",
-    "weighted_average": 8.21,
-    "lower_95": 3.54,
-    "upper_95": 12.88,
-    "uncertainty_margin": 4.67,
-    "effective_poll_count": 2.7,
+    "weighted_average": 8.89,
+    "lower_95": 4.05,
+    "upper_95": 13.73,
+    "uncertainty_margin": 4.84,
+    "effective_poll_count": 2.43,
+    "raw_poll_count": 4,
+    "latest_poll_value": 10.0,
+    "latest_poll_date": "2026-05-14",
+    "pollsters_in_average": [
+      "Infotrak Research",
+      "TIFA Research"
+    ],
+    "source_urls": [
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+    ],
+    "model_status": "usable_with_caution"
+  },
+  {
+    "as_of": "2026-05-14",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate": "Kalonzo Musyoka",
+    "weighted_average": 8.43,
+    "lower_95": 0.0,
+    "upper_95": 17.23,
+    "uncertainty_margin": 8.8,
+    "effective_poll_count": 2.43,
+    "raw_poll_count": 4,
+    "latest_poll_value": 3.0,
+    "latest_poll_date": "2026-05-14",
+    "pollsters_in_average": [
+      "Infotrak Research",
+      "TIFA Research"
+    ],
+    "source_urls": [
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+    ],
+    "model_status": "usable_with_caution"
+  },
+  {
+    "as_of": "2026-05-14",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate": "Rigathi Gachagua",
+    "weighted_average": 8.14,
+    "lower_95": 4.64,
+    "upper_95": 11.64,
+    "uncertainty_margin": 3.5,
+    "effective_poll_count": 2.43,
     "raw_poll_count": 4,
     "latest_poll_value": 9.0,
     "latest_poll_date": "2026-05-14",
@@ -106,28 +128,6 @@
       "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226"
     ],
     "model_status": "thin_series"
-  },
-  {
-    "as_of": "2026-05-14",
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate": "Rigathi Gachagua",
-    "weighted_average": 6.4,
-    "lower_95": 2.9,
-    "upper_95": 9.9,
-    "uncertainty_margin": 3.5,
-    "effective_poll_count": 2.7,
-    "raw_poll_count": 4,
-    "latest_poll_value": 6.0,
-    "latest_poll_date": "2026-05-14",
-    "pollsters_in_average": [
-      "Infotrak Research",
-      "TIFA Research"
-    ],
-    "source_urls": [
-      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
-      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
-    ],
-    "model_status": "usable_with_caution"
   },
   {
     "as_of": "2026-05-14",

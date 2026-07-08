@@ -1,5 +1,25 @@
 [
   {
+    "candidate_id": "babu_owino",
+    "canonical_name": "Babu Owino",
+    "aliases": [
+      "Babu Owino"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  },
+  {
+    "candidate_id": "david_maraga",
+    "canonical_name": "David Maraga",
+    "aliases": [
+      "David Maraga"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  },
+  {
     "candidate_id": "edwin_sifuna",
     "canonical_name": "Edwin Sifuna",
     "aliases": [
@@ -29,6 +49,16 @@
     "aliases": [
       "Kalonzo",
       "Kalonzo Musyoka"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  },
+  {
+    "candidate_id": "martha_karua",
+    "canonical_name": "Martha Karua",
+    "aliases": [
+      "Martha Karua"
     ],
     "status": "tracked_from_poll_data",
     "party_or_alignment": null,
