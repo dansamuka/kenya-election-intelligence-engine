@@ -56,19 +56,19 @@
   {
     "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
     "date": "2026-05-14",
-    "fieldwork_dates": "during 2nd-11th May. The results are based on household, face-to-face interviews with 2,013",
+    "fieldwork_dates": "May 2026",
     "pollster_id": "tifa_research",
     "pollster": "TIFA Research",
     "poll_type": "preferred_presidential_aspirant",
     "compatible_group": "presidential_horse_race",
-    "question_text": null,
+    "question_text": "Whether or not you have ever voted or intend to vote in the future, whom would you like to win the 2027 presidential election?",
     "geography_id": "kenya",
     "geography": "Kenya",
-    "sample_size": 2027,
+    "sample_size": 2013,
     "source_title": "TIFA National Poll 2026: 1st Release on Political Alignments and 2027 Election Prospects",
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
-    "extraction_status": "AUTO_ACCEPTED",
-    "extraction_confidence": 0.98,
-    "notes": "Candidate percentages, poll type, and date were identified."
+    "extraction_status": "MANUALLY_VERIFIED",
+    "extraction_confidence": null,
+    "notes": "Extracted from TIFA grouped chart wave: May 2026 | Automated extraction failed at first attempt (DNS resolution error in the original build sandbox); figures were entered manually and cross-checked against public news coverage of this release. | Sample size and question text confirmed via public reporting of the May 2026 release (margin of error ±2.18%, fieldwork May 2–11 2026, n=2,013 across 47 counties). | CORRECTED 2026-07-08: a subsequent automated GitHub Actions run reached the real PDF (real internet access on the runner, unlike the original sandbox) but its chart-parsing logic misread the values (produced Ruto=2.0, Kalonzo=3.0, Matiang'i=14.0, Gachagua=9.0, Sifuna=10.0 at a false 0.98 confidence) and silently overwrote this manually-verified record, because the dedup logic ranked records by raw confidence number and treated this record's null confidence (a human verified it directly, so there is no extractor confidence to report) as 0, lower than the wrong automated extraction's 0.98. That dedup bug is fixed in backend/poll_tracker.py (manual verification now always outranks automated extraction). Figures restored to the correct, manually-verified values."
   }
 ]

@@ -205,7 +205,7 @@
     "candidate_id": "edwin_sifuna",
     "candidate": "Edwin Sifuna",
     "metric": "percentage",
-    "value": 10.0,
+    "value": 9.0,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
   },
   {
@@ -216,7 +216,7 @@
     "candidate_id": "fred_matiang_i",
     "candidate": "Fred Matiang'i",
     "metric": "percentage",
-    "value": 14.0,
+    "value": 16.0,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
   },
   {
@@ -227,7 +227,7 @@
     "candidate_id": "kalonzo_musyoka",
     "candidate": "Kalonzo Musyoka",
     "metric": "percentage",
-    "value": 3.0,
+    "value": 19.0,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
   },
   {
@@ -238,7 +238,7 @@
     "candidate_id": "rigathi_gachagua",
     "candidate": "Rigathi Gachagua",
     "metric": "percentage",
-    "value": 9.0,
+    "value": 6.0,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
   },
   {
@@ -249,7 +249,7 @@
     "candidate_id": "william_ruto",
     "candidate": "William Ruto",
     "metric": "percentage",
-    "value": 2.0,
+    "value": 24.0,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
   }
 ]

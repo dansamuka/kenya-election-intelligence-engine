@@ -22,7 +22,7 @@ import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import urlparse
 
 import requests
@@ -324,8 +324,21 @@ def dedupe_poll_records(records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
     Deduplicate poll records.
 
-    If a duplicate exists, keep the higher-confidence record.
+    Manual human verification always outranks automated extraction, regardless
+    of the automated extractor's self-reported confidence score. This was a
+    real bug: a MANUALLY_VERIFIED record has extraction_confidence=None
+    (a human checked it directly, so there's no numeric confidence to report),
+    which previously evaluated as 0 and lost to any AUTO_ACCEPTED record with
+    a nonzero confidence -- including a wrong one. Among records of the same
+    verification tier, the higher-confidence record wins as before.
     """
+    STATUS_RANK = {"MANUALLY_VERIFIED": 2, "AUTO_ACCEPTED": 1}
+
+    def record_rank(record: Dict[str, Any]) -> Tuple[int, float]:
+        status_score = STATUS_RANK.get(record.get("extraction_status"), 0)
+        confidence = float(record.get("extraction_confidence") or 0)
+        return (status_score, confidence)
+
     by_key: Dict[str, Dict[str, Any]] = {}
 
     for record in records:
@@ -344,9 +357,7 @@ def dedupe_poll_records(records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             by_key[key] = record
             continue
 
-        if float(record.get("extraction_confidence") or 0) > float(
-            current.get("extraction_confidence") or 0
-        ):
+        if record_rank(record) > record_rank(current):
             by_key[key] = record
 
     return sorted(
