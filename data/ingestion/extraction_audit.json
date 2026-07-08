@@ -1,38 +1,110 @@
 [
   {
+    "source_id": "infotrak-dec2025-manual",
+    "pollster": "Infotrak Research",
+    "title": "Infotrak National Survey: 2027 Presidential Candidates' Popularity (December 2025)",
+    "source_url": "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
+    "processing_status": "manually_verified_external",
+    "sha256": null,
+    "feeds_public_poll_record": true,
+    "review_items": 0,
+    "last_checked_at": "2026-07-08T17:52:38+00:00",
+    "processing_error": null
+  },
+  {
     "source_id": "e299a44d39950380ed68",
     "pollster": "Infotrak Research",
     "title": "Infotrak Voice of the People Poll – September 2025",
     "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Infotrak-VOP-Poll_Sep-2025_Phase-One2.pdf",
-    "processing_status": "needs_review_processing_error",
-    "sha256": null,
+    "processing_status": "rejected",
+    "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-08T10:53:59+00:00",
-    "processing_error": "HTTPSConnectionPool(host='www.infotrakresearch.com', port=443): Max retries exceeded with url: /wp-content/uploads/2025/09/Infotrak-VOP-Poll_Sep-2025_Phase-One2.pdf (Caused by NameResolutionError(\"HTTPSConnection(host='www.infotrakresearch.com', port=443): Failed to resolve 'www.infotrakresearch.com' ([Errno -3] Temporary failure in name resolution)\"))"
+    "last_checked_at": "2026-07-08T18:04:29+00:00",
+    "processing_error": null
   },
   {
     "source_id": "f98574cfd387a9fd4a1c",
     "pollster": "Infotrak Research",
     "title": "Mulembe Nation Poll December 2025",
     "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Mulembe-Nation-Poll-Report_Internal_Report_Media_Release_Final-1.pdf",
-    "processing_status": "needs_review_processing_error",
-    "sha256": null,
+    "processing_status": "rejected",
+    "sha256": "10706b99ed1e5cf595060fe5f554d668d2e4346adca948459c3f3f1d8d9f721b",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-08T10:54:04+00:00",
-    "processing_error": "HTTPSConnectionPool(host='www.infotrakresearch.com', port=443): Max retries exceeded with url: /wp-content/uploads/2025/09/Mulembe-Nation-Poll-Report_Internal_Report_Media_Release_Final-1.pdf (Caused by NameResolutionError(\"HTTPSConnection(host='www.infotrakresearch.com', port=443): Failed to resolve 'www.infotrakresearch.com' ([Errno -3] Temporary failure in name resolution)\"))"
+    "last_checked_at": "2026-07-08T18:04:30+00:00",
+    "processing_error": null
+  },
+  {
+    "source_id": "484b047059f662cb4580",
+    "pollster": "Infotrak Research",
+    "title": "NATIONWIDE PERCEPTION STUDY",
+    "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2024/12/NATIONWIDE-PERCEPTION-STUDY_16thDec.pdf",
+    "processing_status": "rejected",
+    "sha256": "515c6d29af29c530c9e9c28a2d7b562fb6fb7bb783c869add28264054ef4dec0",
+    "feeds_public_poll_record": false,
+    "review_items": 0,
+    "last_checked_at": "2026-07-08T18:04:45+00:00",
+    "processing_error": null
+  },
+  {
+    "source_id": "2ae94677b7182607e1bd",
+    "pollster": "Infotrak Research",
+    "title": "Political Polls – InfoTrak",
+    "source_url": "https://www.infotrakresearch.com/category/political-polls/",
+    "processing_status": "rejected",
+    "sha256": "09156a37958163b0720c6ad3f5d05a050275f59a21796c0d744c939b1acaf665",
+    "feeds_public_poll_record": false,
+    "review_items": 0,
+    "last_checked_at": "2026-07-08T18:04:54+00:00",
+    "processing_error": null
+  },
+  {
+    "source_id": "d74528a4e7fd8f1711a5",
+    "pollster": "Infotrak Research",
+    "title": "Political Polls – Page 2 – InfoTrak",
+    "source_url": "https://www.infotrakresearch.com/category/political-polls/page/2/",
+    "processing_status": "rejected",
+    "sha256": "60171016571a722619165f4cea5b43e6de4f27780f97918f52c3c742eeae2530",
+    "feeds_public_poll_record": false,
+    "review_items": 0,
+    "last_checked_at": "2026-07-08T18:05:31+00:00",
+    "processing_error": null
+  },
+  {
+    "source_id": "3a5abcdb1add0fdc962d",
+    "pollster": "Infotrak Research",
+    "title": "THE INFOTRAK COUNTYTRAK REPORT 2025 - PERFORMANCE INDEX",
+    "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/02/Infotrak-Elected-Leaders-Rating-2024-1.pdf",
+    "processing_status": "needs_review",
+    "sha256": "e8348ff9766e6f2a91759fedc44b05729849cbb5bcc983bf20d12b09188ba038",
+    "feeds_public_poll_record": false,
+    "review_items": 1,
+    "last_checked_at": "2026-07-08T18:04:34+00:00",
+    "processing_error": null
+  },
+  {
+    "source_id": "128682ecb936df9710dc",
+    "pollster": "Infotrak Research",
+    "title": "THE INFOTRAK VOICE OF THE PEOPLE – KENYANS HEROES",
+    "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2024/10/INFOTRAK-POLL-on-Kenyan-Heroes-Most-influential-people-oct-2024.pdf",
+    "processing_status": "needs_review",
+    "sha256": "31e53feded5bbd37c27268c1c2f1ec59971f62659538069c12eb0e549c91b213",
+    "feeds_public_poll_record": false,
+    "review_items": 1,
+    "last_checked_at": "2026-07-08T18:04:54+00:00",
+    "processing_error": null
   },
   {
     "source_id": "bdf83a5d845f6f7b50e9",
     "pollster": "TIFA Research",
-    "title": "TIFA National Poll 2026: Political Alignments and 2027 Election Prospects",
+    "title": "TIFA National Poll 2026: 1st Release on Political Alignments and 2027 Election Prospects",
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
-    "processing_status": "needs_review_processing_error",
-    "sha256": null,
+    "processing_status": "processed",
+    "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "feeds_public_poll_record": true,
     "review_items": 1,
-    "last_checked_at": "2026-07-08T10:53:59+00:00",
-    "processing_error": "HTTPSConnectionPool(host='www.tifaresearch.com', port=443): Max retries exceeded with url: /wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf (Caused by NameResolutionError(\"HTTPSConnection(host='www.tifaresearch.com', port=443): Failed to resolve 'www.tifaresearch.com' ([Errno -3] Temporary failure in name resolution)\"))"
+    "last_checked_at": "2026-07-08T18:04:29+00:00",
+    "processing_error": null
   }
 ]

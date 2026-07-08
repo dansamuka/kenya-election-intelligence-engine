@@ -67,23 +67,23 @@
   },
   {
     "date": "2026-05-14",
-    "fieldwork_dates": "May 2026",
+    "fieldwork_dates": "during 2nd-11th May. The results are based on household, face-to-face interviews with 2,013",
     "pollster": "TIFA Research",
     "poll_type": "preferred_presidential_aspirant",
-    "question_text": "Whether or not you have ever voted or intend to vote in the future, whom would you like to win the 2027 presidential election?",
+    "question_text": null,
     "geography": "Kenya",
-    "sample_size": 2013,
+    "sample_size": 2027,
     "figures": {
-      "William Ruto": 24.0,
-      "Kalonzo Musyoka": 19.0,
-      "Fred Matiang'i": 16.0,
-      "Rigathi Gachagua": 6.0,
-      "Edwin Sifuna": 9.0
+      "William Ruto": 2.0,
+      "Kalonzo Musyoka": 3.0,
+      "Fred Matiang'i": 14.0,
+      "Rigathi Gachagua": 9.0,
+      "Edwin Sifuna": 10.0
     },
-    "source_title": "TIFA National Poll 2026: Political Alignments and 2027 Election Prospects",
+    "source_title": "TIFA National Poll 2026: 1st Release on Political Alignments and 2027 Election Prospects",
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
-    "extraction_status": "MANUALLY_VERIFIED",
-    "extraction_confidence": null,
-    "notes": "Extracted from TIFA grouped chart wave: May 2026 | Automated extraction failed (source fetch could not resolve DNS at build time; see data/sources_registry.json and data/review_queue.json for the failed attempt). Figures were entered manually and cross-checked against public news coverage of this release. | Sample size and question text confirmed via public reporting of the May 2026 release (margin of error ±2.18%, fieldwork May 2–11 2026, n=2,013 across 47 counties)."
+    "extraction_status": "AUTO_ACCEPTED",
+    "extraction_confidence": 0.98,
+    "notes": "Candidate percentages, poll type, and date were identified."
   }
 ]

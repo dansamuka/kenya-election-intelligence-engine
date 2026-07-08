@@ -1,26 +1,31 @@
 {
   "phase": "phase_2_source_ingestion",
-  "generated_at": "2026-07-08T10:54:06+00:00",
+  "generated_at": "2026-07-08T18:05:32+00:00",
   "summary": {
-    "catalog_sources": 3,
-    "registered_sources": 3,
-    "approved_poll_records": 3,
-    "approved_source_urls": 1,
-    "review_queue_items": 3,
-    "high_priority_review_items": 0
+    "catalog_sources": 9,
+    "registered_sources": 9,
+    "approved_poll_records": 4,
+    "approved_source_urls": 2,
+    "review_queue_items": 5,
+    "high_priority_review_items": 1
   },
   "processing_status_counts": {
-    "needs_review_processing_error": 3
+    "manually_verified_external": 1,
+    "rejected": 5,
+    "needs_review": 2,
+    "processed": 1
   },
   "source_class_counts": {
-    "official_pdf_report_candidate": 3
+    "unknown_external_source": 1,
+    "official_pdf_report_candidate": 6,
+    "official_article_or_archive_candidate": 2
   },
   "pollster_catalog_counts": {
-    "TIFA Research": 1,
-    "Infotrak Research": 2
+    "Infotrak Research": 8,
+    "TIFA Research": 1
   },
   "warnings": [
-    "Published polling remains single-pollster or narrow-source; avoid consensus claims."
+    "1 high-priority review item(s) require human inspection."
   ],
   "quality_gates": [
     {
