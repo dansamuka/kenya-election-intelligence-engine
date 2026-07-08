@@ -7,6 +7,8 @@
   <title>Kenya Election Intelligence Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     :root{--burgundy:#8f1d1d;--deep:#0b1020;--cream:#fff7f4;--ink:#0f172a}
     html{scroll-behavior:smooth} body{background:linear-gradient(180deg,#fff 0%,#f8fafc 52%,#fff7f4 100%)}
@@ -112,6 +114,26 @@
         <textarea id="seatInput" class="mt-4 min-h-40 w-full rounded-2xl border border-slate-200 p-4 font-mono text-xs" placeholder='Paste constituency baseline JSON here. Leave blank to use data/constituency_baseline.json if available.'></textarea>
         <div class="mt-3 flex flex-wrap gap-2"><button id="loadSeatBaselineBtn" class="rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50">Load hosted baseline</button><button id="simulateSeatsBtn" class="rounded-2xl bg-[#8f1d1d] px-4 py-2 text-sm font-bold text-white hover:bg-[#751717]">Simulate MP seats</button></div>
         <div id="seatResults" class="mt-5"></div>
+      </section>
+
+      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 class="text-2xl font-black">County explorer</h2>
+            <p class="mt-1 text-sm text-slate-600">Real Kenya county boundaries (all 47 counties). No vote or poll data is available at county level yet — this is a reference map, not a results map.</p>
+          </div>
+          <input id="countySearch" type="text" placeholder="Search a county…" class="w-full rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold sm:w-56" />
+        </div>
+        <div class="mt-4 grid gap-4 lg:grid-cols-3">
+          <div id="countyMap" class="lg:col-span-2 h-[420px] rounded-2xl border border-slate-200"></div>
+          <div class="rounded-2xl bg-slate-50 p-4">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-500">Selected county</p>
+            <h3 id="countyName" class="mt-1 text-xl font-black text-slate-900">Tap a county</h3>
+            <p id="countyCode" class="mt-1 text-sm text-slate-500"></p>
+            <p class="mt-4 text-sm leading-6 text-slate-600">No county-level polling or election data is hosted for this county yet. Only the national TIFA waves shown above are currently available.</p>
+            <div id="countyList" class="mt-4 max-h-56 space-y-1 overflow-y-auto text-sm"></div>
+          </div>
+        </div>
       </section>
     </section>
 
@@ -226,6 +248,53 @@ $('exportScenarioBtn').onclick=()=>{
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='scenario_export.json';a.click();URL.revokeObjectURL(a.href);
 };
 
+let countyMap=null, countyLayer=null, selectedCountyLayer=null;
+async function initCountyExplorer(){
+  if(!document.getElementById('countyMap')) return;
+  countyMap=L.map('countyMap',{scrollWheelZoom:false}).setView([0.35,37.9],6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors',maxZoom:10}).addTo(countyMap);
+  let geo;
+  try{
+    const res=await fetch('data/kenya_counties.geojson',{cache:'no-store'});
+    if(!res.ok)throw new Error('Boundary file not hosted');
+    geo=await res.json();
+  }catch(e){
+    $('countyName').textContent='Boundary data unavailable';
+    $('countyCode').textContent=e.message;
+    return;
+  }
+  const byName={};
+  countyLayer=L.geoJSON(geo,{
+    style:{color:'#8f1d1d',weight:1,fillColor:'#fecaca',fillOpacity:0.25},
+    onEachFeature:(feature,layer)=>{
+      byName[feature.properties.county]=layer;
+      layer.on('click',()=>selectCounty(feature.properties, layer));
+      layer.bindTooltip(feature.properties.county,{sticky:true});
+    }
+  }).addTo(countyMap);
+  countyMap.fitBounds(countyLayer.getBounds());
+  const names=Object.keys(byName).sort((a,b)=>a.localeCompare(b));
+  $('countyList').innerHTML=names.map(n=>`<button class="block w-full rounded-lg px-2 py-1 text-left hover:bg-white" data-county="${n}">${n}</button>`).join('');
+  $('countyList').querySelectorAll('[data-county]').forEach(btn=>btn.onclick=()=>{
+    const layer=byName[btn.dataset.county];
+    selectCounty(layer.feature.properties, layer);
+    countyMap.fitBounds(layer.getBounds());
+  });
+  $('countySearch').addEventListener('input',()=>{
+    const q=$('countySearch').value.trim().toLowerCase();
+    $('countyList').querySelectorAll('[data-county]').forEach(btn=>{
+      btn.style.display=btn.dataset.county.toLowerCase().includes(q)?'':'none';
+    });
+  });
+  function selectCounty(props, layer){
+    if(selectedCountyLayer)selectedCountyLayer.setStyle({color:'#8f1d1d',weight:1,fillColor:'#fecaca',fillOpacity:0.25});
+    layer.setStyle({color:'#8f1d1d',weight:3,fillColor:'#8f1d1d',fillOpacity:0.45});
+    selectedCountyLayer=layer;
+    $('countyName').textContent=props.county;
+    $('countyCode').textContent=`County code ${props.code}${props.proxyFallback?' · boundary approximated':''}`;
+  }
+}
+initCountyExplorer();
 loadData();
 </script>
 </body>
