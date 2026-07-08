@@ -265,403 +265,12 @@ loadMrpLiteV2();
       </div>
     </section>
 
-    <section id="phase4Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 4 constituency and seats</p>
-          <h2 class="mt-2 text-2xl font-black">Presidential threshold, county-threshold scaffold, and MP-seat model</h2>
-          <p id="constituencyStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading constituency-model quality report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Model version</p>
-          <p id="constituencyModelVersion" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Leader diagnostic</p><p id="constituencyLeader" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Runoff status</p><p id="constituencyRunoff" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">County threshold</p><p id="countyThresholdStatus" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Seat model</p><p id="seatModelStatus" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-rose-50 p-5 ring-1 ring-rose-100"><p class="text-sm font-bold text-slate-500">Ward rows integrated</p><p id="wardRowsIntegrated" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-rose-50 p-5 ring-1 ring-rose-100"><p class="text-sm font-bold text-slate-500">Registered voters 2022</p><p id="wardRegisteredVoters" class="mt-2 text-2xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-rose-50 p-5 ring-1 ring-rose-100"><p class="text-sm font-bold text-slate-500">25% counties · Inc / SA</p><p id="countyThresholdCounts" class="mt-2 text-2xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-rose-50 p-5 ring-1 ring-rose-100"><p class="text-sm font-bold text-slate-500">Proxy constituencies</p><p id="proxyConstituencies" class="mt-2 text-2xl font-black text-[#8f1d1d]">—</p></div>
-      </div>
-      <div class="mt-5 rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-        <h3 class="font-black text-slate-950">Regional swing MVP</h3>
-        <p class="mt-2 text-sm leading-6 text-slate-600">Assumption-driven scenario using ward voter counts, projected turnout, workbook clusters, and county-level 2022 Ruto/Raila shares. It is useful for stress testing; it is not a forecast.</p>
-        <div id="regionalSwingSummary" class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Constituency-model warnings</h3>
-          <ul id="constituencyWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Phase 4 completion status</h3>
-          <div id="constituencyCompletion" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
+    <section class="mt-6 rounded-[2rem] border border-dashed border-slate-300 bg-slate-50 p-6 sm:p-8">
+      <p class="text-xs font-black uppercase tracking-[0.25em] text-slate-500">Roadmap · Phases 4–18</p>
+      <h2 class="mt-2 text-xl font-black text-slate-800">Constituency modeling, forecasting, and infrastructure phases are built but not yet publishing data</h2>
+      <p class="mt-3 max-w-4xl text-sm leading-6 text-slate-600">The backend pipeline for ward/constituency modeling, coalition scenario diagnostics, presidential forecasting, strategic intelligence, the data warehouse, audit and release-readiness reporting, historical backfill, MRP-lite estimation, demographic poststratification, and poll crosstabs exists in <code class="rounded bg-slate-200 px-1">backend/</code>, but its output files have not been generated and committed yet, so those panels were removed from this page rather than shipped as permanently-loading placeholders. See <code class="rounded bg-slate-200 px-1">README.md</code> and <code class="rounded bg-slate-200 px-1">ARCHITECTURE_REWORK.md</code> for the full phase-by-phase methodology, and the repository’s Issues tab to report a data problem with what is currently live below.</p>
     </section>
 
-    <section id="phase5Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 5 scenario analysis</p>
-          <h2 class="mt-2 text-2xl font-black">Coalition, transfer, and runoff scenario diagnostics</h2>
-          <p id="scenarioModelStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 5 scenario-analysis report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Model version</p>
-          <p id="scenarioModelVersion" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Scenarios generated</p><p id="phase5ScenarioCount" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Candidate inputs</p><p id="phase5CandidateInputs" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Top scenario</p><p id="phase5TopScenario" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Runoff proxy</p><p id="phase5RunoffProxy" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Scenario sensitivity ranking</h3>
-          <div id="phase5SensitivityRows" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Scenario warnings</h3>
-          <ul id="phase5Warnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-      </div>
-      <div class="mt-5 rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-        <h3 class="font-black text-slate-950">Phase 5 line-by-line completion</h3>
-        <div id="phase5Completion" class="mt-3 grid gap-3 lg:grid-cols-2 text-sm leading-6 text-slate-700"></div>
-      </div>
-    </section>
-
-
-
-    <section id="phase6aPanel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 6A forecast data bridge</p>
-          <h2 class="mt-2 text-2xl font-black">Provisional 2022 presidential baseline and MRP-lite readiness</h2>
-          <p id="forecastBridgeStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 6A forecast bridge…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Readiness score</p>
-          <p id="forecastReadinessScore" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Ward proxy rows</p><p id="forecastWardProxyRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Constituency baseline rows</p><p id="forecastConstituencyRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">MRP-lite rows</p><p id="forecastMrpRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">True MRP status</p><p id="forecastTrueMrpStatus" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">MRP-lite sample estimates</h3>
-          <div id="forecastMrpSamples" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Forecast bridge warnings</h3>
-          <ul id="forecastWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-      </div>
-      <div class="mt-5 rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-        <h3 class="font-black text-slate-950">Phase 6A line-by-line completion</h3>
-        <div id="forecastCompletion" class="mt-3 grid gap-3 lg:grid-cols-2 text-sm leading-6 text-slate-700"></div>
-      </div>
-    </section>
-
-
-
-    <section id="phase6bPanel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 6B provisional presidential forecast</p>
-          <h2 class="mt-2 text-2xl font-black">National, county-threshold, and constituency forecast diagnostics</h2>
-          <p id="presidentialForecastStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 6B presidential forecast diagnostic…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Model status</p>
-          <p id="presidentialForecastModelStatus" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Leader proxy</p><p id="presidentialForecastLeader" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">First-round status</p><p id="presidentialForecastFirstRound" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Runoff proxy</p><p id="presidentialForecastRunoff" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Constituencies modelled</p><p id="presidentialForecastConstituencies" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">County 25% threshold proxy</h3>
-          <div id="presidentialForecastThresholdRows" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Battleground constituency proxy</h3>
-          <div id="presidentialForecastBattlegrounds" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Phase 6B warnings</h3>
-          <ul id="presidentialForecastWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Phase 6B line-by-line completion</h3>
-          <div id="presidentialForecastCompletion" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="phase7Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 7 strategic intelligence</p>
-          <h2 class="mt-2 text-2xl font-black">Aggregate strategic diagnostics and briefing layer</h2>
-          <p id="strategyStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 7 strategic intelligence report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Model version</p>
-          <p id="strategyModelVersion" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Top priority county</p><p id="strategyTopCounty" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Battleground rows</p><p id="strategyBattlegroundCount" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Issue tracker</p><p id="strategyIssueStatus" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Ethical scope</p><p id="strategyEthicalScope" class="mt-2 text-lg font-black text-[#8f1d1d]">Aggregate only</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Top county priority diagnostics</h3>
-          <div id="strategyCountyRows" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Closest battleground proxies</h3>
-          <div id="strategyBattlegroundRows" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Phase 7 warnings</h3>
-          <ul id="strategyWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Phase 7 line-by-line completion</h3>
-          <div id="strategyCompletion" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="phase8Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 8 data stack</p>
-          <h2 class="mt-2 text-2xl font-black">Warehouse, API contract, and data-product layer</h2>
-          <p id="dataStackStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 8 data-stack report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Stack mode</p>
-          <p id="dataStackMode" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">JSON source files</p><p id="dataStackSourceFiles" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Warehouse tables</p><p id="dataStackTables" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">API snapshots</p><p id="dataStackApiSnapshots" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Production DB</p><p id="dataStackProductionDb" class="mt-2 text-lg font-black text-[#8f1d1d]">Not deployed</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Warehouse table counts</h3>
-          <div id="dataStackTableRows" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Static API contract</h3>
-          <div id="dataStackApiRows" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Phase 8 warnings</h3>
-          <ul id="dataStackWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Phase 8 line-by-line completion</h3>
-          <div id="dataStackCompletion" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="phase8BPanel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 8B production services</p>
-          <h2 class="mt-2 text-2xl font-black">DuckDB, PostGIS deployment scaffold, Parquet lakehouse, and live FastAPI</h2>
-          <p id="prodStackStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 8B production stack report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Runtime mode</p>
-          <p id="prodStackMode" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">DuckDB tables</p><p id="prodDuckTables" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Lakehouse datasets</p><p id="prodLakehouseDatasets" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Live endpoints</p><p id="prodApiEndpoints" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">PostGIS</p><p id="prodPostgisStatus" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Runtime endpoints</h3>
-          <div id="prodApiRows" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Lakehouse datasets</h3>
-          <div id="prodLakehouseRows" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Phase 8B warnings</h3>
-          <ul id="prodStackWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Phase 8B line-by-line completion</h3>
-          <div id="prodStackCompletion" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="phase9Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 9 governance and auditability</p>
-          <h2 class="mt-2 text-2xl font-black">Source provenance, model lineage, caveat registry, and audit scorecard</h2>
-          <p id="auditStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 9 auditability report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Audit score</p>
-          <p id="auditScore" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Audited files</p><p id="auditFiles" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Layers</p><p id="auditLayers" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Caveats</p><p id="auditCaveats" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Pipeline steps</p><p id="auditLineage" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Phase 9 warnings</h3>
-          <ul id="auditWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Phase 9 line-by-line completion</h3>
-          <div id="auditCompletion" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="phase10Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 10 release readiness</p>
-          <h2 class="mt-2 text-2xl font-black">Production release gates, runbooks, acceptance tests, and final gap register</h2>
-          <p id="releaseStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 10 release-readiness report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Release decision</p>
-          <p id="releaseDecision" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Readiness score</p><p id="releaseScore" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Validation gates</p><p id="releaseGates" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Open gaps</p><p id="releaseGaps" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Acceptance tests</p><p id="releaseTests" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Phase 10 warnings and final gaps</h3>
-          <ul id="releaseWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Phase 10 line-by-line completion</h3>
-          <div id="releaseCompletion" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="phase11Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 11B official validation results</p>
-          <h2 class="mt-2 text-2xl font-black">Official 2022 presidential county comparison results</h2>
-          <p id="validationStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 11 official-validation report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Validation state</p>
-          <p id="validationState" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Official rows</p><p id="validationOfficialRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Counties compared</p><p id="validationCompared" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Validated counties</p><p id="validationValidated" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Major mismatches</p><p id="validationMissing" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Phase 11B warnings</h3>
-          <ul id="validationWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Phase 11B line-by-line completion</h3>
-          <div id="validationCompletion" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="phase12Panel" class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 12 / 12B voter-register validation</p>
-          <h2 class="mt-2 text-2xl font-black">Voter-register and geography validation</h2>
-          <p id="voterRegisterStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 12 / 12B voter-register validation report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-          <p class="font-black text-slate-700">Validation state</p>
-          <p id="voterRegisterState" class="text-slate-500">—</p>
-        </div>
-      </div>
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Composite score</p><p id="voterRegisterScore" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">County rows compared</p><p id="voterRegisterCompared" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Hierarchy invalid rows</p><p id="voterRegisterInvalid" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Ward official rows</p><p id="voterRegisterWardOfficial" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-      </div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Phase 12 warnings</h3>
-          <ul id="voterRegisterWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Phase 12 line-by-line completion</h3>
-          <div id="voterRegisterCompletion" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-        </div>
-      </div>
-    </section>
 
     <section id="loadingState" class="mt-6 hidden rounded-[2rem] border border-rose-100 bg-white p-8 text-center shadow-sm"><div class="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-rose-100 border-t-[#8f1d1d]"></div><p class="mt-4 font-bold text-slate-700">Loading hosted poll data…</p></section>
     <section id="errorState" class="mt-6 hidden rounded-[2rem] border border-red-200 bg-red-50 p-6 text-red-900 shadow-sm"><h2 class="text-2xl font-black">Could not load poll data</h2><p id="errorMessage" class="mt-3 leading-7"></p></section>
@@ -714,191 +323,6 @@ loadMrpLiteV2();
       <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6"><h2 class="text-2xl font-black">Analyst notes</h2><div id="analystNotes" class="mt-4 grid gap-4 md:grid-cols-3"></div></section>
     </section>
 
-      <section class="rounded-[2rem] bg-white p-6 shadow-xl shadow-slate-200/70 ring-1 ring-slate-100">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 13 historical baselines</p>
-            <h2 class="mt-2 text-2xl font-black text-slate-950">Historical election baseline expansion</h2>
-            <p id="historicalStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 13 historical-baseline report…</p>
-          </div>
-          <span class="rounded-full bg-amber-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-amber-900">2022 complete · 2013/2017 pending</span>
-        </div>
-        <div class="mt-5 grid gap-3 sm:grid-cols-4">
-          <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-black uppercase text-slate-500">2022 county rows</p><p id="histCountyRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-          <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-black uppercase text-slate-500">Constituency proxy rows</p><p id="histConstituencyRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-          <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-black uppercase text-slate-500">Pending years</p><p id="histPendingYears" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-          <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs font-black uppercase text-slate-500">High-elasticity proxy</p><p id="histElasticityRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-        </div>
-        <div class="mt-5 grid gap-4 lg:grid-cols-2">
-          <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-            <h3 class="font-black text-amber-950">Phase 13 warnings</h3>
-            <ul id="historicalWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-          </div>
-          <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-            <h3 class="font-black text-slate-950">Phase 13 line-by-line completion</h3>
-            <div id="historicalCompletion" class="mt-3 grid gap-2 text-sm leading-6"></div>
-          </div>
-        </div>
-      </section>
-
-
-    <section class="mt-8 rounded-3xl bg-white p-6 shadow-xl ring-1 ring-slate-100">
-      <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-[#8f1d1d]">Phase 13B historical extraction</p>
-          <h2 class="mt-2 text-2xl font-black text-slate-950">2017 and 2013 presidential extraction status</h2>
-          <p id="historicalExtractionStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 13B historical-extraction report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 p-4 text-sm ring-1 ring-slate-100">
-          <div class="font-black text-slate-950">Extraction score</div>
-          <div id="historicalExtractionScore" class="mt-1 text-3xl font-black text-[#8f1d1d]">—</div>
-        </div>
-      </div>
-      <div id="historicalExtractionCards" class="mt-5 grid gap-3 md:grid-cols-4"></div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-2xl bg-amber-50 p-4 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Phase 13B warnings</h3>
-          <ul id="historicalExtractionWarnings" class="mt-2 list-disc space-y-1 pl-5 text-sm text-amber-900"></ul>
-        </div>
-        <div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Phase 13B line-by-line completion</h3>
-          <div id="historicalExtractionCompletion" class="mt-2 grid gap-2 text-sm"></div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <section class="mt-10 rounded-[2rem] bg-white p-6 shadow-sm ring-1 ring-slate-100">
-      <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-slate-500">Phase 17</p>
-          <h2 class="mt-1 text-2xl font-black text-slate-950">MRP-lite v2 Aggregate Estimator</h2>
-          <p id="mrpLiteV2Status" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 17 MRP-lite v2 report…</p>
-        </div>
-        <div class="rounded-3xl bg-[#fff7ed] px-5 py-4 text-right ring-1 ring-orange-100">
-          <div class="text-xs font-black uppercase tracking-widest text-orange-700">Readiness score</div>
-          <div id="mrpLiteV2ReadinessScore" class="mt-1 text-3xl font-black text-[#8f1d1d]">—</div>
-        </div>
-      </div>
-      <div id="mrpLiteV2Cards" class="mt-5 grid gap-3 md:grid-cols-4"></div>
-      <div class="mt-5 grid gap-4 md:grid-cols-2">
-        <div class="rounded-3xl bg-amber-50 p-4 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Warnings</h3>
-          <ul id="mrpLiteV2Warnings" class="mt-2 list-disc space-y-1 pl-5 text-sm text-amber-900"></ul>
-        </div>
-        <div class="rounded-3xl bg-slate-50 p-4 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Line-by-line completion</h3>
-          <div id="mrpLiteV2Completion" class="mt-2 grid gap-2 text-sm"></div>
-        </div>
-      </div>
-    </section>
-
-
-      <section class="rounded-[2rem] bg-white p-6 shadow-sm ring-1 ring-slate-100">
-        <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p class="text-xs font-black uppercase tracking-[0.25em] text-slate-500">Phase 18</p>
-            <h2 class="mt-1 text-2xl font-black text-slate-950">Back-testing and Calibration Readiness</h2>
-            <p id="calibrationReadinessStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 18 calibration-readiness report…</p>
-          </div>
-          <div class="rounded-2xl bg-[#8f1d1d] px-5 py-4 text-white">
-            <p class="text-xs font-black uppercase tracking-widest opacity-80">Calibration score</p>
-            <p id="calibrationReadinessScore" class="text-3xl font-black">—</p>
-          </div>
-        </div>
-        <div id="calibrationReadinessCards" class="mt-5 grid gap-3 md:grid-cols-4"></div>
-        <div class="mt-5 grid gap-4 lg:grid-cols-2">
-          <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-            <h3 class="font-black text-slate-950">Warnings / gating notes</h3>
-            <ul id="calibrationReadinessWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-600"></ul>
-          </div>
-          <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-            <h3 class="font-black text-slate-950">Line-by-line completion</h3>
-            <div id="calibrationReadinessCompletion" class="mt-3 grid gap-2 text-sm leading-6"></div>
-          </div>
-        </div>
-      </section>
-
-    <footer class="mt-12 text-center text-sm leading-7 text-slate-500">Built for primary-source polling records and aggregate ethical scenario analysis. Phase 0 guardrails prohibit microtargeting, covert persuasion, sensitive-trait targeting, and voter suppression. Review ambiguous extractions before publication. Phase 1 adds normalized data tables. Phase 2 adds auditable source ingestion, extraction health, and review routing. Phase 3 adds descriptive weighted polling averages, uncertainty bands, momentum, and model-quality warnings. Phase 4 adds presidential threshold diagnostics, county-threshold scaffolding, and MP-seat modeling hooks. Phase 4B integrates the ward electoral database for regional swing and county-threshold scenario diagnostics with explicit caveats. Phase 5 adds assumption-transparent coalition and scenario stress tests; these are diagnostics, not forecasts. Phase 6A treats the uploaded Excel as provisional 2022 presidential baseline data and adds MRP-lite bridge estimates pending official validation; true MRP remains unavailable until crosstabs/microdata and demographic cells are added. Phase 6B adds provisional presidential forecast diagnostics, county-threshold proxy, and battleground proxy lists; these remain unvalidated and assumption-dependent. Phase 7 adds aggregate strategic intelligence diagnostics, county-priority scores, vote-target arithmetic, battleground proxy matrix, and an issue-environment scaffold; it remains aggregate-only and does not implement microtargeting or persuasion tooling. Phase 8 adds a static warehouse, schema, API contract, and SQLite analytical package. Phase 8B adds deployable DuckDB, Parquet lakehouse outputs, PostgreSQL/PostGIS schema, Docker Compose, and live FastAPI service code; a public cloud URL still requires external deployment. Phase 9 adds source provenance, model lineage, caveat registry, data-quality scorecard, and audit API endpoints; this improves transparency but is not legal certification, official IEBC validation, or proof of forecast accuracy. Phase 10 adds release-readiness gates, runbooks, acceptance tests, final gap register, and roadmap execution discipline; it makes the system deployable with caveats, not validated as a true forecast. Phase 11 adds the official-validation bridge. Phase 11B supplies official IEBC county rows and publishes comparison results; the workbook baseline fails as an official county-level presidential baseline in most counties and should be replaced or reclassified as a separate scenario/proxy dataset. Phase 12 validates the workbook voter-register geography spine. Phase 12B adds bundled reviewed IEBC county, constituency, and ward register source rows and reruns the comparison; final external certification still requires independent full-PDF extraction. Phase 13 adds an official 2022 county historical baseline, official-county-calibrated constituency proxy rows, 2022 turnout features, and explicit 2013/2017 extraction gaps. Phase 13B extracts 2017 county presidential rows, 2013 national results, and compiled 2013/2017/2022 trend rows, while keeping full 2013 county candidate-vote rows and constituency rows as explicit gaps. Phase 14 adds the MP-seat baseline scaffold. Phase 15 adds the KNBS demographic/poststratification architecture and geography-only bridge cells; true demographic MRP remains pending reviewed KNBS demographic tables, crosswalks, and poll crosstabs. Phase 16 adds the poll-crosstab extraction architecture, crosstab inventory, methodology registry, and comparability report; true MRP remains blocked until reviewed subgroup crosstab rows or microdata are supplied. Phase 17 adds an aggregate MRP-lite v2 estimator using geography-only poststratification bridge cells, national polling anchor, constituency diagnostics, and uncertainty warnings; it is not true demographic MRP. Phase 18 adds historical back-testing diagnostics and calibration-readiness gates, plus strict loaders/templates for reviewed subgroup crosstabs and true KNBS demographic cells. Phase 18B populated internal seed crosstabs/cells for pipeline testing. Phase 18C replaces those seed rows with source-backed external reviewed rows where available: TIFA May 2026 zone crosstabs and KNBS 2019 national gender cells; full KNBS constituency/sub-county demographic-cell extraction remains pending. Phase 19 implements a full-dimensional constituency demographic grid for age, gender, and urban/rural cells; the grid is model-usable as an estimated bridge but remains uncertified until full KNBS Volume III/IV table extraction is completed. Phase 20 adds the KNBS Volume III/IV certified extraction and review gate, official source registry, reviewed CSV templates, and API endpoints; in this package certified replacement remains data-pending because no reviewed KNBS extraction rows were bundled.</footer>
-
-
-    <section class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-slate-500">Phase 14</p>
-          <h2 class="mt-1 text-2xl font-black">MP and Seat-Model Baseline</h2>
-          <p id="mpSeatBaselineStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 14 MP-seat baseline report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-5 py-4 text-right ring-1 ring-slate-100">
-          <div class="text-xs font-black uppercase tracking-widest text-slate-500">Seat readiness</div>
-          <div id="mpSeatReadinessScore" class="mt-1 text-3xl font-black text-[#8f1d1d]">—</div>
-        </div>
-      </div>
-      <div id="mpSeatBaselineCards" class="mt-5 grid gap-3 md:grid-cols-4"></div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-2xl bg-amber-50 p-4 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Warnings</h3>
-          <ul id="mpSeatBaselineWarnings" class="mt-2 list-disc space-y-1 pl-5 text-sm text-amber-900"></ul>
-        </div>
-        <div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Line-by-line completion</h3>
-          <div id="mpSeatBaselineCompletion" class="mt-2 grid gap-2 text-sm"></div>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-slate-500">Phase 15</p>
-          <h2 class="mt-1 text-2xl font-black">KNBS Demographic and Poststratification Layer</h2>
-          <p id="demographicPoststratificationStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 15 demographic/poststratification report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-5 py-4 text-right ring-1 ring-slate-100">
-          <div class="text-xs font-black uppercase tracking-widest text-slate-500">Data readiness</div>
-          <div id="demographicReadinessScore" class="mt-1 text-3xl font-black text-[#8f1d1d]">—</div>
-        </div>
-      </div>
-      <div id="demographicPoststratificationCards" class="mt-5 grid gap-3 md:grid-cols-4"></div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-2xl bg-amber-50 p-4 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Warnings</h3>
-          <ul id="demographicPoststratificationWarnings" class="mt-2 list-disc space-y-1 pl-5 text-sm text-amber-900"></ul>
-        </div>
-        <div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Line-by-line completion</h3>
-          <div id="demographicPoststratificationCompletion" class="mt-2 grid gap-2 text-sm"></div>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-slate-500">Phase 16</p>
-          <h2 class="mt-1 text-2xl font-black">Poll Crosstab Extraction Layer</h2>
-          <p id="pollCrosstabStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading Phase 16 poll-crosstab extraction report…</p>
-        </div>
-        <div class="rounded-2xl bg-slate-50 px-5 py-4 text-right ring-1 ring-slate-100">
-          <div class="text-xs font-black uppercase tracking-widest text-slate-500">Crosstab readiness</div>
-          <div id="pollCrosstabReadinessScore" class="mt-1 text-3xl font-black text-[#8f1d1d]">—</div>
-        </div>
-      </div>
-      <div id="pollCrosstabCards" class="mt-5 grid gap-3 md:grid-cols-4"></div>
-      <div class="mt-5 grid gap-4 lg:grid-cols-2">
-        <div class="rounded-2xl bg-amber-50 p-4 ring-1 ring-amber-100">
-          <h3 class="font-black text-amber-950">Warnings</h3>
-          <ul id="pollCrosstabWarnings" class="mt-2 list-disc space-y-1 pl-5 text-sm text-amber-900"></ul>
-        </div>
-        <div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100">
-          <h3 class="font-black text-slate-950">Line-by-line completion</h3>
-          <div id="pollCrosstabCompletion" class="mt-2 grid gap-2 text-sm"></div>
-        </div>
-      </div>
-    </section>
 
   </main>
 
@@ -1082,6 +506,7 @@ async function loadPollingModelReport(){
 
 
 async function loadConstituencyModelReport(){
+  if(!document.getElementById('constituencyStatus')) return;
   try{
     const [reportRes,nationalRes,countyRes,seatsRes,regionalRes,wardQualityRes]=await Promise.all([
       fetch(CONSTITUENCY_REPORT_URL,{cache:'no-store'}),
@@ -1135,6 +560,7 @@ async function loadConstituencyModelReport(){
 
 
 async function loadScenarioAnalysisReport(){
+  if(!document.getElementById('scenarioModelStatus')) return;
   try{
     const [qualityRes,resultsRes,sensitivityRes]=await Promise.all([
       fetch(SCENARIO_QUALITY_URL,{cache:'no-store'}),
@@ -1170,6 +596,7 @@ async function loadScenarioAnalysisReport(){
 }
 
 async function loadForecastBridgeReport(){
+  if(!document.getElementById('forecastBridgeStatus')) return;
   try{
     const [readinessRes,mrpRes,wardRes,constRes]=await Promise.all([
       fetch(FORECAST_READINESS_URL,{cache:'no-store'}),
@@ -1208,6 +635,7 @@ async function loadForecastBridgeReport(){
 
 
 async function loadPresidentialForecastReport(){
+  if(!document.getElementById('presidentialForecastStatus')) return;
   try{
     const [summaryRes,nationalRes,uncertaintyRes,qualityRes]=await Promise.all([
       fetch(PRESIDENTIAL_FORECAST_SUMMARY_URL,{cache:'no-store'}),
@@ -1248,6 +676,7 @@ async function loadPresidentialForecastReport(){
 
 
 async function loadStrategyReport(){
+  if(!document.getElementById('strategyStatus')) return;
   try{
     const [briefRes,qualityRes,countyRes,battleRes,issueRes]=await Promise.all([
       fetch(STRATEGY_BRIEF_URL,{cache:'no-store'}),
@@ -1288,6 +717,7 @@ async function loadStrategyReport(){
 
 
 async function loadDataStackReport(){
+  if(!document.getElementById('dataStackStatus')) return;
   try{
     const [qualityRes,manifestRes,apiRes]=await Promise.all([
       fetch(DATA_STACK_QUALITY_URL,{cache:'no-store'}),
@@ -1325,6 +755,7 @@ async function loadDataStackReport(){
 
 
 async function loadProductionStackReport(){
+  if(!document.getElementById('prodStackStatus')) return;
   try{
     const [qualityRes,runtimeRes,lakeRes]=await Promise.all([
       fetch(PROD_STACK_QUALITY_URL,{cache:'no-store'}),
@@ -1365,6 +796,7 @@ async function loadProductionStackReport(){
 
 
 async function loadAuditabilityReport(){
+  if(!document.getElementById('auditStatus')) return;
   try{
     const [manifestRes,qualityRes,caveatsRes,lineageRes]=await Promise.all([
       fetch(AUDIT_MANIFEST_URL,{cache:'no-store'}),
@@ -1402,6 +834,7 @@ async function loadAuditabilityReport(){
 
 
 async function loadReleaseReadinessReport(){
+  if(!document.getElementById('releaseStatus')) return;
   try{
     const [manifestRes,readinessRes,gatesRes,gapsRes,testsRes]=await Promise.all([
       fetch(RELEASE_MANIFEST_URL,{cache:'no-store'}),
@@ -1442,6 +875,7 @@ async function loadReleaseReadinessReport(){
 
 
 async function loadOfficialValidationReport(){
+  if(!document.getElementById('validationStatus')) return;
   try{
     const [summaryRes,qualityRes]=await Promise.all([
       fetch(VALIDATION_SUMMARY_URL,{cache:'no-store'}),
@@ -1473,6 +907,7 @@ async function loadOfficialValidationReport(){
 
 
 async function loadHistoricalBaselineReport(){
+  if(!document.getElementById('historicalStatus')) return;
   try{
     const [summaryRes,gapRes,auditRes]=await Promise.all([
       fetch(HISTORICAL_SUMMARY_URL,{cache:'no-store'}),
@@ -1506,6 +941,7 @@ function renderCandidateChips(){$('candidateChips').innerHTML=visibleCandidates.
 function applyFilters(){const type=$('pollTypeFilter').value,pollster=$('pollsterFilter').value,start=$('startDateFilter').value||'2025-06-01';filteredRecords=allRecords.filter(r=>r.date>=start&&r.poll_type===type&&(pollster==='all'||r.pollster===pollster)).sort((a,b)=>a.date.localeCompare(b.date));renderSummary();renderMetrics();renderTrend();renderSources();renderNotes();}
 
 async function loadVoterRegisterValidationReport(){
+  if(!document.getElementById('voterRegisterStatus')) return;
   try{
     const [summaryRes,scoreRes]=await Promise.all([
       fetch(VOTER_REGISTER_SUMMARY_URL,{cache:'no-store'}),
