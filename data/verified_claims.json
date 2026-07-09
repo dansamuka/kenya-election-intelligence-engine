@@ -1,0 +1,12 @@
+[
+  {
+    "checked_date": "2025-02-04",
+    "claim_summary": "A Facebook post circulated claiming an Infotrak report showed Fred Matiang'i leading the 2027 presidential race, followed by Kalonzo Musyoka, with William Ruto a distant third.",
+    "attributed_to": "Infotrak Research (falsely)",
+    "verdict": "DEBUNKED_FAKE",
+    "verdict_detail": "Africa Check found no evidence such a poll exists. Infotrak's actual published polls are covered by reputable news outlets and posted on Infotrak's own site/social accounts; no matching release was found. The most recent genuine Infotrak release at the time was a 16 December 2024 perception study on IEBC confidence, unrelated to this claim.",
+    "checked_by": "Africa Check",
+    "source_url": "https://africacheck.org/fact-checks/meta-programme-fact-checks/fake-infotrak-poll-shows-kenyan-president-william-ruto",
+    "notes": "Included here because this is exactly the kind of claim this dashboard exists to help people check against: a plausible-looking, precisely-worded 'poll result' attributed to a real, credible pollster, that never actually happened."
+  }
+]

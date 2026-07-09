@@ -1,0 +1,23 @@
+[
+  {
+    "date": "2026-05-14",
+    "fieldwork_dates": "2 \u2013 11 May 2026",
+    "pollster": "TIFA Research",
+    "context": "Among respondents who back an opposition candidate, which opposition pairing they would most prefer as a joint ticket.",
+    "base": "Opposition-leaning respondents only, not the full sample.",
+    "pairings": [
+      { "name": "Kalonzo Musyoka + Fred Matiang'i", "members": ["Kalonzo Musyoka", "Fred Matiang'i"], "support_pct": 31.0 },
+      { "name": "Kalonzo Musyoka + Edwin Sifuna", "members": ["Kalonzo Musyoka", "Edwin Sifuna"], "support_pct": 28.0 }
+    ],
+    "best_placed_to_beat_incumbent": [
+      { "name": "Fred Matiang'i", "support_pct": 18.0 },
+      { "name": "Kalonzo Musyoka", "support_pct": 18.0 },
+      { "name": "Rigathi Gachagua", "support_pct": 17.0 }
+    ],
+    "source_title": "Ruto support weakening but fragmented opposition could hand him 2027 lifeline: poll",
+    "source_url": "https://www.capitalfm.co.ke/news/2026/05/ruto-support-weakens-fragmented-opposition-2027-tifa-poll/",
+    "extraction_status": "MANUALLY_VERIFIED",
+    "extraction_confidence": null,
+    "notes": "Single source (Capital FM's report of the TIFA May 2026 release). Not independently cross-checked against a second outlet the way the topline horse-race figures were, so treat with slightly more caution. This measures preference for a hypothetical joint ticket among opposition-leaning respondents, not vote transfer efficiency if such a ticket actually formed \u2014 those are different things, and the coalition scenario lab's 'transfer efficiency' control is a separate, user-adjustable assumption, not calibrated to this number."
+  }
+]

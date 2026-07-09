@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2025-05-07",
+    "fieldwork_dates": null,
+    "pollster": "TIFA Research",
+    "report_title": "Elections Past and Forthcoming: Integrity Issues and the IEBC",
+    "metrics": {
+      "no_confidence_2027_election_integrity_pct": 50.0,
+      "question_validity_last_three_presidential_elections_pct": 69.0,
+      "no_confidence_iebc_vetting_process_pct": 55.0,
+      "aware_iebc_missed_constitutional_deadline_pct": 8.0
+    },
+    "context": "First TIFA integrity/IEBC-process release of 2025. Also found Anne Amadi led public preference for IEBC Chair among Kenyans aware of the shortlist, though most respondents were not aware of the final shortlist at all.",
+    "source_title": "Elections, Integrity & Public Perception: What Kenyans Are Really Saying (May 2025)",
+    "source_url": "https://www.tifaresearch.com/elections-integrity-public-perception-what-kenyans-are-really-saying-may-2025/",
+    "extraction_status": "MANUALLY_VERIFIED",
+    "extraction_confidence": null,
+    "notes": "Retrieved directly from TIFA's own site (primary source, not a secondary write-up). This is currently the only integrity-confidence wave in this tracker \u2014 one data point is a reading, not a trend. Exact fieldwork dates were not stated on the source page, so left blank rather than assumed. This is measuring institutional/process confidence, a materially different question from candidate preference, and should never be blended into the candidate polling average."
+  }
+]

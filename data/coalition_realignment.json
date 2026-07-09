@@ -1,0 +1,32 @@
+{
+  "description": "Tracks public support for the Kenya Kwanza / ODM 'Broad-Based Government' arrangement over time, and short, sourced notes on the coalition realignment context following Raila Odinga's death. This is a structural/organizational signal, not a candidate-preference number \u2014 it is about whether the current governing coalition holds together, which materially changes the entire 2027 candidate and alliance map.",
+  "support_series": [
+    {
+      "date": "2025-11-01",
+      "pollster": "TIFA Research",
+      "support_broad_based_government_pct": 44.0,
+      "oppose_broad_based_government_pct": null,
+      "source_title": "TIFA November 2025 national survey",
+      "source_url": "https://www.capitalfm.co.ke/news/2026/05/ruto-support-weakens-fragmented-opposition-2027-tifa-poll/",
+      "extraction_status": "MANUALLY_VERIFIED",
+      "notes": "This figure is cited retrospectively inside the May 2026 release as a comparison point; the original November 2025 release was not independently located, so this single number should be treated as secondary-sourced. Opposition percentage for this wave was not reported."
+    },
+    {
+      "date": "2026-05-14",
+      "pollster": "TIFA Research",
+      "support_broad_based_government_pct": 30.0,
+      "oppose_broad_based_government_pct": 56.0,
+      "source_title": "Ruto support weakening but fragmented opposition could hand him 2027 lifeline: poll",
+      "source_url": "https://www.capitalfm.co.ke/news/2026/05/ruto-support-weakens-fragmented-opposition-2027-tifa-poll/",
+      "extraction_status": "MANUALLY_VERIFIED",
+      "notes": "Primary wave for this reading, from the same TIFA release as the May 2026 candidate poll and the alliance-preference figures."
+    }
+  ],
+  "context_notes": [
+    {
+      "note": "The May 2026 TIFA release frames the drop in Broad-Based Government support against 'jostling within the Broad-Based Government coalition arrangement... amid push and pull over zoning and a 2027 coalition framework following the death of Raila Odinga', with ODM figures reportedly in active talks about the coalition's future.",
+      "source_url": "https://www.capitalfm.co.ke/news/2026/05/ruto-support-weakens-fragmented-opposition-2027-tifa-poll/"
+    }
+  ],
+  "known_gaps": "This is two data points, not a real trend line, and the November 2025 figure is secondary-sourced. This tracker exists to be extended honestly as more waves are found or published \u2014 not to be treated as settled. No numeric 'coalition realignment index' is computed here because there isn't enough real data yet to justify one; fabricating one would repeat exactly the mistake this project has spent this whole build correcting for."
+}
