@@ -1,508 +1,702 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#8f1d1d" />
-  <title>Kenya Election Intelligence Dashboard</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <style>
-    :root{--burgundy:#8f1d1d;--deep:#0b1020;--cream:#fff7f4;--ink:#0f172a}
-    html{scroll-behavior:smooth} body{background:linear-gradient(180deg,#fbfaf8 0%,#f7f5f2 60%,#fbf7f4 100%);font-family:'Inter',system-ui,sans-serif;color:#1c1917}
-    h1,h2,h3,.serif{font-family:'Fraunces','Georgia',serif}
-    h1{letter-spacing:-0.02em} h2{letter-spacing:-0.015em}
-    .glass{background:rgba(255,255,255,.12);backdrop-filter:blur(10px)} .safe-bottom{padding-bottom:max(1.5rem,env(safe-area-inset-bottom))}
-    .chart-wrap{position:relative;height:400px}.mini-chart{position:relative;height:250px}@media(max-width:640px){.chart-wrap{height:330px}.mini-chart{height:240px}}
-    .chip{border:1px solid rgb(226 232 240);border-radius:999px;padding:.4rem .7rem;font-size:.82rem;font-weight:800;background:white;color:#334155}.chip.active{background:#8f1d1d;color:#fff;border-color:#8f1d1d}
-    .rule-accent{height:3px;width:44px;background:#8f1d1d;border-radius:2px}
-    .num-hero{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
-    .card-hover{transition:transform .2s ease, box-shadow .2s ease} .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 30px -12px rgba(28,25,23,.18)}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-    .fade-up{animation:fadeUp .6s ease both}
-    @media(prefers-reduced-motion:reduce){.fade-up{animation:none}.card-hover{transition:none}}
-    input[type=number]{appearance:textfield} input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{appearance:none;margin:0}
-  </style>
+<meta charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0E2E22" />
+<title>Kenya 2027 — The Race, Plainly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root{
+    --paper:#F6F5F1; --ink:#1A1714; --ink-soft:#5C5751; --ink-faint:#8A847C;
+    --card:#FFFFFF; --line:#E6E3DC; --line-soft:#F0EEE8;
+    --forest:#1B5E43; --forest-deep:#0E2E22; --forest-mist:#E7F0EB;
+    --ochre:#B8722A; --ochre-mist:#F6ECDD;
+    --slate:#48586A; --teal:#3F7C7A; --plum:#7A4E6E;
+    --rose:#B23A34; --rose-mist:#F7E4E2;
+    --amber:#C79A2E;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Public Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+  h1,h2,h3,h4,.franklin{font-family:'Libre Franklin',system-ui,sans-serif}
+  .tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+  a{color:var(--forest)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  .section{padding:56px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-family:'Libre Franklin';font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--forest)}
+  .h-sec{font-family:'Libre Franklin';font-weight:900;font-size:clamp(26px,4.2vw,38px);line-height:1.06;letter-spacing:-.02em;margin:10px 0 0}
+  .sub{color:var(--ink-soft);font-size:16px;line-height:1.6;max-width:65ch;margin:12px 0 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px}
+  .muted{color:var(--ink-soft)} .faint{color:var(--ink-faint)}
+  .pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;font-family:'Libre Franklin'}
+
+  /* top bar */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(246,245,241,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .topbar-inner{display:flex;align-items:center;gap:14px;height:56px}
+  .brand{font-family:'Libre Franklin';font-weight:900;letter-spacing:-.02em;font-size:16px;white-space:nowrap}
+  .brand b{color:var(--forest)}
+  .nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{font-family:'Libre Franklin';font-weight:700;font-size:13px;color:var(--ink-soft);text-decoration:none;white-space:nowrap;padding:7px 11px;border-radius:9px}
+  .nav a:hover{background:var(--forest-mist);color:var(--forest)}
+
+  /* hero */
+  .hero{background:var(--forest-deep);color:#EDF3EF}
+  .hero .wrap{padding-top:52px;padding-bottom:52px}
+  .hero-eyebrow{font-family:'Libre Franklin';font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8FC7AE}
+  .hero h1{font-weight:900;font-size:clamp(32px,6vw,58px);line-height:1.02;letter-spacing:-.03em;margin:14px 0 0}
+  .hero h1 em{font-style:normal;color:#5FD3A3}
+  .hero-lead{color:#B9CFC4;font-size:clamp(16px,2.2vw,20px);line-height:1.55;max-width:60ch;margin:18px 0 0}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  .hero-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600;color:#DDEAE3}
+  .hero-chip b{color:#fff;font-family:'Libre Franklin';font-weight:800}
+
+  /* standings */
+  .stand{display:flex;flex-direction:column;gap:0}
+  .stand-row{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;padding:14px 0;border-top:1px solid rgba(255,255,255,.09)}
+  .stand-row:first-child{border-top:none}
+  .stand-name{font-family:'Libre Franklin';font-weight:700;font-size:15px;color:#EAF2ED;line-height:1.15}
+  .stand-name .rank{color:#6E9585;font-weight:800;margin-right:7px}
+  .stand-track{position:relative;height:34px}
+  .stand-range{position:absolute;top:50%;transform:translateY(-50%);height:34px;background:rgba(95,211,163,.14);border-radius:6px;border-left:1px dashed rgba(180,220,200,.5);border-right:1px dashed rgba(180,220,200,.5)}
+  .stand-bar{position:absolute;top:50%;transform:translateY(-50%);height:22px;border-radius:6px;background:#3E8E6C}
+  .stand-bar.lead{background:linear-gradient(90deg,#3FB985,#5FD3A3)}
+  .stand-val{position:absolute;top:50%;transform:translateY(-50%);font-family:'Libre Franklin';font-weight:900;font-size:15px;color:#fff;padding-left:8px}
+  .stand-foot{margin-top:16px;font-size:13px;color:#9DBBAD;line-height:1.55}
+
+  /* generic stat */
+  .stat-grid{display:grid;gap:14px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .stat .k{font-size:12.5px;font-weight:700;color:var(--ink-soft);font-family:'Libre Franklin';letter-spacing:.02em}
+  .stat .v{font-family:'Libre Franklin';font-weight:900;font-size:34px;line-height:1;margin-top:8px;letter-spacing:-.02em}
+  .stat .d{font-size:12.5px;color:var(--ink-faint);margin-top:8px;line-height:1.4}
+
+  /* countdown */
+  .cd-band{display:grid;gap:16px;grid-template-columns:1fr}
+  .cd-big{font-family:'Libre Franklin';font-weight:900;font-size:clamp(40px,9vw,72px);line-height:.95;letter-spacing:-.03em;color:var(--forest)}
+  .cd-track{height:10px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:14px}
+  .cd-fill{height:100%;background:linear-gradient(90deg,var(--forest),#3FB985);border-radius:999px}
+
+  /* distance-to-win gauge */
+  .gauge{position:relative;height:56px;background:var(--line-soft);border-radius:12px;border:1px solid var(--line);overflow:hidden}
+  .gauge-fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#2C7A5A,#3FB985);border-radius:12px 0 0 12px}
+  .gauge-mark{position:absolute;top:0;bottom:0;width:2px;background:var(--ink)}
+  .gauge-mark.win{background:var(--rose)}
+  .gauge-lab{position:absolute;top:calc(100% + 6px);transform:translateX(-50%);font-size:11px;font-weight:700;font-family:'Libre Franklin';white-space:nowrap;color:var(--ink-soft)}
+  .gauge-lab.win{color:var(--rose)}
+  .gauge-you{position:absolute;top:-24px;transform:translateX(-50%);font-family:'Libre Franklin';font-weight:900;font-size:13px;color:var(--forest);white-space:nowrap}
+
+  /* trend svg */
+  .chart-hold{width:100%;overflow-x:auto}
+  svg .grid{stroke:var(--line);stroke-width:1}
+  svg .axis-lab{fill:var(--ink-faint);font-size:11px;font-family:'Public Sans'}
+  svg .line{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+  svg .dot{stroke:#fff;stroke-width:1.5}
+  svg .end-lab{font-family:'Libre Franklin';font-weight:800;font-size:12px}
+
+  /* win rule gates */
+  .gates{display:grid;gap:14px;grid-template-columns:1fr}
+  .gate{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;position:relative}
+  .gate-num{font-family:'Libre Franklin';font-weight:900;font-size:13px;color:#fff;background:var(--forest);width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+  .gate h4{font-family:'Libre Franklin';font-weight:800;font-size:17px;margin:12px 0 0}
+
+  /* controls */
+  label.fld{display:block}
+  label.fld > span{display:block;font-size:13px;font-weight:700;color:var(--ink-soft);margin-bottom:6px;font-family:'Libre Franklin'}
+  select,input[type=number],input[type=text],input[type=date]{width:100%;border:1px solid var(--line);background:#fff;border-radius:11px;padding:11px 13px;font-family:'Public Sans';font-size:14px;font-weight:600;color:var(--ink)}
+  input[type=number]{appearance:textfield}
+  input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{appearance:none;margin:0}
+  .btn{font-family:'Libre Franklin';font-weight:800;font-size:14px;border-radius:11px;padding:11px 18px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+  .btn:hover{background:var(--line-soft)}
+  .btn-primary{background:var(--forest);color:#fff;border-color:var(--forest)}
+  .btn-primary:hover{background:#164e38}
+  .chip-toggle{border:1px solid var(--line);background:#fff;color:var(--ink-soft);border-radius:999px;padding:7px 12px;font-family:'Libre Franklin';font-weight:700;font-size:13px;cursor:pointer}
+  .chip-toggle.on{background:var(--forest);color:#fff;border-color:var(--forest)}
+
+  .barrow{display:grid;grid-template-columns:1fr;gap:6px;margin-top:14px}
+  .barrow .lab{display:flex;justify-content:space-between;font-size:14px;font-weight:600}
+  .barrow .lab b{font-family:'Libre Franklin';font-weight:900}
+  .barline{height:14px;background:var(--line-soft);border-radius:999px;overflow:hidden}
+  .barline > span{display:block;height:100%;border-radius:999px}
+
+  details.adv{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:0}
+  details.adv > summary{cursor:pointer;list-style:none;padding:18px 20px;font-family:'Libre Franklin';font-weight:800;font-size:16px;display:flex;align-items:center;gap:10px}
+  details.adv > summary::-webkit-details-marker{display:none}
+  details.adv[open] > summary{border-bottom:1px solid var(--line)}
+  .adv-body{padding:20px}
+
+  .src{font-size:12px;font-weight:700;color:var(--forest);text-decoration:none;border-bottom:1px solid rgba(27,94,67,.3)}
+  .note{background:var(--forest-mist);border:1px solid #CFE3D8;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.55;color:#1f4636}
+  .note.warn{background:var(--ochre-mist);border-color:#E9D2B0;color:#6b481f}
+
+  footer{background:var(--forest-deep);color:#AEC6BA;padding:44px 0}
+  footer a{color:#7FD1AB}
+  footer .foot-h{font-family:'Libre Franklin';font-weight:900;color:#EAF2ED;font-size:14px;letter-spacing:.02em}
+
+  ::selection{background:#5FD3A3;color:#0E2E22}
+  @media(min-width:640px){
+    .cd-band{grid-template-columns:1.4fr 1fr 1fr}
+    .stat-grid.c2{grid-template-columns:1fr 1fr}
+    .stat-grid.c3{grid-template-columns:1fr 1fr 1fr}
+    .stat-grid.c4{grid-template-columns:repeat(4,1fr)}
+    .gates{grid-template-columns:1fr 1fr}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .grid2-wide{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
 </head>
-<body class="min-h-screen text-slate-900 antialiased">
-  <main class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 safe-bottom">
+<body>
 
-    <section class="fade-up overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#9b1c1f] via-[#7d1a22] to-[#0b0b1a] p-6 text-white shadow-2xl sm:p-12">
-      <div class="max-w-5xl">
-        <p class="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-rose-200/90">Ethical election intelligence &middot; Kenya 2027</p>
-        <h1 class="text-4xl font-semibold leading-[1.05] sm:text-6xl">Reading the 2027 race,<br><span class="italic text-rose-200">honestly.</span></h1>
-        <p class="mt-6 max-w-3xl text-lg leading-8 text-rose-50/90 sm:text-xl">A primary-source polling tracker, coalition scenario lab, and structural-context reference for Kenya's presidential contest &mdash; built to be transparent about what the data does, and doesn't, show.</p>
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <span class="brand">Kenya <b>2027</b> · Poll Tracker</span>
+    <nav class="nav">
+      <a href="#race">The race</a>
+      <a href="#trend">Trends</a>
+      <a href="#whatif">What-if</a>
+      <a href="#picture">Bigger picture</a>
+      <a href="#rules">Rules</a>
+      <a href="#trust">Trust &amp; sources</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="hero-eyebrow">Independent · Source-checked · Not a forecast</p>
+    <h1>Where the 2027 race<br>stands, <em>plainly.</em></h1>
+    <p class="hero-lead">A plain-language tracker of Kenya's presidential contest — who's ahead, how sure we can be, and what would have to happen for someone to win. Built on published polls, with every number traced to its source.</p>
+    <div class="hero-meta" id="heroMeta">
+      <span class="hero-chip">Loading the latest polls…</span>
+    </div>
+
+    <div style="margin-top:34px">
+      <p class="hero-eyebrow" style="color:#8FC7AE">The polling average today</p>
+      <div class="stand" id="standings" style="margin-top:14px">
+        <div class="stand-foot">Reading the polls…</div>
       </div>
-      <div class="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="glass rounded-2xl p-5"><p class="text-xs uppercase tracking-wider text-rose-200/80">Latest poll</p><p id="lastPollDate" class="num-hero mt-2 text-2xl font-semibold">&mdash;</p></div>
-        <div class="glass rounded-2xl p-5"><p class="text-xs uppercase tracking-wider text-rose-200/80">Poll records</p><p id="pollsLoaded" class="num-hero mt-2 text-2xl font-semibold">&mdash;</p></div>
-        <div class="glass rounded-2xl p-5"><p class="text-xs uppercase tracking-wider text-rose-200/80">Pollsters</p><p id="pollstersLoaded" class="num-hero mt-2 text-2xl font-semibold">&mdash;</p></div>
-        <div class="glass rounded-2xl p-5"><p class="text-xs uppercase tracking-wider text-rose-200/80">To election day</p><p id="countdownDays" class="num-hero mt-2 text-2xl font-semibold">&mdash;</p></div>
-      </div>
-    </section>
+      <p class="stand-foot" id="standNote"></p>
+    </div>
+  </div>
+</header>
 
-    <section id="loadingState" class="mt-6 hidden rounded-[2rem] border border-rose-100 bg-white p-8 text-center shadow-sm"><div class="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-rose-100 border-t-[#8f1d1d]"></div><p class="mt-4 font-bold text-slate-700">Loading hosted poll data…</p></section>
-    <section id="errorState" class="mt-6 hidden rounded-[2rem] border border-red-200 bg-red-50 p-6 text-red-900 shadow-sm"><h2 class="text-2xl font-black">Could not load poll data</h2><p id="errorMessage" class="mt-3 leading-7"></p></section>
-    <section id="emptyState" class="mt-6 hidden rounded-[2rem] border border-amber-200 bg-amber-50 p-6 text-amber-950 shadow-sm"><h2 class="text-2xl font-black">No approved poll records yet</h2><p class="mt-3 leading-7">The dashboard found the JSON file, but it does not contain approved compatible records. Check <code class="rounded bg-amber-100 px-1">review_queue.json</code> for ambiguous extractions.</p></section>
-
-    <section id="dashboard" class="mt-6 hidden space-y-6">
-      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-        <div class="flex flex-wrap items-center justify-between gap-3">
-          <h2 class="text-2xl font-black">Control room</h2>
-          <button id="refreshBtn" class="rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50">Refresh data</button>
-        </div>
-        <div class="mt-4 grid gap-4 lg:grid-cols-4">
-          <label><span class="mb-1 block text-sm font-bold text-slate-700">Poll type</span><select id="pollTypeFilter" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"></select></label>
-          <label><span class="mb-1 block text-sm font-bold text-slate-700">Pollster</span><select id="pollsterFilter" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"><option value="all">All pollsters</option></select></label>
-          <label><span class="mb-1 block text-sm font-bold text-slate-700">Start date</span><input id="startDateFilter" type="date" value="2025-06-01" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"></label>
-          <label><span class="mb-1 block text-sm font-bold text-slate-700">Scenario date</span><select id="scenarioDate" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold"></select></label>
-        </div>
-        <div class="mt-4"><p class="mb-2 text-sm font-bold text-slate-700">Candidates shown</p><div id="candidateChips" class="flex flex-wrap gap-2"></div></div>
-      </section>
-
-      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><h2 class="text-2xl font-black">Latest metrics</h2><p class="mt-1 text-sm text-slate-600">Latest compatible record for each visible candidate.</p></div><p id="coverageNote" class="max-w-2xl text-sm font-semibold text-slate-500"></p></div>
-        <div id="metricsGrid" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-5"></div>
-      </section>
-
-      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-        <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"><div><h2 class="text-2xl font-black">Historical trend</h2><p class="mt-1 text-sm text-slate-600">Selected compatible poll type, from the selected start date onward.</p></div><p id="trendRange" class="text-sm font-bold text-slate-500"></p></div>
-        <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
-      </section>
-
-      <section id="modelPanel" class="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-        <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-          <div>
-            <h2 class="text-2xl font-black">Model results</h2>
-            <p id="modelStatus" class="mt-2 max-w-4xl text-sm leading-6 text-slate-600">Loading weighted-average model output…</p>
-          </div>
-          <div class="rounded-2xl bg-slate-50 px-4 py-3 text-sm">
-            <p class="font-black text-slate-700">Model version</p>
-            <p id="modelVersion" class="text-slate-500">—</p>
-          </div>
-        </div>
-        <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Average rows</p><p id="modelAverageRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-          <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Pollster-quality rows</p><p id="modelPollsterRows" class="mt-2 text-3xl font-black text-[#8f1d1d]">—</p></div>
-          <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Date coverage</p><p id="modelDateCoverage" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-          <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><p class="text-sm font-bold text-slate-500">Forecast status</p><p id="modelForecastStatus" class="mt-2 text-lg font-black text-[#8f1d1d]">—</p></div>
-        </div>
-        <div class="mt-5 grid gap-4 lg:grid-cols-2">
-          <div class="rounded-3xl bg-amber-50 p-5 ring-1 ring-amber-100">
-            <h3 class="font-black text-amber-950">Model warnings</h3>
-            <ul id="modelWarnings" class="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-amber-950"></ul>
-          </div>
-          <div class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100">
-            <h3 class="font-black text-slate-950">Current weighted average</h3>
-            <div id="modelAverageList" class="mt-3 space-y-2 text-sm leading-6 text-slate-700"></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="beyondHorseRace" class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-        <h2 class="text-2xl font-black">Beyond the horse race</h2>
-        <p class="mt-1 max-w-4xl text-sm leading-6 text-slate-600">Candidate percentages are one signal among several. These are usually more decision-relevant to how 2027 actually unfolds: who allies with whom, whether people trust the process at all, and whether the current governing coalition holds together.</p>
-
-        <div class="mt-6">
-          <h3 class="text-lg font-black text-slate-900">Coalition &amp; alliance preference</h3>
-          <p class="mt-1 text-sm text-slate-600">Kenya's presidential math is usually decided by who combines with whom, not who leads solo.</p>
-          <div id="alliancePreference" class="mt-3 space-y-3"></div>
-        </div>
-
-        <div class="mt-8 grid gap-6 lg:grid-cols-2">
-          <div>
-            <h3 class="text-lg font-black text-slate-900">Election integrity confidence</h3>
-            <p class="mt-1 text-sm text-slate-600">A different question from candidate preference: do people trust the process at all.</p>
-            <div id="integrityConfidence" class="mt-3 grid grid-cols-2 gap-3"></div>
-          </div>
-          <div>
-            <h3 class="text-lg font-black text-slate-900">Broad-Based Government support</h3>
-            <p class="mt-1 text-sm text-slate-600">Whether the current governing coalition holds — the single largest structural variable in the race.</p>
-            <div id="coalitionRealignment" class="mt-3"></div>
-          </div>
-        </div>
-
-        <div class="mt-8">
-          <h3 class="text-lg font-black text-slate-900">Poll verification ledger</h3>
-          <p class="mt-1 text-sm text-slate-600">Kenya's 2027 cycle will see fabricated "poll results" circulate. This is a public, growing record of specific claims checked against real evidence — not an exhaustive fact-check service, just what's been verified here so far.</p>
-          <div id="verifiedClaims" class="mt-3 space-y-3"></div>
-        </div>
-      </section>
-
-      <section id="electoralContext" class="rounded-[2rem] border border-stone-200 bg-white p-5 shadow-sm sm:p-8">
-        <div class="rule-accent"></div>
-        <h2 class="mt-4 text-3xl font-semibold text-stone-900">The 2027 contest in context</h2>
-        <p class="mt-2 max-w-4xl text-[15px] leading-7 text-stone-600">The fixed structure every poll number sits on top of: the rules, the calendar, the electorate, and the historical record. This is reference scaffolding, not opinion &mdash; it doesn't move with the polls.</p>
-
-        <div class="mt-8 grid gap-6 lg:grid-cols-2">
-          <div class="rounded-2xl bg-stone-50 p-6 ring-1 ring-stone-100">
-            <h3 id="winRuleHeadline" class="text-lg font-semibold text-stone-900">How the presidency is won</h3>
-            <ul id="winRuleConditions" class="mt-3 space-y-2 text-[14px] leading-6 text-stone-700"></ul>
-            <p id="winRuleRunoff" class="mt-3 text-[13px] leading-6 text-stone-500"></p>
-            <p id="winRuleWhy" class="mt-3 border-t border-stone-200 pt-3 text-[13px] leading-6 text-stone-600"></p>
-          </div>
-          <div class="rounded-2xl bg-stone-50 p-6 ring-1 ring-stone-100">
-            <h3 class="text-lg font-semibold text-stone-900">The electorate</h3>
-            <div class="mt-4 grid grid-cols-2 gap-4">
-              <div><p class="num-hero text-3xl font-semibold text-[#8f1d1d]" id="regVoters">&mdash;</p><p class="mt-1 text-[13px] text-stone-500">Registered voters, 2022</p></div>
-              <div><p class="num-hero text-3xl font-semibold text-[#8f1d1d]" id="newVoters">&mdash;</p><p class="mt-1 text-[13px] text-stone-500">New voters expected, 2027</p></div>
-            </div>
-            <p id="registrationNote" class="mt-4 border-t border-stone-200 pt-3 text-[13px] leading-6 text-stone-600"></p>
-          </div>
-        </div>
-
-        <div class="mt-6 rounded-2xl bg-stone-50 p-6 ring-1 ring-stone-100">
-          <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="text-lg font-semibold text-stone-900">The historical record</h3>
-            <p class="text-[13px] text-stone-500">First-round presidential result, winner vs. runner-up</p>
-          </div>
-          <div id="historicalResults" class="mt-4 space-y-4"></div>
-        </div>
-
-        <div class="mt-6 rounded-2xl bg-stone-50 p-6 ring-1 ring-stone-100">
-          <h3 class="text-lg font-semibold text-stone-900">Analytical zones</h3>
-          <p id="zonesNote" class="mt-1 text-[13px] leading-6 text-stone-600"></p>
-          <div id="zonesList" class="mt-3 flex flex-wrap gap-2"></div>
-        </div>
-      </section>
-
-      <section class="grid gap-6 lg:grid-cols-2">
-        <div class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-          <div class="flex flex-wrap items-center justify-between gap-3">
-            <h2 class="text-2xl font-black">Coalition scenario lab</h2>
-            <button id="exportScenarioBtn" class="rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50">Export scenario</button>
-          </div>
-          <div class="mt-4 grid gap-3 sm:grid-cols-3"><label><span class="mb-1 block text-sm font-bold">Uncertainty ± points</span><input id="uncertaintyInput" type="number" value="4.5" step="0.5" min="0" max="20" class="w-full rounded-2xl border border-slate-200 px-4 py-3 font-bold"></label><label><span class="mb-1 block text-sm font-bold">Monte Carlo runs</span><input id="runsInput" type="number" value="5000" step="1000" min="1000" max="50000" class="w-full rounded-2xl border border-slate-200 px-4 py-3 font-bold"></label><label><span class="mb-1 block text-sm font-bold">Coalition transfer efficiency %</span><input id="transferInput" type="number" value="100" step="5" min="50" max="100" class="w-full rounded-2xl border border-slate-200 px-4 py-3 font-bold"></label></div>
-          <p class="mt-2 text-xs leading-5 text-slate-500">Transfer efficiency controls how much of each member candidate's individual support carries over when they merge into a coalition. 100% assumes perfect, frictionless vote transfer — a real coalition typically leaks some support to backlash, competing loyalties, or turnout effects, so try lowering this to stress-test that assumption.</p>
-          <div class="mt-4"><div id="coalitionsEditor" class="space-y-3"></div><button id="addCoalitionBtn" class="mt-3 rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50">Add coalition</button><button id="runScenarioBtn" class="ml-2 mt-3 rounded-2xl bg-[#8f1d1d] px-4 py-2 text-sm font-bold text-white hover:bg-[#751717]">Run simulation</button></div>
-          <div id="scenarioResults" class="mt-5 space-y-3"></div>
-        </div>
-        <div class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-          <h2 class="text-2xl font-black">Scenario chart</h2><p class="mt-1 text-sm text-slate-600">Latest selected-date aggregate share and simulated first-round probability.</p><div class="mini-chart mt-4"><canvas id="scenarioChart"></canvas></div></div>
-      </section>
-
-      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-        <h2 class="text-2xl font-black">MP seats simulation workspace</h2>
-        <p class="mt-1 text-sm text-slate-600">Paste a constituency baseline, or load the hosted one, and apply the current scenario's national swing.</p>
-        <details class="mt-4 rounded-2xl bg-slate-50 p-4"><summary class="cursor-pointer font-black">Input format example</summary><pre class="mt-3 overflow-auto rounded-xl bg-slate-900 p-4 text-xs text-slate-100">[{"constituency":"Example North","region":"Example","baseline":{"Coalition A":42,"Coalition B":35,"Other":23}},{"constituency":"Example South","region":"Example","baseline":{"Coalition A":30,"Coalition B":44,"Other":26}}]</pre></details>
-        <textarea id="seatInput" class="mt-4 min-h-40 w-full rounded-2xl border border-slate-200 p-4 font-mono text-xs" placeholder='Paste constituency baseline JSON here. Leave blank to use data/constituency_baseline.json if available.'></textarea>
-        <div class="mt-3 flex flex-wrap gap-2"><button id="loadSeatBaselineBtn" class="rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50">Load hosted baseline</button><button id="simulateSeatsBtn" class="rounded-2xl bg-[#8f1d1d] px-4 py-2 text-sm font-bold text-white hover:bg-[#751717]">Simulate MP seats</button></div>
-        <div id="seatResults" class="mt-5"></div>
-      </section>
-
-      <section class="rounded-[2rem] border border-rose-100 bg-white p-5 shadow-sm sm:p-6">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h2 class="text-2xl font-black">County explorer</h2>
-            <p class="mt-1 text-sm text-slate-600">Real Kenya county boundaries (all 47 counties). No vote or poll data is available at county level yet — this is a reference map, not a results map.</p>
-          </div>
-          <input id="countySearch" type="text" placeholder="Search a county…" class="w-full rounded-2xl border border-slate-200 px-4 py-2 text-sm font-bold sm:w-56" />
-        </div>
-        <div class="mt-4 grid gap-4 lg:grid-cols-3">
-          <div id="countyMap" class="lg:col-span-2 h-[420px] rounded-2xl border border-slate-200"></div>
-          <div class="rounded-2xl bg-slate-50 p-4">
-            <p class="text-xs font-black uppercase tracking-widest text-slate-500">Selected county</p>
-            <h3 id="countyName" class="mt-1 text-xl font-black text-slate-900">Tap a county</h3>
-            <p id="countyCode" class="mt-1 text-sm text-slate-500"></p>
-            <p class="mt-4 text-sm leading-6 text-slate-600">No county-level polling or election data is hosted for this county yet. Only the national TIFA waves shown above are currently available.</p>
-            <div id="countyList" class="mt-4 max-h-56 space-y-1 overflow-y-auto text-sm"></div>
-          </div>
-        </div>
-      </section>
-    </section>
-
-  </main>
+<main>
+<!-- CONTENT INJECTED BELOW -->
+</main>
 
 <script>
-function $(id){return document.getElementById(id)}
-function setVisible(id,show){$(id).classList.toggle('hidden',!show)}
-function unique(arr){return [...new Set(arr.filter(Boolean))]}
-function allCandidates(records){return unique(records.flatMap(r=>Object.keys(r.figures||{}))).sort((a,b)=>a.localeCompare(b));}
-function values(records,candidate){return records.map(r=>({record:r,value:Number(r.figures?.[candidate])})).filter(x=>Number.isFinite(x.value));}
-const fmtDate=s=>{if(!s)return '—';const d=new Date(s+'T00:00:00');return d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});};
-const pollLabel=s=>(s||'unknown').replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
-const pct=v=>Number.isFinite(v)?`${v.toFixed(1)}%`:'—';
-
-const CACHE_BUST='v='+Date.now();
-const DATA_URL='data/polls_data.json?'+CACHE_BUST;
-const BASELINE_URL='data/constituency_baseline.json?'+CACHE_BUST;
-const MODEL_REPORT_URL='data/model/model_quality_report.json?'+CACHE_BUST;
-const POLLING_AVERAGE_URL='data/model/polling_average.json?'+CACHE_BUST;
-
-let allRecords=[], filteredRecords=[], visibleCandidates=[], selectedCandidates=new Set(), trendChart=null, scenarioChart=null, lastScenario=[];
-
-function renderCountdown(electionDateStr){
-  const el=$('countdownDays'); if(!el) return;
-  const target=new Date((electionDateStr||'2027-08-10')+'T00:00:00');
-  const days=Math.max(0,Math.round((target-new Date())/(1000*60*60*24)));
-  el.textContent=days.toLocaleString()+' days';
-}
-
-async function loadElectoralContext(){
-  if(!document.getElementById('electoralContext')) return;
-  try{
-    const res=await fetch('data/electoral_context.json?'+CACHE_BUST,{cache:'no-store'});
-    if(!res.ok) throw new Error('context not hosted');
-    const d=await res.json();
-
-    const wr=d.win_rule||{};
-    $('winRuleHeadline').textContent=wr.headline||'How the presidency is won';
-    $('winRuleConditions').innerHTML=(wr.conditions||[]).map(c=>`<li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-[#8f1d1d]"></span><span>${c}</span></li>`).join('');
-    $('winRuleRunoff').textContent=wr.if_no_winner||'';
-    $('winRuleWhy').textContent=wr.why_it_matters||'';
-
-    const reg=d.registration||{};
-    $('regVoters').textContent=reg.registered_voters_2022?(reg.registered_voters_2022/1e6).toFixed(1)+'M':'—';
-    $('newVoters').textContent=reg.expected_new_voters_2027?'+'+(reg.expected_new_voters_2027/1e6).toFixed(1)+'M':'—';
-    $('registrationNote').textContent=reg.expected_new_voters_note||'';
-
-    const hist=d.historical_results||[];
-    const maxPct=Math.max(...hist.flatMap(h=>[h.winner_pct,h.runner_up_pct]),60);
-    $('historicalResults').innerHTML=hist.map(h=>`
-      <div>
-        <div class="flex items-baseline justify-between text-sm">
-          <span class="font-semibold text-stone-900">${h.year}</span>
-          <span class="text-stone-500">${h.first_round?'First-round result':'See note'}</span>
-        </div>
-        <div class="mt-2 space-y-1.5">
-          <div class="flex items-center gap-3">
-            <span class="w-28 flex-none text-[13px] font-semibold text-stone-700">${h.winner}</span>
-            <div class="h-5 flex-1 overflow-hidden rounded bg-stone-200"><div class="h-full rounded bg-[#8f1d1d]" style="width:${(h.winner_pct/maxPct*100).toFixed(1)}%"></div></div>
-            <span class="num-hero w-14 flex-none text-right text-[13px] font-semibold text-stone-900">${h.winner_pct}%</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="w-28 flex-none text-[13px] text-stone-600">${h.runner_up}</span>
-            <div class="h-5 flex-1 overflow-hidden rounded bg-stone-200"><div class="h-full rounded bg-stone-400" style="width:${(h.runner_up_pct/maxPct*100).toFixed(1)}%"></div></div>
-            <span class="num-hero w-14 flex-none text-right text-[13px] text-stone-600">${h.runner_up_pct}%</span>
-          </div>
-        </div>
-        <p class="mt-2 text-[12px] leading-5 text-stone-500">${h.note||''}</p>
-      </div>`).join('');
-
-    const z=d.zones||{};
-    $('zonesNote').textContent=z.note||'';
-    $('zonesList').innerHTML=(z.list||[]).map(name=>`<span class="rounded-full bg-white px-3 py-1 text-[13px] font-semibold text-stone-700 ring-1 ring-stone-200">${name}</span>`).join('');
-
-    renderCountdown((d.calendar||{}).election_date_estimated);
-  }catch(e){
-    $('electoralContext').style.display='none';
-    renderCountdown('2027-08-10');
-  }
-}
-
-async function loadBeyondHorseRace(){
-  if(!document.getElementById('beyondHorseRace')) return;
-  try{
-    const res=await fetch('data/alliance_preference.json?'+CACHE_BUST,{cache:'no-store'});
-    const rows=res.ok?await res.json():[];
-    $('alliancePreference').innerHTML=rows.length?rows.map(r=>`
-      <div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100">
-        <p class="text-xs font-bold text-slate-500">${fmtDate(r.date)} · ${r.pollster} · ${r.base||''}</p>
-        <div class="mt-2 grid gap-2 sm:grid-cols-2">
-          ${(r.pairings||[]).map(p=>`<div class="flex items-center justify-between rounded-xl bg-white px-3 py-2 ring-1 ring-slate-100"><span class="text-sm font-bold">${p.name}</span><span class="text-lg font-black text-[#8f1d1d]">${p.support_pct.toFixed(1)}%</span></div>`).join('')}
-        </div>
-        ${r.best_placed_to_beat_incumbent?`<p class="mt-3 text-xs font-bold text-slate-500">Seen as best-placed to beat the incumbent: ${r.best_placed_to_beat_incumbent.map(x=>`${x.name} ${x.support_pct.toFixed(1)}%`).join(' · ')}</p>`:''}
-        <a href="${r.source_url}" target="_blank" rel="noopener" class="mt-2 inline-block text-xs font-bold text-[#8f1d1d] underline">Source</a>
-      </div>`).join('') : '<p class="text-sm text-slate-500">No alliance-preference data hosted yet.</p>';
-  }catch(e){$('alliancePreference').innerHTML='<p class="text-sm text-slate-500">Could not load alliance-preference data.</p>';}
-
-  try{
-    const res=await fetch('data/integrity_confidence.json?'+CACHE_BUST,{cache:'no-store'});
-    const rows=res.ok?await res.json():[];
-    const latest=rows[rows.length-1];
-    if(latest){
-      const m=latest.metrics||{};
-      const cards=[
-        ['No confidence in 2027 election integrity', m.no_confidence_2027_election_integrity_pct],
-        ['Question validity of last 3 elections', m.question_validity_last_three_presidential_elections_pct],
-        ['No confidence in IEBC vetting', m.no_confidence_iebc_vetting_process_pct],
-        ['Aware IEBC missed a deadline', m.aware_iebc_missed_constitutional_deadline_pct]
-      ];
-      $('integrityConfidence').innerHTML=cards.map(([label,val])=>`<div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100"><p class="text-xs font-bold text-slate-500">${label}</p><p class="mt-1 text-2xl font-black text-[#8f1d1d]">${Number.isFinite(val)?val.toFixed(0)+'%':'—'}</p></div>`).join('')
-        + `<p class="col-span-2 mt-1 text-xs text-slate-500">${latest.pollster}, ${fmtDate(latest.date)}. Single wave — one reading, not a trend yet. <a href="${latest.source_url}" target="_blank" rel="noopener" class="font-bold text-[#8f1d1d] underline">Source</a></p>`;
-    }else{
-      $('integrityConfidence').innerHTML='<p class="col-span-2 text-sm text-slate-500">No integrity-confidence data hosted yet.</p>';
-    }
-  }catch(e){$('integrityConfidence').innerHTML='<p class="col-span-2 text-sm text-slate-500">Could not load integrity-confidence data.</p>';}
-
-  try{
-    const res=await fetch('data/coalition_realignment.json?'+CACHE_BUST,{cache:'no-store'});
-    const d=res.ok?await res.json():null;
-    if(d&&d.support_series&&d.support_series.length){
-      $('coalitionRealignment').innerHTML=`
-        <div class="space-y-2">
-          ${d.support_series.map(s=>`<div class="flex items-center justify-between rounded-xl bg-slate-50 px-3 py-2 ring-1 ring-slate-100"><span class="text-sm font-bold">${fmtDate(s.date)}</span><span class="text-sm">Support <strong class="text-[#8f1d1d]">${s.support_broad_based_government_pct?.toFixed(0)??'—'}%</strong>${s.oppose_broad_based_government_pct!=null?` · Oppose <strong>${s.oppose_broad_based_government_pct.toFixed(0)}%</strong>`:''}</span></div>`).join('')}
-        </div>
-        <p class="mt-2 text-xs text-slate-500">${d.known_gaps||''}</p>`;
-    }else{
-      $('coalitionRealignment').innerHTML='<p class="text-sm text-slate-500">No coalition-realignment data hosted yet.</p>';
-    }
-  }catch(e){$('coalitionRealignment').innerHTML='<p class="text-sm text-slate-500">Could not load coalition-realignment data.</p>';}
-
-  try{
-    const res=await fetch('data/verified_claims.json?'+CACHE_BUST,{cache:'no-store'});
-    const rows=res.ok?await res.json():[];
-    const badge={DEBUNKED_FAKE:'bg-red-100 text-red-900',VERIFIED_REAL:'bg-emerald-100 text-emerald-900',UNVERIFIED:'bg-amber-100 text-amber-900'};
-    $('verifiedClaims').innerHTML=rows.length?rows.map(r=>`
-      <div class="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-100">
-        <div class="flex flex-wrap items-center gap-2"><span class="rounded-full px-3 py-1 text-xs font-black ${badge[r.verdict]||'bg-slate-200 text-slate-700'}">${(r.verdict||'').replace(/_/g,' ')}</span><span class="text-xs text-slate-500">Checked ${fmtDate(r.checked_date)} by ${r.checked_by}</span></div>
-        <p class="mt-2 text-sm text-slate-700">${r.claim_summary}</p>
-        <p class="mt-2 text-xs leading-5 text-slate-500">${r.verdict_detail||''}</p>
-        <a href="${r.source_url}" target="_blank" rel="noopener" class="mt-2 inline-block text-xs font-bold text-[#8f1d1d] underline">Fact-check source</a>
-      </div>`).join('') : '<p class="text-sm text-slate-500">No claims checked yet.</p>';
-  }catch(e){$('verifiedClaims').innerHTML='<p class="text-sm text-slate-500">Could not load verification ledger.</p>';}
-}
-
-async function loadModelResults(){
-  try{
-    const [reportRes,avgRes]=await Promise.all([
-      fetch(MODEL_REPORT_URL,{cache:'no-store'}),
-      fetch(POLLING_AVERAGE_URL,{cache:'no-store'})
-    ]);
-    if(!reportRes.ok)throw new Error('Model report not hosted yet');
-    const report=await reportRes.json();
-    const averages=avgRes.ok?await avgRes.json():[];
-    const records=report.records||{}, coverage=report.coverage||{}, methodology=report.methodology||{};
-    $('modelStatus').textContent=`Model output loaded. ${methodology.forecast_status||'Descriptive polling-summary model only.'}`;
-    $('modelVersion').textContent=report.model_version||'—';
-    $('modelAverageRows').textContent=records.polling_average_rows??'0';
-    $('modelPollsterRows').textContent=records.pollster_quality_rows??'0';
-    $('modelDateCoverage').textContent=`${coverage.date_min||'—'} → ${coverage.date_max||'—'}`;
-    $('modelForecastStatus').textContent=String(methodology.forecast_status||'Not a full forecast').replace('Not a full election forecast; ','');
-    const warnings=report.warnings||[];
-    $('modelWarnings').innerHTML=warnings.length?warnings.slice(0,6).map(x=>`<li>${x}</li>`).join(''):'<li>No model warnings generated.</li>';
-    $('modelAverageList').innerHTML=(Array.isArray(averages)?averages:[]).slice(0,8).map(row=>`<div class="flex items-center justify-between gap-3 rounded-2xl bg-white px-4 py-3 ring-1 ring-slate-100"><span class="font-black">${row.candidate}</span><span class="text-right"><strong>${Number(row.weighted_average).toFixed(1)}%</strong><br><span class="text-xs text-slate-500">95% range ${Number(row.lower_95).toFixed(1)}–${Number(row.upper_95).toFixed(1)}%</span></span></div>`).join('')||'<p>No weighted averages generated.</p>';
-  }catch(e){
-    $('modelStatus').textContent=`Model output files are not available yet. Run python backend/polling_model.py or the GitHub Action. ${e.message}`;
-    $('modelVersion').textContent='Not generated';
-    $('modelAverageRows').textContent='—';
-    $('modelPollsterRows').textContent='—';
-    $('modelDateCoverage').textContent='—';
-    $('modelForecastStatus').textContent='—';
-    $('modelWarnings').innerHTML='<li>Model report unavailable.</li>';
-    $('modelAverageList').innerHTML='';
-  }
-}
-
-function populateFilters(){const types=unique(allRecords.map(r=>r.poll_type));$('pollTypeFilter').innerHTML=types.map(t=>`<option value="${t}">${pollLabel(t)}</option>`).join('');const pollsters=unique(allRecords.map(r=>r.pollster));$('pollsterFilter').innerHTML='<option value="all">All pollsters</option>'+pollsters.map(p=>`<option value="${p}">${p}</option>`).join('');const dates=unique(allRecords.map(r=>r.date)).sort();$('scenarioDate').innerHTML=dates.map(d=>`<option value="${d}">${fmtDate(d)}</option>`).join('');$('scenarioDate').value=dates[dates.length-1];}
-
-function initDashboard(){if(!allRecords.length){$('lastPollDate').textContent='—';$('pollsLoaded').textContent='0';$('pollstersLoaded').textContent='0';setVisible('emptyState',true);return;}visibleCandidates=allCandidates(allRecords);selectedCandidates=new Set(visibleCandidates);populateFilters();renderCandidateChips();applyFilters();setVisible('dashboard',true);renderCoalitions();runScenario();}
-
-function renderCandidateChips(){$('candidateChips').innerHTML=visibleCandidates.map(c=>`<button class="chip active" data-candidate="${c}">${c}</button>`).join('');document.querySelectorAll('[data-candidate]').forEach(btn=>btn.onclick=()=>{const c=btn.dataset.candidate;if(selectedCandidates.has(c)){selectedCandidates.delete(c);btn.classList.remove('active')}else{selectedCandidates.add(c);btn.classList.add('active')}applyFilters();renderCoalitions();runScenario();});}
-
-function applyFilters(){const type=$('pollTypeFilter').value,pollster=$('pollsterFilter').value,start=$('startDateFilter').value||'2025-06-01';filteredRecords=allRecords.filter(r=>r.date>=start&&r.poll_type===type&&(pollster==='all'||r.pollster===pollster)).sort((a,b)=>a.date.localeCompare(b.date));renderSummary();renderMetrics();renderTrend();}
-
-function renderSummary(){const latest=[...filteredRecords].sort((a,b)=>a.date.localeCompare(b.date)).pop();$('lastPollDate').textContent=latest?fmtDate(latest.date):'—';$('pollsLoaded').textContent=filteredRecords.length;$('pollstersLoaded').textContent=unique(filteredRecords.map(r=>r.pollster)).length;$('coverageNote').textContent=`Coverage: ${unique(filteredRecords.map(r=>r.pollster)).join(', ')||'none'} · ${filteredRecords.length} compatible record(s).`;}
-
-function renderMetrics(){const grid=$('metricsGrid');const candidates=[...selectedCandidates];if(!filteredRecords.length){grid.innerHTML='<div class="rounded-3xl bg-slate-50 p-6 text-slate-600">No compatible records for the selected filters.</div>';return;}grid.innerHTML=candidates.map(c=>{const series=values(filteredRecords,c);const latest=series[series.length-1];const prev=series[series.length-2];const delta=latest&&prev?latest.value-prev.value:null;const cls=delta>0?'text-emerald-700':delta<0?'text-red-700':'text-slate-500';return `<article class="rounded-3xl bg-slate-50 p-5 ring-1 ring-slate-100"><h3 class="font-black">${c}</h3><p class="mt-4 text-4xl font-black text-[#8f1d1d]">${latest?pct(latest.value):'—'}</p><p class="mt-2 text-sm font-black ${cls}">${delta===null?'No prior':`${delta>0?'+':''}${delta.toFixed(1)} pts`}</p><p class="mt-5 text-sm text-slate-500">${latest?.record.pollster||'—'}</p><p class="text-sm text-slate-500">${latest?fmtDate(latest.record.date):'—'}</p></article>`}).join('');}
-
-function renderTrend(){const labels=unique(filteredRecords.map(r=>r.date)).sort();$('trendRange').textContent=labels.length?`${fmtDate(labels[0])} – ${fmtDate(labels[labels.length-1])}`:'No compatible records';const datasets=[...selectedCandidates].map(c=>({label:c,data:labels.map(d=>{const r=filteredRecords.find(x=>x.date===d);const v=Number(r?.figures?.[c]);return Number.isFinite(v)?v:null;}),tension:.28,borderWidth:3,pointRadius:4,spanGaps:true}));if(trendChart)trendChart.destroy();trendChart=new Chart($('trendChart'),{type:'line',data:{labels:labels.map(fmtDate),datasets},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y?.toFixed(1)}%`}}},scales:{y:{min:0,suggestedMax:45,ticks:{callback:v=>v+'%'},grid:{color:'rgba(15,23,42,.1)'}},x:{grid:{color:'rgba(15,23,42,.06)'}}}}});}
-
-function selectedDateRecord(){const date=$('scenarioDate').value,type=$('pollTypeFilter').value;const pollster=$('pollsterFilter').value;const pool=allRecords.filter(r=>r.date<=date&&r.poll_type===type&&(pollster==='all'||r.pollster===pollster)).sort((a,b)=>a.date.localeCompare(b.date));return pool[pool.length-1]||null;}
-
-function defaultCoalitions(){const cs=visibleCandidates;const ruto=cs.find(c=>/ruto/i.test(c));const opp=cs.filter(c=>!/ruto/i.test(c));return [{name:'Incumbent lane',members:ruto?[ruto]:[]},{name:'United opposition lane',members:opp.slice(0,4)}];}
-
-function renderCoalitions(coals=defaultCoalitions()){const ed=$('coalitionsEditor');ed.innerHTML=coals.map((coal,i)=>`<div class="rounded-2xl border border-slate-200 p-4" data-coalition="${i}"><input class="coal-name w-full rounded-xl border border-slate-200 px-3 py-2 font-bold" value="${coal.name}"><div class="mt-3 grid gap-2 sm:grid-cols-2">${visibleCandidates.map(c=>`<label class="flex items-center gap-2 text-sm"><input type="checkbox" class="coal-member" value="${c}" ${coal.members.includes(c)?'checked':''}> ${c}</label>`).join('')}</div></div>`).join('');}
-
-function readCoalitions(){return [...document.querySelectorAll('[data-coalition]')].map(box=>({name:box.querySelector('.coal-name').value||'Coalition',members:[...box.querySelectorAll('.coal-member:checked')].map(i=>i.value)})).filter(c=>c.members.length);}
-function randn(){let u=0,v=0;while(u===0)u=Math.random();while(v===0)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
-function runScenario(){const rec=selectedDateRecord();const coals=readCoalitions();if(!rec||!coals.length){$('scenarioResults').innerHTML='<p class="text-sm text-slate-500">No scenario data for selected filters.</p>';return;}const uncertainty=Math.max(0,Number($('uncertaintyInput').value)||0);const runs=Math.min(50000,Math.max(1000,Number($('runsInput').value)||5000));const transferPct=Math.min(100,Math.max(50,Number($('transferInput').value)||100));const transferEfficiency=transferPct/100;const base=coals.map(c=>({name:c.name,share:c.members.reduce((sum,m)=>sum+(Number(rec.figures?.[m])||0),0)*(c.members.length>1?transferEfficiency:1),members:c.members}));const wins=Object.fromEntries(base.map(b=>[b.name,0]));let firstRound=0;for(let i=0;i<runs;i++){const draw=base.map(b=>({name:b.name,share:Math.max(0,b.share+randn()*uncertainty)})).sort((a,b)=>b.share-a.share);const total=draw.reduce((s,d)=>s+d.share,0)||1;draw.forEach(d=>d.norm=d.share/total*100);if(draw[0].norm>50){wins[draw[0].name]++;firstRound++;}}
-lastScenario=base.map(b=>({name:b.name,share:b.share,winProb:wins[b.name]/runs*100,members:b.members}));$('scenarioResults').innerHTML=lastScenario.sort((a,b)=>b.share-a.share).map(r=>`<div class="rounded-2xl bg-slate-50 p-4"><div class="flex items-center justify-between gap-3"><div><p class="font-black">${r.name}</p><p class="text-xs text-slate-500">${r.members.join(' + ')}</p></div><div class="text-right"><p class="text-2xl font-black text-[#8f1d1d]">${r.share.toFixed(1)}%</p><p class="text-xs font-bold text-slate-500">First-round win ${r.winProb.toFixed(1)}%</p></div></div></div>`).join('')+`<p class="text-xs text-slate-500">Runoff-likely simulation share: ${(100-firstRound/runs*100).toFixed(1)}%. Coalition transfer efficiency: ${transferPct}%. Model uses simple normal polling error; not a forecast.</p>`;renderScenarioChart();}
-function renderScenarioChart(){if(scenarioChart)scenarioChart.destroy();scenarioChart=new Chart($('scenarioChart'),{type:'bar',data:{labels:lastScenario.map(x=>x.name),datasets:[{label:'Aggregate share',data:lastScenario.map(x=>x.share),borderWidth:1},{label:'First-round win probability',data:lastScenario.map(x=>x.winProb),borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},scales:{y:{beginAtZero:true,ticks:{callback:v=>v+'%'}}}}});}
-
-async function loadSeatBaseline(){try{const res=await fetch(BASELINE_URL,{cache:'no-store'});if(!res.ok)throw new Error('No hosted baseline found');$('seatInput').value=JSON.stringify(await res.json(),null,2);}catch(e){$('seatResults').innerHTML=`<p class="rounded-2xl bg-amber-50 p-4 text-sm text-amber-950">${e.message}. Paste a baseline JSON manually.</p>`}}
-function simulateSeats(){let rows=[];try{rows=JSON.parse($('seatInput').value||'[]')}catch(e){$('seatResults').innerHTML='<p class="rounded-2xl bg-red-50 p-4 text-sm text-red-900">Invalid JSON.</p>';return;}if(!Array.isArray(rows)||!rows.length){$('seatResults').innerHTML='<p class="rounded-2xl bg-slate-50 p-4 text-sm text-slate-600">No constituency baseline provided.</p>';return;}const coals=lastScenario.length?lastScenario:readCoalitions().map(c=>({name:c.name,share:0}));const national=Object.fromEntries(coals.map(c=>[c.name,c.share]));const seats={};rows.forEach(row=>{const base=row.baseline||{};const adjusted={};Object.keys(base).forEach(k=>{adjusted[k]=Math.max(0,(base[k]||0)+(national[k]||0)-(base.__national?.[k]||0));});const winner=Object.entries(adjusted).sort((a,b)=>b[1]-a[1])[0]?.[0]||'Unknown';seats[winner]=(seats[winner]||0)+1;});$('seatResults').innerHTML='<div class="grid gap-3 sm:grid-cols-3">'+Object.entries(seats).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="rounded-2xl bg-slate-50 p-4"><p class="font-black">${k}</p><p class="text-3xl font-black text-[#8f1d1d]">${v}</p><p class="text-xs text-slate-500">Projected seats</p></div>`).join('')+'</div>';}
-
-async function loadData(){
-  setVisible('loadingState',true);setVisible('errorState',false);setVisible('emptyState',false);setVisible('dashboard',false);
-  await loadModelResults();
-  await loadElectoralContext();
-  await loadBeyondHorseRace();
-  try{
-    const res=await fetch(DATA_URL,{cache:'no-store'});
-    if(!res.ok)throw new Error(`HTTP ${res.status}`);
-    const data=await res.json();
-    if(!Array.isArray(data))throw new Error('polls_data.json must be an array');
-    allRecords=data.filter(r=>r&&r.date&&r.figures&&typeof r.figures==='object');
-    initDashboard();
-  }catch(e){
-    $('errorMessage').textContent=`${e.message}. Confirm ${DATA_URL} exists in the repository and GitHub Pages has redeployed.`;
-    setVisible('errorState',true);
-  }finally{
-    setVisible('loadingState',false);
-  }
-}
-
-$('refreshBtn').onclick=loadData;
-$('pollTypeFilter').onchange=()=>{applyFilters();runScenario();};
-$('pollsterFilter').onchange=()=>{applyFilters();runScenario();};
-$('startDateFilter').onchange=applyFilters;
-$('scenarioDate').onchange=runScenario;
-$('addCoalitionBtn').onclick=()=>{const coals=readCoalitions();coals.push({name:'New coalition',members:[]});renderCoalitions(coals)};
-$('runScenarioBtn').onclick=runScenario;
-$('loadSeatBaselineBtn').onclick=loadSeatBaseline;
-$('simulateSeatsBtn').onclick=simulateSeats;
-$('exportScenarioBtn').onclick=()=>{
-  const blob=new Blob([JSON.stringify({generatedAt:new Date().toISOString(),intendedUse:'aggregate_scenario_sensitivity_only',filters:{pollType:$('pollTypeFilter').value,pollster:$('pollsterFilter').value,startDate:$('startDateFilter').value,scenarioDate:$('scenarioDate').value},assumptions:{uncertaintyPoints:Number($('uncertaintyInput').value),monteCarloRuns:Number($('runsInput').value),coalitionTransferEfficiencyPct:Number($('transferInput').value)},coalitions:readCoalitions(),results:lastScenario},null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='scenario_export.json';a.click();URL.revokeObjectURL(a.href);
+/* ================= data + helpers ================= */
+const BUST='v='+Date.now();
+const F={
+  polls:'data/polls_data.json',
+  avg:'data/model/polling_average.json',
+  ctx:'data/electoral_context.json',
+  alliance:'data/alliance_preference.json',
+  integrity:'data/integrity_confidence.json',
+  coalition:'data/coalition_realignment.json',
+  claims:'data/verified_claims.json',
+  counties:'data/kenya_counties.geojson',
+  baseline:'data/constituency_baseline.json'
 };
+const PALETTE=['#1B5E43','#B8722A','#48586A','#3F7C7A','#7A4E6E','#9C6B3F','#557A55'];
+const $=s=>document.querySelector(s);
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
+const fmtDate=s=>{if(!s)return '—';const d=new Date(s+'T00:00:00');return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});};
+const fmtShort=s=>{if(!s)return '';const d=new Date(s+'T00:00:00');return d.toLocaleDateString('en-GB',{month:'short',year:'2-digit'});};
+const pct=v=>Number.isFinite(v)?v.toFixed(v%1?1:0)+'%':'—';
+const uniq=a=>[...new Set(a.filter(Boolean))];
+async function getJSON(path){const r=await fetch(path+'?'+BUST,{cache:'no-store'});if(!r.ok)throw new Error(path+' '+r.status);return r.json();}
+const DATA={};
 
-let countyMap=null, countyLayer=null, selectedCountyLayer=null;
-async function initCountyExplorer(){
-  if(!document.getElementById('countyMap')) return;
-  countyMap=L.map('countyMap',{scrollWheelZoom:false}).setView([0.35,37.9],6);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors',maxZoom:10}).addTo(countyMap);
-  let geo;
-  try{
-    const res=await fetch('data/kenya_counties.geojson',{cache:'no-store'});
-    if(!res.ok)throw new Error('Boundary file not hosted');
-    geo=await res.json();
-  }catch(e){
-    $('countyName').textContent='Boundary data unavailable';
-    $('countyCode').textContent=e.message;
-    return;
-  }
-  const byName={};
-  countyLayer=L.geoJSON(geo,{
-    style:{color:'#8f1d1d',weight:1,fillColor:'#fecaca',fillOpacity:0.25},
-    onEachFeature:(feature,layer)=>{
-      byName[feature.properties.county]=layer;
-      layer.on('click',()=>selectCounty(feature.properties, layer));
-      layer.bindTooltip(feature.properties.county,{sticky:true});
-    }
-  }).addTo(countyMap);
-  countyMap.fitBounds(countyLayer.getBounds());
-  const names=Object.keys(byName).sort((a,b)=>a.localeCompare(b));
-  $('countyList').innerHTML=names.map(n=>`<button class="block w-full rounded-lg px-2 py-1 text-left hover:bg-white" data-county="${n}">${n}</button>`).join('');
-  $('countyList').querySelectorAll('[data-county]').forEach(btn=>btn.onclick=()=>{
-    const layer=byName[btn.dataset.county];
-    selectCounty(layer.feature.properties, layer);
-    countyMap.fitBounds(layer.getBounds());
-  });
-  $('countySearch').addEventListener('input',()=>{
-    const q=$('countySearch').value.trim().toLowerCase();
-    $('countyList').querySelectorAll('[data-county]').forEach(btn=>{
-      btn.style.display=btn.dataset.county.toLowerCase().includes(q)?'':'none';
-    });
-  });
-  function selectCounty(props, layer){
-    if(selectedCountyLayer)selectedCountyLayer.setStyle({color:'#8f1d1d',weight:1,fillColor:'#fecaca',fillOpacity:0.25});
-    layer.setStyle({color:'#8f1d1d',weight:3,fillColor:'#8f1d1d',fillOpacity:0.45});
-    selectedCountyLayer=layer;
-    $('countyName').textContent=props.county;
-    $('countyCode').textContent=`County code ${props.code}${props.proxyFallback?' · boundary approximated':''}`;
-  }
+/* ================= section shell builder ================= */
+function section(id,eyebrow,title,sub){
+  const s=el('section','section');s.id=id;
+  const w=el('div','wrap');
+  w.appendChild(el('p','eyebrow',eyebrow));
+  w.appendChild(el('h2','h-sec',title));
+  if(sub)w.appendChild(el('p','sub',sub));
+  const body=el('div');body.style.marginTop='28px';
+  w.appendChild(body);s.appendChild(w);
+  document.querySelector('main').appendChild(s);
+  return body;
 }
-initCountyExplorer();
-loadData();
+
+/* ================= HERO standings ================= */
+function renderStandings(){
+  const all=(DATA.avg||[]).slice().sort((a,b)=>b.weighted_average-a.weighted_average);
+  const host=$('#standings');host.innerHTML='';
+  if(!all.length){host.innerHTML='<div class="stand-foot">Polling average not available.</div>';return;}
+  const TOP=6;
+  const avg=all.slice(0,TOP);
+  const rest=all.slice(TOP);
+  const max=Math.max(...avg.map(a=>a.upper_95||a.weighted_average),35);
+  avg.forEach((a,i)=>{
+    const row=el('div','stand-row');
+    row.appendChild(el('div','stand-name',`<span class="rank">${i+1}</span>${a.candidate}`));
+    const track=el('div','stand-track');
+    const lo=a.lower_95??a.weighted_average, hi=a.upper_95??a.weighted_average;
+    const range=el('div','stand-range');
+    range.style.left=(lo/max*100)+'%';range.style.width=((hi-lo)/max*100)+'%';
+    const bar=el('div','stand-bar'+(i===0?' lead':''));
+    bar.style.width=(a.weighted_average/max*100)+'%';
+    const val=el('div','stand-val');
+    val.style.left=(a.weighted_average/max*100)+'%';
+    val.textContent=a.weighted_average.toFixed(0)+'%';
+    track.appendChild(range);track.appendChild(bar);track.appendChild(val);
+    row.appendChild(track);
+    host.appendChild(row);
+  });
+  if(rest.length){
+    const names=rest.map(r=>`${r.candidate} ${r.weighted_average.toFixed(0)}%`).join(' · ');
+    const more=el('div','stand-foot');more.style.paddingTop='14px';more.style.borderTop='1px solid rgba(255,255,255,.09)';more.style.marginTop='0';
+    more.innerHTML=`<span style="color:#6E9585;font-weight:700">Also running:</span> ${names}`;
+    host.appendChild(more);
+  }
+  const lead=avg[0], second=avg[1];
+  const gap=second?(lead.weighted_average-second.weighted_average):null;
+  const clear=gap!=null && gap > (lead.uncertainty_margin+second.uncertainty_margin)/2;
+  $('#standNote').innerHTML=`The shaded band on each bar is the <b>likely range</b> — where the true number probably sits, given how few polls exist. `+
+    (second?`${lead.candidate} leads ${second.candidate} by about ${gap.toFixed(0)} points. `+
+      (clear?`That gap is wide enough to look real.`:`That gap is inside the margin for error, so treat it as too close to call for now.`):``)+
+    ` No one is near the <b>50%+1</b> needed to win outright.`;
+}
+
+/* ================= hero meta chips ================= */
+function renderHeroMeta(){
+  const polls=DATA.polls||[];
+  const dates=uniq(polls.map(p=>p.date)).sort();
+  const latest=dates[dates.length-1];
+  const houses=uniq(polls.map(p=>p.pollster));
+  const elDate=((DATA.ctx||{}).calendar||{}).election_date_estimated||'2027-08-10';
+  const days=Math.max(0,Math.round((new Date(elDate+'T00:00:00')-new Date())/864e5));
+  const m=$('#heroMeta');m.innerHTML='';
+  const chip=(h)=>{const c=el('span','hero-chip',h);m.appendChild(c);};
+  chip(`<b>${days.toLocaleString()}</b> days to election day`);
+  chip(`Latest poll <b>${fmtDate(latest)}</b>`);
+  chip(`<b>${polls.length}</b> polls · <b>${houses.length}</b> pollsters`);
+}
+
+/* ================= COUNTDOWN section ================= */
+function buildCountdown(){
+  const body=section('countdown','The clock','The road to August 2027','Kenya votes on the second Tuesday of August. Here is where we are on that road, and how fresh the latest polling is.');
+  const ctx=DATA.ctx||{};
+  const elDate=(ctx.calendar||{}).election_date_estimated||'2027-08-10';
+  const target=new Date(elDate+'T00:00:00');
+  const days=Math.max(0,Math.round((target-new Date())/864e5));
+  const start=new Date('2022-08-09T00:00:00');
+  const prog=Math.min(100,Math.max(0,(new Date()-start)/(target-start)*100));
+  const polls=DATA.polls||[];
+  const latest=uniq(polls.map(p=>p.date)).sort().pop();
+  const sinceLatest=latest?Math.round((new Date()-new Date(latest+'T00:00:00'))/864e5):null;
+
+  const band=el('div','cd-band');
+  const c1=el('div','card');c1.style.padding='22px';
+  c1.innerHTML=`<div class="k" style="font-family:'Libre Franklin';font-weight:700;font-size:12.5px;color:var(--ink-soft)">DAYS TO ELECTION DAY</div>
+    <div class="cd-big tnum">${days.toLocaleString()}</div>
+    <div class="muted" style="font-size:13px;margin-top:6px">Election expected <b>${fmtDate(elDate)}</b></div>
+    <div class="cd-track"><div class="cd-fill" style="width:${prog.toFixed(1)}%"></div></div>
+    <div class="faint" style="font-size:12px;margin-top:8px">${prog.toFixed(0)}% of the way from the 2022 vote to 2027</div>`;
+  band.appendChild(c1);
+
+  const c2=el('div','stat');
+  c2.innerHTML=`<div class="k">HOW FRESH IS THIS?</div><div class="v tnum">${sinceLatest!=null?sinceLatest:'—'}</div><div class="d">days since the newest published poll (${fmtDate(latest)})</div>`;
+  band.appendChild(c2);
+
+  const reg=ctx.registration||{};
+  const c3=el('div','stat');
+  c3.innerHTML=`<div class="k">NEW VOTERS EXPECTED</div><div class="v tnum">${reg.expected_new_voters_2027?'+'+(reg.expected_new_voters_2027/1e6).toFixed(1)+'M':'—'}</div><div class="d">mostly young Kenyans — the biggest unknown in any projection</div>`;
+  band.appendChild(c3);
+
+  body.appendChild(band);
+}
+
+/* ================= DISTANCE TO WIN ================= */
+function buildDistance(){
+  const avg=(DATA.avg||[]).slice().sort((a,b)=>b.weighted_average-a.weighted_average);
+  if(!avg.length)return;
+  const lead=avg[0];
+  const body=section('distance','The finish line','How far is the leader from winning?','To win outright a candidate needs more than half the national vote (50%+1) — plus at least a quarter of the vote in 24 of 47 counties. If no one clears that bar, the top two go to a run-off.');
+  const g=el('div');g.style.margin='40px 0 8px';
+  const you=Math.min(100,lead.weighted_average);
+  g.innerHTML=`
+    <div class="gauge">
+      <div class="gauge-fill" style="width:${you}%"></div>
+      <div class="gauge-you" style="left:${you}%">${lead.candidate.split(' ').slice(-1)[0]} ${lead.weighted_average.toFixed(0)}%</div>
+      <div class="gauge-mark" style="left:25%"></div>
+      <div class="gauge-lab" style="left:25%">25% county line</div>
+      <div class="gauge-mark win" style="left:50%"></div>
+      <div class="gauge-lab win" style="left:50%">50% win line</div>
+    </div>`;
+  body.appendChild(g);
+  const gapToWin=(50-lead.weighted_average);
+  body.appendChild(el('p','note',`<b>Bottom line:</b> the current leader (${lead.candidate}) sits about <b>${gapToWin.toFixed(0)} points</b> short of an outright win. With the field this split and no one close to 50%, a <b>second-round run-off looks likely</b> on today's numbers — which is exactly why who teams up with whom matters so much.`));
+}
+
+/* ================= TREND (hand-built SVG) ================= */
+let trendState={selected:null};
+function buildTrend(){
+  const body=section('trend','Movement','How support has shifted','Each line is one candidate across every published poll. We show the leading names by default — tap any name to add or remove it.');
+  const polls=(DATA.polls||[]).filter(p=>p.poll_type==='preferred_presidential_aspirant').slice().sort((a,b)=>a.date.localeCompare(b.date));
+  const dates=uniq(polls.map(p=>p.date)).sort();
+  const cands=uniq(polls.flatMap(p=>Object.keys(p.figures||{})));
+  const latestVal=c=>{for(let i=polls.length-1;i>=0;i--){const v=polls[i].figures?.[c];if(Number.isFinite(v))return v;}return 0;};
+  const ranked=cands.slice().sort((a,b)=>latestVal(b)-latestVal(a));
+  trendState.selected=new Set(ranked.slice(0,5));
+
+  const toggles=el('div');toggles.style.cssText='display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px';
+  ranked.forEach((c)=>{
+    const b=el('button','chip-toggle'+(trendState.selected.has(c)?' on':''),c);
+    b.onclick=()=>{trendState.selected.has(c)?trendState.selected.delete(c):trendState.selected.add(c);b.classList.toggle('on');drawTrend(polls,dates,ranked);};
+    toggles.appendChild(b);
+  });
+  body.appendChild(toggles);
+  const hold=el('div','chart-hold');hold.id='trendHold';body.appendChild(hold);
+  const cap=el('p','faint','Polls are spaced evenly by wave for readability, not by exact day gaps.');cap.style.fontSize='12.5px';cap.style.marginTop='10px';
+  body.appendChild(cap);
+  drawTrend(polls,dates,ranked);
+}
+function drawTrend(polls,dates,ranked){
+  const hold=$('#trendHold');if(!hold)return;
+  const W=Math.max(680,dates.length*150), H=380, padL=40,padR=120,padT=20,padB=44;
+  const sel=[...trendState.selected];
+  const maxY=Math.max(35,...polls.flatMap(p=>Object.values(p.figures||{}).filter(Number.isFinite)))+3;
+  const x=i=>padL+(dates.length<=1?0:i/(dates.length-1))*(W-padL-padR);
+  const y=v=>padT+(1-v/maxY)*(H-padT-padB);
+  let g='';
+  for(let t=0;t<=maxY;t+=10){g+=`<line class="grid" x1="${padL}" y1="${y(t)}" x2="${W-padR}" y2="${y(t)}"/><text class="axis-lab" x="${padL-8}" y="${y(t)+4}" text-anchor="end">${t}%</text>`;}
+  dates.forEach((d,i)=>{g+=`<text class="axis-lab" x="${x(i)}" y="${H-padB+20}" text-anchor="middle">${fmtShort(d)}</text>`;});
+  sel.forEach((c)=>{
+    const color=PALETTE[ranked.indexOf(c)%PALETTE.length];
+    const pts=[];dates.forEach((d,i)=>{const rec=polls.find(p=>p.date===d);const v=rec?.figures?.[c];if(Number.isFinite(v))pts.push([x(i),y(v),v]);});
+    if(!pts.length)return;
+    g+=`<polyline class="line" stroke="${color}" points="${pts.map(p=>p[0]+','+p[1]).join(' ')}"/>`;
+    pts.forEach(p=>{g+=`<circle class="dot" fill="${color}" cx="${p[0]}" cy="${p[1]}" r="4"/>`;});
+    const last=pts[pts.length-1];
+    g+=`<text class="end-lab" fill="${color}" x="${last[0]+10}" y="${last[1]+4}">${c.split(' ').slice(-1)[0]} ${last[2].toFixed(0)}%</text>`;
+  });
+  hold.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Support over time">${g}</svg>`;
+}
+
+/* ================= WIN RULES ================= */
+function buildRules(){
+  const wr=(DATA.ctx||{}).win_rule||{};
+  const body=section('rules','The rulebook','What it actually takes to win',wr.why_it_matters||'');
+  const gates=el('div','gates');
+  (wr.conditions||[]).forEach((c,i)=>{
+    const g=el('div','gate');
+    g.innerHTML=`<div class="gate-num">${i+1}</div><h4>${i===0?'Win the national vote':'Win broadly across the country'}</h4><p class="muted" style="font-size:14px;margin:8px 0 0">${c}</p>`;
+    gates.appendChild(g);
+  });
+  body.appendChild(gates);
+  if(wr.if_no_winner)body.appendChild(el('p','note',`<b>If nobody clears both bars:</b> ${wr.if_no_winner}`));
+}
+
+/* ================= HISTORY ================= */
+function buildHistory(){
+  const hist=((DATA.ctx||{}).historical_results||[]);
+  if(!hist.length)return;
+  const body=section('history','The record','How past presidential races ended','Winner versus runner-up in the first round of Kenya\u2019s last three presidential elections. Recent contests have been close.');
+  const max=Math.max(...hist.flatMap(h=>[h.winner_pct,h.runner_up_pct]),60);
+  hist.forEach(h=>{
+    const card=el('div','card');card.style.cssText='padding:18px;margin-bottom:12px';
+    card.innerHTML=`
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <span class="franklin" style="font-weight:900;font-size:18px">${h.year}</span>
+        <span class="faint" style="font-size:12.5px">First round</span>
+      </div>
+      <div class="barrow">
+        <div class="lab"><span>${h.winner} · winner</span><b>${h.winner_pct}%</b></div>
+        <div class="barline"><span style="width:${h.winner_pct/max*100}%;background:var(--forest)"></span></div>
+        <div class="lab" style="margin-top:8px"><span class="muted">${h.runner_up}</span><b class="muted">${h.runner_up_pct}%</b></div>
+        <div class="barline"><span style="width:${h.runner_up_pct/max*100}%;background:var(--ink-faint)"></span></div>
+      </div>
+      <p class="faint" style="font-size:12.5px;margin:12px 0 0">${h.note||''}</p>`;
+    body.appendChild(card);
+  });
+}
+
+/* ================= WHAT-IF (coalition) ================= */
+let scenarioState={coalitions:null};
+function buildWhatIf(){
+  const body=section('whatif','Play it out','What if candidates joined forces?','Kenyan elections are won by alliances, not lone runners. Build two or more teams from the current candidates, decide how well their supporters would actually stick together, and see who would come out ahead — with an honest allowance for polls being off.');
+  const cands=uniq((DATA.polls||[]).flatMap(p=>Object.keys(p.figures||{}))).sort();
+  const ctrl=el('div','card');ctrl.style.padding='20px';
+  ctrl.innerHTML=`
+    <div class="grid2" style="gap:14px">
+      <label class="fld"><span>How much could the polls be off? (points either way)</span><input id="wiUncert" type="number" value="4.5" step="0.5" min="0" max="20"></label>
+      <label class="fld"><span>How well do combined supporters stick together? (%)</span><input id="wiTransfer" type="number" value="85" step="5" min="50" max="100"></label>
+    </div>
+    <p class="faint" style="font-size:12.5px;margin:10px 0 0">100% means every supporter follows their candidate into the alliance. Real coalitions leak — supporters stay home or defect — so 80\u201390% is usually more realistic.</p>
+    <div id="wiTeams" style="margin-top:16px"></div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+      <button class="btn" id="wiAdd">+ Add a team</button>
+      <button class="btn btn-primary" id="wiRun">See who wins</button>
+    </div>`;
+  body.appendChild(ctrl);
+  const out=el('div');out.id='wiOut';out.style.marginTop='20px';body.appendChild(out);
+
+  const ruto=cands.find(c=>/ruto/i.test(c));
+  const opp=cands.filter(c=>!/ruto/i.test(c));
+  scenarioState.coalitions=[{name:'President Ruto\u2019s side',members:ruto?[ruto]:[]},{name:'Opposition alliance',members:opp.slice(0,3)}];
+  renderTeams(cands);
+  $('#wiAdd').onclick=()=>{scenarioState.coalitions.push({name:'New team',members:[]});renderTeams(cands);};
+  $('#wiRun').onclick=runWhatIf;
+  runWhatIf();
+}
+function renderTeams(cands){
+  const host=$('#wiTeams');host.innerHTML='';
+  scenarioState.coalitions.forEach((coal,idx)=>{
+    const box=el('div','card');box.style.cssText='padding:14px;margin-bottom:10px;background:var(--line-soft)';
+    const head=el('input');head.type='text';head.value=coal.name;head.style.fontWeight='800';head.style.fontFamily="'Libre Franklin'";
+    head.oninput=()=>{coal.name=head.value;};
+    box.appendChild(head);
+    const grid=el('div');grid.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;margin-top:10px';
+    cands.forEach(c=>{
+      const lab=el('label');lab.style.cssText='display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600';
+      const cb=el('input');cb.type='checkbox';cb.checked=coal.members.includes(c);
+      cb.onchange=()=>{cb.checked?(coal.members.includes(c)||coal.members.push(c)):(coal.members=coal.members.filter(m=>m!==c));};
+      lab.appendChild(cb);lab.appendChild(document.createTextNode(c));grid.appendChild(lab);
+    });
+    box.appendChild(grid);host.appendChild(box);
+  });
+}
+function randn(){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+function latestFigures(){
+  const polls=(DATA.polls||[]).filter(p=>p.poll_type==='preferred_presidential_aspirant').slice().sort((a,b)=>a.date.localeCompare(b.date));
+  return polls[polls.length-1]?.figures||{};
+}
+function runWhatIf(){
+  const fig=latestFigures();
+  const uncert=Math.max(0,+$('#wiUncert').value||0);
+  const transfer=Math.min(100,Math.max(50,+$('#wiTransfer').value||100))/100;
+  const teams=scenarioState.coalitions.map(c=>({name:c.name,members:c.members,base:c.members.reduce((s,m)=>s+(+fig[m]||0),0)*(c.members.length>1?transfer:1)})).filter(t=>t.members.length);
+  const out=$('#wiOut');
+  if(teams.length<1){out.innerHTML='<p class="faint">Add at least one team with a candidate.</p>';return;}
+  const runs=5000;const wins=Object.fromEntries(teams.map(t=>[t.name,0]));let outright=0;
+  for(let i=0;i<runs;i++){
+    const draw=teams.map(t=>({name:t.name,v:Math.max(0,t.base+randn()*uncert)})).sort((a,b)=>b.v-a.v);
+    const tot=draw.reduce((s,d)=>s+d.v,0)||1;
+    if(draw[0].v/tot*100>50)outright++;
+    wins[draw[0].name]++;
+  }
+  const res=teams.map(t=>({...t,share:t.base,win:wins[t.name]/runs*100})).sort((a,b)=>b.share-a.share);
+  const max=Math.max(...res.map(r=>r.share),1);
+  let html='';
+  res.forEach((r,i)=>{
+    html+=`<div class="card" style="padding:16px;margin-bottom:10px${i===0?';border-color:var(--forest)':''}">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+        <div><div class="franklin" style="font-weight:900;font-size:16px">${r.name}</div><div class="faint" style="font-size:12px;margin-top:2px">${r.members.join(' + ')}</div></div>
+        <div style="text-align:right"><div class="franklin tnum" style="font-weight:900;font-size:26px;color:${i===0?'var(--forest)':'var(--ink)'}">${r.share.toFixed(0)}%</div><div class="faint" style="font-size:12px">of the vote</div></div>
+      </div>
+      <div class="barline" style="margin-top:10px"><span style="width:${r.share/max*100}%;background:${i===0?'var(--forest)':'var(--ink-faint)'}"></span></div>
+      <div class="muted" style="font-size:13px;margin-top:8px">Leads the field in <b>${r.win.toFixed(0)}%</b> of simulations</div>
+    </div>`;
+  });
+  html+=`<p class="note ${outright/runs*100<50?'warn':''}">In <b>${(100-outright/runs*100).toFixed(0)}%</b> of runs no team clears 50%+1 — meaning a <b>run-off</b> between the top two. Supporters assumed to stick together at <b>${($('#wiTransfer').value)}%</b>, with polls allowed to be off by <b>\u00b1${$('#wiUncert').value} points</b>. This is a what-if, not a prediction.</p>`;
+  out.innerHTML=html;
+}
+
+/* ================= BIGGER PICTURE ================= */
+function buildPicture(){
+  const body=section('picture','Beyond the headline number','The signals that decide the race','Who leads a poll matters less than who can build a winning coalition, whether people trust the vote, and whether the governing alliance holds. Here is what the data shows on each.');
+
+  const ap=(DATA.alliance||[])[0];
+  if(ap){
+    const c=el('div','card');c.style.cssText='padding:20px;margin-bottom:16px';
+    let bars='';const max=Math.max(...ap.pairings.map(p=>p.support_pct),1);
+    ap.pairings.forEach(p=>{bars+=`<div class="lab" style="margin-top:10px"><span>${p.name}</span><b>${p.support_pct}%</b></div><div class="barline"><span style="width:${p.support_pct/max*100}%;background:var(--forest)"></span></div>`;});
+    const bp=(ap.best_placed_to_beat_incumbent||[]).map(x=>`${x.name.split(' ').slice(-1)[0]} ${x.support_pct}%`).join(' · ');
+    c.innerHTML=`<h3 class="franklin" style="font-weight:900;font-size:19px;margin:0">Which alliance would voters prefer?</h3>
+      <p class="muted" style="font-size:13.5px;margin:6px 0 0">${ap.base} Asked ${fmtDate(ap.date)} by ${ap.pollster}.</p>
+      <div class="barrow">${bars}</div>
+      ${bp?`<p class="faint" style="font-size:13px;margin:14px 0 0">Seen as best-placed to beat the incumbent: ${bp}</p>`:''}
+      <a class="src" href="${ap.source_url}" target="_blank" rel="noopener">Source</a>`;
+    body.appendChild(c);
+  }
+
+  const grid=el('div','grid2');
+  const ig=(DATA.integrity||[])[0];
+  if(ig){
+    const m=ig.metrics||{};
+    const items=[
+      ['Have no confidence in a fair 2027 vote',m.no_confidence_2027_election_integrity_pct],
+      ['Doubt the results of the last 3 elections',m.question_validity_last_three_presidential_elections_pct],
+      ['Distrust how the IEBC was picked',m.no_confidence_iebc_vetting_process_pct]
+    ];
+    const c=el('div','card');c.style.padding='20px';
+    let rows='';items.forEach(([lab,v])=>{rows+=`<div class="lab" style="margin-top:12px"><span>${lab}</span><b>${v}%</b></div><div class="barline"><span style="width:${v}%;background:var(--ochre)"></span></div>`;});
+    c.innerHTML=`<h3 class="franklin" style="font-weight:900;font-size:19px;margin:0">Do people trust the vote?</h3>
+      <p class="muted" style="font-size:13.5px;margin:6px 0 0">Share of Kenyans who say they don\u2019t. A different question from who they support.</p>
+      <div class="barrow">${rows}</div>
+      <p class="faint" style="font-size:12.5px;margin:14px 0 0">${ig.pollster}, ${fmtDate(ig.date)}. One survey — a snapshot, not a trend. <a class="src" href="${ig.source_url}" target="_blank" rel="noopener">Source</a></p>`;
+    grid.appendChild(c);
+  }
+  const cr=DATA.coalition;
+  if(cr&&cr.support_series){
+    const s=cr.support_series;const first=s[0],last=s[s.length-1];
+    const c=el('div','card');c.style.padding='20px';
+    const down=last.support_broad_based_government_pct<first.support_broad_based_government_pct;
+    const arrow=down?'\u25BC':'\u25B2';
+    const col=down?'var(--rose)':'var(--forest)';
+    c.innerHTML=`<h3 class="franklin" style="font-weight:900;font-size:19px;margin:0">Is the governing alliance holding?</h3>
+      <p class="muted" style="font-size:13.5px;margin:6px 0 0">Public support for the Broad-Based Government arrangement.</p>
+      <div style="display:flex;align-items:flex-end;gap:16px;margin-top:18px">
+        <div><div class="faint" style="font-size:12px">${fmtShort(first.date)}</div><div class="franklin tnum" style="font-weight:900;font-size:30px">${first.support_broad_based_government_pct}%</div></div>
+        <div class="franklin" style="font-size:22px;color:${col};padding-bottom:6px">${arrow}</div>
+        <div><div class="faint" style="font-size:12px">${fmtShort(last.date)}</div><div class="franklin tnum" style="font-weight:900;font-size:30px;color:${col}">${last.support_broad_based_government_pct}%</div></div>
+        ${last.oppose_broad_based_government_pct!=null?`<div style="margin-left:auto;text-align:right"><div class="faint" style="font-size:12px">now oppose</div><div class="franklin tnum" style="font-weight:900;font-size:30px;color:var(--ochre)">${last.oppose_broad_based_government_pct}%</div></div>`:''}
+      </div>
+      <p class="faint" style="font-size:12.5px;margin:16px 0 0">Two readings only; the earlier one is second-hand. Directional, not definitive.</p>`;
+    grid.appendChild(c);
+  }
+  body.appendChild(grid);
+}
+
+/* ================= TRUST + fact-checks + sources + map ================= */
+function buildTrust(){
+  const body=section('trust','Trust & sources','How to trust these numbers','This tracker only shows figures traced to a named, published source, and is upfront about how thin the data still is. Below: fabricated \u201Cpolls\u201D we\u2019ve flagged, and every source behind the numbers above.');
+
+  const claims=DATA.claims||[];
+  if(claims.length){
+    const wrap=el('div');wrap.style.marginBottom='24px';
+    const h=el('h3','franklin','Fake polls, flagged');h.style.cssText='font-weight:900;font-size:19px;margin:0 0 4px';
+    wrap.appendChild(h);
+    wrap.appendChild(el('p','muted','Kenya\u2019s 2027 cycle will see invented \u201Cpoll results\u201D spread online. Verified against real evidence:'));
+    claims.forEach(c=>{
+      const badge=c.verdict==='DEBUNKED_FAKE'?'background:var(--rose-mist);color:var(--rose)':'background:var(--forest-mist);color:var(--forest)';
+      const card=el('div','card');card.style.cssText='padding:16px;margin-top:12px';
+      card.innerHTML=`<span class="pill" style="${badge}">${(c.verdict||'').replace(/_/g,' ')}</span>
+        <p style="font-size:14.5px;margin:10px 0 0">${c.claim_summary}</p>
+        <p class="faint" style="font-size:12.5px;margin:8px 0 0">${c.verdict_detail||''}</p>
+        <p class="faint" style="font-size:12px;margin:8px 0 0">Checked ${fmtDate(c.checked_date)} by ${c.checked_by}. <a class="src" href="${c.source_url}" target="_blank" rel="noopener">Fact-check</a></p>`;
+      wrap.appendChild(card);
+    });
+    body.appendChild(wrap);
+  }
+
+  const polls=DATA.polls||[];
+  const srcCard=el('div','card');srcCard.style.cssText='padding:20px;margin-bottom:24px';
+  let rows='';
+  polls.slice().sort((a,b)=>b.date.localeCompare(a.date)).forEach(p=>{
+    const n=p.sample_size?`n=${p.sample_size.toLocaleString()}`:'sample n/a';
+    rows+=`<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line-soft)">
+      <div><div style="font-weight:700;font-family:'Libre Franklin';font-size:14px">${p.pollster}</div><div class="faint" style="font-size:12px">${fmtDate(p.date)} · ${n} · checked by hand</div></div>
+      <a class="src" style="align-self:center" href="${p.source_url}" target="_blank" rel="noopener">View</a></div>`;
+  });
+  srcCard.innerHTML=`<h3 class="franklin" style="font-weight:900;font-size:19px;margin:0 0 8px">Every poll behind these numbers</h3>${rows}`;
+  body.appendChild(srcCard);
+
+  const mapWrap=el('div');mapWrap.id='countyExplorer';
+  mapWrap.innerHTML=`<h3 class="franklin" style="font-weight:900;font-size:19px;margin:0 0 4px">Kenya, county by county</h3>
+    <p class="muted" style="font-size:14px">All 47 counties. This is a reference map — there is no reliable county-level polling to show yet, and we won\u2019t invent any.</p>
+    <div class="grid2-wide" style="margin-top:16px">
+      <div id="countyMap" style="height:420px;border-radius:16px;border:1px solid var(--line)"></div>
+      <div class="card" style="padding:16px">
+        <div class="faint" style="font-size:12px;font-weight:700;font-family:'Libre Franklin'">SELECTED COUNTY</div>
+        <div id="countyName" class="franklin" style="font-weight:900;font-size:22px;margin-top:4px">Tap a county</div>
+        <div id="countyCode" class="faint" style="font-size:13px;margin-top:4px"></div>
+        <input id="countySearch" type="text" placeholder="Search a county…" style="margin-top:14px">
+        <div id="countyList" style="max-height:230px;overflow:auto;margin-top:10px;font-size:14px"></div>
+      </div>
+    </div>`;
+  body.appendChild(mapWrap);
+
+  const adv=el('details','adv');adv.style.marginTop='24px';
+  adv.innerHTML=`<summary>Advanced: how the average is built &amp; parliament seat estimator</summary>
+    <div class="adv-body">
+      <p class="muted" style="font-size:14px;margin:0 0 12px">The polling average weights each poll by how recent it is, its sample size, and the pollster\u2019s track record, and never mixes different question types. With only a handful of polls it is a descriptive summary, <b>not a forecast</b>. Details in <a class="src" href="https://github.com/dansamuka/kenya-election-intelligence-engine" target="_blank" rel="noopener">the open-source code</a>.</p>
+      <div id="modelMini" class="stat-grid c3"></div>
+      <h4 class="franklin" style="font-weight:800;margin:22px 0 6px">Parliament seat estimator (for analysts)</h4>
+      <p class="faint" style="font-size:13px;margin:0 0 10px">Paste a constituency baseline in JSON to apply the current what-if swing. Most users can skip this.</p>
+      <textarea id="seatInput" style="width:100%;min-height:120px;border:1px solid var(--line);border-radius:12px;padding:12px;font-family:monospace;font-size:12px" placeholder='[{"constituency":"Example","region":"X","baseline":{"Team A":42,"Team B":38}}]'></textarea>
+      <div style="display:flex;gap:8px;margin-top:8px"><button class="btn" id="seatLoad">Load hosted baseline</button><button class="btn btn-primary" id="seatRun">Estimate seats</button></div>
+      <div id="seatOut" style="margin-top:14px"></div>
+    </div>`;
+  body.appendChild(adv);
+  renderModelMini();
+  initMap();
+  $('#seatLoad').onclick=loadBaseline;
+  $('#seatRun').onclick=runSeats;
+}
+function renderModelMini(){
+  const host=$('#modelMini');if(!host)return;
+  const polls=DATA.polls||[];const houses=uniq(polls.map(p=>p.pollster));
+  const dates=uniq(polls.map(p=>p.date)).sort();
+  const cards=[
+    ['Polls in the average',polls.length],
+    ['Different pollsters',houses.length],
+    ['Span covered',`${fmtShort(dates[0])} → ${fmtShort(dates[dates.length-1])}`]
+  ];
+  host.innerHTML=cards.map(([k,v])=>`<div class="stat"><div class="k">${k.toUpperCase()}</div><div class="v tnum" style="font-size:26px">${v}</div></div>`).join('');
+}
+
+let mapObj=null,selLayer=null;
+async function initMap(){
+  if(!$('#countyMap'))return;
+  if(typeof L==='undefined'){$('#countyName').textContent='Map couldn\u2019t load';$('#countyCode').textContent='The map library was blocked by your network.';return;}
+  mapObj=L.map('countyMap',{scrollWheelZoom:false}).setView([0.35,37.9],6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap',maxZoom:10}).addTo(mapObj);
+  let geo;try{geo=await getJSON(F.counties);}catch(e){$('#countyName').textContent='Map data unavailable';return;}
+  const byName={};
+  const layer=L.geoJSON(geo,{style:{color:'#1B5E43',weight:1,fillColor:'#CFE3D8',fillOpacity:.35},onEachFeature:(f,l)=>{byName[f.properties.county]=l;l.on('click',()=>selCounty(f.properties,l));l.bindTooltip(f.properties.county,{sticky:true});}}).addTo(mapObj);
+  mapObj.fitBounds(layer.getBounds());
+  const names=Object.keys(byName).sort();
+  $('#countyList').innerHTML=names.map(n=>`<button style="display:block;width:100%;text-align:left;border:none;background:none;padding:6px 4px;cursor:pointer;font-family:'Public Sans';font-size:14px;color:var(--ink)" data-c="${n}">${n}</button>`).join('');
+  $('#countyList').querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{const l=byName[b.dataset.c];selCounty(l.feature.properties,l);mapObj.fitBounds(l.getBounds());});
+  $('#countySearch').oninput=()=>{const q=$('#countySearch').value.toLowerCase();$('#countyList').querySelectorAll('[data-c]').forEach(b=>b.style.display=b.dataset.c.toLowerCase().includes(q)?'':'none');};
+  function selCounty(p,l){if(selLayer)selLayer.setStyle({color:'#1B5E43',weight:1,fillColor:'#CFE3D8',fillOpacity:.35});l.setStyle({color:'#0E2E22',weight:3,fillColor:'#1B5E43',fillOpacity:.5});selLayer=l;$('#countyName').textContent=p.county;$('#countyCode').textContent=`County ${p.code}${p.proxyFallback?' · boundary approximated':''}`;}
+}
+async function loadBaseline(){try{const b=await getJSON(F.baseline);$('#seatInput').value=JSON.stringify(b,null,2);if(!b.length)$('#seatOut').innerHTML='<p class="note warn">The hosted baseline is empty — paste your own constituency data.</p>';}catch(e){$('#seatOut').innerHTML='<p class="note warn">No hosted baseline available. Paste your own.</p>';}}
+function runSeats(){let rows;try{rows=JSON.parse($('#seatInput').value||'[]');}catch(e){$('#seatOut').innerHTML='<p class="note warn">That isn\u2019t valid JSON.</p>';return;}if(!Array.isArray(rows)||!rows.length){$('#seatOut').innerHTML='<p class="note warn">Add at least one constituency.</p>';return;}const nat=Object.fromEntries(scenarioState.coalitions.map(c=>{const fig=latestFigures();return [c.name,c.members.reduce((s,m)=>s+(+fig[m]||0),0)];}));const seats={};rows.forEach(r=>{const base=r.baseline||{};const adj={};Object.keys(base).forEach(k=>adj[k]=Math.max(0,(base[k]||0)+(nat[k]||0)-((base.__nat||{})[k]||0)));const w=Object.entries(adj).sort((a,b)=>b[1]-a[1])[0]?.[0]||'—';seats[w]=(seats[w]||0)+1;});$('#seatOut').innerHTML='<div class="stat-grid c3">'+Object.entries(seats).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="stat"><div class="k">${k.toUpperCase()}</div><div class="v tnum">${v}</div><div class="d">projected seats</div></div>`).join('')+'</div>';}
+
+/* ================= FOOTER ================= */
+function buildFooter(){
+  const f=el('footer');
+  const w=el('div','wrap');
+  w.innerHTML=`<div class="foot-h">KENYA 2027 · POLL TRACKER</div>
+    <p style="max-width:70ch;font-size:13.5px;line-height:1.6;margin:12px 0 0">An independent, source-checked reading of Kenya\u2019s 2027 presidential race. It aggregates published opinion polls for public understanding — it is <b>not</b> a forecast, not affiliated with the IEBC or any campaign, and does no voter targeting. Where data is thin, it says so.</p>
+    <p style="font-size:12.5px;margin:16px 0 0"><a href="https://github.com/dansamuka/kenya-election-intelligence-engine" target="_blank" rel="noopener">Open-source code &amp; full methodology →</a></p>
+    <p class="tnum" id="footStamp" style="font-size:12px;color:#6E9585;margin:16px 0 0"></p>`;
+  f.appendChild(w);
+  const main=document.querySelector('main');
+  main.parentNode.insertBefore(f,main.nextSibling);
+}
+
+/* ================= BOOT ================= */
+async function boot(){
+  const results=await Promise.allSettled([
+    getJSON(F.polls),getJSON(F.avg),getJSON(F.ctx),getJSON(F.alliance),
+    getJSON(F.integrity),getJSON(F.coalition),getJSON(F.claims)
+  ]);
+  const [polls,avg,ctx,alliance,integrity,coalition,claims]=results.map(r=>r.status==='fulfilled'?r.value:null);
+  DATA.polls=polls||[];DATA.avg=avg||[];DATA.ctx=ctx||{};DATA.alliance=alliance||[];
+  DATA.integrity=integrity||[];DATA.coalition=coalition||{};DATA.claims=claims||[];
+
+  renderHeroMeta();
+  renderStandings();
+  buildCountdown();
+  buildDistance();
+  buildTrend();
+  buildWhatIf();
+  buildPicture();
+  buildRules();
+  buildHistory();
+  buildTrust();
+  buildFooter();
+
+  const stamp=new Date().toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  const fs=$('#footStamp');if(fs)fs.textContent='Page loaded '+stamp+' · data refreshes as new polls are published';
+}
+boot();
 </script>
 </body>
 </html>
