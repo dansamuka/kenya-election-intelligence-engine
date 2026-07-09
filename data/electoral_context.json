@@ -1,0 +1,62 @@
+{
+  "win_rule": {
+    "headline": "Winning Kenya's presidency takes more than a national majority",
+    "conditions": [
+      "More than 50% of all valid votes cast nationwide (50% + 1).",
+      "At least 25% of the votes cast in a minimum of 24 of Kenya's 47 counties."
+    ],
+    "if_no_winner": "If no candidate meets both conditions, a run-off between the top two is held within 30 days.",
+    "why_it_matters": "A candidate can lead the national vote and still fail the county-distribution test, or be forced into a run-off. This is why coalition breadth across regions, not just a high headline number, decides the outcome \u2014 and why a fragmented field tends to favour whoever has the widest regional base.",
+    "source_url": "https://www.electionguide.org/elections/id/2614/"
+  },
+  "calendar": {
+    "election_date_estimated": "2027-08-10",
+    "election_date_note": "Kenya holds general elections on the second Tuesday of August every five years; the 2027 date is fixed by that constitutional schedule.",
+    "milestones": [
+      { "label": "Second-Tuesday-of-August general election", "date": "2027-08-10", "status": "scheduled" }
+    ]
+  },
+  "registration": {
+    "registered_voters_2022": 22120000,
+    "registered_voters_2022_note": "Approximately 22.1 million Kenyans were registered for the August 2022 general election.",
+    "expected_new_voters_2027": 5700000,
+    "expected_new_voters_note": "An estimated 5.7 million new voters \u2014 mostly young Kenyans \u2014 are expected to register ahead of 2027, a bloc large enough to reshape the electorate. Youth turnout is historically lower and harder to poll, making this the single biggest source of uncertainty in any 2027 projection.",
+    "source_url": "https://www.aljazeera.com/news/2022/8/15/kenya-elections-2022-results-by-the-numbers"
+  },
+  "historical_results": [
+    {
+      "year": 2013,
+      "winner": "Uhuru Kenyatta",
+      "winner_pct": 50.5,
+      "runner_up": "Raila Odinga",
+      "runner_up_pct": 43.7,
+      "first_round": true,
+      "note": "Kenyatta won a narrow first-round majority; Odinga contested at the Supreme Court, which upheld the result.",
+      "source_url": "https://africaresearchinstitute.org/wordpress/blog/kenyas-2017-elections-preliminary-results-analysis-county/"
+    },
+    {
+      "year": 2017,
+      "winner": "Uhuru Kenyatta",
+      "winner_pct": 54.2,
+      "runner_up": "Raila Odinga",
+      "runner_up_pct": 44.7,
+      "first_round": true,
+      "note": "August 2017 result (Kenyatta 54.2% / Odinga 44.7%) was annulled by the Supreme Court over process failures. A fresh October 2017 election, boycotted by Odinga, returned Kenyatta with 98% on ~39% turnout.",
+      "source_url": "https://en.wikipedia.org/wiki/2017_Kenyan_general_election"
+    },
+    {
+      "year": 2022,
+      "winner": "William Ruto",
+      "winner_pct": 50.49,
+      "runner_up": "Raila Odinga",
+      "runner_up_pct": 48.85,
+      "first_round": true,
+      "note": "One of the closest presidential results in Kenyan history; upheld by the Supreme Court after a challenge. Turnout was notably lower than 2017.",
+      "source_url": "https://www.aljazeera.com/news/2022/8/15/kenya-elections-2022-results-by-the-numbers"
+    }
+  ],
+  "zones": {
+    "note": "Kenyan pollsters typically report against 8\u20139 analytical zones grouping counties with broadly similar voting patterns. These are used here only as a reference framework for reading regional context \u2014 this project holds no invented per-zone vote data.",
+    "list": ["Central Rift", "Coast", "Lower Eastern", "Mt Kenya", "Nairobi", "Northern", "Nyanza", "South Rift", "Western"]
+  }
+}
