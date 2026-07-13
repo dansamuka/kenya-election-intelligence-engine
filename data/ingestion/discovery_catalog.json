@@ -26,6 +26,28 @@
     "discovery_error": null
   },
   {
+    "source_id": "statskenya-mar2026-manual",
+    "pollster": "Stats Kenya",
+    "title": "Ruto Takes Early Lead In 2027 Race As Kalonzo Comes Distant Third",
+    "page_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
+    "pdf_url": null,
+    "source_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
+    "source_class": "unknown_external_source",
+    "relevance_score": 66,
+    "matched_terms": [
+      "2027",
+      "kalonzo",
+      "ruto"
+    ],
+    "priority": "high",
+    "recommended_action": "manual_review_before_processing",
+    "published_date": "2026-05-06",
+    "processing_status": "manually_verified_external",
+    "sha256": null,
+    "discovery_origin": "sources_registry",
+    "discovery_error": null
+  },
+  {
     "source_id": "bdf83a5d845f6f7b50e9",
     "pollster": "TIFA Research",
     "title": "TIFA National Poll 2026: 1st Release on Political Alignments and 2027 Election Prospects",

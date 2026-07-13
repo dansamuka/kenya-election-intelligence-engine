@@ -20,7 +20,7 @@
     "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-08T18:04:29+00:00",
+    "last_checked_at": "2026-07-13T09:33:20+00:00",
     "processing_error": null
   },
   {
@@ -32,7 +32,7 @@
     "sha256": "10706b99ed1e5cf595060fe5f554d668d2e4346adca948459c3f3f1d8d9f721b",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-08T18:04:30+00:00",
+    "last_checked_at": "2026-07-13T09:33:22+00:00",
     "processing_error": null
   },
   {
@@ -44,7 +44,7 @@
     "sha256": "515c6d29af29c530c9e9c28a2d7b562fb6fb7bb783c869add28264054ef4dec0",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-07-08T18:04:45+00:00",
+    "last_checked_at": "2026-07-13T09:33:40+00:00",
     "processing_error": null
   },
   {
@@ -56,7 +56,7 @@
     "sha256": "09156a37958163b0720c6ad3f5d05a050275f59a21796c0d744c939b1acaf665",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-07-08T18:04:54+00:00",
+    "last_checked_at": "2026-07-13T09:33:51+00:00",
     "processing_error": null
   },
   {
@@ -68,7 +68,7 @@
     "sha256": "60171016571a722619165f4cea5b43e6de4f27780f97918f52c3c742eeae2530",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-07-08T18:05:31+00:00",
+    "last_checked_at": "2026-07-13T09:33:54+00:00",
     "processing_error": null
   },
   {
@@ -80,7 +80,7 @@
     "sha256": "e8348ff9766e6f2a91759fedc44b05729849cbb5bcc983bf20d12b09188ba038",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-08T18:04:34+00:00",
+    "last_checked_at": "2026-07-13T09:33:28+00:00",
     "processing_error": null
   },
   {
@@ -92,7 +92,19 @@
     "sha256": "31e53feded5bbd37c27268c1c2f1ec59971f62659538069c12eb0e549c91b213",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-08T18:04:54+00:00",
+    "last_checked_at": "2026-07-13T09:33:50+00:00",
+    "processing_error": null
+  },
+  {
+    "source_id": "statskenya-mar2026-manual",
+    "pollster": "Stats Kenya",
+    "title": "Ruto Takes Early Lead In 2027 Race As Kalonzo Comes Distant Third",
+    "source_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
+    "processing_status": "manually_verified_external",
+    "sha256": null,
+    "feeds_public_poll_record": true,
+    "review_items": 0,
+    "last_checked_at": "2026-07-08T18:24:23+00:00",
     "processing_error": null
   },
   {
@@ -104,7 +116,7 @@
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "feeds_public_poll_record": true,
     "review_items": 1,
-    "last_checked_at": "2026-07-08T18:04:29+00:00",
+    "last_checked_at": "2026-07-13T09:33:18+00:00",
     "processing_error": null
   }
 ]

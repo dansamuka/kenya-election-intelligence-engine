@@ -88,17 +88,6 @@
     "feeds_public_poll_record": false
   },
   {
-    "source_id": "bdf83a5d845f6f7b50e9",
-    "pollster": "TIFA Research",
-    "title": "TIFA National Poll 2026: 1st Release on Political Alignments and 2027 Election Prospects",
-    "page_url": "https://www.tifaresearch.com/tifa-national-poll-2026-1st-release-on-political-alignments-and-2027-election-prospects/",
-    "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
-    "published_date": "2026-05-14",
-    "processing_status": "processed",
-    "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
-    "feeds_public_poll_record": true
-  },
-  {
     "source_id": "statskenya-mar2026-manual",
     "pollster": "Stats Kenya",
     "title": "Ruto Takes Early Lead In 2027 Race As Kalonzo Comes Distant Third",
@@ -107,6 +96,17 @@
     "published_date": "2026-05-06",
     "processing_status": "manually_verified_external",
     "sha256": null,
+    "feeds_public_poll_record": true
+  },
+  {
+    "source_id": "bdf83a5d845f6f7b50e9",
+    "pollster": "TIFA Research",
+    "title": "TIFA National Poll 2026: 1st Release on Political Alignments and 2027 Election Prospects",
+    "page_url": "https://www.tifaresearch.com/tifa-national-poll-2026-1st-release-on-political-alignments-and-2027-election-prospects/",
+    "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+    "published_date": "2026-05-14",
+    "processing_status": "processed",
+    "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "feeds_public_poll_record": true
   }
 ]
