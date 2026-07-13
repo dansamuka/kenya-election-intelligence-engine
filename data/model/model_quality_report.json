@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-07-13T09:33:55+00:00",
+  "generated_at": "2026-07-13T14:37:19+00:00",
   "phase": "Phase 3 - Polling model",
   "model_version": "phase3.0-descriptive-weighted-average",
   "status": "generated_with_caveats",
   "records": {
-    "approved_poll_records": 5,
+    "approved_poll_records": 6,
     "polling_average_rows": 10,
     "pollster_quality_rows": 3
   },
   "coverage": {
     "date_min": "2025-08-01",
-    "date_max": "2026-05-14",
+    "date_max": "2026-07-13",
     "pollsters": [
       "Infotrak Research",
       "Stats Kenya",

@@ -1,5 +1,27 @@
 [
   {
+    "source_id": "a9a5a08861e3de4c47a9",
+    "pollster": "Infotrak Research",
+    "title": "CountyTrak 2026: Citizen Ratings of Elected Leaders",
+    "page_url": "https://www.infotrakresearch.com/visual-composer-2733/",
+    "pdf_url": "https://www.infotrakresearch.com/wp-content/uploads/2026/07/INFOTRAK-ELECTED-LEADERS-PERFORMANCE-RATING-2026-GP-FIN.pdf",
+    "published_date": null,
+    "processing_status": "needs_review",
+    "sha256": "c3de2eaacec991f50527f37dd84facd8cf4038c0441f5c9e2efff5857b0cfc7e",
+    "feeds_public_poll_record": false
+  },
+  {
+    "source_id": "d487dc5d26ae5dfd1523",
+    "pollster": "Infotrak Research",
+    "title": "INFOTRAK VOICE OF THE PEOPLE POLL",
+    "page_url": "https://www.infotrakresearch.com/2743-2/",
+    "pdf_url": null,
+    "published_date": null,
+    "processing_status": "processed",
+    "sha256": "d7673bb95ae9e557a3e36092b8be6ec42af2560b962a01b1f94977ee2acf3f91",
+    "feeds_public_poll_record": true
+  },
+  {
     "source_id": "infotrak-dec2025-manual",
     "pollster": "Infotrak Research",
     "title": "Infotrak National Survey: 2027 Presidential Candidates' Popularity (December 2025)",

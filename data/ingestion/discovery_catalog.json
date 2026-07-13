@@ -93,6 +93,27 @@
     "discovery_error": null
   },
   {
+    "source_id": "a9a5a08861e3de4c47a9",
+    "pollster": "Infotrak Research",
+    "title": "CountyTrak 2026: Citizen Ratings of Elected Leaders",
+    "page_url": "https://www.infotrakresearch.com/visual-composer-2733/",
+    "pdf_url": "https://www.infotrakresearch.com/wp-content/uploads/2026/07/INFOTRAK-ELECTED-LEADERS-PERFORMANCE-RATING-2026-GP-FIN.pdf",
+    "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2026/07/INFOTRAK-ELECTED-LEADERS-PERFORMANCE-RATING-2026-GP-FIN.pdf",
+    "source_class": "official_pdf_report_candidate",
+    "relevance_score": 18,
+    "matched_terms": [
+      "pdf",
+      "performance"
+    ],
+    "priority": "low",
+    "recommended_action": "download_hash_extract_parse",
+    "published_date": null,
+    "processing_status": "needs_review",
+    "sha256": "c3de2eaacec991f50527f37dd84facd8cf4038c0441f5c9e2efff5857b0cfc7e",
+    "discovery_origin": "sources_registry",
+    "discovery_error": null
+  },
+  {
     "source_id": "3a5abcdb1add0fdc962d",
     "pollster": "Infotrak Research",
     "title": "THE INFOTRAK COUNTYTRAK REPORT 2025 - PERFORMANCE INDEX",
@@ -211,6 +232,26 @@
     "published_date": null,
     "processing_status": "rejected",
     "sha256": "60171016571a722619165f4cea5b43e6de4f27780f97918f52c3c742eeae2530",
+    "discovery_origin": "sources_registry",
+    "discovery_error": null
+  },
+  {
+    "source_id": "d487dc5d26ae5dfd1523",
+    "pollster": "Infotrak Research",
+    "title": "INFOTRAK VOICE OF THE PEOPLE POLL",
+    "page_url": "https://www.infotrakresearch.com/2743-2/",
+    "pdf_url": null,
+    "source_url": "https://www.infotrakresearch.com/2743-2/",
+    "source_class": "official_article_or_archive_candidate",
+    "relevance_score": 6,
+    "matched_terms": [
+      "voice of the people"
+    ],
+    "priority": "low",
+    "recommended_action": "fetch_page_extract_pdf_links",
+    "published_date": null,
+    "processing_status": "processed",
+    "sha256": "d7673bb95ae9e557a3e36092b8be6ec42af2560b962a01b1f94977ee2acf3f91",
     "discovery_origin": "sources_registry",
     "discovery_error": null
   }

@@ -339,5 +339,60 @@
     "metric": "percentage",
     "value": 24.0,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+  },
+  {
+    "poll_id": "2026_07_13_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_2743_2",
+    "date": "2026-07-13",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "edwin_sifuna",
+    "candidate": "Edwin Sifuna",
+    "metric": "percentage",
+    "value": 12.0,
+    "source_url": "https://www.infotrakresearch.com/2743-2/"
+  },
+  {
+    "poll_id": "2026_07_13_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_2743_2",
+    "date": "2026-07-13",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "fred_matiang_i",
+    "candidate": "Fred Matiang'i",
+    "metric": "percentage",
+    "value": 12.0,
+    "source_url": "https://www.infotrakresearch.com/2743-2/"
+  },
+  {
+    "poll_id": "2026_07_13_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_2743_2",
+    "date": "2026-07-13",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "kalonzo_musyoka",
+    "candidate": "Kalonzo Musyoka",
+    "metric": "percentage",
+    "value": 4.0,
+    "source_url": "https://www.infotrakresearch.com/2743-2/"
+  },
+  {
+    "poll_id": "2026_07_13_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_2743_2",
+    "date": "2026-07-13",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "rigathi_gachagua",
+    "candidate": "Rigathi Gachagua",
+    "metric": "percentage",
+    "value": 4.0,
+    "source_url": "https://www.infotrakresearch.com/2743-2/"
+  },
+  {
+    "poll_id": "2026_07_13_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_2743_2",
+    "date": "2026-07-13",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "william_ruto",
+    "candidate": "William Ruto",
+    "metric": "percentage",
+    "value": 32.0,
+    "source_url": "https://www.infotrakresearch.com/2743-2/"
   }
 ]

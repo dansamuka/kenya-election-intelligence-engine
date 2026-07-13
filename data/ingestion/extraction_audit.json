@@ -1,5 +1,29 @@
 [
   {
+    "source_id": "a9a5a08861e3de4c47a9",
+    "pollster": "Infotrak Research",
+    "title": "CountyTrak 2026: Citizen Ratings of Elected Leaders",
+    "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2026/07/INFOTRAK-ELECTED-LEADERS-PERFORMANCE-RATING-2026-GP-FIN.pdf",
+    "processing_status": "needs_review",
+    "sha256": "c3de2eaacec991f50527f37dd84facd8cf4038c0441f5c9e2efff5857b0cfc7e",
+    "feeds_public_poll_record": false,
+    "review_items": 1,
+    "last_checked_at": "2026-07-13T14:37:01+00:00",
+    "processing_error": null
+  },
+  {
+    "source_id": "d487dc5d26ae5dfd1523",
+    "pollster": "Infotrak Research",
+    "title": "INFOTRAK VOICE OF THE PEOPLE POLL",
+    "source_url": "https://www.infotrakresearch.com/2743-2/",
+    "processing_status": "processed",
+    "sha256": "d7673bb95ae9e557a3e36092b8be6ec42af2560b962a01b1f94977ee2acf3f91",
+    "feeds_public_poll_record": true,
+    "review_items": 0,
+    "last_checked_at": "2026-07-13T14:36:58+00:00",
+    "processing_error": null
+  },
+  {
     "source_id": "infotrak-dec2025-manual",
     "pollster": "Infotrak Research",
     "title": "Infotrak National Survey: 2027 Presidential Candidates' Popularity (December 2025)",
@@ -20,7 +44,7 @@
     "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-13T09:33:20+00:00",
+    "last_checked_at": "2026-07-13T14:36:50+00:00",
     "processing_error": null
   },
   {
@@ -32,7 +56,7 @@
     "sha256": "10706b99ed1e5cf595060fe5f554d668d2e4346adca948459c3f3f1d8d9f721b",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-13T09:33:22+00:00",
+    "last_checked_at": "2026-07-13T14:36:52+00:00",
     "processing_error": null
   },
   {
@@ -56,7 +80,7 @@
     "sha256": "09156a37958163b0720c6ad3f5d05a050275f59a21796c0d744c939b1acaf665",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-07-13T09:33:51+00:00",
+    "last_checked_at": "2026-07-13T14:37:08+00:00",
     "processing_error": null
   },
   {
@@ -68,7 +92,7 @@
     "sha256": "60171016571a722619165f4cea5b43e6de4f27780f97918f52c3c742eeae2530",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-07-13T09:33:54+00:00",
+    "last_checked_at": "2026-07-13T14:37:18+00:00",
     "processing_error": null
   },
   {
@@ -80,7 +104,7 @@
     "sha256": "e8348ff9766e6f2a91759fedc44b05729849cbb5bcc983bf20d12b09188ba038",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-13T09:33:28+00:00",
+    "last_checked_at": "2026-07-13T14:37:06+00:00",
     "processing_error": null
   },
   {
@@ -116,7 +140,7 @@
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "feeds_public_poll_record": true,
     "review_items": 1,
-    "last_checked_at": "2026-07-13T09:33:18+00:00",
+    "last_checked_at": "2026-07-13T14:36:48+00:00",
     "processing_error": null
   }
 ]

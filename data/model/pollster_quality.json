@@ -1,13 +1,13 @@
 [
   {
     "pollster": "Infotrak Research",
-    "quality_score": 0.818,
+    "quality_score": 0.844,
     "prior_quality_score": 0.8,
     "transparency_score": 0.76,
     "methodology_score": 0.7,
-    "approved_records": 1,
-    "unique_sources": 1,
-    "records_with_sample_size": 1,
+    "approved_records": 2,
+    "unique_sources": 2,
+    "records_with_sample_size": 2,
     "notes": "Primary-source archive monitored; only compatible candidate/popularity data should enter averages."
   },
   {

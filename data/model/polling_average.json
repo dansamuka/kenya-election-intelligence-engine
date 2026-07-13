@@ -1,16 +1,16 @@
 [
   {
-    "as_of": "2026-05-14",
+    "as_of": "2026-07-13",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "William Ruto",
-    "weighted_average": 24.96,
-    "lower_95": 21.46,
-    "upper_95": 28.46,
-    "uncertainty_margin": 3.5,
-    "effective_poll_count": 3.53,
-    "raw_poll_count": 5,
-    "latest_poll_value": 24.0,
-    "latest_poll_date": "2026-05-14",
+    "weighted_average": 28.14,
+    "lower_95": 24.21,
+    "upper_95": 32.07,
+    "uncertainty_margin": 3.93,
+    "effective_poll_count": 3.46,
+    "raw_poll_count": 6,
+    "latest_poll_value": 32.0,
+    "latest_poll_date": "2026-07-13",
     "pollsters_in_average": [
       "Infotrak Research",
       "Stats Kenya",
@@ -19,46 +19,23 @@
     "source_urls": [
       "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
       "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
+      "https://www.infotrakresearch.com/2743-2/",
       "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
     ],
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-05-14",
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate": "Kalonzo Musyoka",
-    "weighted_average": 16.18,
-    "lower_95": 11.57,
-    "upper_95": 20.8,
-    "uncertainty_margin": 4.61,
-    "effective_poll_count": 3.53,
-    "raw_poll_count": 5,
-    "latest_poll_value": 19.0,
-    "latest_poll_date": "2026-05-14",
-    "pollsters_in_average": [
-      "Infotrak Research",
-      "Stats Kenya",
-      "TIFA Research"
-    ],
-    "source_urls": [
-      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
-      "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
-      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
-    ],
-    "model_status": "usable_with_caution"
-  },
-  {
-    "as_of": "2026-05-14",
+    "as_of": "2026-07-13",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Fred Matiang'i",
-    "weighted_average": 15.2,
-    "lower_95": 11.7,
-    "upper_95": 18.7,
+    "weighted_average": 13.75,
+    "lower_95": 10.25,
+    "upper_95": 17.25,
     "uncertainty_margin": 3.5,
-    "effective_poll_count": 3.53,
-    "raw_poll_count": 5,
-    "latest_poll_value": 16.0,
-    "latest_poll_date": "2026-05-14",
+    "effective_poll_count": 3.46,
+    "raw_poll_count": 6,
+    "latest_poll_value": 12.0,
+    "latest_poll_date": "2026-07-13",
     "pollsters_in_average": [
       "Infotrak Research",
       "Stats Kenya",
@@ -67,22 +44,48 @@
     "source_urls": [
       "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
       "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
+      "https://www.infotrakresearch.com/2743-2/",
       "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
     ],
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-05-14",
+    "as_of": "2026-07-13",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate": "Kalonzo Musyoka",
+    "weighted_average": 10.68,
+    "lower_95": 3.41,
+    "upper_95": 17.94,
+    "uncertainty_margin": 7.26,
+    "effective_poll_count": 3.46,
+    "raw_poll_count": 6,
+    "latest_poll_value": 4.0,
+    "latest_poll_date": "2026-07-13",
+    "pollsters_in_average": [
+      "Infotrak Research",
+      "Stats Kenya",
+      "TIFA Research"
+    ],
+    "source_urls": [
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
+      "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
+      "https://www.infotrakresearch.com/2743-2/",
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+    ],
+    "model_status": "usable_with_caution"
+  },
+  {
+    "as_of": "2026-07-13",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Edwin Sifuna",
-    "weighted_average": 8.08,
-    "lower_95": 4.35,
-    "upper_95": 11.81,
-    "uncertainty_margin": 3.73,
-    "effective_poll_count": 3.53,
-    "raw_poll_count": 5,
-    "latest_poll_value": 9.0,
-    "latest_poll_date": "2026-05-14",
+    "weighted_average": 9.85,
+    "lower_95": 6.35,
+    "upper_95": 13.35,
+    "uncertainty_margin": 3.5,
+    "effective_poll_count": 3.46,
+    "raw_poll_count": 6,
+    "latest_poll_value": 12.0,
+    "latest_poll_date": "2026-07-13",
     "pollsters_in_average": [
       "Infotrak Research",
       "Stats Kenya",
@@ -91,12 +94,13 @@
     "source_urls": [
       "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
       "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
+      "https://www.infotrakresearch.com/2743-2/",
       "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
     ],
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-05-14",
+    "as_of": "2026-07-13",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Babu Owino",
     "weighted_average": 7.0,
@@ -116,17 +120,17 @@
     "model_status": "thin_series"
   },
   {
-    "as_of": "2026-05-14",
+    "as_of": "2026-07-13",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Rigathi Gachagua",
-    "weighted_average": 5.99,
-    "lower_95": 2.49,
-    "upper_95": 9.49,
+    "weighted_average": 5.09,
+    "lower_95": 1.59,
+    "upper_95": 8.59,
     "uncertainty_margin": 3.5,
-    "effective_poll_count": 3.53,
-    "raw_poll_count": 5,
-    "latest_poll_value": 6.0,
-    "latest_poll_date": "2026-05-14",
+    "effective_poll_count": 3.46,
+    "raw_poll_count": 6,
+    "latest_poll_value": 4.0,
+    "latest_poll_date": "2026-07-13",
     "pollsters_in_average": [
       "Infotrak Research",
       "Stats Kenya",
@@ -135,12 +139,13 @@
     "source_urls": [
       "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
       "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
+      "https://www.infotrakresearch.com/2743-2/",
       "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
     ],
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-05-14",
+    "as_of": "2026-07-13",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Martha Karua",
     "weighted_average": 2.0,
@@ -160,7 +165,7 @@
     "model_status": "thin_series"
   },
   {
-    "as_of": "2026-05-14",
+    "as_of": "2026-07-13",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "David Maraga",
     "weighted_average": 1.7,
@@ -182,7 +187,7 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-05-14",
+    "as_of": "2026-07-13",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Oburu Odinga",
     "weighted_average": 1.0,
@@ -202,7 +207,7 @@
     "model_status": "thin_series"
   },
   {
-    "as_of": "2026-05-14",
+    "as_of": "2026-07-13",
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Okiya Omtata",
     "weighted_average": 0.36,
