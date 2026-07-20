@@ -65,6 +65,27 @@
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b"
   },
   {
+    "source_id": "10254182e2fe5908140e",
+    "pollster": "Infotrak Research",
+    "title": "Infotrak Voice Of The People Poll July 2026 – InfoTrak",
+    "page_url": "https://www.infotrakresearch.com/2743-2/",
+    "pdf_url": "https://www.infotrakresearch.com/wp-content/uploads/2026/07/INFOTRAK-VOP-POLITICAL-JULY-2026-GP.pdf",
+    "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2026/07/INFOTRAK-VOP-POLITICAL-JULY-2026-GP.pdf",
+    "source_class": "official_pdf_report_candidate",
+    "relevance_score": 36,
+    "matched_terms": [
+      "pdf",
+      "political",
+      "voice of the people",
+      "vop"
+    ],
+    "priority": "medium",
+    "recommended_action": "download_hash_extract_parse",
+    "published_date": null,
+    "processing_status": "rejected",
+    "sha256": "7a7e3ad4c9228ffbe9dbcfbdb9be35c5754d5a202d2f6478cc024d90188ce172"
+  },
+  {
     "source_id": "e299a44d39950380ed68",
     "pollster": "Infotrak Research",
     "title": "Infotrak Voice of the People Poll – September 2025",
