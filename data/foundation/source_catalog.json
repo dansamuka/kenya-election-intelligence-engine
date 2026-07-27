@@ -132,6 +132,17 @@
     "feeds_public_poll_record": true
   },
   {
+    "source_id": "ac9c873264583b09ab33",
+    "pollster": "TIFA Research",
+    "title": "Kenya’s Road to 2027 General Election: Political parties, presidential contest and coalition dynamics",
+    "page_url": "https://www.tifaresearch.com/kenyas-road-to-2027-general-election-political-parties-presidential-contest-and-coalition-dynamics/",
+    "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Polls_2027-General-Election_Political-Parties-Presidency-and-Coalitions_24-July-2026.pdf",
+    "published_date": null,
+    "processing_status": "processed",
+    "sha256": "aba2fa0781e96d1190eebadfcbc511c2c9eb6a41813d8e873d2f92b1293852b1",
+    "feeds_public_poll_record": true
+  },
+  {
     "source_id": "bdf83a5d845f6f7b50e9",
     "pollster": "TIFA Research",
     "title": "TIFA National Poll 2026: 1st Release on Political Alignments and 2027 Election Prospects",

@@ -26,6 +26,31 @@
     "discovery_error": null
   },
   {
+    "source_id": "ac9c873264583b09ab33",
+    "pollster": "TIFA Research",
+    "title": "Kenya’s Road to 2027 General Election: Political parties, presidential contest and coalition dynamics",
+    "page_url": "https://www.tifaresearch.com/kenyas-road-to-2027-general-election-political-parties-presidential-contest-and-coalition-dynamics/",
+    "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Polls_2027-General-Election_Political-Parties-Presidency-and-Coalitions_24-July-2026.pdf",
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Polls_2027-General-Election_Political-Parties-Presidency-and-Coalitions_24-July-2026.pdf",
+    "source_class": "official_pdf_report_candidate",
+    "relevance_score": 96,
+    "matched_terms": [
+      "2027",
+      "election",
+      "pdf",
+      "political",
+      "president",
+      "presidential"
+    ],
+    "priority": "high",
+    "recommended_action": "download_hash_extract_parse",
+    "published_date": null,
+    "processing_status": "processed",
+    "sha256": "aba2fa0781e96d1190eebadfcbc511c2c9eb6a41813d8e873d2f92b1293852b1",
+    "discovery_origin": "sources_registry",
+    "discovery_error": null
+  },
+  {
     "source_id": "statskenya-mar2026-manual",
     "pollster": "Stats Kenya",
     "title": "Ruto Takes Early Lead In 2027 Race As Kalonzo Comes Distant Third",

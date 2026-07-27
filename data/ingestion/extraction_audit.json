@@ -8,7 +8,7 @@
     "sha256": "c3de2eaacec991f50527f37dd84facd8cf4038c0441f5c9e2efff5857b0cfc7e",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-20T09:21:14+00:00",
+    "last_checked_at": "2026-07-27T09:59:50+00:00",
     "processing_error": null
   },
   {
@@ -44,7 +44,7 @@
     "sha256": "7a7e3ad4c9228ffbe9dbcfbdb9be35c5754d5a202d2f6478cc024d90188ce172",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-07-20T09:21:11+00:00",
+    "last_checked_at": "2026-07-27T09:59:48+00:00",
     "processing_error": null
   },
   {
@@ -56,7 +56,7 @@
     "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-20T09:21:07+00:00",
+    "last_checked_at": "2026-07-27T09:59:41+00:00",
     "processing_error": null
   },
   {
@@ -68,7 +68,7 @@
     "sha256": "10706b99ed1e5cf595060fe5f554d668d2e4346adca948459c3f3f1d8d9f721b",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-20T09:21:10+00:00",
+    "last_checked_at": "2026-07-27T09:59:42+00:00",
     "processing_error": null
   },
   {
@@ -92,7 +92,7 @@
     "sha256": "09156a37958163b0720c6ad3f5d05a050275f59a21796c0d744c939b1acaf665",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-07-20T09:21:24+00:00",
+    "last_checked_at": "2026-07-27T09:59:55+00:00",
     "processing_error": null
   },
   {
@@ -104,7 +104,7 @@
     "sha256": "60171016571a722619165f4cea5b43e6de4f27780f97918f52c3c742eeae2530",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-07-20T09:21:30+00:00",
+    "last_checked_at": "2026-07-27T09:59:59+00:00",
     "processing_error": null
   },
   {
@@ -116,7 +116,7 @@
     "sha256": "e8348ff9766e6f2a91759fedc44b05729849cbb5bcc983bf20d12b09188ba038",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-20T09:21:18+00:00",
+    "last_checked_at": "2026-07-27T09:59:55+00:00",
     "processing_error": null
   },
   {
@@ -144,6 +144,18 @@
     "processing_error": null
   },
   {
+    "source_id": "ac9c873264583b09ab33",
+    "pollster": "TIFA Research",
+    "title": "Kenya’s Road to 2027 General Election: Political parties, presidential contest and coalition dynamics",
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Polls_2027-General-Election_Political-Parties-Presidency-and-Coalitions_24-July-2026.pdf",
+    "processing_status": "processed",
+    "sha256": "aba2fa0781e96d1190eebadfcbc511c2c9eb6a41813d8e873d2f92b1293852b1",
+    "feeds_public_poll_record": true,
+    "review_items": 0,
+    "last_checked_at": "2026-07-27T09:59:47+00:00",
+    "processing_error": null
+  },
+  {
     "source_id": "bdf83a5d845f6f7b50e9",
     "pollster": "TIFA Research",
     "title": "TIFA National Poll 2026: 1st Release on Political Alignments and 2027 Election Prospects",
@@ -152,7 +164,7 @@
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "feeds_public_poll_record": true,
     "review_items": 1,
-    "last_checked_at": "2026-07-20T09:21:06+00:00",
+    "last_checked_at": "2026-07-27T09:59:40+00:00",
     "processing_error": null
   }
 ]

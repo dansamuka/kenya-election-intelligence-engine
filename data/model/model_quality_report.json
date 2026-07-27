@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-07-20T09:21:30+00:00",
+  "generated_at": "2026-07-27T09:59:59+00:00",
   "phase": "Phase 3 - Polling model",
   "model_version": "phase3.0-descriptive-weighted-average",
   "status": "generated_with_caveats",
   "records": {
-    "approved_poll_records": 6,
-    "polling_average_rows": 10,
+    "approved_poll_records": 9,
+    "polling_average_rows": 15,
     "pollster_quality_rows": 3
   },
   "coverage": {
@@ -17,6 +17,7 @@
       "TIFA Research"
     ],
     "poll_types": [
+      "popularity_rating",
       "preferred_presidential_aspirant"
     ]
   },
