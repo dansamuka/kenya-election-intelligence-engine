@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-07-27T09:59:59+00:00",
+  "generated_at": "2026-08-03T09:52:08+00:00",
   "phase": "phase_1_data_foundation",
   "prototype_status": "data_foundation_scaffold_with_normalized_poll_layer",
   "records": {
-    "approved_poll_records": 9,
-    "source_registry_records": 14,
+    "approved_poll_records": 11,
+    "source_registry_records": 18,
     "review_queue_records": 6,
-    "poll_results_long_rows": 51
+    "poll_results_long_rows": 61
   },
   "coverage": {
     "pollsters": {
       "TIFA Research": 6,
-      "Infotrak Research": 2,
+      "Infotrak Research": 4,
       "Stats Kenya": 1
     },
     "poll_types": {
-      "preferred_presidential_aspirant": 6,
+      "preferred_presidential_aspirant": 8,
       "popularity_rating": 3
     },
     "candidates": [
@@ -39,7 +39,7 @@
   },
   "missingness": {
     "extraction_confidence": 5,
-    "question_text": 6,
+    "question_text": 8,
     "sample_size": 1
   },
   "quality_flags": [

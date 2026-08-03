@@ -260,7 +260,7 @@
   {
     "source_id": "d487dc5d26ae5dfd1523",
     "pollster": "Infotrak Research",
-    "title": "INFOTRAK VOICE OF THE PEOPLE POLL",
+    "title": "Infotrak Voice Of The People Poll July 2026",
     "page_url": "https://www.infotrakresearch.com/2743-2/",
     "pdf_url": null,
     "source_url": "https://www.infotrakresearch.com/2743-2/",
@@ -273,6 +273,72 @@
     "recommended_action": "fetch_page_extract_pdf_links",
     "published_date": null,
     "processing_status": "processed",
-    "sha256": "d7673bb95ae9e557a3e36092b8be6ec42af2560b962a01b1f94977ee2acf3f91"
+    "sha256": "51cffd155f70819c9d7f0ad1889f9801c0148c04fae6956e4362fb1bb533fbf1"
+  },
+  {
+    "source_id": "13628c27291888a32798",
+    "pollster": "Infotrak Research",
+    "title": "Infotrak Voice of the People Poll – September 2025",
+    "page_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
+    "pdf_url": null,
+    "source_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
+    "source_class": "official_article_or_archive_candidate",
+    "relevance_score": 6,
+    "matched_terms": [
+      "voice of the people"
+    ],
+    "priority": "low",
+    "recommended_action": "fetch_page_extract_pdf_links",
+    "published_date": null,
+    "processing_status": "rejected",
+    "sha256": "5371b963e16444c37e1daf069aa28948110b84c13c692beb7e88fb9b3b55ef59"
+  },
+  {
+    "source_id": "9da8f34c97c44ee94853",
+    "pollster": "Infotrak Research",
+    "title": "CountyTrak 2026: Citizen Ratings of Elected Leaders",
+    "page_url": "https://www.infotrakresearch.com/visual-composer-2733/",
+    "pdf_url": null,
+    "source_url": "https://www.infotrakresearch.com/visual-composer-2733/",
+    "source_class": "official_article_or_archive_candidate",
+    "relevance_score": 0,
+    "matched_terms": [],
+    "priority": "low",
+    "recommended_action": "fetch_page_extract_pdf_links",
+    "published_date": null,
+    "processing_status": "rejected",
+    "sha256": "32b949f4c9659127425bbc46caa7dee17c9159e3009a99cbe7b1276d2fae297c"
+  },
+  {
+    "source_id": "ab6417506c79248cd2ee",
+    "pollster": "Infotrak Research",
+    "title": "INFOTRAK COUNTYTRAK REPORT 2025- ELECTED LEADERS RATING",
+    "page_url": "https://www.infotrakresearch.com/infotrak-countytrak-report-2025-elected-leaders-rating/",
+    "pdf_url": null,
+    "source_url": "https://www.infotrakresearch.com/infotrak-countytrak-report-2025-elected-leaders-rating/",
+    "source_class": "official_article_or_archive_candidate",
+    "relevance_score": 0,
+    "matched_terms": [],
+    "priority": "low",
+    "recommended_action": "fetch_page_extract_pdf_links",
+    "published_date": null,
+    "processing_status": "rejected",
+    "sha256": "0672903783163dce2fe719d79422afecf4aedd116c759990eb2d8536fcc53de0"
+  },
+  {
+    "source_id": "2f9615f90e93b60bad7f",
+    "pollster": "Infotrak Research",
+    "title": "Mulembe Nation Poll December 2025",
+    "page_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+    "pdf_url": null,
+    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+    "source_class": "official_article_or_archive_candidate",
+    "relevance_score": 0,
+    "matched_terms": [],
+    "priority": "low",
+    "recommended_action": "fetch_page_extract_pdf_links",
+    "published_date": null,
+    "processing_status": "processed",
+    "sha256": "572920ef2af0c574df3346a8c6e1ca04b4939d30bd72531813bf5e3aec2b5721"
   }
 ]

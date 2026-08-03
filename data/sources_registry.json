@@ -1,5 +1,17 @@
 [
   {
+    "source_id": "9da8f34c97c44ee94853",
+    "pollster": "Infotrak Research",
+    "title": "CountyTrak 2026: Citizen Ratings of Elected Leaders",
+    "page_url": "https://www.infotrakresearch.com/visual-composer-2733/",
+    "pdf_url": null,
+    "published_date": null,
+    "first_seen_at": "2026-08-03T09:51:36+00:00",
+    "last_checked_at": "2026-08-03T09:51:36+00:00",
+    "sha256": "32b949f4c9659127425bbc46caa7dee17c9159e3009a99cbe7b1276d2fae297c",
+    "processing_status": "rejected"
+  },
+  {
     "source_id": "a9a5a08861e3de4c47a9",
     "pollster": "Infotrak Research",
     "title": "CountyTrak 2026: Citizen Ratings of Elected Leaders",
@@ -12,16 +24,16 @@
     "processing_status": "needs_review"
   },
   {
-    "source_id": "d487dc5d26ae5dfd1523",
+    "source_id": "ab6417506c79248cd2ee",
     "pollster": "Infotrak Research",
-    "title": "INFOTRAK VOICE OF THE PEOPLE POLL",
-    "page_url": "https://www.infotrakresearch.com/2743-2/",
+    "title": "INFOTRAK COUNTYTRAK REPORT 2025- ELECTED LEADERS RATING",
+    "page_url": "https://www.infotrakresearch.com/infotrak-countytrak-report-2025-elected-leaders-rating/",
     "pdf_url": null,
     "published_date": null,
-    "first_seen_at": "2026-07-13T14:36:58+00:00",
-    "last_checked_at": "2026-07-13T14:36:58+00:00",
-    "sha256": "d7673bb95ae9e557a3e36092b8be6ec42af2560b962a01b1f94977ee2acf3f91",
-    "processing_status": "processed"
+    "first_seen_at": "2026-08-03T09:52:08+00:00",
+    "last_checked_at": "2026-08-03T09:52:08+00:00",
+    "sha256": "0672903783163dce2fe719d79422afecf4aedd116c759990eb2d8536fcc53de0",
+    "processing_status": "rejected"
   },
   {
     "source_id": "infotrak-dec2025-manual",
@@ -38,6 +50,18 @@
     "notes": "Not retrieved via automated scraper (no network access to infotrakresearch.com from the build environment). Verified manually against five independent news reports before being added to polls_data.json."
   },
   {
+    "source_id": "d487dc5d26ae5dfd1523",
+    "pollster": "Infotrak Research",
+    "title": "Infotrak Voice Of The People Poll July 2026",
+    "page_url": "https://www.infotrakresearch.com/2743-2/",
+    "pdf_url": null,
+    "published_date": null,
+    "first_seen_at": "2026-07-13T14:36:58+00:00",
+    "last_checked_at": "2026-08-03T09:51:28+00:00",
+    "sha256": "51cffd155f70819c9d7f0ad1889f9801c0148c04fae6956e4362fb1bb533fbf1",
+    "processing_status": "processed"
+  },
+  {
     "source_id": "10254182e2fe5908140e",
     "pollster": "Infotrak Research",
     "title": "Infotrak Voice Of The People Poll July 2026 – InfoTrak",
@@ -50,6 +74,18 @@
     "processing_status": "rejected"
   },
   {
+    "source_id": "13628c27291888a32798",
+    "pollster": "Infotrak Research",
+    "title": "Infotrak Voice of the People Poll – September 2025",
+    "page_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
+    "pdf_url": null,
+    "published_date": null,
+    "first_seen_at": "2026-08-03T09:52:00+00:00",
+    "last_checked_at": "2026-08-03T09:52:00+00:00",
+    "sha256": "5371b963e16444c37e1daf069aa28948110b84c13c692beb7e88fb9b3b55ef59",
+    "processing_status": "rejected"
+  },
+  {
     "source_id": "e299a44d39950380ed68",
     "pollster": "Infotrak Research",
     "title": "Infotrak Voice of the People Poll – September 2025",
@@ -57,9 +93,21 @@
     "pdf_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Infotrak-VOP-Poll_Sep-2025_Phase-One2.pdf",
     "published_date": "2025-09-25",
     "first_seen_at": "2026-07-08T10:34:56+00:00",
-    "last_checked_at": "2026-07-27T09:59:41+00:00",
+    "last_checked_at": "2026-08-03T09:51:16+00:00",
     "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
     "processing_status": "rejected"
+  },
+  {
+    "source_id": "2f9615f90e93b60bad7f",
+    "pollster": "Infotrak Research",
+    "title": "Mulembe Nation Poll December 2025",
+    "page_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+    "pdf_url": null,
+    "published_date": null,
+    "first_seen_at": "2026-08-03T09:51:49+00:00",
+    "last_checked_at": "2026-08-03T09:51:49+00:00",
+    "sha256": "572920ef2af0c574df3346a8c6e1ca04b4939d30bd72531813bf5e3aec2b5721",
+    "processing_status": "processed"
   },
   {
     "source_id": "f98574cfd387a9fd4a1c",
@@ -69,7 +117,7 @@
     "pdf_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Mulembe-Nation-Poll-Report_Internal_Report_Media_Release_Final-1.pdf",
     "published_date": "2026-01-08",
     "first_seen_at": "2026-07-08T10:35:01+00:00",
-    "last_checked_at": "2026-07-27T09:59:42+00:00",
+    "last_checked_at": "2026-08-03T09:51:17+00:00",
     "sha256": "10706b99ed1e5cf595060fe5f554d668d2e4346adca948459c3f3f1d8d9f721b",
     "processing_status": "rejected"
   },
@@ -155,7 +203,7 @@
     "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Polls_2027-General-Election_Political-Parties-Presidency-and-Coalitions_24-July-2026.pdf",
     "published_date": null,
     "first_seen_at": "2026-07-27T09:59:47+00:00",
-    "last_checked_at": "2026-07-27T09:59:47+00:00",
+    "last_checked_at": "2026-08-03T09:51:23+00:00",
     "sha256": "aba2fa0781e96d1190eebadfcbc511c2c9eb6a41813d8e873d2f92b1293852b1",
     "processing_status": "processed"
   },
@@ -167,7 +215,7 @@
     "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "published_date": "2026-05-14",
     "first_seen_at": "2026-07-07T14:59:15+00:00",
-    "last_checked_at": "2026-07-27T09:59:40+00:00",
+    "last_checked_at": "2026-08-03T09:51:14+00:00",
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "processing_status": "processed"
   }

@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-27T09:59:59+00:00",
+  "generated_at": "2026-08-03T09:52:09+00:00",
   "phase": "Phase 3 - Polling model",
   "model_version": "phase3.0-descriptive-weighted-average",
   "status": "generated_with_caveats",
   "records": {
-    "approved_poll_records": 9,
+    "approved_poll_records": 11,
     "polling_average_rows": 15,
     "pollster_quality_rows": 3
   },
