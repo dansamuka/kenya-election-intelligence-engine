@@ -24,7 +24,7 @@
   {
     "source_id": "ab6417506c79248cd2ee",
     "pollster": "Infotrak Research",
-    "title": "INFOTRAK COUNTYTRAK REPORT 2025- ELECTED LEADERS RATING",
+    "title": "Elected Leaders Performance Index",
     "page_url": "https://www.infotrakresearch.com/infotrak-countytrak-report-2025-elected-leaders-rating/",
     "pdf_url": null,
     "published_date": null,
@@ -66,17 +66,6 @@
     "feeds_public_poll_record": false
   },
   {
-    "source_id": "13628c27291888a32798",
-    "pollster": "Infotrak Research",
-    "title": "Infotrak Voice of the People Poll – September 2025",
-    "page_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
-    "pdf_url": null,
-    "published_date": null,
-    "processing_status": "rejected",
-    "sha256": "5371b963e16444c37e1daf069aa28948110b84c13c692beb7e88fb9b3b55ef59",
-    "feeds_public_poll_record": false
-  },
-  {
     "source_id": "e299a44d39950380ed68",
     "pollster": "Infotrak Research",
     "title": "Infotrak Voice of the People Poll – September 2025",
@@ -90,7 +79,7 @@
   {
     "source_id": "2f9615f90e93b60bad7f",
     "pollster": "Infotrak Research",
-    "title": "Mulembe Nation Poll December 2025",
+    "title": "Mulembe Nation Poll",
     "page_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "pdf_url": null,
     "published_date": null,
@@ -162,6 +151,17 @@
     "published_date": null,
     "processing_status": "needs_review",
     "sha256": "31e53feded5bbd37c27268c1c2f1ec59971f62659538069c12eb0e549c91b213",
+    "feeds_public_poll_record": false
+  },
+  {
+    "source_id": "13628c27291888a32798",
+    "pollster": "Infotrak Research",
+    "title": "Voice of the People Poll – August 2025",
+    "page_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
+    "pdf_url": null,
+    "published_date": null,
+    "processing_status": "rejected",
+    "sha256": "5371b963e16444c37e1daf069aa28948110b84c13c692beb7e88fb9b3b55ef59",
     "feeds_public_poll_record": false
   },
   {

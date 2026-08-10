@@ -284,6 +284,26 @@
     "discovery_error": null
   },
   {
+    "source_id": "ab6417506c79248cd2ee",
+    "pollster": "Infotrak Research",
+    "title": "Elected Leaders Performance Index",
+    "page_url": "https://www.infotrakresearch.com/infotrak-countytrak-report-2025-elected-leaders-rating/",
+    "pdf_url": null,
+    "source_url": "https://www.infotrakresearch.com/infotrak-countytrak-report-2025-elected-leaders-rating/",
+    "source_class": "official_article_or_archive_candidate",
+    "relevance_score": 6,
+    "matched_terms": [
+      "performance"
+    ],
+    "priority": "low",
+    "recommended_action": "fetch_page_extract_pdf_links",
+    "published_date": null,
+    "processing_status": "rejected",
+    "sha256": "0672903783163dce2fe719d79422afecf4aedd116c759990eb2d8536fcc53de0",
+    "discovery_origin": "sources_registry",
+    "discovery_error": null
+  },
+  {
     "source_id": "d487dc5d26ae5dfd1523",
     "pollster": "Infotrak Research",
     "title": "Infotrak Voice Of The People Poll July 2026",
@@ -306,7 +326,7 @@
   {
     "source_id": "13628c27291888a32798",
     "pollster": "Infotrak Research",
-    "title": "Infotrak Voice of the People Poll – September 2025",
+    "title": "Voice of the People Poll – August 2025",
     "page_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
     "pdf_url": null,
     "source_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
@@ -342,27 +362,9 @@
     "discovery_error": null
   },
   {
-    "source_id": "ab6417506c79248cd2ee",
-    "pollster": "Infotrak Research",
-    "title": "INFOTRAK COUNTYTRAK REPORT 2025- ELECTED LEADERS RATING",
-    "page_url": "https://www.infotrakresearch.com/infotrak-countytrak-report-2025-elected-leaders-rating/",
-    "pdf_url": null,
-    "source_url": "https://www.infotrakresearch.com/infotrak-countytrak-report-2025-elected-leaders-rating/",
-    "source_class": "official_article_or_archive_candidate",
-    "relevance_score": 0,
-    "matched_terms": [],
-    "priority": "low",
-    "recommended_action": "fetch_page_extract_pdf_links",
-    "published_date": null,
-    "processing_status": "rejected",
-    "sha256": "0672903783163dce2fe719d79422afecf4aedd116c759990eb2d8536fcc53de0",
-    "discovery_origin": "sources_registry",
-    "discovery_error": null
-  },
-  {
     "source_id": "2f9615f90e93b60bad7f",
     "pollster": "Infotrak Research",
-    "title": "Mulembe Nation Poll December 2025",
+    "title": "Mulembe Nation Poll",
     "page_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "pdf_url": null,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",

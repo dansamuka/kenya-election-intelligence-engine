@@ -20,19 +20,19 @@
     "sha256": "c3de2eaacec991f50527f37dd84facd8cf4038c0441f5c9e2efff5857b0cfc7e",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-07-27T09:59:50+00:00",
+    "last_checked_at": "2026-08-10T07:48:48+00:00",
     "processing_error": null
   },
   {
     "source_id": "ab6417506c79248cd2ee",
     "pollster": "Infotrak Research",
-    "title": "INFOTRAK COUNTYTRAK REPORT 2025- ELECTED LEADERS RATING",
+    "title": "Elected Leaders Performance Index",
     "source_url": "https://www.infotrakresearch.com/infotrak-countytrak-report-2025-elected-leaders-rating/",
     "processing_status": "rejected",
     "sha256": "0672903783163dce2fe719d79422afecf4aedd116c759990eb2d8536fcc53de0",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-08-03T09:52:08+00:00",
+    "last_checked_at": "2026-08-10T07:49:04+00:00",
     "processing_error": null
   },
   {
@@ -68,19 +68,7 @@
     "sha256": "7a7e3ad4c9228ffbe9dbcfbdb9be35c5754d5a202d2f6478cc024d90188ce172",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-07-27T09:59:48+00:00",
-    "processing_error": null
-  },
-  {
-    "source_id": "13628c27291888a32798",
-    "pollster": "Infotrak Research",
-    "title": "Infotrak Voice of the People Poll – September 2025",
-    "source_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
-    "processing_status": "rejected",
-    "sha256": "5371b963e16444c37e1daf069aa28948110b84c13c692beb7e88fb9b3b55ef59",
-    "feeds_public_poll_record": false,
-    "review_items": 0,
-    "last_checked_at": "2026-08-03T09:52:00+00:00",
+    "last_checked_at": "2026-08-10T07:48:45+00:00",
     "processing_error": null
   },
   {
@@ -92,19 +80,19 @@
     "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-08-03T09:51:16+00:00",
+    "last_checked_at": "2026-08-10T07:48:38+00:00",
     "processing_error": null
   },
   {
     "source_id": "2f9615f90e93b60bad7f",
     "pollster": "Infotrak Research",
-    "title": "Mulembe Nation Poll December 2025",
+    "title": "Mulembe Nation Poll",
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "processing_status": "processed",
     "sha256": "572920ef2af0c574df3346a8c6e1ca04b4939d30bd72531813bf5e3aec2b5721",
     "feeds_public_poll_record": true,
     "review_items": 0,
-    "last_checked_at": "2026-08-03T09:51:49+00:00",
+    "last_checked_at": "2026-08-10T07:48:54+00:00",
     "processing_error": null
   },
   {
@@ -116,7 +104,7 @@
     "sha256": "10706b99ed1e5cf595060fe5f554d668d2e4346adca948459c3f3f1d8d9f721b",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-08-03T09:51:17+00:00",
+    "last_checked_at": "2026-08-10T07:48:40+00:00",
     "processing_error": null
   },
   {
@@ -140,7 +128,7 @@
     "sha256": "09156a37958163b0720c6ad3f5d05a050275f59a21796c0d744c939b1acaf665",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-07-27T09:59:55+00:00",
+    "last_checked_at": "2026-08-10T07:49:06+00:00",
     "processing_error": null
   },
   {
@@ -152,7 +140,7 @@
     "sha256": "60171016571a722619165f4cea5b43e6de4f27780f97918f52c3c742eeae2530",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-07-27T09:59:59+00:00",
+    "last_checked_at": "2026-08-10T07:49:15+00:00",
     "processing_error": null
   },
   {
@@ -180,6 +168,18 @@
     "processing_error": null
   },
   {
+    "source_id": "13628c27291888a32798",
+    "pollster": "Infotrak Research",
+    "title": "Voice of the People Poll – August 2025",
+    "source_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
+    "processing_status": "rejected",
+    "sha256": "5371b963e16444c37e1daf069aa28948110b84c13c692beb7e88fb9b3b55ef59",
+    "feeds_public_poll_record": false,
+    "review_items": 0,
+    "last_checked_at": "2026-08-10T07:49:03+00:00",
+    "processing_error": null
+  },
+  {
     "source_id": "statskenya-mar2026-manual",
     "pollster": "Stats Kenya",
     "title": "Ruto Takes Early Lead In 2027 Race As Kalonzo Comes Distant Third",
@@ -200,7 +200,7 @@
     "sha256": "aba2fa0781e96d1190eebadfcbc511c2c9eb6a41813d8e873d2f92b1293852b1",
     "feeds_public_poll_record": true,
     "review_items": 0,
-    "last_checked_at": "2026-08-03T09:51:23+00:00",
+    "last_checked_at": "2026-08-10T07:48:45+00:00",
     "processing_error": null
   },
   {
@@ -212,7 +212,7 @@
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "feeds_public_poll_record": true,
     "review_items": 1,
-    "last_checked_at": "2026-08-03T09:51:14+00:00",
+    "last_checked_at": "2026-08-10T07:48:36+00:00",
     "processing_error": null
   }
 ]
