@@ -108,6 +108,24 @@
     "notes": "Candidate percentages, poll type, and date were identified."
   },
   {
+    "poll_id": "2025_12_17_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
+    "date": "2025-12-17",
+    "fieldwork_dates": "Fieldwork conducted on 29th December, 2025",
+    "pollster_id": "infotrak_research",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "compatible_group": "presidential_horse_race",
+    "question_text": null,
+    "geography_id": "kenya",
+    "geography": "Kenya",
+    "sample_size": 600,
+    "source_title": "Mulembe Nation Poll",
+    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+    "extraction_status": "AUTO_ACCEPTED",
+    "extraction_confidence": 0.98,
+    "notes": "Candidate percentages, poll type, and date were identified."
+  },
+  {
     "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_nation_africa_kenya_news_politics_ruto_leads_in_popularity_poll_babu_owino_tipped_for_luo_kingpin_after_raila_dea",
     "date": "2025-12-28",
     "fieldwork_dates": "19–20 December 2025",
