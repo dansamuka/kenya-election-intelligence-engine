@@ -701,7 +701,7 @@ function drawTrend(polls,dates,ranked){
   const y=v=>padT+(1-v/maxY)*(H-padT-padB);
   let g='';
   for(let t=0;t<=maxY;t+=10){g+=`<line class="grid" x1="${padL}" y1="${y(t)}" x2="${W-padR}" y2="${y(t)}"/><text class="axis-lab" x="${padL-8}" y="${y(t)+4}" text-anchor="end">${t}%</text>`;}
-  dates.forEach((d,i)=>{g+=`<text class="axis-lab" x="${x(i)}" y="${H-padB+20}" text-anchor="middle">${fmtDate(d).replace(/ \\d{4}$/,'')}</text>`;});
+  dates.forEach((d,i)=>{g+=`<text class="axis-lab" x="${x(i)}" y="${H-padB+20}" text-anchor="middle">${fmtDate(d)}</text>`;});
   sel.forEach((c)=>{
     const color=PALETTE[ranked.indexOf(c)%PALETTE.length];
     const pts=[];dates.forEach((d,i)=>{const rec=polls.find(p=>p.date===d);const v=rec?.figures?.[c];if(Number.isFinite(v))pts.push([x(i),y(v),v]);});
