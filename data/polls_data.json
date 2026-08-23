@@ -8,11 +8,11 @@
     "geography": "Kenya",
     "sample_size": 2023,
     "figures": {
-      "William Ruto": 28.0,
-      "Kalonzo Musyoka": 21.0,
-      "Fred Matiang'i": 19.0,
-      "Rigathi Gachagua": 8.0,
-      "Edwin Sifuna": 14.0
+      "William Ruto": 28,
+      "Kalonzo Musyoka": 21,
+      "Fred Matiang'i": 19,
+      "Rigathi Gachagua": 8,
+      "Edwin Sifuna": 14
     },
     "source_title": "TIFA National Poll 2026: Political Alignments and 2027 Election Prospects",
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
@@ -29,11 +29,11 @@
     "geography": "Kenya",
     "sample_size": 2025,
     "figures": {
-      "William Ruto": 10.0,
-      "Kalonzo Musyoka": 24.0,
-      "Fred Matiang'i": 14.0,
-      "Rigathi Gachagua": 2.0,
-      "Edwin Sifuna": 7.0
+      "William Ruto": 10,
+      "Kalonzo Musyoka": 24,
+      "Fred Matiang'i": 14,
+      "Rigathi Gachagua": 2,
+      "Edwin Sifuna": 7
     },
     "source_title": "Kenya’s Road to 2027 General Election: Political parties, presidential contest and coalition dynamics",
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Polls_2027-General-Election_Political-Parties-Presidency-and-Coalitions_24-July-2026.pdf",
@@ -50,11 +50,11 @@
     "geography": "Kenya",
     "sample_size": 2053,
     "figures": {
-      "William Ruto": 25.0,
-      "Kalonzo Musyoka": 18.0,
-      "Fred Matiang'i": 16.0,
-      "Rigathi Gachagua": 8.0,
-      "Edwin Sifuna": 10.0
+      "William Ruto": 25,
+      "Kalonzo Musyoka": 18,
+      "Fred Matiang'i": 16,
+      "Rigathi Gachagua": 8,
+      "Edwin Sifuna": 10
     },
     "source_title": "TIFA National Poll 2026: Political Alignments and 2027 Election Prospects",
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
@@ -71,11 +71,11 @@
     "geography": "Kenya",
     "sample_size": 2025,
     "figures": {
-      "William Ruto": 24.0,
-      "Kalonzo Musyoka": 16.0,
-      "Fred Matiang'i": 10.0,
-      "Rigathi Gachagua": 24.0,
-      "Edwin Sifuna": 2.0
+      "William Ruto": 24,
+      "Kalonzo Musyoka": 16,
+      "Fred Matiang'i": 10,
+      "Rigathi Gachagua": 24,
+      "Edwin Sifuna": 2
     },
     "source_title": "Kenya’s Road to 2027 General Election: Political parties, presidential contest and coalition dynamics",
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Polls_2027-General-Election_Political-Parties-Presidency-and-Coalitions_24-July-2026.pdf",
@@ -92,11 +92,11 @@
     "geography": "Kenya",
     "sample_size": 600,
     "figures": {
-      "William Ruto": 25.0,
-      "Kalonzo Musyoka": 13.0,
-      "Fred Matiang'i": 15.0,
-      "Rigathi Gachagua": 2.0,
-      "Edwin Sifuna": 31.0
+      "William Ruto": 25,
+      "Kalonzo Musyoka": 13,
+      "Fred Matiang'i": 15,
+      "Rigathi Gachagua": 2,
+      "Edwin Sifuna": 31
     },
     "source_title": "Mulembe Nation Poll December 2025",
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
@@ -113,11 +113,11 @@
     "geography": "Kenya",
     "sample_size": 600,
     "figures": {
-      "William Ruto": 25.0,
-      "Kalonzo Musyoka": 13.0,
-      "Fred Matiang'i": 15.0,
-      "Rigathi Gachagua": 2.0,
-      "Edwin Sifuna": 31.0
+      "William Ruto": 25,
+      "Kalonzo Musyoka": 13,
+      "Fred Matiang'i": 15,
+      "Rigathi Gachagua": 2,
+      "Edwin Sifuna": 31
     },
     "source_title": "Mulembe Nation Poll",
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
@@ -134,11 +134,11 @@
     "geography": "Kenya",
     "sample_size": 600,
     "figures": {
-      "William Ruto": 25.0,
-      "Kalonzo Musyoka": 13.0,
-      "Fred Matiang'i": 15.0,
-      "Rigathi Gachagua": 2.0,
-      "Edwin Sifuna": 31.0
+      "William Ruto": 25,
+      "Kalonzo Musyoka": 13,
+      "Fred Matiang'i": 15,
+      "Rigathi Gachagua": 2,
+      "Edwin Sifuna": 31
     },
     "source_title": "Mulembe Nation Poll",
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
@@ -155,14 +155,14 @@
     "geography": "Kenya",
     "sample_size": 1000,
     "figures": {
-      "William Ruto": 28.0,
-      "Kalonzo Musyoka": 12.0,
-      "Fred Matiang'i": 13.0,
-      "Rigathi Gachagua": 5.0,
+      "William Ruto": 28,
+      "Kalonzo Musyoka": 12,
+      "Fred Matiang'i": 13,
+      "Rigathi Gachagua": 5,
       "Edwin Sifuna": 0.2,
-      "Babu Owino": 7.0,
-      "Martha Karua": 2.0,
-      "David Maraga": 2.0
+      "Babu Owino": 7,
+      "Martha Karua": 2,
+      "David Maraga": 2
     },
     "source_title": "Infotrak National Survey: 2027 Presidential Candidates' Popularity (December 2025)",
     "source_url": "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
@@ -185,7 +185,7 @@
       "Edwin Sifuna": 7.44,
       "Rigathi Gachagua": 3.99,
       "David Maraga": 1.45,
-      "Oburu Odinga": 1.0,
+      "Oburu Odinga": 1,
       "Okiya Omtata": 0.36
     },
     "source_title": "Ruto Takes Early Lead In 2027 Race As Kalonzo Comes Distant Third",
@@ -203,11 +203,11 @@
     "geography": "Kenya",
     "sample_size": 2013,
     "figures": {
-      "William Ruto": 24.0,
-      "Kalonzo Musyoka": 19.0,
-      "Fred Matiang'i": 16.0,
-      "Rigathi Gachagua": 6.0,
-      "Edwin Sifuna": 9.0
+      "William Ruto": 24,
+      "Kalonzo Musyoka": 19,
+      "Fred Matiang'i": 16,
+      "Rigathi Gachagua": 6,
+      "Edwin Sifuna": 9
     },
     "source_title": "TIFA National Poll 2026: 1st Release on Political Alignments and 2027 Election Prospects",
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
@@ -224,11 +224,11 @@
     "geography": "Kenya",
     "sample_size": 2025,
     "figures": {
-      "William Ruto": 19.0,
-      "Kalonzo Musyoka": 15.0,
-      "Fred Matiang'i": 13.0,
-      "Rigathi Gachagua": 19.0,
-      "Edwin Sifuna": 2.0
+      "William Ruto": 19,
+      "Kalonzo Musyoka": 15,
+      "Fred Matiang'i": 13,
+      "Rigathi Gachagua": 19,
+      "Edwin Sifuna": 2
     },
     "source_title": "Kenya’s Road to 2027 General Election: Political parties, presidential contest and coalition dynamics",
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Polls_2027-General-Election_Political-Parties-Presidency-and-Coalitions_24-July-2026.pdf",
@@ -245,11 +245,11 @@
     "geography": "Kenya",
     "sample_size": 3000,
     "figures": {
-      "William Ruto": 32.0,
-      "Kalonzo Musyoka": 4.0,
-      "Fred Matiang'i": 12.0,
-      "Rigathi Gachagua": 4.0,
-      "Edwin Sifuna": 12.0
+      "William Ruto": 32,
+      "Kalonzo Musyoka": 4,
+      "Fred Matiang'i": 12,
+      "Rigathi Gachagua": 4,
+      "Edwin Sifuna": 12
     },
     "source_title": "Infotrak Voice Of The People Poll July 2026",
     "source_url": "https://www.infotrakresearch.com/2743-2/",
@@ -266,16 +266,39 @@
     "geography": "Kenya",
     "sample_size": 3000,
     "figures": {
-      "William Ruto": 32.0,
-      "Kalonzo Musyoka": 4.0,
-      "Fred Matiang'i": 12.0,
-      "Rigathi Gachagua": 4.0,
-      "Edwin Sifuna": 12.0
+      "William Ruto": 32,
+      "Kalonzo Musyoka": 4,
+      "Fred Matiang'i": 12,
+      "Rigathi Gachagua": 4,
+      "Edwin Sifuna": 12
     },
     "source_title": "INFOTRAK VOICE OF THE PEOPLE POLL",
     "source_url": "https://www.infotrakresearch.com/2743-2/",
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
     "notes": "Candidate percentages, poll type, and date were identified."
+  },
+  {
+    "date": "2026-08-20",
+    "fieldwork_dates": "25 July–6 August 2026",
+    "pollster": "Swiss Poll International",
+    "poll_type": "preferred_presidential_aspirant",
+    "question_text": "If a presidential election were held today, whom would you vote for?",
+    "geography": "Kenya",
+    "sample_size": 4037,
+    "figures": {
+      "William Ruto": 31,
+      "Kalonzo Musyoka": 22,
+      "Edwin Sifuna": 13,
+      "Fred Matiang'i": 11,
+      "Rigathi Gachagua": 6,
+      "Undecided": 16,
+      "Other": 1
+    },
+    "source_title": "Kalonzo Emerges as Leading Opposition Choice in 2027 Race, Swiss Poll Shows",
+    "source_url": "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
+    "extraction_status": "MANUALLY_VERIFIED",
+    "extraction_confidence": 0.8,
+    "notes": "Swiss Poll International survey released 20 August 2026. Fieldwork and methodology (stratified random sampling; CATI and CAPI; n=4,037; margin of error ±3.4% at 95% confidence) were cross-checked against TUKO reporting. National figures were cross-checked against Capital FM and AllAfrica. No original Swiss Poll report was located, so the record carries a conservative provisional pollster-quality prior."
   }
 ]
