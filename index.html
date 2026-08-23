@@ -152,6 +152,61 @@
     .grid2-wide{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
   }
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  /* ===== 2027 electoral calendar: countdown + timeline spine ===== */
+  .cal{display:grid;gap:20px;grid-template-columns:1fr;align-items:start}
+  .cal-clock{display:grid;gap:14px}
+
+  .nextcard{position:relative;overflow:hidden;background:var(--forest-deep);color:#EDF3EF;border:1px solid #17422F;border-radius:18px;padding:22px}
+  .nextcard::after{content:"";position:absolute;right:-70px;bottom:-80px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(95,211,163,.18),transparent 70%);pointer-events:none}
+  .nextcard > *{position:relative}
+  .ne{font-family:'Libre Franklin';font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8FC7AE}
+  .nextcard h3{font-family:'Libre Franklin';font-weight:900;font-size:clamp(20px,3.4vw,27px);line-height:1.12;letter-spacing:-.02em;margin:10px 0 0;color:#fff}
+  .nextcard .nd{color:#B9CFC4;font-size:13.5px;line-height:1.5;margin:8px 0 0}
+  .clock{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+  .unit{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:13px 6px;text-align:center}
+  .unit .n{font-family:'Libre Franklin';font-weight:900;font-size:clamp(21px,5.2vw,30px);line-height:1;letter-spacing:-.02em;color:#fff}
+  .unit .l{font-family:'Libre Franklin';font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8FC7AE;margin-top:8px}
+  .unit.tick .n{animation:cdpop .3s ease}
+  @keyframes cdpop{from{transform:translateY(-3px);opacity:.35}to{transform:none;opacity:1}}
+
+  /* timeline panel */
+  .tl{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .tl-head{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;justify-content:space-between;padding:17px 20px;border-bottom:1px solid var(--line)}
+  .tl-head h3{font-family:'Libre Franklin';font-weight:900;font-size:17px;letter-spacing:-.01em;margin:0}
+  .tl-count{font-size:12.5px;font-weight:600;color:var(--ink-faint)}
+  .tl-body{position:relative}
+  .tl-scroll{position:relative;overflow-y:auto;overscroll-behavior:contain}
+  .tl-scroll:focus-visible{outline:2px solid var(--forest);outline-offset:-2px;border-radius:4px}
+  .tl-list{position:relative;padding:16px 18px 20px 76px}
+  .tl-svg{position:absolute;left:0;top:0;pointer-events:none;z-index:2}
+  .tl-row{position:relative;z-index:1;padding:9px 0}
+  .tl-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .tl-date{font-family:'Libre Franklin';font-weight:900;font-size:13px;letter-spacing:-.01em}
+  .tl-away{font-size:11.5px;font-weight:700;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+  .tl-tag{font-family:'Libre Franklin';font-weight:800;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:3px 8px;margin-left:auto}
+  .tl-t{font-size:14px;font-weight:700;line-height:1.3;margin:4px 0 0}
+  .tl-s{font-size:12.5px;line-height:1.45;color:var(--ink-soft);margin:3px 0 0}
+  .tl-s em{font-style:normal;color:var(--ochre);font-weight:700}
+  .tl-row.past .tl-date,.tl-row.past .tl-t{color:var(--ink-faint)}
+  .tl-row.past .tl-s{display:none}
+  .tl-row.next{background:var(--forest-mist);border-radius:12px;padding:12px 6px;margin:4px -6px}
+  .tl-row.next .tl-date{color:var(--forest)}
+  .tl-row.vote{background:linear-gradient(105deg,var(--rose-mist),#FDF4F2);border:1px solid #EED0CB;border-radius:12px;padding:14px 6px;margin:6px -6px}
+  .tl-row.vote .tl-date,.tl-row.vote .tl-t{color:#8E2B26}
+  .tl-row.vote .tl-t{font-family:'Libre Franklin';font-weight:900;font-size:16px}
+  .tl-fade{display:none;position:absolute;left:0;right:0;bottom:0;height:46px;background:linear-gradient(180deg,rgba(255,255,255,0),#fff 85%);pointer-events:none}
+  .tl-legend{display:flex;flex-wrap:wrap;gap:5px 12px;padding:13px 20px;border-top:1px solid var(--line);background:var(--line-soft)}
+  .tl-key{display:inline-flex;align-items:center;gap:6px;font-family:'Libre Franklin';font-weight:700;font-size:10.5px;letter-spacing:.06em;color:var(--ink-soft)}
+  .tl-key i{display:block;width:9px;height:9px;border-radius:3px}
+
+  @media(min-width:560px){
+    .tl-list{padding-left:112px}
+  }
+  @media(min-width:900px){
+    .cal{grid-template-columns:1fr 1.06fr;gap:22px}
+    .tl-scroll{max-height:660px}
+    .tl-fade{display:block}
+  }
 </style>
 </head>
 <body>
@@ -161,6 +216,7 @@
     <span class="brand">Kenya <b>2027</b> · Poll Tracker</span>
     <nav class="nav">
       <a href="#race">The race</a>
+      <a href="#countdown">Calendar</a>
       <a href="#trend">Trends</a>
       <a href="#whatif">What-if</a>
       <a href="#picture">Bigger picture</a>
@@ -281,42 +337,311 @@ function renderHeroMeta(){
   const m=$('#heroMeta');m.innerHTML='';
   const chip=(h)=>{const c=el('span','hero-chip',h);m.appendChild(c);};
   chip(`<b>${days.toLocaleString()}</b> days to election day`);
+  const nx=calRows(new Date()).find(r=>!r.past);
+  if(nx)chip(`Next milestone <b>${rangeLab(nx)}</b>`);
   chip(`Latest poll <b>${fmtDate(latest)}</b>`);
   chip(`<b>${polls.length}</b> polls · <b>${houses.length}</b> pollsters`);
 }
 
-/* ================= COUNTDOWN section ================= */
-function buildCountdown(){
-  const body=section('countdown','The clock','The road to August 2027','Kenya votes on the second Tuesday of August. Here is where we are on that road, and how fresh the latest polling is.');
-  const ctx=DATA.ctx||{};
-  const elDate=(ctx.calendar||{}).election_date_estimated||'2027-08-10';
-  const target=new Date(elDate+'T00:00:00');
-  const days=Math.max(0,Math.round((target-new Date())/864e5));
-  const start=new Date('2022-08-09T00:00:00');
-  const prog=Math.min(100,Math.max(0,(new Date()-start)/(target-start)*100));
-  const polls=DATA.polls||[];
-  const latest=uniq(polls.map(p=>p.date)).sort().pop();
-  const sinceLatest=latest?Math.round((new Date()-new Date(latest+'T00:00:00'))/864e5):null;
+/* ================= 2027 ELECTORAL CALENDAR ================= */
+/* All milestone instants are anchored to East Africa Time so the countdown
+   reads the same in Nairobi as it does anywhere else.                      */
+const EAT='+03:00';
+const MON3=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const TAGC={PARTIES:'#1B5E43',REGISTRAR:'#7A4E6E',IEBC:'#48586A',ASPIRANTS:'#B8722A',DISPUTES:'#3F7C7A',CAMPAIGN:'#C79A2E',VOTE:'#B23A34'};
 
-  const band=el('div','cd-band');
+const KEY_DATES=[
+  {d:'2026-10-15',tag:'PARTIES',t:'Parties name their signatories',
+   s:'Political parties file the names and specimen signatures of their authorised officials with the IEBC.'},
+  {d:'2026-10-30',tag:'REGISTRAR',t:'Nomination rules certified',
+   s:'The Registrar of Political Parties certifies the rules each party will use to pick its candidates.'},
+  {d:'2026-11-06',tag:'IEBC',t:'Certified rules reach the IEBC',
+   s:'Parties hand their certified nomination rules to the IEBC.'},
+  {d:'2026-12-09',tag:'ASPIRANTS',t:'Harambee cut-off',
+   s:'Aspirants who keep taking part in public fundraising after this date can put their eligibility at risk.'},
+  {d:'2027-02-10',tag:'ASPIRANTS',t:'Public officers resign',
+   s:'Anyone holding public office who wants to run must leave the job — six months before the vote.'},
+  {d:'2027-03-16',tag:'PARTIES',t:'Membership and coalition filings',
+   s:'Parties submit membership lists, coalition agreements, who will run in their primaries, and where and when those primaries happen.'},
+  {d:'2027-03-17',end:'2027-03-23',tag:'IEBC',t:'Primary participants gazetted',
+   s:'The IEBC publishes the names of everyone cleared to take part in party nominations.'},
+  {d:'2027-03-24',end:'2027-04-30',label:'Mar–Apr 2027',approx:true,tag:'PARTIES',t:'Party primaries',
+   s:'Parties pick their candidates. In many seats this is the real contest.'},
+  {d:'2027-05-08',end:'2027-05-09',approx:true,tag:'ASPIRANTS',t:'Primaries close, independents break away',
+   s:'Nominations and internal disputes wrap up. Anyone running as an independent must have left their party and declared it by around now.'},
+  {d:'2027-05-24',tag:'ASPIRANTS',t:'Presidential supporters filed',
+   s:'Each presidential aspirant files at least 2,000 registered voters as supporters, drawn from a majority of the 47 counties.'},
+  {d:'2027-05-29',end:'2027-06-11',tag:'IEBC',t:'Formal candidate registration',
+   s:'The official window to be registered as a candidate. Miss it and you are not on the ballot.'},
+  {d:'2027-06-12',tag:'DISPUTES',t:'Last day to lodge disputes',
+   s:'Final date to file a nomination dispute with the IEBC.'},
+  {d:'2027-06-23',tag:'DISPUTES',t:'Disputes determined',
+   s:'Nomination disputes are to be settled by this date.'},
+  {d:'2027-06-25',tag:'PARTIES',t:'Party lists filed',
+   s:'Parties submit the lists used to fill nominated seats.'},
+  {d:'2027-07-27',approx:true,tag:'PARTIES',t:'Chief agents named',
+   s:'Parties and candidates name the chief agents who will watch the count on their behalf.'},
+  {d:'2027-08-07',tag:'CAMPAIGN',t:'Campaigns end',
+   s:'Public campaigning stops three days before polling day.'},
+  {d:'2027-08-10',tag:'VOTE',vote:true,t:'General election',
+   s:'Kenyans vote for president, governor, senator, MP, woman representative and MCA.'}
+];
+
+const at=iso=>new Date(iso+'T00:00:00'+EAT);
+const endAt=iso=>new Date(at(iso).getTime()+864e5-1);
+function isoLab(iso,withYear){const p=iso.split('-');return (+p[2])+' '+MON3[(+p[1])-1]+(withYear===false?'':' '+p[0]);}
+function rangeLab(m){
+  if(m.label)return m.label;
+  if(!m.end)return isoLab(m.d);
+  const a=m.d.split('-'),b=m.end.split('-');
+  if(a[0]===b[0]&&a[1]===b[1])return (+a[2])+'–'+isoLab(m.end);
+  return isoLab(m.d,false)+' – '+isoLab(m.end);
+}
+function calRows(now){
+  return KEY_DATES.map(m=>{
+    const a=at(m.d),b=endAt(m.end||m.d);
+    return Object.assign({},m,{dStart:a,dEnd:b,past:now>b,live:now>=a&&now<=b});
+  });
+}
+function awayLab(r,now){
+  if(r.past)return 'passed';
+  if(r.live)return 'under way';
+  const d=Math.ceil((r.dStart-now)/864e5);
+  if(d<=0)return 'today';
+  if(d===1)return 'tomorrow';
+  return 'in '+d.toLocaleString()+' days';
+}
+
+/* ---------- left column: the live clock ---------- */
+function calClockCol(elDate){
+  const col=el('div','cal-clock');
+  const now=new Date();
+  const nx=calRows(now).find(r=>!r.past);
+
+  const nc=el('div','nextcard');
+  nc.innerHTML=`<div class="ne">Next on the calendar</div>
+    <h3 id="calNextT">${nx?nx.t:'Kenya has voted'}</h3>
+    <p class="nd" id="calNextD">${nx?rangeLab(nx)+' · East Africa Time':''}</p>
+    <div class="ne" id="calPre" style="margin-top:20px">Starts in</div>
+    <div class="clock" id="calClock">
+      ${['Days','Hours','Minutes','Seconds'].map(l=>`<div class="unit"><div class="n tnum">–</div><div class="l">${l}</div></div>`).join('')}
+    </div>
+    <p class="nd" id="calNextS" style="margin-top:16px">${nx?nx.s:''}</p>`;
+  col.appendChild(nc);
+
+  const target=at(elDate),start=at('2022-08-09');
+  const days=Math.max(0,Math.ceil((target-now)/864e5));
+  const prog=Math.min(100,Math.max(0,(now-start)/(target-start)*100));
   const c1=el('div','card');c1.style.padding='22px';
-  c1.innerHTML=`<div class="k" style="font-family:'Libre Franklin';font-weight:700;font-size:12.5px;color:var(--ink-soft)">DAYS TO ELECTION DAY</div>
-    <div class="cd-big tnum">${days.toLocaleString()}</div>
-    <div class="muted" style="font-size:13px;margin-top:6px">Election expected <b>${fmtDate(elDate)}</b></div>
+  c1.innerHTML=`<div style="font-family:'Libre Franklin';font-weight:700;font-size:12.5px;letter-spacing:.02em;color:var(--ink-soft)">DAYS TO ELECTION DAY</div>
+    <div class="cd-big tnum" id="calElDays">${days.toLocaleString()}</div>
+    <div class="muted" style="font-size:13px;margin-top:6px">Polling day <b>${isoLab(elDate)}</b></div>
     <div class="cd-track"><div class="cd-fill" style="width:${prog.toFixed(1)}%"></div></div>
     <div class="faint" style="font-size:12px;margin-top:8px">${prog.toFixed(0)}% of the way from the 2022 vote to 2027</div>`;
-  band.appendChild(c1);
+  col.appendChild(c1);
 
-  const c2=el('div','stat');
-  c2.innerHTML=`<div class="k">HOW FRESH IS THIS?</div><div class="v tnum">${sinceLatest!=null?sinceLatest:'—'}</div><div class="d">days since the newest published poll (${fmtDate(latest)})</div>`;
-  band.appendChild(c2);
+  const polls=DATA.polls||[];
+  const latest=uniq(polls.map(p=>p.date)).sort().pop();
+  const sinceLatest=latest?Math.round((now-new Date(latest+'T00:00:00'))/864e5):null;
+  const reg=(DATA.ctx||{}).registration||{};
+  const strip=el('div','stat-grid c2');
+  const s1=el('div','stat');
+  s1.innerHTML=`<div class="k">HOW FRESH IS THIS?</div><div class="v tnum">${sinceLatest!=null?sinceLatest:'—'}</div><div class="d">days since the newest published poll (${fmtDate(latest)})</div>`;
+  const s2=el('div','stat');
+  s2.innerHTML=`<div class="k">NEW VOTERS EXPECTED</div><div class="v tnum">${reg.expected_new_voters_2027?'+'+(reg.expected_new_voters_2027/1e6).toFixed(1)+'M':'—'}</div><div class="d">mostly young Kenyans — the biggest unknown in any projection</div>`;
+  strip.appendChild(s1);strip.appendChild(s2);
+  col.appendChild(strip);
+  return col;
+}
 
-  const reg=ctx.registration||{};
-  const c3=el('div','stat');
-  c3.innerHTML=`<div class="k">NEW VOTERS EXPECTED</div><div class="v tnum">${reg.expected_new_voters_2027?'+'+(reg.expected_new_voters_2027/1e6).toFixed(1)+'M':'—'}</div><div class="d">mostly young Kenyans — the biggest unknown in any projection</div>`;
-  band.appendChild(c3);
+/* ---------- right column: the timeline chart ---------- */
+function calTimeline(){
+  const now=new Date();
+  const rows=calRows(now);
+  const nxIdx=rows.findIndex(r=>!r.past);
+  const done=rows.filter(r=>r.past).length;
 
-  body.appendChild(band);
+  const panel=el('div','tl');
+  const head=el('div','tl-head');
+  head.innerHTML=`<h3>The road to the ballot</h3><span class="tl-count tnum">${rows.length} milestones · ${done} passed</span>`;
+  panel.appendChild(head);
+
+  const wrap=el('div','tl-body');
+  const scroll=el('div','tl-scroll');scroll.id='tlScroll';
+  scroll.tabIndex=0;scroll.setAttribute('role','group');
+  scroll.setAttribute('aria-label','Key dates in the 2027 Kenyan general election');
+  const list=el('div','tl-list');list.id='tlList';
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('class','tl-svg');svg.setAttribute('aria-hidden','true');svg.id='tlSvg';
+  list.appendChild(svg);
+
+  rows.forEach((r,i)=>{
+    const cls='tl-row'+(r.past?' past':'')+(i===nxIdx?' next':'')+(r.vote?' vote':'');
+    const row=el('div',cls);
+    const c=TAGC[r.tag]||'#1B5E43';
+    row.innerHTML=`<div class="tl-top">
+        <span class="tl-date">${rangeLab(r)}</span>
+        <span class="tl-away tnum">${awayLab(r,now)}</span>
+        <span class="tl-tag" style="color:${c};background:${c}1A">${r.tag}</span>
+      </div>
+      <p class="tl-t">${r.vote?'🇰🇪 ':''}${r.t}</p>
+      <p class="tl-s">${r.s}${r.approx?' <em>Date is indicative.</em>':''}</p>`;
+    list.appendChild(row);
+  });
+
+  scroll.appendChild(list);
+  wrap.appendChild(scroll);
+  wrap.appendChild(el('div','tl-fade'));
+  panel.appendChild(wrap);
+
+  const leg=el('div','tl-legend');
+  leg.innerHTML=Object.keys(TAGC).map(k=>`<span class="tl-key"><i style="background:${TAGC[k]}"></i>${k}</span>`).join('');
+  panel.appendChild(leg);
+  return panel;
+}
+
+/* ---------- the spine: milestones drawn at their true position in time ---------- */
+function calElbow(x1,y1,xb,x2,y2){
+  const dy=y2-y1;
+  if(Math.abs(dy)<10)return 'M'+x1+','+y1+' L'+x2+','+y2;
+  const s=dy>0?1:-1;
+  const r=Math.max(2,Math.min(8,x2-xb,xb-x1,Math.abs(dy)/2));
+  return 'M'+x1+','+y1+' L'+(xb-r)+','+y1+' Q'+xb+','+y1+' '+xb+','+(y1+s*r)+
+         ' L'+xb+','+(y2-s*r)+' Q'+xb+','+y2+' '+(xb+r)+','+y2+' L'+x2+','+y2;
+}
+function calDrawSpine(){
+  const list=document.getElementById('tlList'),svg=document.getElementById('tlSvg');
+  if(!list||!svg)return;
+  const W=list.clientWidth,H=list.clientHeight;
+  if(!W||!H)return;
+  const gut=parseFloat(getComputedStyle(list).paddingLeft)||76;
+  const xS=Math.round(gut*0.58),xB=Math.round(gut*0.74),xD=Math.round(gut*0.88);
+  const now=new Date(),rows=calRows(now);
+  const first=at(rows[0].d).getTime(),last=at(rows[rows.length-1].d).getTime();
+  const t0=Math.min(now.getTime(),first)-12*864e5,t1=last+10*864e5;
+  const yTop=16,yBot=H-16;
+  const Y=t=>yTop+(t-t0)/(t1-t0)*(yBot-yTop);
+  const yNow=Y(now.getTime());
+  const P=[];
+
+  /* month gridlines along the time axis */
+  const long=gut>=100;
+  const d0=new Date(t0);let mm=d0.getUTCMonth(),yy=d0.getUTCFullYear();
+  for(let k=0;k<30;k++){
+    mm++;if(mm>11){mm=0;yy++;}
+    const t=at(yy+'-'+String(mm+1).padStart(2,'0')+'-01').getTime();
+    if(t>t1)break;
+    if(t<t0)continue;
+    const y=Y(t);
+    P.push('<line x1="'+(xS-5)+'" y1="'+y+'" x2="'+(xS+5)+'" y2="'+y+'" stroke="var(--line)" stroke-width="1"/>');
+    P.push('<text x="'+(xS-10)+'" y="'+(y+3)+'" text-anchor="end" font-family="Libre Franklin,sans-serif" font-size="9" font-weight="700" letter-spacing="0.06em" fill="var(--ink-faint)">'+
+      MON3[mm].toUpperCase()+(long?(' '+String(yy).slice(2)):'')+'</text>');
+  }
+
+  /* the spine, filled up to today */
+  P.push('<line x1="'+xS+'" y1="'+yTop+'" x2="'+xS+'" y2="'+yBot+'" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>');
+  P.push('<line x1="'+xS+'" y1="'+yTop+'" x2="'+xS+'" y2="'+Math.max(yTop,Math.min(yBot,yNow))+'" stroke="var(--forest)" stroke-width="3" stroke-linecap="round"/>');
+
+  /* one milestone per row: true time position on the spine, leader line to the card */
+  const rowEls=list.querySelectorAll('.tl-row');
+  const nxIdx=rows.findIndex(r=>!r.past);
+  rowEls.forEach((node,i)=>{
+    const r=rows[i];if(!r)return;
+    const c=TAGC[r.tag]||'#1B5E43';
+    const yR=node.offsetTop+node.offsetHeight/2;
+    const yT=Y(at(r.d).getTime());
+    const o=r.past?0.34:1;
+    if(r.end){
+      P.push('<line x1="'+xS+'" y1="'+yT+'" x2="'+xS+'" y2="'+Y(at(r.end).getTime())+'" stroke="'+c+'" stroke-width="5" stroke-linecap="round" opacity="'+(o*0.85).toFixed(2)+'"/>');
+    }
+    P.push('<path d="'+calElbow(xS+6,yT,xB,xD-6,yR)+'" fill="none" stroke="'+c+'" stroke-width="1.2" stroke-linecap="round" opacity="'+(o*0.5).toFixed(2)+'"/>');
+    P.push('<circle cx="'+xS+'" cy="'+yT+'" r="3.2" fill="'+c+'" opacity="'+o+'"/>');
+    const rr=r.vote?7:4.6;
+    P.push('<circle cx="'+xD+'" cy="'+yR+'" r="'+rr+'" fill="'+c+'" stroke="#fff" stroke-width="2" opacity="'+o+'"/>');
+    if(i===nxIdx)P.push('<circle cx="'+xD+'" cy="'+yR+'" r="'+(rr+4)+'" fill="none" stroke="'+c+'" stroke-width="1.4" opacity="0.5"/>');
+    if(r.vote)P.push('<circle cx="'+xD+'" cy="'+yR+'" r="'+(rr+5)+'" fill="none" stroke="'+c+'" stroke-width="1.6" opacity="0.35"/>');
+  });
+
+  /* today reference line */
+  if(yNow>=yTop-2&&yNow<=yBot+2){
+    P.push('<line x1="'+(xS+7)+'" y1="'+yNow+'" x2="'+(xD+6)+'" y2="'+yNow+'" stroke="var(--rose)" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>');
+    P.push('<circle cx="'+xS+'" cy="'+yNow+'" r="4.4" fill="var(--rose)" stroke="#fff" stroke-width="2"/>');
+    if(long)P.push('<text x="'+(xS-10)+'" y="'+(yNow+3)+'" text-anchor="end" font-family="Libre Franklin,sans-serif" font-size="9" font-weight="800" letter-spacing="0.12em" fill="var(--rose)" stroke="#fff" stroke-width="3.5" paint-order="stroke">TODAY</text>');
+    else P.push('<path d="M'+(xS-14)+','+(yNow-4.5)+' L'+(xS-7)+','+yNow+' L'+(xS-14)+','+(yNow+4.5)+' Z" fill="var(--rose)"/>');
+  }
+
+  svg.setAttribute('width',W);svg.setAttribute('height',H);
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  svg.innerHTML=P.join('');
+}
+
+/* ---------- the ticker ---------- */
+let CAL_TIMER=null,CAL_RAF=0;
+function calTick(elDate){
+  const clock=document.getElementById('calClock');if(!clock)return;
+  const units=[].slice.call(clock.querySelectorAll('.unit'));
+  const elT=at(elDate);
+  const step=()=>{
+    const now=new Date();
+    const nx=calRows(now).find(r=>!r.past);
+    const tEl=document.getElementById('calNextT'),dEl=document.getElementById('calNextD'),
+          sEl=document.getElementById('calNextS'),pEl=document.getElementById('calPre');
+    let target,pre;
+    if(nx){target=nx.live?nx.dEnd:nx.dStart;pre=nx.live?'Closes in':'Starts in';}
+    else{target=elT;pre='Counted from';}
+    if(nx&&tEl&&tEl.dataset.k!==nx.d){
+      tEl.dataset.k=nx.d;tEl.textContent=nx.t;
+      dEl.textContent=rangeLab(nx)+' · East Africa Time';
+      sEl.textContent=nx.s;
+    }
+    if(pEl&&pEl.textContent!==pre)pEl.textContent=pre;
+    const ms=Math.max(0,target-now);
+    const parts=[Math.floor(ms/864e5),Math.floor(ms%864e5/36e5),Math.floor(ms%36e5/6e4),Math.floor(ms%6e4/1e3)];
+    parts.forEach((v,i)=>{
+      const n=units[i]&&units[i].querySelector('.n');if(!n)return;
+      const txt=i===0?v.toLocaleString():String(v).padStart(2,'0');
+      if(n.textContent!==txt){
+        n.textContent=txt;
+        units[i].classList.remove('tick');void units[i].offsetWidth;units[i].classList.add('tick');
+      }
+    });
+    const ed=document.getElementById('calElDays');
+    if(ed){const t=Math.max(0,Math.ceil((elT-now)/864e5)).toLocaleString();if(ed.textContent!==t)ed.textContent=t;}
+  };
+  step();
+  if(CAL_TIMER)clearInterval(CAL_TIMER);
+  CAL_TIMER=setInterval(step,1000);
+}
+
+/* ---------- section assembly ---------- */
+function buildCountdown(){
+  const body=section('countdown','The clock','The road to 10 August 2027',
+    'Kenya votes on the second Tuesday of August 2027. Everything before it runs on a legal calendar — filings, resignations, primaries and registration windows that decide who is even on the ballot. Here is the whole road, and how long is left on each stretch.');
+  const elDate=((DATA.ctx||{}).calendar||{}).election_date_estimated||'2027-08-10';
+
+  const grid=el('div','cal');
+  grid.appendChild(calClockCol(elDate));
+  grid.appendChild(calTimeline());
+  body.appendChild(grid);
+
+  const foot=el('p','note');
+  foot.style.marginTop='18px';
+  foot.innerHTML='<b>How to read the chart:</b> dots on the green spine sit at each milestone\u2019s true position in time, so you can see the long quiet stretch after December and the pile-up between March and June. Dates marked <em style="font-style:normal;color:var(--ochre);font-weight:700">indicative</em> can move with gazette notices or court rulings — treat the calendar as the shape of the race, not the final word.';
+  body.appendChild(foot);
+
+  calTick(elDate);
+  requestAnimationFrame(()=>{
+    calDrawSpine();
+    const sc=document.getElementById('tlScroll'),nxEl=document.querySelector('.tl-row.next'),fade=document.querySelector('.tl-fade');
+    const scrollable=sc&&sc.scrollHeight>sc.clientHeight+8;
+    if(scrollable&&nxEl)sc.scrollTop=Math.max(0,nxEl.offsetTop-90);
+    if(fade)fade.style.display=scrollable?'block':'none';
+  });
+  const list=document.getElementById('tlList');
+  if(list&&window.ResizeObserver){
+    new ResizeObserver(()=>{cancelAnimationFrame(CAL_RAF);CAL_RAF=requestAnimationFrame(calDrawSpine);}).observe(list);
+  }
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>requestAnimationFrame(calDrawSpine));
 }
 
 /* ================= DISTANCE TO WIN ================= */
@@ -700,3 +1025,4 @@ boot();
 </script>
 </body>
 </html>
+
