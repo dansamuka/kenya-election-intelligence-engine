@@ -218,5 +218,19 @@
     "last_checked_at": "2026-08-17T07:03:01+00:00",
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "processing_status": "processed"
+  },
+  {
+    "source_id": "swisspoll-aug2026-manual",
+    "pollster": "Swiss Poll International",
+    "title": "Kalonzo Emerges as Leading Opposition Choice in 2027 Race, Swiss Poll Shows",
+    "page_url": "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
+    "pdf_url": null,
+    "published_date": "2026-08-20",
+    "first_seen_at": "2026-08-23T15:33:51+00:00",
+    "last_checked_at": "2026-08-23T15:33:51+00:00",
+    "sha256": null,
+    "processing_status": "manually_verified_external",
+    "processing_error": null,
+    "notes": "No original Swiss Poll report located. Results verified across Capital FM, AllAfrica and TUKO; methodology and sample details reported by TUKO."
   }
 ]
