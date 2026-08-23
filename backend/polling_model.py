@@ -52,6 +52,12 @@ DEFAULT_POLLSTER_PRIORS = {
         "methodology_score": 0.70,
         "notes": "Primary-source archive monitored; only compatible candidate/popularity data should enter averages.",
     },
+    "Swiss Poll International": {
+        "quality_score": 0.68,
+        "transparency_score": 0.62,
+        "methodology_score": 0.65,
+        "notes": "Provisional prior: large mixed-mode national sample reported by multiple outlets, but no original poll report has been located for direct audit.",
+    },
     "Stats Kenya": {
         "quality_score": 0.65,
         "transparency_score": 0.55,
