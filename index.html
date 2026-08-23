@@ -271,6 +271,8 @@ const fmtDate=s=>{if(!s)return '—';const d=new Date(s+'T00:00:00');return d.to
 const fmtShort=s=>{if(!s)return '';const d=new Date(s+'T00:00:00');return d.toLocaleDateString('en-GB',{month:'short',year:'2-digit'});};
 const pct=v=>Number.isFinite(v)?v.toFixed(v%1?1:0)+'%':'—';
 const uniq=a=>[...new Set(a.filter(Boolean))];
+const NON_CANDIDATE_LABELS=new Set(['undecided','other','others','none','no response','prefer not to say','not sure','don\u2019t know',"don't know"]);
+const isCandidate=name=>name&&!NON_CANDIDATE_LABELS.has(String(name).trim().toLowerCase());
 async function getJSON(path){const r=await fetch(path+'?'+BUST,{cache:'no-store'});if(!r.ok)throw new Error(path+' '+r.status);return r.json();}
 const DATA={};
 
@@ -289,7 +291,7 @@ function section(id,eyebrow,title,sub){
 
 /* ================= HERO standings ================= */
 function renderStandings(){
-  const all=(DATA.avg||[]).slice().sort((a,b)=>b.weighted_average-a.weighted_average);
+  const all=(DATA.avg||[]).filter(a=>a.poll_type==='preferred_presidential_aspirant'&&isCandidate(a.candidate)).slice().sort((a,b)=>b.weighted_average-a.weighted_average);
   const host=$('#standings');host.innerHTML='';
   if(!all.length){host.innerHTML='<div class="stand-foot">Polling average not available.</div>';return;}
   const TOP=6;
@@ -673,7 +675,7 @@ function buildTrend(){
   const body=section('trend','Movement','How support has shifted','Each line is one candidate across every published poll. We show the leading names by default — tap any name to add or remove it.');
   const polls=(DATA.polls||[]).filter(p=>p.poll_type==='preferred_presidential_aspirant').slice().sort((a,b)=>a.date.localeCompare(b.date));
   const dates=uniq(polls.map(p=>p.date)).sort();
-  const cands=uniq(polls.flatMap(p=>Object.keys(p.figures||{})));
+  const cands=uniq(polls.flatMap(p=>Object.keys(p.figures||{}))).filter(isCandidate);
   const latestVal=c=>{for(let i=polls.length-1;i>=0;i--){const v=polls[i].figures?.[c];if(Number.isFinite(v))return v;}return 0;};
   const ranked=cands.slice().sort((a,b)=>latestVal(b)-latestVal(a));
   trendState.selected=new Set(ranked.slice(0,5));
@@ -699,7 +701,7 @@ function drawTrend(polls,dates,ranked){
   const y=v=>padT+(1-v/maxY)*(H-padT-padB);
   let g='';
   for(let t=0;t<=maxY;t+=10){g+=`<line class="grid" x1="${padL}" y1="${y(t)}" x2="${W-padR}" y2="${y(t)}"/><text class="axis-lab" x="${padL-8}" y="${y(t)+4}" text-anchor="end">${t}%</text>`;}
-  dates.forEach((d,i)=>{g+=`<text class="axis-lab" x="${x(i)}" y="${H-padB+20}" text-anchor="middle">${fmtShort(d)}</text>`;});
+  dates.forEach((d,i)=>{g+=`<text class="axis-lab" x="${x(i)}" y="${H-padB+20}" text-anchor="middle">${fmtDate(d).replace(/ \\d{4}$/,'')}</text>`;});
   sel.forEach((c)=>{
     const color=PALETTE[ranked.indexOf(c)%PALETTE.length];
     const pts=[];dates.forEach((d,i)=>{const rec=polls.find(p=>p.date===d);const v=rec?.figures?.[c];if(Number.isFinite(v))pts.push([x(i),y(v),v]);});
@@ -754,7 +756,7 @@ function buildHistory(){
 let scenarioState={coalitions:null};
 function buildWhatIf(){
   const body=section('whatif','Play it out','What if candidates joined forces?','Kenyan elections are won by alliances, not lone runners. Build two or more teams from the current candidates, decide how well their supporters would actually stick together, and see who would come out ahead — with an honest allowance for polls being off.');
-  const cands=uniq((DATA.polls||[]).flatMap(p=>Object.keys(p.figures||{}))).sort();
+  const cands=uniq((DATA.polls||[]).flatMap(p=>Object.keys(p.figures||{}))).filter(isCandidate).sort();
   const ctrl=el('div','card');ctrl.style.padding='20px';
   ctrl.innerHTML=`
     <div class="grid2" style="gap:14px">
