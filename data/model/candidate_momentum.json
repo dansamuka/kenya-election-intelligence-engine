@@ -527,43 +527,5 @@
         "value": 0.36
       }
     ]
-  },
-  {
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate": "Other",
-    "observations": 1,
-    "first_date": "2026-08-20",
-    "latest_date": "2026-08-20",
-    "first_value": 1,
-    "latest_value": 1,
-    "change_from_first": 0,
-    "change_from_previous": null,
-    "volatility": 0,
-    "trend_label": "stable",
-    "series": [
-      {
-        "date": "2026-08-20",
-        "value": 1
-      }
-    ]
-  },
-  {
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate": "Undecided",
-    "observations": 1,
-    "first_date": "2026-08-20",
-    "latest_date": "2026-08-20",
-    "first_value": 16,
-    "latest_value": 16,
-    "change_from_first": 0,
-    "change_from_previous": null,
-    "volatility": 0,
-    "trend_label": "stable",
-    "series": [
-      {
-        "date": "2026-08-20",
-        "value": 16
-      }
-    ]
   }
 ]
