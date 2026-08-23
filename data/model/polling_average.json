@@ -130,26 +130,6 @@
   {
     "as_of": "2026-08-20",
     "poll_type": "preferred_presidential_aspirant",
-    "candidate": "Undecided",
-    "weighted_average": 16,
-    "lower_95": 8.16,
-    "upper_95": 23.84,
-    "uncertainty_margin": 7.84,
-    "effective_poll_count": 1,
-    "raw_poll_count": 1,
-    "latest_poll_value": 16,
-    "latest_poll_date": "2026-08-20",
-    "pollsters_in_average": [
-      "Swiss Poll International"
-    ],
-    "source_urls": [
-      "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/"
-    ],
-    "model_status": "thin_series"
-  },
-  {
-    "as_of": "2026-08-20",
-    "poll_type": "preferred_presidential_aspirant",
     "candidate": "Edwin Sifuna",
     "weighted_average": 13.32,
     "lower_95": 8.05,
@@ -338,26 +318,6 @@
     ],
     "source_urls": [
       "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/"
-    ],
-    "model_status": "thin_series"
-  },
-  {
-    "as_of": "2026-08-20",
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate": "Other",
-    "weighted_average": 1,
-    "lower_95": 0,
-    "upper_95": 8.84,
-    "uncertainty_margin": 7.84,
-    "effective_poll_count": 1,
-    "raw_poll_count": 1,
-    "latest_poll_value": 1,
-    "latest_poll_date": "2026-08-20",
-    "pollsters_in_average": [
-      "Swiss Poll International"
-    ],
-    "source_urls": [
-      "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/"
     ],
     "model_status": "thin_series"
   },
