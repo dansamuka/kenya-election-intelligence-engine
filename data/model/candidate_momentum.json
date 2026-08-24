@@ -1,40 +1,179 @@
 [
   {
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate": "Fred Matiang'i",
-    "observations": 11,
+    "poll_type": "popularity_rating",
+    "candidate": "Rigathi Gachagua",
+    "observations": 3,
     "first_date": "2025-08-01",
-    "latest_date": "2026-08-20",
-    "first_value": 19,
-    "latest_value": 11,
-    "change_from_first": -8,
-    "change_from_previous": -1,
-    "volatility": 2.27,
+    "latest_date": "2026-05-14",
+    "first_value": 2.0,
+    "latest_value": 19.0,
+    "change_from_first": 17.0,
+    "change_from_previous": -5.0,
+    "volatility": 9.42,
+    "trend_label": "rising",
+    "series": [
+      {
+        "date": "2025-08-01",
+        "value": 2.0
+      },
+      {
+        "date": "2025-11-01",
+        "value": 24.0
+      },
+      {
+        "date": "2026-05-14",
+        "value": 19.0
+      }
+    ]
+  },
+  {
+    "poll_type": "popularity_rating",
+    "candidate": "Kalonzo Musyoka",
+    "observations": 3,
+    "first_date": "2025-08-01",
+    "latest_date": "2026-05-14",
+    "first_value": 24.0,
+    "latest_value": 15.0,
+    "change_from_first": -9.0,
+    "change_from_previous": -1.0,
+    "volatility": 4.03,
     "trend_label": "falling",
     "series": [
       {
         "date": "2025-08-01",
-        "value": 19
+        "value": 24.0
       },
       {
         "date": "2025-11-01",
-        "value": 16
+        "value": 16.0
+      },
+      {
+        "date": "2026-05-14",
+        "value": 15.0
+      }
+    ]
+  },
+  {
+    "poll_type": "popularity_rating",
+    "candidate": "William Ruto",
+    "observations": 3,
+    "first_date": "2025-08-01",
+    "latest_date": "2026-05-14",
+    "first_value": 10.0,
+    "latest_value": 19.0,
+    "change_from_first": 9.0,
+    "change_from_previous": -5.0,
+    "volatility": 5.79,
+    "trend_label": "rising",
+    "series": [
+      {
+        "date": "2025-08-01",
+        "value": 10.0
+      },
+      {
+        "date": "2025-11-01",
+        "value": 24.0
+      },
+      {
+        "date": "2026-05-14",
+        "value": 19.0
+      }
+    ]
+  },
+  {
+    "poll_type": "popularity_rating",
+    "candidate": "Edwin Sifuna",
+    "observations": 3,
+    "first_date": "2025-08-01",
+    "latest_date": "2026-05-14",
+    "first_value": 7.0,
+    "latest_value": 2.0,
+    "change_from_first": -5.0,
+    "change_from_previous": 0.0,
+    "volatility": 2.36,
+    "trend_label": "falling",
+    "series": [
+      {
+        "date": "2025-08-01",
+        "value": 7.0
+      },
+      {
+        "date": "2025-11-01",
+        "value": 2.0
+      },
+      {
+        "date": "2026-05-14",
+        "value": 2.0
+      }
+    ]
+  },
+  {
+    "poll_type": "popularity_rating",
+    "candidate": "Fred Matiang'i",
+    "observations": 3,
+    "first_date": "2025-08-01",
+    "latest_date": "2026-05-14",
+    "first_value": 14.0,
+    "latest_value": 13.0,
+    "change_from_first": -1.0,
+    "change_from_previous": 3.0,
+    "volatility": 1.7,
+    "trend_label": "stable",
+    "series": [
+      {
+        "date": "2025-08-01",
+        "value": 14.0
+      },
+      {
+        "date": "2025-11-01",
+        "value": 10.0
+      },
+      {
+        "date": "2026-05-14",
+        "value": 13.0
+      }
+    ]
+  },
+  {
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate": "Fred Matiang'i",
+    "observations": 12,
+    "first_date": "2025-08-01",
+    "latest_date": "2026-08-20",
+    "first_value": 19.0,
+    "latest_value": 11.0,
+    "change_from_first": -8.0,
+    "change_from_previous": -1.0,
+    "volatility": 2.18,
+    "trend_label": "falling",
+    "series": [
+      {
+        "date": "2025-08-01",
+        "value": 19.0
+      },
+      {
+        "date": "2025-11-01",
+        "value": 16.0
       },
       {
         "date": "2025-12-03",
-        "value": 15
+        "value": 15.0
       },
       {
         "date": "2025-12-10",
-        "value": 15
+        "value": 15.0
       },
       {
         "date": "2025-12-17",
-        "value": 15
+        "value": 15.0
+      },
+      {
+        "date": "2025-12-24",
+        "value": 15.0
       },
       {
         "date": "2025-12-28",
-        "value": 13
+        "value": 13.0
       },
       {
         "date": "2026-03-01",
@@ -42,58 +181,62 @@
       },
       {
         "date": "2026-05-14",
-        "value": 16
+        "value": 16.0
       },
       {
         "date": "2026-07-03",
-        "value": 12
+        "value": 12.0
       },
       {
         "date": "2026-07-13",
-        "value": 12
+        "value": 12.0
       },
       {
         "date": "2026-08-20",
-        "value": 11
+        "value": 11.0
       }
     ]
   },
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "William Ruto",
-    "observations": 11,
+    "observations": 12,
     "first_date": "2025-08-01",
     "latest_date": "2026-08-20",
-    "first_value": 28,
-    "latest_value": 31,
-    "change_from_first": 3,
-    "change_from_previous": -1,
-    "volatility": 3.1,
+    "first_value": 28.0,
+    "latest_value": 31.0,
+    "change_from_first": 3.0,
+    "change_from_previous": -1.0,
+    "volatility": 3.03,
     "trend_label": "rising",
     "series": [
       {
         "date": "2025-08-01",
-        "value": 28
+        "value": 28.0
       },
       {
         "date": "2025-11-01",
-        "value": 25
+        "value": 25.0
       },
       {
         "date": "2025-12-03",
-        "value": 25
+        "value": 25.0
       },
       {
         "date": "2025-12-10",
-        "value": 25
+        "value": 25.0
       },
       {
         "date": "2025-12-17",
-        "value": 25
+        "value": 25.0
+      },
+      {
+        "date": "2025-12-24",
+        "value": 25.0
       },
       {
         "date": "2025-12-28",
-        "value": 28
+        "value": 28.0
       },
       {
         "date": "2026-03-01",
@@ -101,58 +244,62 @@
       },
       {
         "date": "2026-05-14",
-        "value": 24
+        "value": 24.0
       },
       {
         "date": "2026-07-03",
-        "value": 32
+        "value": 32.0
       },
       {
         "date": "2026-07-13",
-        "value": 32
+        "value": 32.0
       },
       {
         "date": "2026-08-20",
-        "value": 31
+        "value": 31.0
       }
     ]
   },
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Rigathi Gachagua",
-    "observations": 11,
+    "observations": 12,
     "first_date": "2025-08-01",
     "latest_date": "2026-08-20",
-    "first_value": 8,
-    "latest_value": 6,
-    "change_from_first": -2,
-    "change_from_previous": 2,
-    "volatility": 2.1,
+    "first_value": 8.0,
+    "latest_value": 6.0,
+    "change_from_first": -2.0,
+    "change_from_previous": 2.0,
+    "volatility": 2.14,
     "trend_label": "falling",
     "series": [
       {
         "date": "2025-08-01",
-        "value": 8
+        "value": 8.0
       },
       {
         "date": "2025-11-01",
-        "value": 8
+        "value": 8.0
       },
       {
         "date": "2025-12-03",
-        "value": 2
+        "value": 2.0
       },
       {
         "date": "2025-12-10",
-        "value": 2
+        "value": 2.0
       },
       {
         "date": "2025-12-17",
-        "value": 2
+        "value": 2.0
+      },
+      {
+        "date": "2025-12-24",
+        "value": 2.0
       },
       {
         "date": "2025-12-28",
-        "value": 5
+        "value": 5.0
       },
       {
         "date": "2026-03-01",
@@ -160,54 +307,58 @@
       },
       {
         "date": "2026-05-14",
-        "value": 6
+        "value": 6.0
       },
       {
         "date": "2026-07-03",
-        "value": 4
+        "value": 4.0
       },
       {
         "date": "2026-07-13",
-        "value": 4
+        "value": 4.0
       },
       {
         "date": "2026-08-20",
-        "value": 6
+        "value": 6.0
       }
     ]
   },
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Edwin Sifuna",
-    "observations": 11,
+    "observations": 12,
     "first_date": "2025-08-01",
     "latest_date": "2026-08-20",
-    "first_value": 14,
-    "latest_value": 13,
-    "change_from_first": -1,
-    "change_from_previous": 1,
-    "volatility": 10.11,
+    "first_value": 14.0,
+    "latest_value": 13.0,
+    "change_from_first": -1.0,
+    "change_from_previous": 1.0,
+    "volatility": 10.59,
     "trend_label": "stable",
     "series": [
       {
         "date": "2025-08-01",
-        "value": 14
+        "value": 14.0
       },
       {
         "date": "2025-11-01",
-        "value": 10
+        "value": 10.0
       },
       {
         "date": "2025-12-03",
-        "value": 31
+        "value": 31.0
       },
       {
         "date": "2025-12-10",
-        "value": 31
+        "value": 31.0
       },
       {
         "date": "2025-12-17",
-        "value": 31
+        "value": 31.0
+      },
+      {
+        "date": "2025-12-24",
+        "value": 31.0
       },
       {
         "date": "2025-12-28",
@@ -219,58 +370,62 @@
       },
       {
         "date": "2026-05-14",
-        "value": 9
+        "value": 9.0
       },
       {
         "date": "2026-07-03",
-        "value": 12
+        "value": 12.0
       },
       {
         "date": "2026-07-13",
-        "value": 12
+        "value": 12.0
       },
       {
         "date": "2026-08-20",
-        "value": 13
+        "value": 13.0
       }
     ]
   },
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Kalonzo Musyoka",
-    "observations": 11,
+    "observations": 12,
     "first_date": "2025-08-01",
     "latest_date": "2026-08-20",
-    "first_value": 21,
-    "latest_value": 22,
-    "change_from_first": 1,
-    "change_from_previous": 18,
-    "volatility": 5.96,
+    "first_value": 21.0,
+    "latest_value": 22.0,
+    "change_from_first": 1.0,
+    "change_from_previous": 18.0,
+    "volatility": 5.71,
     "trend_label": "stable",
     "series": [
       {
         "date": "2025-08-01",
-        "value": 21
+        "value": 21.0
       },
       {
         "date": "2025-11-01",
-        "value": 18
+        "value": 18.0
       },
       {
         "date": "2025-12-03",
-        "value": 13
+        "value": 13.0
       },
       {
         "date": "2025-12-10",
-        "value": 13
+        "value": 13.0
       },
       {
         "date": "2025-12-17",
-        "value": 13
+        "value": 13.0
+      },
+      {
+        "date": "2025-12-24",
+        "value": 13.0
       },
       {
         "date": "2025-12-28",
-        "value": 12
+        "value": 12.0
       },
       {
         "date": "2026-03-01",
@@ -278,19 +433,19 @@
       },
       {
         "date": "2026-05-14",
-        "value": 19
+        "value": 19.0
       },
       {
         "date": "2026-07-03",
-        "value": 4
+        "value": 4.0
       },
       {
         "date": "2026-07-13",
-        "value": 4
+        "value": 4.0
       },
       {
         "date": "2026-08-20",
-        "value": 22
+        "value": 22.0
       }
     ]
   },
@@ -300,7 +455,7 @@
     "observations": 2,
     "first_date": "2025-12-28",
     "latest_date": "2026-03-01",
-    "first_value": 2,
+    "first_value": 2.0,
     "latest_value": 1.45,
     "change_from_first": -0.55,
     "change_from_previous": -0.55,
@@ -309,7 +464,7 @@
     "series": [
       {
         "date": "2025-12-28",
-        "value": 2
+        "value": 2.0
       },
       {
         "date": "2026-03-01",
@@ -323,16 +478,16 @@
     "observations": 1,
     "first_date": "2025-12-28",
     "latest_date": "2025-12-28",
-    "first_value": 7,
-    "latest_value": 7,
-    "change_from_first": 0,
+    "first_value": 7.0,
+    "latest_value": 7.0,
+    "change_from_first": 0.0,
     "change_from_previous": null,
-    "volatility": 0,
+    "volatility": 0.0,
     "trend_label": "stable",
     "series": [
       {
         "date": "2025-12-28",
-        "value": 7
+        "value": 7.0
       }
     ]
   },
@@ -342,16 +497,16 @@
     "observations": 1,
     "first_date": "2025-12-28",
     "latest_date": "2025-12-28",
-    "first_value": 2,
-    "latest_value": 2,
-    "change_from_first": 0,
+    "first_value": 2.0,
+    "latest_value": 2.0,
+    "change_from_first": 0.0,
     "change_from_previous": null,
-    "volatility": 0,
+    "volatility": 0.0,
     "trend_label": "stable",
     "series": [
       {
         "date": "2025-12-28",
-        "value": 2
+        "value": 2.0
       }
     ]
   },
@@ -361,16 +516,16 @@
     "observations": 1,
     "first_date": "2026-03-01",
     "latest_date": "2026-03-01",
-    "first_value": 1,
-    "latest_value": 1,
-    "change_from_first": 0,
+    "first_value": 1.0,
+    "latest_value": 1.0,
+    "change_from_first": 0.0,
     "change_from_previous": null,
-    "volatility": 0,
+    "volatility": 0.0,
     "trend_label": "stable",
     "series": [
       {
         "date": "2026-03-01",
-        "value": 1
+        "value": 1.0
       }
     ]
   },
@@ -382,9 +537,9 @@
     "latest_date": "2026-03-01",
     "first_value": 0.36,
     "latest_value": 0.36,
-    "change_from_first": 0,
+    "change_from_first": 0.0,
     "change_from_previous": null,
-    "volatility": 0,
+    "volatility": 0.0,
     "trend_label": "stable",
     "series": [
       {

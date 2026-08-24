@@ -1,29 +1,30 @@
 {
   "phase": "phase_2_source_ingestion",
-  "generated_at": "2026-08-17T07:03:37+00:00",
+  "generated_at": "2026-08-24T07:06:03+00:00",
   "summary": {
-    "catalog_sources": 18,
-    "registered_sources": 18,
-    "approved_poll_records": 13,
-    "approved_source_urls": 6,
+    "catalog_sources": 19,
+    "registered_sources": 19,
+    "approved_poll_records": 15,
+    "approved_source_urls": 7,
     "review_queue_items": 6,
     "high_priority_review_items": 1
   },
   "processing_status_counts": {
     "rejected": 9,
     "needs_review": 3,
-    "manually_verified_external": 2,
+    "manually_verified_external": 3,
     "processed": 4
   },
   "source_class_counts": {
-    "unknown_external_source": 2,
+    "unknown_external_source": 3,
     "official_pdf_report_candidate": 9,
     "official_article_or_archive_candidate": 7
   },
   "pollster_catalog_counts": {
     "Infotrak Research": 15,
     "TIFA Research": 2,
-    "Stats Kenya": 1
+    "Stats Kenya": 1,
+    "Swiss Poll International": 1
   },
   "warnings": [
     "1 high-priority review item(s) require human inspection."

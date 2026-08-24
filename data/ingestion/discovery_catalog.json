@@ -75,7 +75,7 @@
   {
     "source_id": "bdf83a5d845f6f7b50e9",
     "pollster": "TIFA Research",
-    "title": "TIFA National Poll 2026: 1st Release on Political Alignments and 2027 Election Prospects",
+    "title": "TIFA National Poll 2026: Political Alignments and 2027 Election Prospects",
     "page_url": "https://www.tifaresearch.com/tifa-national-poll-2026-1st-release-on-political-alignments-and-2027-election-prospects/",
     "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
@@ -92,6 +92,27 @@
     "published_date": "2026-05-14",
     "processing_status": "processed",
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
+    "discovery_origin": "sources_registry",
+    "discovery_error": null
+  },
+  {
+    "source_id": "swisspoll-aug2026-manual",
+    "pollster": "Swiss Poll International",
+    "title": "Kalonzo Emerges as Leading Opposition Choice in 2027 Race, Swiss Poll Shows",
+    "page_url": "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
+    "pdf_url": null,
+    "source_url": "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
+    "source_class": "unknown_external_source",
+    "relevance_score": 42,
+    "matched_terms": [
+      "2027",
+      "kalonzo"
+    ],
+    "priority": "medium",
+    "recommended_action": "manual_review_before_processing",
+    "published_date": "2026-08-20",
+    "processing_status": "manually_verified_external",
+    "sha256": null,
     "discovery_origin": "sources_registry",
     "discovery_error": null
   },

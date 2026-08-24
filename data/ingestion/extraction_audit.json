@@ -20,7 +20,7 @@
     "sha256": "c3de2eaacec991f50527f37dd84facd8cf4038c0441f5c9e2efff5857b0cfc7e",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-08-17T07:03:13+00:00",
+    "last_checked_at": "2026-08-24T07:05:21+00:00",
     "processing_error": null
   },
   {
@@ -32,7 +32,7 @@
     "sha256": "0672903783163dce2fe719d79422afecf4aedd116c759990eb2d8536fcc53de0",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-08-17T07:03:34+00:00",
+    "last_checked_at": "2026-08-24T07:05:53+00:00",
     "processing_error": null
   },
   {
@@ -68,7 +68,7 @@
     "sha256": "7a7e3ad4c9228ffbe9dbcfbdb9be35c5754d5a202d2f6478cc024d90188ce172",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-08-17T07:03:10+00:00",
+    "last_checked_at": "2026-08-24T07:05:17+00:00",
     "processing_error": null
   },
   {
@@ -80,7 +80,7 @@
     "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-08-17T07:03:03+00:00",
+    "last_checked_at": "2026-08-24T07:05:07+00:00",
     "processing_error": null
   },
   {
@@ -92,7 +92,7 @@
     "sha256": "572920ef2af0c574df3346a8c6e1ca04b4939d30bd72531813bf5e3aec2b5721",
     "feeds_public_poll_record": true,
     "review_items": 0,
-    "last_checked_at": "2026-08-17T07:03:17+00:00",
+    "last_checked_at": "2026-08-24T07:05:27+00:00",
     "processing_error": null
   },
   {
@@ -104,7 +104,7 @@
     "sha256": "10706b99ed1e5cf595060fe5f554d668d2e4346adca948459c3f3f1d8d9f721b",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-08-17T07:03:04+00:00",
+    "last_checked_at": "2026-08-24T07:05:10+00:00",
     "processing_error": null
   },
   {
@@ -128,7 +128,7 @@
     "sha256": "09156a37958163b0720c6ad3f5d05a050275f59a21796c0d744c939b1acaf665",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-08-17T07:03:35+00:00",
+    "last_checked_at": "2026-08-24T07:06:02+00:00",
     "processing_error": null
   },
   {
@@ -140,7 +140,7 @@
     "sha256": "60171016571a722619165f4cea5b43e6de4f27780f97918f52c3c742eeae2530",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-08-17T07:03:37+00:00",
+    "last_checked_at": "2026-08-24T07:06:03+00:00",
     "processing_error": null
   },
   {
@@ -176,7 +176,7 @@
     "sha256": "5371b963e16444c37e1daf069aa28948110b84c13c692beb7e88fb9b3b55ef59",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-08-17T07:03:27+00:00",
+    "last_checked_at": "2026-08-24T07:05:39+00:00",
     "processing_error": null
   },
   {
@@ -192,6 +192,18 @@
     "processing_error": null
   },
   {
+    "source_id": "swisspoll-aug2026-manual",
+    "pollster": "Swiss Poll International",
+    "title": "Kalonzo Emerges as Leading Opposition Choice in 2027 Race, Swiss Poll Shows",
+    "source_url": "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
+    "processing_status": "manually_verified_external",
+    "sha256": null,
+    "feeds_public_poll_record": true,
+    "review_items": 0,
+    "last_checked_at": "2026-08-23T15:33:51+00:00",
+    "processing_error": null
+  },
+  {
     "source_id": "ac9c873264583b09ab33",
     "pollster": "TIFA Research",
     "title": "Kenya’s Road to 2027 General Election: Political parties, presidential contest and coalition dynamics",
@@ -200,19 +212,19 @@
     "sha256": "aba2fa0781e96d1190eebadfcbc511c2c9eb6a41813d8e873d2f92b1293852b1",
     "feeds_public_poll_record": true,
     "review_items": 0,
-    "last_checked_at": "2026-08-17T07:03:08+00:00",
+    "last_checked_at": "2026-08-24T07:05:15+00:00",
     "processing_error": null
   },
   {
     "source_id": "bdf83a5d845f6f7b50e9",
     "pollster": "TIFA Research",
-    "title": "TIFA National Poll 2026: 1st Release on Political Alignments and 2027 Election Prospects",
+    "title": "TIFA National Poll 2026: Political Alignments and 2027 Election Prospects",
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "processing_status": "processed",
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "feeds_public_poll_record": true,
     "review_items": 1,
-    "last_checked_at": "2026-08-17T07:03:01+00:00",
+    "last_checked_at": "2026-08-24T07:05:04+00:00",
     "processing_error": null
   }
 ]

@@ -126,6 +126,24 @@
     "notes": "Candidate percentages, poll type, and date were identified."
   },
   {
+    "poll_id": "2025_12_24_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
+    "date": "2025-12-24",
+    "fieldwork_dates": "Fieldwork conducted on 29th December, 2025",
+    "pollster_id": "infotrak_research",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "compatible_group": "presidential_horse_race",
+    "question_text": null,
+    "geography_id": "kenya",
+    "geography": "Kenya",
+    "sample_size": 600,
+    "source_title": "Mulembe Nation Poll",
+    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+    "extraction_status": "AUTO_ACCEPTED",
+    "extraction_confidence": 0.98,
+    "notes": "Candidate percentages, poll type, and date were identified."
+  },
+  {
     "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_nation_africa_kenya_news_politics_ruto_leads_in_popularity_poll_babu_owino_tipped_for_luo_kingpin_after_raila_dea",
     "date": "2025-12-28",
     "fieldwork_dates": "19–20 December 2025",
@@ -232,5 +250,23 @@
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
     "notes": "Candidate percentages, poll type, and date were identified."
+  },
+  {
+    "poll_id": "2026_08_20_swiss_poll_international_preferred_presidential_aspirant_https_capitalfm_africa_kalonzo_emerges_as_leading_opposition_choice_in_2027_race_swiss_poll_shows",
+    "date": "2026-08-20",
+    "fieldwork_dates": "25 July–6 August 2026",
+    "pollster_id": "swiss_poll_international",
+    "pollster": "Swiss Poll International",
+    "poll_type": "preferred_presidential_aspirant",
+    "compatible_group": "presidential_horse_race",
+    "question_text": "If a presidential election were held today, whom would you vote for?",
+    "geography_id": "kenya",
+    "geography": "Kenya",
+    "sample_size": 4037,
+    "source_title": "Kalonzo Emerges as Leading Opposition Choice in 2027 Race, Swiss Poll Shows",
+    "source_url": "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
+    "extraction_status": "MANUALLY_VERIFIED",
+    "extraction_confidence": 0.8,
+    "notes": "Swiss Poll International survey released 20 August 2026. Fieldwork and methodology (stratified random sampling; CATI and CAPI; n=4,037; margin of error ±3.4% at 95% confidence) were cross-checked against TUKO reporting. National figures were cross-checked against Capital FM and AllAfrica. No original Swiss Poll report was located, so the record carries a conservative provisional pollster-quality prior. The published distribution also reported 16% undecided and approximately 1% other/unreported; these response categories are documented here but excluded from candidate-average calculations."
   }
 ]
