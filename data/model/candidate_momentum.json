@@ -137,14 +137,14 @@
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Fred Matiang'i",
-    "observations": 12,
+    "observations": 13,
     "first_date": "2025-08-01",
     "latest_date": "2026-08-20",
     "first_value": 19.0,
     "latest_value": 11.0,
     "change_from_first": -8.0,
     "change_from_previous": -1.0,
-    "volatility": 2.18,
+    "volatility": 2.11,
     "trend_label": "falling",
     "series": [
       {
@@ -157,6 +157,10 @@
       },
       {
         "date": "2025-12-03",
+        "value": 15.0
+      },
+      {
+        "date": "2025-12-07",
         "value": 15.0
       },
       {
@@ -200,14 +204,14 @@
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "William Ruto",
-    "observations": 12,
+    "observations": 13,
     "first_date": "2025-08-01",
     "latest_date": "2026-08-20",
     "first_value": 28.0,
     "latest_value": 31.0,
     "change_from_first": 3.0,
     "change_from_previous": -1.0,
-    "volatility": 3.03,
+    "volatility": 2.95,
     "trend_label": "rising",
     "series": [
       {
@@ -220,6 +224,10 @@
       },
       {
         "date": "2025-12-03",
+        "value": 25.0
+      },
+      {
+        "date": "2025-12-07",
         "value": 25.0
       },
       {
@@ -263,14 +271,14 @@
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Rigathi Gachagua",
-    "observations": 12,
+    "observations": 13,
     "first_date": "2025-08-01",
     "latest_date": "2026-08-20",
     "first_value": 8.0,
     "latest_value": 6.0,
     "change_from_first": -2.0,
     "change_from_previous": 2.0,
-    "volatility": 2.14,
+    "volatility": 2.15,
     "trend_label": "falling",
     "series": [
       {
@@ -283,6 +291,10 @@
       },
       {
         "date": "2025-12-03",
+        "value": 2.0
+      },
+      {
+        "date": "2025-12-07",
         "value": 2.0
       },
       {
@@ -326,14 +338,14 @@
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Edwin Sifuna",
-    "observations": 12,
+    "observations": 13,
     "first_date": "2025-08-01",
     "latest_date": "2026-08-20",
     "first_value": 14.0,
     "latest_value": 13.0,
     "change_from_first": -1.0,
     "change_from_previous": 1.0,
-    "volatility": 10.59,
+    "volatility": 10.85,
     "trend_label": "stable",
     "series": [
       {
@@ -346,6 +358,10 @@
       },
       {
         "date": "2025-12-03",
+        "value": 31.0
+      },
+      {
+        "date": "2025-12-07",
         "value": 31.0
       },
       {
@@ -389,14 +405,14 @@
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Kalonzo Musyoka",
-    "observations": 12,
+    "observations": 13,
     "first_date": "2025-08-01",
     "latest_date": "2026-08-20",
     "first_value": 21.0,
     "latest_value": 22.0,
     "change_from_first": 1.0,
     "change_from_previous": 18.0,
-    "volatility": 5.71,
+    "volatility": 5.48,
     "trend_label": "stable",
     "series": [
       {
@@ -409,6 +425,10 @@
       },
       {
         "date": "2025-12-03",
+        "value": 13.0
+      },
+      {
+        "date": "2025-12-07",
         "value": 13.0
       },
       {

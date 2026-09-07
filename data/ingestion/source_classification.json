@@ -256,7 +256,7 @@
     "recommended_action": "fetch_page_extract_pdf_links",
     "published_date": null,
     "processing_status": "rejected",
-    "sha256": "09156a37958163b0720c6ad3f5d05a050275f59a21796c0d744c939b1acaf665"
+    "sha256": "67707ac0a6c22432d03c7ad9923a6bafdfd0d3b7a3ac4d53fb1c0040039f3fe7"
   },
   {
     "source_id": "d74528a4e7fd8f1711a5",
@@ -274,7 +274,7 @@
     "recommended_action": "fetch_page_extract_pdf_links",
     "published_date": null,
     "processing_status": "rejected",
-    "sha256": "60171016571a722619165f4cea5b43e6de4f27780f97918f52c3c742eeae2530"
+    "sha256": "4e6631b592898ea87223a0f1e97f2b0ab3f5c4ddc7a65339730b9a587d1aa15d"
   },
   {
     "source_id": "ab6417506c79248cd2ee",
@@ -292,7 +292,7 @@
     "recommended_action": "fetch_page_extract_pdf_links",
     "published_date": null,
     "processing_status": "rejected",
-    "sha256": "0672903783163dce2fe719d79422afecf4aedd116c759990eb2d8536fcc53de0"
+    "sha256": "3c839f966c7a57c899de086e16c6ce10d4be68d3e4fd3e8baac8ff026c35966a"
   },
   {
     "source_id": "d487dc5d26ae5dfd1523",
@@ -328,7 +328,7 @@
     "recommended_action": "fetch_page_extract_pdf_links",
     "published_date": null,
     "processing_status": "rejected",
-    "sha256": "5371b963e16444c37e1daf069aa28948110b84c13c692beb7e88fb9b3b55ef59"
+    "sha256": "32d65ce54c2100cbf548d061c8c86bfa20e30b674208cb7fe17508ffbc48198f"
   },
   {
     "source_id": "9da8f34c97c44ee94853",
@@ -360,6 +360,6 @@
     "recommended_action": "fetch_page_extract_pdf_links",
     "published_date": null,
     "processing_status": "processed",
-    "sha256": "572920ef2af0c574df3346a8c6e1ca04b4939d30bd72531813bf5e3aec2b5721"
+    "sha256": "6152f44126f5ec8794a684dd2bc943300880359103de6b376c7b43835061b750"
   }
 ]
