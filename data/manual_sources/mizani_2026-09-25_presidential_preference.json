@@ -1,0 +1,36 @@
+{
+  "evidence_id": "mizani-2026-09-25-presidential-screenshot",
+  "pollster": "Mizani Africa",
+  "release_date": "2026-09-25",
+  "poll_type": "preferred_presidential_candidate",
+  "question_text": "If elections were held today, who would you vote for as the next President?",
+  "geography": "Kenya",
+  "figures": {
+    "William Ruto": 38.7,
+    "Kalonzo Musyoka": 27.5,
+    "Edwin Sifuna": 13.2,
+    "Fred Matiang'i": 7.7,
+    "Rigathi Gachagua": 4.4,
+    "Ndindi Nyoro": 3.1,
+    "Martha Karua": 0.3,
+    "David Maraga": 0.1,
+    "Undecided": 5
+  },
+  "methodology": {
+    "fieldwork_dates": null,
+    "sample_size": null,
+    "sampling_method": null,
+    "survey_mode": null,
+    "weighting": null,
+    "margin_of_error": null
+  },
+  "evidence": {
+    "type": "user_supplied_screenshot",
+    "pollster_website": "https://www.mizaniafrica.com/",
+    "pollster_social_profile": "https://x.com/Mizaniafrica",
+    "direct_post_url": null
+  },
+  "review_status": "NEEDS_SOURCE_AND_METHODOLOGY_VERIFICATION",
+  "approved_for_polling_average": false,
+  "notes": "Percentages transcribed from the supplied Mizani Africa-branded graphic. Candidate shares plus undecided sum to 100.0%. This record is evidence for review only and must not enter the polling average until the original release and methodology are verified."
+}
