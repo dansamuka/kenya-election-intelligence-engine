@@ -26,9 +26,10 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
 
 try:
-    from extractors import infotrak, tifa
+    from extractors import infotrak, mizani, tifa
 except Exception:  # pragma: no cover - allows offline data-only generation
     infotrak = None
+    mizani = None
     tifa = None
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
@@ -60,6 +61,20 @@ SOURCE_FEEDS = [
         "feed_url": "https://www.infotrakresearch.com/category/political-polls/",
         "feed_type": "official_category_archive",
         "status": "enabled_by_infotrak_extractor_when_available",
+    },
+    {
+        "feed_id": "mizani_official_site",
+        "pollster": "Mizani Africa",
+        "feed_url": "https://www.mizaniafrica.com/",
+        "feed_type": "official_poll_archive",
+        "status": "enabled_by_mizani_extractor_when_available",
+    },
+    {
+        "feed_id": "mizani_official_x",
+        "pollster": "Mizani Africa",
+        "feed_url": "https://x.com/Mizaniafrica",
+        "feed_type": "official_pollster_social",
+        "status": "manual_review_only",
     },
 ]
 
@@ -156,19 +171,28 @@ def classify_source(item: Dict[str, Any]) -> Dict[str, Any]:
     lower_url = safe_lower(url)
     relevance = score_relevance(item)
 
-    blocked_reason = None
-    for pattern in BLOCKED_PATTERNS:
-        if pattern in lower_url:
-            blocked_reason = f"blocked_url_pattern:{pattern}"
-            break
+    official_mizani_social = any(
+        marker in lower_url
+        for marker in ["x.com/mizaniafrica", "twitter.com/mizaniafrica"]
+    )
 
-    if blocked_reason:
+    blocked_reason = None
+    if not official_mizani_social:
+        for pattern in BLOCKED_PATTERNS:
+            if pattern in lower_url:
+                blocked_reason = f"blocked_url_pattern:{pattern}"
+                break
+
+    if official_mizani_social:
+        source_class = "official_social_poll_candidate"
+        recommended_action = "manual_source_and_methodology_verification"
+    elif blocked_reason:
         source_class = "blocked_noise"
         recommended_action = "discard_before_processing"
     elif lower_url.endswith(".pdf") or item.get("pdf_url"):
         source_class = "official_pdf_report_candidate"
         recommended_action = "download_hash_extract_parse"
-    elif any(domain in lower_url for domain in ["tifaresearch.com", "infotrakresearch.com"]):
+    elif any(domain in lower_url for domain in ["tifaresearch.com", "infotrakresearch.com", "mizaniafrica.com"]):
         source_class = "official_article_or_archive_candidate"
         recommended_action = "fetch_page_extract_pdf_links"
     else:
