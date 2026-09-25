@@ -28,7 +28,7 @@ from urllib.parse import urlparse
 import requests
 from bs4 import BeautifulSoup
 
-from extractors import infotrak, tifa
+from extractors import infotrak, mizani, tifa
 from extractors.pdf_parser import parse_pdf_bytes, parse_poll_text
 
 
@@ -54,6 +54,9 @@ TRACKED_CANDIDATES = [
     "Fred Matiang'i",
     "Rigathi Gachagua",
     "Edwin Sifuna",
+    "Ndindi Nyoro",
+    "Martha Karua",
+    "David Maraga",
 ]
 
 # Official source URLs only. These are not fake/sample data.
@@ -398,6 +401,11 @@ def discover_all_sources() -> List[Dict[str, Any]]:
         sources.extend(infotrak.discover_sources())
     except Exception as exc:  # noqa: BLE001
         print(f"Infotrak discovery failed: {exc}", file=sys.stderr)
+
+    try:
+        sources.extend(mizani.discover_sources())
+    except Exception as exc:  # noqa: BLE001
+        print(f"Mizani discovery failed: {exc}", file=sys.stderr)
 
     return dedupe_sources(sources)
 
