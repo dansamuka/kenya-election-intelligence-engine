@@ -30,6 +30,9 @@ TRACKED_CANDIDATES: List[str] = [
     "Fred Matiang'i",
     "Rigathi Gachagua",
     "Edwin Sifuna",
+    "Ndindi Nyoro",
+    "Martha Karua",
+    "David Maraga",
 ]
 
 CANDIDATE_ALIASES: Dict[str, List[str]] = {
@@ -45,6 +48,9 @@ CANDIDATE_ALIASES: Dict[str, List[str]] = {
     ],
     "Rigathi Gachagua": ["Rigathi Gachagua", "Gachagua", "Riggy G"],
     "Edwin Sifuna": ["Edwin Sifuna", "Sifuna", "Senator Edwin Sifuna"],
+    "Ndindi Nyoro": ["Ndindi Nyoro", "Nyoro", "Hon. Ndindi Nyoro"],
+    "Martha Karua": ["Martha Karua", "Karua", "Hon. Martha Karua"],
+    "David Maraga": ["David Maraga", "Maraga", "Justice David Maraga", "Chief Justice David Maraga"],
 }
 
 POLL_TYPE_KEYWORDS: List[Tuple[str, List[str]]] = [
