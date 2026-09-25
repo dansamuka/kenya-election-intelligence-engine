@@ -252,6 +252,17 @@ def discover_live_sources() -> List[Dict[str, Any]]:
                 "pdf_url": None,
                 "discovery_error": str(exc),
             })
+    if mizani is not None:
+        try:
+            discovered.extend(mizani.discover_sources())
+        except Exception as exc:  # noqa: BLE001
+            discovered.append({
+                "pollster": "Mizani Africa",
+                "title": "Mizani discovery failed",
+                "page_url": "https://www.mizaniafrica.com/",
+                "pdf_url": None,
+                "discovery_error": str(exc),
+            })
     return discovered
 
 
