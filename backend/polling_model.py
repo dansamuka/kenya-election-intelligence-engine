@@ -33,6 +33,7 @@ POLL_RESULTS_LONG_PATH = FOUNDATION_DIR / "poll_results_long.json"
 POLLSTERS_PATH = FOUNDATION_DIR / "pollsters.json"
 MODEL_MANIFEST_PATH = MODEL_DIR / "manifest.json"
 POLLING_AVERAGE_PATH = MODEL_DIR / "polling_average.json"
+POLLING_AVERAGE_ALL_PATH = MODEL_DIR / "polling_average_all.json"
 MOMENTUM_PATH = MODEL_DIR / "candidate_momentum.json"
 POLLSTER_QUALITY_PATH = MODEL_DIR / "pollster_quality.json"
 MODEL_QUALITY_REPORT_PATH = MODEL_DIR / "model_quality_report.json"
@@ -172,8 +173,11 @@ def effective_sample_count(weights: List[float]) -> float:
     return (total * total) / squared
 
 
-def normalize_poll_record(record: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-    if record.get("model_eligible") is False:
+def normalize_poll_record(
+    record: Dict[str, Any],
+    include_unvalidated: bool = False,
+) -> Optional[Dict[str, Any]]:
+    if record.get("model_eligible") is False and not include_unvalidated:
         return None
     date = parse_date(record.get("date"))
     figures = record.get("figures") or {}
@@ -188,8 +192,18 @@ def normalize_poll_record(record: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         "extraction_confidence": record.get("extraction_confidence"),
         "source_url": record.get("source_url"),
         "source_title": record.get("source_title"),
+        "model_eligible": record.get("model_eligible") is not False,
         "figures": figures,
     }
+
+
+def average_group(poll_type: str) -> Optional[str]:
+    """Group directly comparable presidential preference questions together."""
+    if poll_type in {"preferred_presidential_aspirant", "preferred_presidential_candidate"}:
+        return "presidential_horse_race"
+    if poll_type in {"popularity_rating", "approval_rating"}:
+        return poll_type
+    return None
 
 
 def build_pollster_quality(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -221,23 +235,45 @@ def build_pollster_quality(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return output
 
 
-def build_polling_average(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    normalized = [item for item in (normalize_poll_record(record) for record in polls) if item]
+def build_polling_average(
+    polls: List[Dict[str, Any]],
+    include_unvalidated: bool = False,
+) -> List[Dict[str, Any]]:
+    normalized = [
+        item
+        for item in (
+            normalize_poll_record(record, include_unvalidated=include_unvalidated)
+            for record in polls
+        )
+        if item
+    ]
     if not normalized:
         return []
 
     as_of = max(item["date"] for item in normalized)
-    candidates = sorted({candidate for item in normalized for candidate in item["figures"].keys()})
-    poll_types = sorted({item["poll_type"] for item in normalized if item["poll_type"] in COMPATIBLE_POLL_TYPES})
+    groups = sorted({
+        group
+        for item in normalized
+        for group in [average_group(item["poll_type"])]
+        if group is not None
+    })
 
     output: List[Dict[str, Any]] = []
 
-    for poll_type in poll_types:
-        type_records = [item for item in normalized if item["poll_type"] == poll_type]
+    for poll_group in groups:
+        group_records = [
+            item for item in normalized
+            if average_group(item["poll_type"]) == poll_group
+        ]
+        candidates = sorted({
+            candidate
+            for item in group_records
+            for candidate in item["figures"].keys()
+        })
+
         for candidate in candidates:
             observations = []
-            raw_values = []
-            for record in type_records:
+            for record in group_records:
                 raw_value = record["figures"].get(candidate)
                 if raw_value is None:
                     continue
@@ -247,6 +283,7 @@ def build_polling_average(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                     continue
                 if not 0 <= value <= 100:
                     continue
+
                 weight = (
                     recency_weight(record["date"], as_of)
                     * sample_size_weight(record.get("sample_size"))
@@ -255,7 +292,6 @@ def build_polling_average(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                     * comparability_weight(record.get("poll_type", "unknown"))
                 )
                 observations.append((value, weight, record))
-                raw_values.append(value)
 
             if not observations:
                 continue
@@ -269,14 +305,21 @@ def build_polling_average(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             variance = weighted_variance(value_weight_pairs, average)
             eff_n = effective_sample_count(weights)
             empirical_sd = math.sqrt(variance) if variance is not None else 4.0
-            # A floor is used because polling error, house effects and extraction uncertainty are larger than tiny within-series variation.
             uncertainty = max(3.5, 1.96 * empirical_sd / math.sqrt(max(1.0, eff_n)))
-            latest_record = max(observations, key=lambda x: x[2]["date"])[2]
-            latest_value = next(value for value, _, record in observations if record is latest_record)
+
+            latest_value, _, latest_record = max(
+                observations,
+                key=lambda item: item[2]["date"],
+            )
+            unvalidated_count = sum(
+                1
+                for _, _, record in observations
+                if not record.get("model_eligible", True)
+            )
 
             output.append({
                 "as_of": as_of.date().isoformat(),
-                "poll_type": poll_type,
+                "poll_type": poll_group,
                 "candidate": candidate,
                 "weighted_average": round(average, 2),
                 "lower_95": round(max(0.0, average - uncertainty), 2),
@@ -284,15 +327,42 @@ def build_polling_average(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                 "uncertainty_margin": round(uncertainty, 2),
                 "effective_poll_count": round(eff_n, 2),
                 "raw_poll_count": len(observations),
+                "unvalidated_poll_count": unvalidated_count,
+                "average_scope": (
+                    "all_published"
+                    if include_unvalidated
+                    else "model_eligible_only"
+                ),
+                "includes_unvalidated": bool(unvalidated_count),
+                "source_poll_types": sorted({
+                    record["poll_type"] for _, _, record in observations
+                }),
                 "latest_poll_value": round(float(latest_value), 2),
                 "latest_poll_date": latest_record["date"].date().isoformat(),
-                "pollsters_in_average": sorted({record["pollster"] for _, _, record in observations}),
-                "source_urls": sorted({record.get("source_url") for _, _, record in observations if record.get("source_url")}),
-                "model_status": "thin_series" if len(observations) < DEFAULT_MIN_EFFECTIVE_POLLS else "usable_with_caution",
+                "latest_pollster": latest_record["pollster"],
+                "pollsters_in_average": sorted({
+                    record["pollster"] for _, _, record in observations
+                }),
+                "source_urls": sorted({
+                    record.get("source_url")
+                    for _, _, record in observations
+                    if record.get("source_url")
+                }),
+                "model_status": (
+                    "thin_series"
+                    if len(observations) < DEFAULT_MIN_EFFECTIVE_POLLS
+                    else "usable_with_caution"
+                ),
             })
 
-    return sorted(output, key=lambda item: (item["poll_type"], -item["weighted_average"], item["candidate"]))
-
+    return sorted(
+        output,
+        key=lambda item: (
+            item["poll_type"],
+            -item["weighted_average"],
+            item["candidate"],
+        ),
+    )
 
 def build_momentum(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     normalized = [item for item in (normalize_poll_record(record) for record in polls) if item]
@@ -356,7 +426,7 @@ def build_model_exclusions(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             "source_title": record.get("source_title"),
             "source_url": record.get("source_url"),
             "methodology_status": record.get("methodology_status"),
-            "reason": "Published for source-transparent display but excluded from polling averages until methodology/comparability requirements are satisfied.",
+            "reason": "Published for source-transparent display. Included only in the optional all-published polling average; excluded from the model-eligible-only average until methodology/comparability requirements are satisfied.",
         })
     return sorted(rows, key=lambda item: (item.get("date") or "", item.get("pollster") or ""))
 
@@ -404,7 +474,7 @@ def build_model_quality_report(polls: List[Dict[str, Any]], averages: List[Dict[
             "forecast_status": "Not a full election forecast; this is a polling-summary model.",
         },
         "warnings": warnings + ([
-            f"{model_excluded_records} published poll record(s) are excluded from model calculations because required methodology or comparability checks are unresolved."
+            f"{model_excluded_records} published poll record(s) are methodology-held: they appear in the optional all-published average but are excluded from the model-eligible-only average."
         ] if model_excluded_records else []),
         "next_requirements_for_higher_rigor": [
             "Add more pollsters and more polling waves.",
@@ -421,6 +491,7 @@ def build_manifest() -> Dict[str, Any]:
         "phase": "Phase 3 - Polling model",
         "files": [
             "data/model/polling_average.json",
+            "data/model/polling_average_all.json",
             "data/model/candidate_momentum.json",
             "data/model/pollster_quality.json",
             "data/model/model_quality_report.json",
@@ -441,21 +512,28 @@ def main() -> None:
     if not isinstance(polls, list):
         polls = []
 
-    averages = build_polling_average(polls)
+    averages_validated = build_polling_average(polls, include_unvalidated=False)
+    averages_all = build_polling_average(polls, include_unvalidated=True)
     momentum = build_momentum(polls)
     pollster_quality = build_pollster_quality(polls)
     model_exclusions = build_model_exclusions(polls)
-    quality_report = build_model_quality_report(polls, averages, pollster_quality)
+    quality_report = build_model_quality_report(
+        polls,
+        averages_validated,
+        pollster_quality,
+    )
     manifest = build_manifest()
 
-    write_json(POLLING_AVERAGE_PATH, averages)
+    write_json(POLLING_AVERAGE_PATH, averages_validated)
+    write_json(POLLING_AVERAGE_ALL_PATH, averages_all)
     write_json(MOMENTUM_PATH, momentum)
     write_json(POLLSTER_QUALITY_PATH, pollster_quality)
     write_json(MODEL_QUALITY_REPORT_PATH, quality_report)
     write_json(MODEL_EXCLUSIONS_PATH, model_exclusions)
     write_json(MODEL_MANIFEST_PATH, manifest)
 
-    print(f"Phase 3 polling averages generated: {len(averages)}")
+    print(f"Phase 3 validated polling-average rows generated: {len(averages_validated)}")
+    print(f"Phase 3 all-published polling-average rows generated: {len(averages_all)}")
     print(f"Phase 3 momentum rows generated: {len(momentum)}")
     print(f"Phase 3 pollster quality rows generated: {len(pollster_quality)}")
     if quality_report.get("warnings"):
