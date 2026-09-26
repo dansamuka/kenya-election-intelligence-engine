@@ -231,6 +231,8 @@ def build_source_catalog(registry: Iterable[Dict[str, Any]], records: Iterable[D
     catalog = []
     for item in registry:
         url = item.get("pdf_url") or item.get("page_url")
+        corroborating_urls = item.get("corroborating_urls") or []
+        feeds_public_record = url in used_urls or any(candidate in used_urls for candidate in corroborating_urls)
         catalog.append(
             {
                 "source_id": item.get("source_id"),
@@ -241,7 +243,7 @@ def build_source_catalog(registry: Iterable[Dict[str, Any]], records: Iterable[D
                 "published_date": item.get("published_date"),
                 "processing_status": item.get("processing_status"),
                 "sha256": item.get("sha256"),
-                "feeds_public_poll_record": url in used_urls,
+                "feeds_public_poll_record": feeds_public_record,
             }
         )
     return catalog
