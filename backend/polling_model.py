@@ -172,6 +172,8 @@ def effective_sample_count(weights: List[float]) -> float:
 
 
 def normalize_poll_record(record: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    if record.get("model_eligible") is False:
+        return None
     date = parse_date(record.get("date"))
     figures = record.get("figures") or {}
     if not date or not isinstance(figures, dict):
@@ -340,6 +342,7 @@ def build_momentum(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
 def build_model_quality_report(polls: List[Dict[str, Any]], averages: List[Dict[str, Any]], pollster_quality: List[Dict[str, Any]]) -> Dict[str, Any]:
     approved_records = len(polls)
+    model_excluded_records = sum(1 for record in polls if record.get("model_eligible") is False)
     pollsters = sorted({record.get("pollster") for record in polls if record.get("pollster")})
     poll_types = sorted({record.get("poll_type") for record in polls if record.get("poll_type")})
     dates = sorted([record.get("date") for record in polls if record.get("date")])
@@ -361,6 +364,7 @@ def build_model_quality_report(polls: List[Dict[str, Any]], averages: List[Dict[
         "status": "generated_with_caveats",
         "records": {
             "approved_poll_records": approved_records,
+            "model_excluded_records": model_excluded_records,
             "polling_average_rows": len(averages),
             "pollster_quality_rows": len(pollster_quality),
         },
@@ -376,7 +380,9 @@ def build_model_quality_report(polls: List[Dict[str, Any]], averages: List[Dict[
             "uncertainty_method": "Weighted empirical variation with a minimum ±3.5 point floor for polling/model error.",
             "forecast_status": "Not a full election forecast; this is a polling-summary model.",
         },
-        "warnings": warnings,
+        "warnings": warnings + ([
+            f"{model_excluded_records} published poll record(s) are excluded from model calculations because required methodology or comparability checks are unresolved."
+        ] if model_excluded_records else []),
         "next_requirements_for_higher_rigor": [
             "Add more pollsters and more polling waves.",
             "Add fieldwork dates, sample sizes, sampling mode and weighting method for each poll.",
