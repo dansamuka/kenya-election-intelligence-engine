@@ -302,6 +302,8 @@ def build_extraction_audit(registry: List[Dict[str, Any]], polls: List[Dict[str,
     rows = []
     for item in registry:
         url = item.get("pdf_url") or item.get("page_url")
+        corroborating_urls = item.get("corroborating_urls") or []
+        feeds_public_record = url in public_urls or any(candidate in public_urls for candidate in corroborating_urls)
         rows.append({
             "source_id": item.get("source_id"),
             "pollster": item.get("pollster"),
@@ -309,7 +311,7 @@ def build_extraction_audit(registry: List[Dict[str, Any]], polls: List[Dict[str,
             "source_url": url,
             "processing_status": item.get("processing_status"),
             "sha256": item.get("sha256"),
-            "feeds_public_poll_record": url in public_urls,
+            "feeds_public_poll_record": feeds_public_record,
             "review_items": len(review_by_source.get(url, [])),
             "last_checked_at": item.get("last_checked_at"),
             "processing_error": item.get("processing_error"),
