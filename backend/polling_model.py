@@ -36,6 +36,7 @@ POLLING_AVERAGE_PATH = MODEL_DIR / "polling_average.json"
 MOMENTUM_PATH = MODEL_DIR / "candidate_momentum.json"
 POLLSTER_QUALITY_PATH = MODEL_DIR / "pollster_quality.json"
 MODEL_QUALITY_REPORT_PATH = MODEL_DIR / "model_quality_report.json"
+MODEL_EXCLUSIONS_PATH = MODEL_DIR / "model_exclusions.json"
 
 DEFAULT_HALF_LIFE_DAYS = 120
 DEFAULT_MIN_EFFECTIVE_POLLS = 2
@@ -342,6 +343,24 @@ def build_momentum(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return sorted(output, key=lambda item: (item["poll_type"], -abs(item["change_from_first"]), item["candidate"]))
 
 
+def build_model_exclusions(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """List published poll records that are intentionally excluded from model calculations."""
+    rows = []
+    for record in polls:
+        if record.get("model_eligible") is not False:
+            continue
+        rows.append({
+            "date": record.get("date"),
+            "pollster": record.get("pollster"),
+            "poll_type": record.get("poll_type"),
+            "source_title": record.get("source_title"),
+            "source_url": record.get("source_url"),
+            "methodology_status": record.get("methodology_status"),
+            "reason": "Published for source-transparent display but excluded from polling averages until methodology/comparability requirements are satisfied.",
+        })
+    return sorted(rows, key=lambda item: (item.get("date") or "", item.get("pollster") or ""))
+
+
 def build_model_quality_report(polls: List[Dict[str, Any]], averages: List[Dict[str, Any]], pollster_quality: List[Dict[str, Any]]) -> Dict[str, Any]:
     approved_records = len(polls)
     model_excluded_records = sum(1 for record in polls if record.get("model_eligible") is False)
@@ -405,6 +424,7 @@ def build_manifest() -> Dict[str, Any]:
             "data/model/candidate_momentum.json",
             "data/model/pollster_quality.json",
             "data/model/model_quality_report.json",
+            "data/model/model_exclusions.json",
             "data/model/manifest.json",
         ],
         "inputs": [
@@ -424,6 +444,7 @@ def main() -> None:
     averages = build_polling_average(polls)
     momentum = build_momentum(polls)
     pollster_quality = build_pollster_quality(polls)
+    model_exclusions = build_model_exclusions(polls)
     quality_report = build_model_quality_report(polls, averages, pollster_quality)
     manifest = build_manifest()
 
@@ -431,6 +452,7 @@ def main() -> None:
     write_json(MOMENTUM_PATH, momentum)
     write_json(POLLSTER_QUALITY_PATH, pollster_quality)
     write_json(MODEL_QUALITY_REPORT_PATH, quality_report)
+    write_json(MODEL_EXCLUSIONS_PATH, model_exclusions)
     write_json(MODEL_MANIFEST_PATH, manifest)
 
     print(f"Phase 3 polling averages generated: {len(averages)}")
