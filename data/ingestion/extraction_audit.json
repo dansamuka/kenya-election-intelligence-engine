@@ -48,6 +48,18 @@
     "processing_error": null
   },
   {
+    "source_id": "e299a44d39950380ed68",
+    "pollster": "Infotrak Research",
+    "title": "Infotrak Voice of the People Poll – September 2025",
+    "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Infotrak-VOP-Poll_Sep-2025_Phase-One2.pdf",
+    "processing_status": "rejected",
+    "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
+    "feeds_public_poll_record": false,
+    "review_items": 1,
+    "last_checked_at": "2026-09-21T12:20:21+00:00",
+    "processing_error": null
+  },
+  {
     "source_id": "d487dc5d26ae5dfd1523",
     "pollster": "Infotrak Research",
     "title": "Infotrak Voice Of The People Poll July 2026",
@@ -69,18 +81,6 @@
     "feeds_public_poll_record": false,
     "review_items": 0,
     "last_checked_at": "2026-09-21T12:20:29+00:00",
-    "processing_error": null
-  },
-  {
-    "source_id": "e299a44d39950380ed68",
-    "pollster": "Infotrak Research",
-    "title": "Infotrak Voice of the People Poll – September 2025",
-    "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Infotrak-VOP-Poll_Sep-2025_Phase-One2.pdf",
-    "processing_status": "rejected",
-    "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
-    "feeds_public_poll_record": false,
-    "review_items": 1,
-    "last_checked_at": "2026-09-21T12:20:21+00:00",
     "processing_error": null
   },
   {
@@ -177,6 +177,18 @@
     "feeds_public_poll_record": false,
     "review_items": 0,
     "last_checked_at": "2026-09-21T12:20:51+00:00",
+    "processing_error": null
+  },
+  {
+    "source_id": "mizani-2026-09-25-presidential-screenshot",
+    "pollster": "Mizani Africa",
+    "title": "Mizani Africa Presidential Preference — 25 September 2026",
+    "source_url": "https://x.com/Mizaniafrica",
+    "processing_status": "published_with_methodology_hold",
+    "sha256": null,
+    "feeds_public_poll_record": true,
+    "review_items": 1,
+    "last_checked_at": "2026-09-26T09:28:00+00:00",
     "processing_error": null
   },
   {
