@@ -401,7 +401,7 @@ def build_health_report(
             {
                 "gate": "review_before_publication",
                 "status": "implemented",
-                "description": "Only AUTO_ACCEPTED parser records enter polls_data.json; uncertain records enter review outputs.",
+                "description": "AUTO_ACCEPTED records and explicitly corroborated manual records may enter polls_data.json; records with unresolved methodology can be published for transparent display while remaining model-ineligible.",
             },
             {
                 "gate": "source_provenance",
