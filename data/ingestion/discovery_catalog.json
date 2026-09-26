@@ -96,6 +96,27 @@
     "discovery_error": null
   },
   {
+    "source_id": "mizani-2026-09-25-presidential-screenshot",
+    "pollster": "Mizani Africa",
+    "title": "Mizani Africa Presidential Preference — 25 September 2026",
+    "page_url": "https://x.com/Mizaniafrica",
+    "pdf_url": null,
+    "source_url": "https://x.com/Mizaniafrica",
+    "source_class": "official_social_poll_candidate",
+    "relevance_score": 42,
+    "matched_terms": [
+      "president",
+      "presidential"
+    ],
+    "priority": "medium",
+    "recommended_action": "manual_source_and_methodology_verification",
+    "published_date": "2026-09-25",
+    "processing_status": "published_with_methodology_hold",
+    "sha256": null,
+    "discovery_origin": "sources_registry",
+    "discovery_error": null
+  },
+  {
     "source_id": "swisspoll-aug2026-manual",
     "pollster": "Swiss Poll International",
     "title": "Kalonzo Emerges as Leading Opposition Choice in 2027 Race, Swiss Poll Shows",
