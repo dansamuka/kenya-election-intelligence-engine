@@ -194,6 +194,8 @@ def normalize_poll_record(record: Dict[str, Any]) -> Optional[Dict[str, Any]]:
 def build_pollster_quality(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     by_pollster: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
     for poll in polls:
+        if poll.get("model_eligible") is False:
+            continue
         by_pollster[poll.get("pollster") or "Unknown"].append(poll)
 
     output = []
@@ -343,16 +345,17 @@ def build_momentum(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 def build_model_quality_report(polls: List[Dict[str, Any]], averages: List[Dict[str, Any]], pollster_quality: List[Dict[str, Any]]) -> Dict[str, Any]:
     approved_records = len(polls)
     model_excluded_records = sum(1 for record in polls if record.get("model_eligible") is False)
-    pollsters = sorted({record.get("pollster") for record in polls if record.get("pollster")})
-    poll_types = sorted({record.get("poll_type") for record in polls if record.get("poll_type")})
-    dates = sorted([record.get("date") for record in polls if record.get("date")])
+    model_records = [record for record in polls if record.get("model_eligible") is not False]
+    pollsters = sorted({record.get("pollster") for record in model_records if record.get("pollster")})
+    poll_types = sorted({record.get("poll_type") for record in model_records if record.get("poll_type")})
+    dates = sorted([record.get("date") for record in model_records if record.get("date")])
     warnings = []
 
     if approved_records < 5:
         warnings.append("Very thin polling series: weighted averages are descriptive summaries, not robust forecasts.")
     if len(pollsters) < 2:
         warnings.append("Only one pollster is represented in approved records; house effects cannot be estimated reliably.")
-    if not any(record.get("sample_size") for record in polls):
+    if not any(record.get("sample_size") for record in model_records):
         warnings.append("No approved records currently include sample-size metadata; sample-size weighting is using conservative defaults.")
     if not averages:
         warnings.append("No compatible polling averages were generated.")
@@ -364,6 +367,7 @@ def build_model_quality_report(polls: List[Dict[str, Any]], averages: List[Dict[
         "status": "generated_with_caveats",
         "records": {
             "approved_poll_records": approved_records,
+            "model_eligible_records": len(model_records),
             "model_excluded_records": model_excluded_records,
             "polling_average_rows": len(averages),
             "pollster_quality_rows": len(pollster_quality),
