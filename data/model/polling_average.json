@@ -9,8 +9,15 @@
     "uncertainty_margin": 5.45,
     "effective_poll_count": 2.02,
     "raw_poll_count": 3,
-    "latest_poll_value": 19.0,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "popularity_rating"
+    ],
+    "latest_poll_value": 19,
     "latest_poll_date": "2026-05-14",
+    "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
       "TIFA Research"
     ],
@@ -29,8 +36,15 @@
     "uncertainty_margin": 8.81,
     "effective_poll_count": 2.02,
     "raw_poll_count": 3,
-    "latest_poll_value": 19.0,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "popularity_rating"
+    ],
+    "latest_poll_value": 19,
     "latest_poll_date": "2026-05-14",
+    "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
       "TIFA Research"
     ],
@@ -49,8 +63,15 @@
     "uncertainty_margin": 4.05,
     "effective_poll_count": 2.02,
     "raw_poll_count": 3,
-    "latest_poll_value": 15.0,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "popularity_rating"
+    ],
+    "latest_poll_value": 15,
     "latest_poll_date": "2026-05-14",
+    "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
       "TIFA Research"
     ],
@@ -69,8 +90,15 @@
     "uncertainty_margin": 3.5,
     "effective_poll_count": 2.02,
     "raw_poll_count": 3,
-    "latest_poll_value": 13.0,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "popularity_rating"
+    ],
+    "latest_poll_value": 13,
     "latest_poll_date": "2026-05-14",
+    "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
       "TIFA Research"
     ],
@@ -84,13 +112,20 @@
     "poll_type": "popularity_rating",
     "candidate": "Edwin Sifuna",
     "weighted_average": 2.63,
-    "lower_95": 0.0,
+    "lower_95": 0,
     "upper_95": 6.13,
     "uncertainty_margin": 3.5,
     "effective_poll_count": 2.02,
     "raw_poll_count": 3,
-    "latest_poll_value": 2.0,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "popularity_rating"
+    ],
+    "latest_poll_value": 2,
     "latest_poll_date": "2026-05-14",
+    "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
       "TIFA Research"
     ],
@@ -101,7 +136,7 @@
   },
   {
     "as_of": "2026-08-20",
-    "poll_type": "preferred_presidential_aspirant",
+    "poll_type": "presidential_horse_race",
     "candidate": "William Ruto",
     "weighted_average": 28.56,
     "lower_95": 25.06,
@@ -109,8 +144,15 @@
     "uncertainty_margin": 3.5,
     "effective_poll_count": 8.45,
     "raw_poll_count": 15,
-    "latest_poll_value": 31.0,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "preferred_presidential_aspirant"
+    ],
+    "latest_poll_value": 31,
     "latest_poll_date": "2026-08-20",
+    "latest_pollster": "Swiss Poll International",
     "pollsters_in_average": [
       "Infotrak Research",
       "Stats Kenya",
@@ -129,7 +171,7 @@
   },
   {
     "as_of": "2026-08-20",
-    "poll_type": "preferred_presidential_aspirant",
+    "poll_type": "presidential_horse_race",
     "candidate": "Edwin Sifuna",
     "weighted_average": 15.74,
     "lower_95": 9.79,
@@ -137,8 +179,15 @@
     "uncertainty_margin": 5.95,
     "effective_poll_count": 8.45,
     "raw_poll_count": 15,
-    "latest_poll_value": 13.0,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "preferred_presidential_aspirant"
+    ],
+    "latest_poll_value": 13,
     "latest_poll_date": "2026-08-20",
+    "latest_pollster": "Swiss Poll International",
     "pollsters_in_average": [
       "Infotrak Research",
       "Stats Kenya",
@@ -157,7 +206,7 @@
   },
   {
     "as_of": "2026-08-20",
-    "poll_type": "preferred_presidential_aspirant",
+    "poll_type": "presidential_horse_race",
     "candidate": "Fred Matiang'i",
     "weighted_average": 13.28,
     "lower_95": 9.78,
@@ -165,8 +214,15 @@
     "uncertainty_margin": 3.5,
     "effective_poll_count": 8.45,
     "raw_poll_count": 15,
-    "latest_poll_value": 11.0,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "preferred_presidential_aspirant"
+    ],
+    "latest_poll_value": 11,
     "latest_poll_date": "2026-08-20",
+    "latest_pollster": "Swiss Poll International",
     "pollsters_in_average": [
       "Infotrak Research",
       "Stats Kenya",
@@ -185,7 +241,7 @@
   },
   {
     "as_of": "2026-08-20",
-    "poll_type": "preferred_presidential_aspirant",
+    "poll_type": "presidential_horse_race",
     "candidate": "Kalonzo Musyoka",
     "weighted_average": 11.89,
     "lower_95": 7.18,
@@ -193,8 +249,15 @@
     "uncertainty_margin": 4.71,
     "effective_poll_count": 8.45,
     "raw_poll_count": 15,
-    "latest_poll_value": 22.0,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "preferred_presidential_aspirant"
+    ],
+    "latest_poll_value": 22,
     "latest_poll_date": "2026-08-20",
+    "latest_pollster": "Swiss Poll International",
     "pollsters_in_average": [
       "Infotrak Research",
       "Stats Kenya",
@@ -213,16 +276,23 @@
   },
   {
     "as_of": "2026-08-20",
-    "poll_type": "preferred_presidential_aspirant",
+    "poll_type": "presidential_horse_race",
     "candidate": "Babu Owino",
-    "weighted_average": 7.0,
-    "lower_95": 0.0,
+    "weighted_average": 7,
+    "lower_95": 0,
     "upper_95": 14.84,
     "uncertainty_margin": 7.84,
-    "effective_poll_count": 1.0,
+    "effective_poll_count": 1,
     "raw_poll_count": 1,
-    "latest_poll_value": 7.0,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "preferred_presidential_aspirant"
+    ],
+    "latest_poll_value": 7,
     "latest_poll_date": "2025-12-28",
+    "latest_pollster": "Infotrak Research",
     "pollsters_in_average": [
       "Infotrak Research"
     ],
@@ -233,7 +303,7 @@
   },
   {
     "as_of": "2026-08-20",
-    "poll_type": "preferred_presidential_aspirant",
+    "poll_type": "presidential_horse_race",
     "candidate": "Rigathi Gachagua",
     "weighted_average": 4.31,
     "lower_95": 0.81,
@@ -241,8 +311,15 @@
     "uncertainty_margin": 3.5,
     "effective_poll_count": 8.45,
     "raw_poll_count": 15,
-    "latest_poll_value": 6.0,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "preferred_presidential_aspirant"
+    ],
+    "latest_poll_value": 6,
     "latest_poll_date": "2026-08-20",
+    "latest_pollster": "Swiss Poll International",
     "pollsters_in_average": [
       "Infotrak Research",
       "Stats Kenya",
@@ -261,16 +338,23 @@
   },
   {
     "as_of": "2026-08-20",
-    "poll_type": "preferred_presidential_aspirant",
+    "poll_type": "presidential_horse_race",
     "candidate": "Martha Karua",
-    "weighted_average": 2.0,
-    "lower_95": 0.0,
+    "weighted_average": 2,
+    "lower_95": 0,
     "upper_95": 9.84,
     "uncertainty_margin": 7.84,
-    "effective_poll_count": 1.0,
+    "effective_poll_count": 1,
     "raw_poll_count": 1,
-    "latest_poll_value": 2.0,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "preferred_presidential_aspirant"
+    ],
+    "latest_poll_value": 2,
     "latest_poll_date": "2025-12-28",
+    "latest_pollster": "Infotrak Research",
     "pollsters_in_average": [
       "Infotrak Research"
     ],
@@ -281,16 +365,23 @@
   },
   {
     "as_of": "2026-08-20",
-    "poll_type": "preferred_presidential_aspirant",
+    "poll_type": "presidential_horse_race",
     "candidate": "David Maraga",
     "weighted_average": 1.7,
-    "lower_95": 0.0,
+    "lower_95": 0,
     "upper_95": 5.2,
     "uncertainty_margin": 3.5,
     "effective_poll_count": 1.98,
     "raw_poll_count": 2,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "preferred_presidential_aspirant"
+    ],
     "latest_poll_value": 1.45,
     "latest_poll_date": "2026-03-01",
+    "latest_pollster": "Stats Kenya",
     "pollsters_in_average": [
       "Infotrak Research",
       "Stats Kenya"
@@ -303,16 +394,23 @@
   },
   {
     "as_of": "2026-08-20",
-    "poll_type": "preferred_presidential_aspirant",
+    "poll_type": "presidential_horse_race",
     "candidate": "Oburu Odinga",
-    "weighted_average": 1.0,
-    "lower_95": 0.0,
+    "weighted_average": 1,
+    "lower_95": 0,
     "upper_95": 8.84,
     "uncertainty_margin": 7.84,
-    "effective_poll_count": 1.0,
+    "effective_poll_count": 1,
     "raw_poll_count": 1,
-    "latest_poll_value": 1.0,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "preferred_presidential_aspirant"
+    ],
+    "latest_poll_value": 1,
     "latest_poll_date": "2026-03-01",
+    "latest_pollster": "Stats Kenya",
     "pollsters_in_average": [
       "Stats Kenya"
     ],
@@ -323,16 +421,23 @@
   },
   {
     "as_of": "2026-08-20",
-    "poll_type": "preferred_presidential_aspirant",
+    "poll_type": "presidential_horse_race",
     "candidate": "Okiya Omtata",
     "weighted_average": 0.36,
-    "lower_95": 0.0,
+    "lower_95": 0,
     "upper_95": 8.2,
     "uncertainty_margin": 7.84,
-    "effective_poll_count": 1.0,
+    "effective_poll_count": 1,
     "raw_poll_count": 1,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "preferred_presidential_aspirant"
+    ],
     "latest_poll_value": 0.36,
     "latest_poll_date": "2026-03-01",
+    "latest_pollster": "Stats Kenya",
     "pollsters_in_average": [
       "Stats Kenya"
     ],
