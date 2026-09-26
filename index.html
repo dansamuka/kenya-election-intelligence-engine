@@ -313,6 +313,7 @@ function refreshAverageViews(){
   updateAverageScopeLabel();
   renderStandings();
   renderDistanceGauge();
+  renderModelMini();
 }
 
 /* ================= section shell builder ================= */
@@ -719,7 +720,7 @@ function renderDistanceGauge(){
 /* ================= TREND (hand-built SVG) ================= */
 let trendState={selected:null};
 function buildTrend(){
-  const body=section('trend','Movement','How support has shifted','The line chart uses polls currently eligible for the comparable trend series. Newly published polls with unresolved methodology are shown separately until they clear the model checks.');
+  const body=section('trend','Movement','How support has shifted','The trend chart shows published presidential-preference observations. Methodology-held observations are visually marked so they can be distinguished from model-eligible data.');
   const held=(DATA.polls||[]).filter(p=>p.model_eligible===false).slice().sort((a,b)=>b.date.localeCompare(a.date));
   if(held.length){
     const p=held[0];
@@ -731,7 +732,7 @@ function buildTrend(){
     card.innerHTML=`<div class="eyebrow" style="color:#8A6421">Latest published poll · methodology hold</div>
       <div class="franklin" style="font-weight:900;font-size:17px;margin-top:5px">${p.pollster} · ${fmtDate(p.date)}</div>
       <p style="font-size:13.5px;line-height:1.55;margin:8px 0 0">${top}${Number.isFinite(undecided)?` · <b>Undecided</b> ${pct(undecided)}`:''}</p>
-      <p class="faint" style="font-size:12.5px;margin:8px 0 0">Published here for transparency, but not included in the polling average while sample size, sampling method and margin of error remain undisclosed. <a class="src" href="${p.source_url}" target="_blank" rel="noopener">Source</a></p>`;
+      <p class="faint" style="font-size:12.5px;margin:8px 0 0">Published here with a methodology hold. It is included in the all-published average when that option is switched on, and excluded from the model-eligible-only average. <a class="src" href="${p.source_url}" target="_blank" rel="noopener">Source</a></p>`;
     body.appendChild(card);
   }
   const polls=(DATA.polls||[]).filter(p=>
@@ -756,7 +757,7 @@ function buildTrend(){
   });
   body.appendChild(toggles);
   const hold=el('div','chart-hold');hold.id='trendHold';body.appendChild(hold);
-  const cap=el('p','faint','Mizani is now plotted on the chart. Solid segments and filled dots are model-eligible observations; dashed segments and hollow dots mark methodology-held published observations. The Mizani point remains excluded from the polling average until its methodology is disclosed. Polls are spaced evenly by wave for readability, not by exact day gaps.');cap.style.fontSize='12.5px';cap.style.marginTop='10px';
+  const cap=el('p','faint','Mizani is plotted on the chart. Solid segments and filled dots are model-eligible observations; dashed segments and hollow dots mark methodology-held published observations. The average switch above controls whether methodology-held polls are included in the displayed average. Polls are spaced evenly by wave for readability, not by exact day gaps.');cap.style.fontSize='12.5px';cap.style.marginTop='10px';
   body.appendChild(cap);
   drawTrend(polls,dates,ranked);
 }
@@ -1005,13 +1006,13 @@ function buildTrust(){
   polls.slice().sort((a,b)=>b.date.localeCompare(a.date)).forEach(p=>{
     const n=p.sample_size?`n=${p.sample_size.toLocaleString()}`:'sample n/a';
     const held=p.model_eligible===false;
-    const status=held?'published · not in average · methodology pending':'included in polling model';
+    const status=held?'published · included in all-published average · methodology pending':'model-eligible';
     rows+=`<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line-soft)">
       <div><div style="font-weight:700;font-family:'Libre Franklin';font-size:14px">${p.pollster}</div><div class="faint" style="font-size:12px">${fmtDate(p.date)} · ${n} · ${status}</div></div>
       <a class="src" style="align-self:center" href="${p.source_url}" target="_blank" rel="noopener">View</a></div>`;
   });
   srcCard.innerHTML=`<h3 class="franklin" style="font-weight:900;font-size:19px;margin:0 0 8px">Published polls and sources</h3>
-    <p class="faint" style="font-size:12.5px;margin:0 0 8px">A published poll can appear here without entering the polling average when its methodology is not sufficiently disclosed.</p>${rows}`;
+    <p class="faint" style="font-size:12.5px;margin:0 0 8px">Methodology-held polls remain visible and can be included in the all-published average; the model-eligible-only switch excludes them.</p>${rows}`;
   body.appendChild(srcCard);
 
   const mapWrap=el('div');mapWrap.id='countyExplorer';
@@ -1032,7 +1033,7 @@ function buildTrust(){
   const adv=el('details','adv');adv.style.marginTop='24px';
   adv.innerHTML=`<summary>Advanced: how the average is built &amp; parliament seat estimator</summary>
     <div class="adv-body">
-      <p class="muted" style="font-size:14px;margin:0 0 12px">The polling average weights each poll by how recent it is, its sample size, and the pollster\u2019s track record, and never mixes different question types. With only a handful of polls it is a descriptive summary, <b>not a forecast</b>. Details in <a class="src" href="https://github.com/dansamuka/kenya-election-intelligence-engine" target="_blank" rel="noopener">the open-source code</a>.</p>
+      <p class="muted" style="font-size:14px;margin:0 0 12px">The polling average weights each poll by recency, sample size, extraction confidence and pollster-quality inputs. Direct presidential aspirant/preference questions are combined into one horse-race series; popularity and approval questions remain separate. The all-published view can include methodology-held polls, while the model-eligible-only view excludes them. It is a descriptive summary, <b>not a forecast</b>. Details in <a class="src" href="https://github.com/dansamuka/kenya-election-intelligence-engine" target="_blank" rel="noopener">the open-source code</a>.</p>
       <div id="modelMini" class="stat-grid c3"></div>
       <h4 class="franklin" style="font-weight:800;margin:22px 0 6px">Parliament seat estimator (for analysts)</h4>
       <p class="faint" style="font-size:13px;margin:0 0 10px">Paste a constituency baseline in JSON to apply the current what-if swing. Most users can skip this.</p>
@@ -1048,13 +1049,16 @@ function buildTrust(){
 }
 function renderModelMini(){
   const host=$('#modelMini');if(!host)return;
-  const polls=(DATA.polls||[]).filter(p=>p.model_eligible!==false);
+  const polls=(DATA.polls||[]).filter(p=>
+    ['preferred_presidential_aspirant','preferred_presidential_candidate'].includes(p.poll_type) &&
+    (DATA.includeUnvalidated || p.model_eligible!==false)
+  );
   const houses=uniq(polls.map(p=>p.pollster));
   const dates=uniq(polls.map(p=>p.date)).sort();
   const cards=[
-    ['Polls in the average',polls.length],
+    ['Polls in this average',polls.length],
     ['Different pollsters',houses.length],
-    ['Span covered',`${fmtShort(dates[0])} → ${fmtShort(dates[dates.length-1])}`]
+    ['Span covered',dates.length?`${fmtShort(dates[0])} → ${fmtShort(dates[dates.length-1])}`:'—']
   ];
   host.innerHTML=cards.map(([k,v])=>`<div class="stat"><div class="k">${k.toUpperCase()}</div><div class="v tnum" style="font-size:26px">${v}</div></div>`).join('');
 }
