@@ -399,8 +399,7 @@
       "Rigathi Gachagua": 4.4,
       "Ndindi Nyoro": 3.1,
       "Martha Karua": 0.3,
-      "David Maraga": 0.1,
-      "Undecided": 5
+      "David Maraga": 0.1
     },
     "source_title": "Mizani Poll: Ruto leads Kalonzo, Sifuna in presidential preference survey",
     "source_url": "https://capitalfm.africa/mizani-poll-ruto-leads-kalonzo-sifuna-in-presidential-preference-survey/",
@@ -411,6 +410,9 @@
     "corroborating_sources": [
       "https://www.tuko.co.ke/politics/641108-william-ruto-win-vote-election-held-today-mizani-poll/"
     ],
-    "notes": "Results were transcribed from a Mizani Africa-branded graphic supplied for review and independently corroborated by Capital FM and TUKO coverage published 25 September 2026. Capital FM corroborates the headline candidate shares and 5% undecided. TUKO reports the same headline figures and explicitly states that Mizani Africa did not disclose the methodology, sample size or margin of error for this survey. A companion Mizani opposition-flagbearer release was reported as having fieldwork on 3–11 September 2026, but those field dates are not assumed here for the presidential-preference question. Published for source-transparent display, but excluded from polling averages until core methodology is disclosed or otherwise verified."
+    "notes": "Results were transcribed from a Mizani Africa-branded graphic supplied for review and independently corroborated by Capital FM and TUKO coverage published 25 September 2026. Capital FM corroborates the headline candidate shares and 5% undecided. TUKO reports the same headline figures and explicitly states that Mizani Africa did not disclose the methodology, sample size or margin of error for this survey. A companion Mizani opposition-flagbearer release was reported as having fieldwork on 3–11 September 2026, but those field dates are not assumed here for the presidential-preference question. Published for source-transparent display, but excluded from polling averages until core methodology is disclosed or otherwise verified.",
+    "response_categories": {
+      "Undecided": 5
+    }
   }
 ]
