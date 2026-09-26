@@ -689,20 +689,23 @@ function buildTrend(){
   }
   const polls=(DATA.polls||[]).filter(p=>p.model_eligible!==false&&p.poll_type==='preferred_presidential_aspirant').slice().sort((a,b)=>a.date.localeCompare(b.date));
   const dates=uniq(polls.map(p=>p.date)).sort();
-  const cands=uniq(polls.flatMap(p=>Object.keys(p.figures||{}))).filter(isCandidate);
-  const latestVal=c=>{for(let i=polls.length-1;i>=0;i--){const v=polls[i].figures?.[c];if(Number.isFinite(v))return v;}return 0;};
+  const published=(DATA.polls||[]).filter(p=>['preferred_presidential_aspirant','preferred_presidential_candidate'].includes(p.poll_type)).slice().sort((a,b)=>a.date.localeCompare(b.date));
+  const cands=uniq(published.flatMap(p=>Object.keys(p.figures||{}))).filter(isCandidate);
+  const latestVal=c=>{for(let i=published.length-1;i>=0;i--){const v=published[i].figures?.[c];if(Number.isFinite(v))return v;}return 0;};
   const ranked=cands.slice().sort((a,b)=>latestVal(b)-latestVal(a));
   trendState.selected=new Set(ranked.slice(0,5));
 
   const toggles=el('div');toggles.style.cssText='display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px';
   ranked.forEach((c)=>{
-    const b=el('button','chip-toggle'+(trendState.selected.has(c)?' on':''),c);
+    const inEligible=polls.some(p=>Number.isFinite(p.figures?.[c]));
+    const b=el('button','chip-toggle'+(trendState.selected.has(c)?' on':''),c+(inEligible?'':' · latest only'));
+    if(!inEligible){b.title='This candidate currently appears only in a methodology-held published poll.';}
     b.onclick=()=>{trendState.selected.has(c)?trendState.selected.delete(c):trendState.selected.add(c);b.classList.toggle('on');drawTrend(polls,dates,ranked);};
     toggles.appendChild(b);
   });
   body.appendChild(toggles);
   const hold=el('div','chart-hold');hold.id='trendHold';body.appendChild(hold);
-  const cap=el('p','faint','Polls are spaced evenly by wave for readability, not by exact day gaps.');cap.style.fontSize='12.5px';cap.style.marginTop='10px';
+  const cap=el('p','faint','Solid trend lines use model-eligible polls only. The latest Mizani release is shown above as a published observation but is not blended into the trend or average until its methodology is disclosed. Polls are spaced evenly by wave for readability, not by exact day gaps.');cap.style.fontSize='12.5px';cap.style.marginTop='10px';
   body.appendChild(cap);
   drawTrend(polls,dates,ranked);
 }
