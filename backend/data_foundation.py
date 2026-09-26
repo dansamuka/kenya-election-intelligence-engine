@@ -166,6 +166,8 @@ def build_polls_normalized(records: Iterable[Dict[str, Any]]) -> List[Dict[str, 
                 "source_url": record.get("source_url"),
                 "extraction_status": record.get("extraction_status"),
                 "extraction_confidence": record.get("extraction_confidence"),
+                "model_eligible": record.get("model_eligible", True),
+                "methodology_status": record.get("methodology_status"),
                 "notes": record.get("notes"),
             }
         )
@@ -188,6 +190,7 @@ def build_poll_results_long(records: Iterable[Dict[str, Any]]) -> List[Dict[str,
                     "metric": "percentage",
                     "value": value,
                     "source_url": record.get("source_url"),
+                    "model_eligible": record.get("model_eligible", True),
                 }
             )
     return sorted(rows, key=lambda x: (x.get("date") or "", x.get("candidate") or ""))
