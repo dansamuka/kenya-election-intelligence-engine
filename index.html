@@ -59,6 +59,11 @@
   .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
   .hero-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600;color:#DDEAE3}
   .hero-chip b{color:#fff;font-family:'Libre Franklin';font-weight:800}
+  .avg-filter{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:12px}
+  .avg-filter label{display:inline-flex;align-items:center;gap:9px;cursor:pointer;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 12px;font-family:'Libre Franklin';font-weight:700;font-size:12.5px;color:#EAF2ED}
+  .avg-filter input{width:16px;height:16px;accent-color:#5FD3A3}
+  .avg-scope{font-size:12px;color:#9DBBAD}
+  .avg-scope b{color:#EAF2ED}
 
   /* standings */
   .stand{display:flex;flex-direction:column;gap:0}
@@ -238,6 +243,13 @@
 
     <div style="margin-top:34px">
       <p class="hero-eyebrow" style="color:#8FC7AE">The polling average today</p>
+      <div class="avg-filter" aria-label="Polling average data filter">
+        <label>
+          <input type="checkbox" id="includeUnvalidated" checked>
+          Include methodology-held polls
+        </label>
+        <span class="avg-scope" id="avgScopeLabel">Loading average scope…</span>
+      </div>
       <div class="stand" id="standings" style="margin-top:14px">
         <div class="stand-foot">Reading the polls…</div>
       </div>
@@ -255,7 +267,8 @@
 const BUST='v='+Date.now();
 const F={
   polls:'data/polls_data.json',
-  avg:'data/model/polling_average.json',
+  avgValidated:'data/model/polling_average.json',
+  avgAll:'data/model/polling_average_all.json',
   ctx:'data/electoral_context.json',
   alliance:'data/alliance_preference.json',
   integrity:'data/integrity_confidence.json',
@@ -274,7 +287,33 @@ const uniq=a=>[...new Set(a.filter(Boolean))];
 const NON_CANDIDATE_LABELS=new Set(['undecided','other','others','none','no response','prefer not to say','not sure','don\u2019t know',"don't know"]);
 const isCandidate=name=>name&&!NON_CANDIDATE_LABELS.has(String(name).trim().toLowerCase());
 async function getJSON(path){const r=await fetch(path+'?'+BUST,{cache:'no-store'});if(!r.ok)throw new Error(path+' '+r.status);return r.json();}
-const DATA={};
+const DATA={includeUnvalidated:true,avg:[],avgAll:[],avgValidated:[]};
+const activeAverage=()=>DATA.includeUnvalidated?(DATA.avgAll||[]):(DATA.avgValidated||[]);
+const presidentialAverageRows=()=>activeAverage()
+  .filter(a=>a.poll_type==='presidential_horse_race'&&isCandidate(a.candidate))
+  .slice()
+  .sort((a,b)=>b.weighted_average-a.weighted_average);
+
+function updateAverageScopeLabel(){
+  const label=$('#avgScopeLabel');
+  if(!label)return;
+  const rows=presidentialAverageRows();
+  const held=Math.max(0,...rows.map(r=>r.unvalidated_poll_count||0));
+  if(DATA.includeUnvalidated){
+    label.innerHTML=held
+      ? '<b>All published</b> · includes '+held+' methodology-held poll'+(held===1?'':'s')
+      : '<b>All published</b>';
+  }else{
+    label.innerHTML='<b>Model-eligible only</b> · methodology-held polls excluded';
+  }
+}
+
+function refreshAverageViews(){
+  DATA.avg=activeAverage();
+  updateAverageScopeLabel();
+  renderStandings();
+  renderDistanceGauge();
+}
 
 /* ================= section shell builder ================= */
 function section(id,eyebrow,title,sub){
@@ -291,7 +330,7 @@ function section(id,eyebrow,title,sub){
 
 /* ================= HERO standings ================= */
 function renderStandings(){
-  const all=(DATA.avg||[]).filter(a=>a.poll_type==='preferred_presidential_aspirant'&&isCandidate(a.candidate)).slice().sort((a,b)=>b.weighted_average-a.weighted_average);
+  const all=presidentialAverageRows();
   const host=$('#standings');host.innerHTML='';
   if(!all.length){host.innerHTML='<div class="stand-foot">Polling average not available.</div>';return;}
   const TOP=6;
@@ -309,24 +348,26 @@ function renderStandings(){
     bar.style.width=(a.weighted_average/max*100)+'%';
     const val=el('div','stand-val');
     val.style.left=(a.weighted_average/max*100)+'%';
-    val.textContent=a.weighted_average.toFixed(0)+'%';
+    val.textContent=a.weighted_average.toFixed(a.weighted_average%1?1:0)+'%';
     track.appendChild(range);track.appendChild(bar);track.appendChild(val);
     row.appendChild(track);
     host.appendChild(row);
   });
   if(rest.length){
-    const names=rest.map(r=>`${r.candidate} ${r.weighted_average.toFixed(0)}%`).join(' · ');
+    const names=rest.map(r=>`${r.candidate} ${r.weighted_average.toFixed(r.weighted_average%1?1:0)}%`).join(' · ');
     const more=el('div','stand-foot');more.style.paddingTop='14px';more.style.borderTop='1px solid rgba(255,255,255,.09)';more.style.marginTop='0';
-    more.innerHTML=`<span style="color:#6E9585;font-weight:700">Also running:</span> ${names}`;
+    more.innerHTML=`<span style="color:#6E9585;font-weight:700">Other displayed averages:</span> ${names}`;
     host.appendChild(more);
   }
-  const lead=avg[0], second=avg[1];
-  const gap=second?(lead.weighted_average-second.weighted_average):null;
-  const clear=gap!=null && gap > (lead.uncertainty_margin+second.uncertainty_margin)/2;
-  $('#standNote').innerHTML=`The shaded band on each bar is the <b>likely range</b> — where the true number probably sits, given how few polls exist. `+
-    (second?`${lead.candidate} leads ${second.candidate} by about ${gap.toFixed(0)} points. `+
-      (clear?`That gap is wide enough to look real.`:`That gap is inside the margin for error, so treat it as too close to call for now.`):``)+
-    ` No one is near the <b>50%+1</b> needed to win outright.`;
+  const first=avg[0], second=avg[1];
+  const scope=DATA.includeUnvalidated?'all published polls':'model-eligible polls only';
+  const held=first?.unvalidated_poll_count||0;
+  const gap=second?Math.abs(first.weighted_average-second.weighted_average):null;
+  const overlap=second ? !(first.lower_95>second.upper_95 || second.lower_95>first.upper_95) : null;
+  $('#standNote').innerHTML=`Weighted descriptive average using <b>${scope}</b>. The shaded bands show model uncertainty. `+
+    (second?`The difference between the two highest displayed averages is about <b>${gap.toFixed(1)} points</b>; their uncertainty bands ${overlap?'overlap':'do not overlap'}. `:'')+
+    (DATA.includeUnvalidated&&held?`The current view includes methodology-held data, including Mizani; switch it off above to see the model-eligible-only calculation. `:'')+
+    `This is a polling summary, not an election forecast.`;
 }
 
 /* ================= hero meta chips ================= */
@@ -649,24 +690,30 @@ function buildCountdown(){
 
 /* ================= DISTANCE TO WIN ================= */
 function buildDistance(){
-  const avg=(DATA.avg||[]).slice().sort((a,b)=>b.weighted_average-a.weighted_average);
-  if(!avg.length)return;
-  const lead=avg[0];
-  const body=section('distance','The finish line','How far is the leader from winning?','To win outright a candidate needs more than half the national vote (50%+1) — plus at least a quarter of the vote in 24 of 47 counties. If no one clears that bar, the top two go to a run-off.');
+  const body=section('distance','National threshold','How the highest displayed average compares with 50%','Kenya\'s presidential rules include both a national-vote threshold and a county-distribution requirement. This panel shows only the national 50% reference line; it does not assess the county requirement or predict the election outcome.');
+  const holder=el('div');holder.id='distanceDynamic';body.appendChild(holder);
+  renderDistanceGauge();
+}
+function renderDistanceGauge(){
+  const host=$('#distanceDynamic');if(!host)return;
+  const avg=presidentialAverageRows();
+  if(!avg.length){host.innerHTML='<p class="faint">Polling average not available.</p>';return;}
+  const top=avg[0];
   const g=el('div');g.style.margin='40px 0 8px';
-  const you=Math.min(100,lead.weighted_average);
-  g.innerHTML=`
-    <div class="gauge">
-      <div class="gauge-fill" style="width:${you}%"></div>
-      <div class="gauge-you" style="left:${you}%">${lead.candidate.split(' ').slice(-1)[0]} ${lead.weighted_average.toFixed(0)}%</div>
-      <div class="gauge-mark" style="left:25%"></div>
-      <div class="gauge-lab" style="left:25%">25% county line</div>
-      <div class="gauge-mark win" style="left:50%"></div>
-      <div class="gauge-lab win" style="left:50%">50% win line</div>
-    </div>`;
-  body.appendChild(g);
-  const gapToWin=(50-lead.weighted_average);
-  body.appendChild(el('p','note',`<b>Bottom line:</b> the current leader (${lead.candidate}) sits about <b>${gapToWin.toFixed(0)} points</b> short of an outright win. With the field this split and no one close to 50%, a <b>second-round run-off looks likely</b> on today's numbers — which is exactly why who teams up with whom matters so much.`));
+  const you=Math.min(100,top.weighted_average);
+  g.innerHTML=
+    '<div class="gauge">'+
+      '<div class="gauge-fill" style="width:'+you+'%"></div>'+
+      '<div class="gauge-you" style="left:'+you+'%">'+top.candidate.split(' ').slice(-1)[0]+' '+top.weighted_average.toFixed(1)+'%</div>'+
+      '<div class="gauge-mark" style="left:25%"></div>'+
+      '<div class="gauge-lab" style="left:25%">25% reference</div>'+
+      '<div class="gauge-mark win" style="left:50%"></div>'+
+      '<div class="gauge-lab win" style="left:50%">50% national line</div>'+
+    '</div>';
+  const gap=50-top.weighted_average;
+  host.innerHTML='';
+  host.appendChild(g);
+  host.appendChild(el('p','note','The highest displayed polling average is <b>'+top.weighted_average.toFixed(1)+'%</b>, which is <b>'+Math.abs(gap).toFixed(1)+' points '+(gap>=0?'below':'above')+'</b> the 50% national reference line. This comparison does not incorporate the county-distribution requirement and is not a forecast.'));
 }
 
 /* ================= TREND (hand-built SVG) ================= */
@@ -1047,15 +1094,29 @@ function buildFooter(){
 /* ================= BOOT ================= */
 async function boot(){
   const results=await Promise.allSettled([
-    getJSON(F.polls),getJSON(F.avg),getJSON(F.ctx),getJSON(F.alliance),
+    getJSON(F.polls),getJSON(F.avgValidated),getJSON(F.avgAll),getJSON(F.ctx),getJSON(F.alliance),
     getJSON(F.integrity),getJSON(F.coalition),getJSON(F.claims)
   ]);
-  const [polls,avg,ctx,alliance,integrity,coalition,claims]=results.map(r=>r.status==='fulfilled'?r.value:null);
-  DATA.polls=polls||[];DATA.avg=avg||[];DATA.ctx=ctx||{};DATA.alliance=alliance||[];
+  const [polls,avgValidated,avgAll,ctx,alliance,integrity,coalition,claims]=results.map(r=>r.status==='fulfilled'?r.value:null);
+  DATA.polls=polls||[];
+  DATA.avgValidated=avgValidated||[];
+  DATA.avgAll=(avgAll&&avgAll.length)?avgAll:DATA.avgValidated;
+  DATA.avg=activeAverage();
+  DATA.ctx=ctx||{};DATA.alliance=alliance||[];
   DATA.integrity=integrity||[];DATA.coalition=coalition||{};DATA.claims=claims||[];
+
+  const avgToggle=$('#includeUnvalidated');
+  if(avgToggle){
+    avgToggle.checked=DATA.includeUnvalidated;
+    avgToggle.addEventListener('change',()=>{
+      DATA.includeUnvalidated=avgToggle.checked;
+      refreshAverageViews();
+    });
+  }
 
   renderHeroMeta();
   renderStandings();
+  updateAverageScopeLabel();
   buildCountdown();
   buildDistance();
   buildTrend();
