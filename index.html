@@ -687,33 +687,37 @@ function buildTrend(){
       <p class="faint" style="font-size:12.5px;margin:8px 0 0">Published here for transparency, but not included in the polling average while sample size, sampling method and margin of error remain undisclosed. <a class="src" href="${p.source_url}" target="_blank" rel="noopener">Source</a></p>`;
     body.appendChild(card);
   }
-  const polls=(DATA.polls||[]).filter(p=>p.model_eligible!==false&&p.poll_type==='preferred_presidential_aspirant').slice().sort((a,b)=>a.date.localeCompare(b.date));
+  const polls=(DATA.polls||[]).filter(p=>
+    p.poll_type==='preferred_presidential_aspirant' ||
+    (p.poll_type==='preferred_presidential_candidate' && p.model_eligible===false)
+  ).slice().sort((a,b)=>a.date.localeCompare(b.date));
   const dates=uniq(polls.map(p=>p.date)).sort();
-  const published=(DATA.polls||[]).filter(p=>['preferred_presidential_aspirant','preferred_presidential_candidate'].includes(p.poll_type)).slice().sort((a,b)=>a.date.localeCompare(b.date));
-  const cands=uniq(published.flatMap(p=>Object.keys(p.figures||{}))).filter(isCandidate);
-  const latestVal=c=>{for(let i=published.length-1;i>=0;i--){const v=published[i].figures?.[c];if(Number.isFinite(v))return v;}return 0;};
+  const cands=uniq(polls.flatMap(p=>Object.keys(p.figures||{}))).filter(isCandidate);
+  const latestVal=c=>{for(let i=polls.length-1;i>=0;i--){const v=polls[i].figures?.[c];if(Number.isFinite(v))return v;}return 0;};
   const ranked=cands.slice().sort((a,b)=>latestVal(b)-latestVal(a));
   trendState.selected=new Set(ranked.slice(0,5));
 
   const toggles=el('div');toggles.style.cssText='display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px';
   ranked.forEach((c)=>{
-    const inEligible=polls.some(p=>Number.isFinite(p.figures?.[c]));
-    const b=el('button','chip-toggle'+(trendState.selected.has(c)?' on':''),c+(inEligible?'':' · latest only'));
-    if(!inEligible){b.title='This candidate currently appears only in a methodology-held published poll.';}
+    const hasEligible=polls.some(p=>p.model_eligible!==false&&Number.isFinite(p.figures?.[c]));
+    const hasHeld=polls.some(p=>p.model_eligible===false&&Number.isFinite(p.figures?.[c]));
+    const suffix=!hasEligible&&hasHeld?' · Mizani only':'';
+    const b=el('button','chip-toggle'+(trendState.selected.has(c)?' on':''),c+suffix);
+    if(!hasEligible&&hasHeld){b.title='This candidate currently appears only in the methodology-held Mizani release.';}
     b.onclick=()=>{trendState.selected.has(c)?trendState.selected.delete(c):trendState.selected.add(c);b.classList.toggle('on');drawTrend(polls,dates,ranked);};
     toggles.appendChild(b);
   });
   body.appendChild(toggles);
   const hold=el('div','chart-hold');hold.id='trendHold';body.appendChild(hold);
-  const cap=el('p','faint','Solid trend lines use model-eligible polls only. The latest Mizani release is shown above as a published observation but is not blended into the trend or average until its methodology is disclosed. Polls are spaced evenly by wave for readability, not by exact day gaps.');cap.style.fontSize='12.5px';cap.style.marginTop='10px';
+  const cap=el('p','faint','Mizani is now plotted on the chart. Solid segments and filled dots are model-eligible observations; dashed segments and hollow dots mark methodology-held published observations. The Mizani point remains excluded from the polling average until its methodology is disclosed. Polls are spaced evenly by wave for readability, not by exact day gaps.');cap.style.fontSize='12.5px';cap.style.marginTop='10px';
   body.appendChild(cap);
   drawTrend(polls,dates,ranked);
 }
 function drawTrend(polls,dates,ranked){
   const hold=$('#trendHold');if(!hold)return;
-  const W=Math.max(680,dates.length*150), H=380, padL=40,padR=120,padT=20,padB=44;
+  const W=Math.max(680,dates.length*150), H=380, padL=40,padR=135,padT=20,padB=44;
   const sel=[...trendState.selected];
-  const maxY=Math.max(35,...polls.flatMap(p=>Object.values(p.figures||{}).filter(Number.isFinite)))+3;
+  const maxY=Math.max(45,...polls.flatMap(p=>Object.values(p.figures||{}).filter(Number.isFinite)))+3;
   const x=i=>padL+(dates.length<=1?0:i/(dates.length-1))*(W-padL-padR);
   const y=v=>padT+(1-v/maxY)*(H-padT-padB);
   let g='';
@@ -721,14 +725,34 @@ function drawTrend(polls,dates,ranked){
   dates.forEach((d,i)=>{g+=`<text class="axis-lab" x="${x(i)}" y="${H-padB+20}" text-anchor="middle">${fmtDate(d)}</text>`;});
   sel.forEach((c)=>{
     const color=PALETTE[ranked.indexOf(c)%PALETTE.length];
-    const pts=[];dates.forEach((d,i)=>{const rec=polls.find(p=>p.date===d);const v=rec?.figures?.[c];if(Number.isFinite(v))pts.push([x(i),y(v),v]);});
+    const pts=[];
+    dates.forEach((d,i)=>{
+      const rec=polls.find(p=>p.date===d&&Number.isFinite(p.figures?.[c]));
+      const v=rec?.figures?.[c];
+      if(Number.isFinite(v))pts.push({x:x(i),y:y(v),v,held:rec.model_eligible===false,pollster:rec.pollster});
+    });
     if(!pts.length)return;
-    g+=`<polyline class="line" stroke="${color}" points="${pts.map(p=>p[0]+','+p[1]).join(' ')}"/>`;
-    pts.forEach(p=>{g+=`<circle class="dot" fill="${color}" cx="${p[0]}" cy="${p[1]}" r="4"/>`;});
+
+    for(let i=1;i<pts.length;i++){
+      const a=pts[i-1],b=pts[i];
+      const held=a.held||b.held;
+      g+=`<line class="line" stroke="${color}" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"${held?' stroke-dasharray="7 6" opacity=".78"':''}/>`;
+    }
+
+    pts.forEach(p=>{
+      if(p.held){
+        g+=`<circle cx="${p.x}" cy="${p.y}" r="6" fill="#fff" stroke="${color}" stroke-width="3"/>`;
+        g+=`<circle cx="${p.x}" cy="${p.y}" r="2" fill="${color}"/>`;
+      }else{
+        g+=`<circle class="dot" fill="${color}" cx="${p.x}" cy="${p.y}" r="4"/>`;
+      }
+    });
+
     const last=pts[pts.length-1];
-    g+=`<text class="end-lab" fill="${color}" x="${last[0]+10}" y="${last[1]+4}">${c.split(' ').slice(-1)[0]} ${last[2].toFixed(0)}%</text>`;
+    const heldMark=last.held?' · Mizani':'';
+    g+=`<text class="end-lab" fill="${color}" x="${last.x+10}" y="${last.y+4}">${c.split(' ').slice(-1)[0]} ${last.v.toFixed(last.v%1?1:0)}%${heldMark}</text>`;
   });
-  hold.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Support over time">${g}</svg>`;
+  hold.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Published presidential preference over time, including the latest Mizani observation">${g}</svg>`;
 }
 
 /* ================= WIN RULES ================= */
