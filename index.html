@@ -672,8 +672,22 @@ function buildDistance(){
 /* ================= TREND (hand-built SVG) ================= */
 let trendState={selected:null};
 function buildTrend(){
-  const body=section('trend','Movement','How support has shifted','Each line is one candidate across every published poll. We show the leading names by default — tap any name to add or remove it.');
-  const polls=(DATA.polls||[]).filter(p=>p.poll_type==='preferred_presidential_aspirant').slice().sort((a,b)=>a.date.localeCompare(b.date));
+  const body=section('trend','Movement','How support has shifted','The line chart uses polls currently eligible for the comparable trend series. Newly published polls with unresolved methodology are shown separately until they clear the model checks.');
+  const held=(DATA.polls||[]).filter(p=>p.model_eligible===false).slice().sort((a,b)=>b.date.localeCompare(a.date));
+  if(held.length){
+    const p=held[0];
+    const vals=Object.entries(p.figures||{}).filter(([name,v])=>isCandidate(name)&&Number.isFinite(v)).sort((a,b)=>b[1]-a[1]);
+    const top=vals.slice(0,5).map(([name,v])=>`<b>${name}</b> ${pct(v)}`).join(' · ');
+    const undecided=p.response_categories?.Undecided;
+    const card=el('div','card');
+    card.style.cssText='padding:16px;margin-bottom:18px;border-color:#E7C98D;background:#FFF9EC';
+    card.innerHTML=`<div class="eyebrow" style="color:#8A6421">Latest published poll · methodology hold</div>
+      <div class="franklin" style="font-weight:900;font-size:17px;margin-top:5px">${p.pollster} · ${fmtDate(p.date)}</div>
+      <p style="font-size:13.5px;line-height:1.55;margin:8px 0 0">${top}${Number.isFinite(undecided)?` · <b>Undecided</b> ${pct(undecided)}`:''}</p>
+      <p class="faint" style="font-size:12.5px;margin:8px 0 0">Published here for transparency, but not included in the polling average while sample size, sampling method and margin of error remain undisclosed. <a class="src" href="${p.source_url}" target="_blank" rel="noopener">Source</a></p>`;
+    body.appendChild(card);
+  }
+  const polls=(DATA.polls||[]).filter(p=>p.model_eligible!==false&&p.poll_type==='preferred_presidential_aspirant').slice().sort((a,b)=>a.date.localeCompare(b.date));
   const dates=uniq(polls.map(p=>p.date)).sort();
   const cands=uniq(polls.flatMap(p=>Object.keys(p.figures||{}))).filter(isCandidate);
   const latestVal=c=>{for(let i=polls.length-1;i>=0;i--){const v=polls[i].figures?.[c];if(Number.isFinite(v))return v;}return 0;};
