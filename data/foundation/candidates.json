@@ -13,7 +13,8 @@
     "candidate_id": "david_maraga",
     "canonical_name": "David Maraga",
     "aliases": [
-      "David Maraga"
+      "David Maraga",
+      "Maraga"
     ],
     "status": "tracked_from_poll_data",
     "party_or_alignment": null,
@@ -58,7 +59,19 @@
     "candidate_id": "martha_karua",
     "canonical_name": "Martha Karua",
     "aliases": [
-      "Martha Karua"
+      "Martha Karua",
+      "Karua"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  },
+  {
+    "candidate_id": "ndindi_nyoro",
+    "canonical_name": "Ndindi Nyoro",
+    "aliases": [
+      "Ndindi Nyoro",
+      "Nyoro"
     ],
     "status": "tracked_from_poll_data",
     "party_or_alignment": null,
