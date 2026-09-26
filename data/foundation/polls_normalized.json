@@ -15,6 +15,9 @@
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "extraction_status": "MANUALLY_VERIFIED",
     "extraction_confidence": null,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Extracted from TIFA grouped chart wave: August 2025 | Automated extraction failed (source fetch could not resolve DNS at build time; see data/sources_registry.json and data/review_queue.json for the failed attempt). Figures were entered manually and cross-checked against public news coverage of this release. | Sample size and fieldwork dates confirmed via public reporting (Capital FM, 11 Sept 2025): n=2,023 across all 47 counties."
   },
   {
@@ -33,6 +36,9 @@
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Polls_2027-General-Election_Political-Parties-Presidency-and-Coalitions_24-July-2026.pdf",
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Extracted from TIFA grouped chart wave: August 2025"
   },
   {
@@ -51,6 +57,9 @@
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "extraction_status": "MANUALLY_VERIFIED",
     "extraction_confidence": null,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Extracted from TIFA grouped chart wave: November 2025 | Automated extraction failed (source fetch could not resolve DNS at build time; see data/sources_registry.json and data/review_queue.json for the failed attempt). Figures were entered manually and cross-checked against public news coverage of this release. | Sample size and fieldwork dates confirmed via public reporting (Nairobi Wire, 19 Dec 2025): n=2,053, margin of error ±2.16%."
   },
   {
@@ -69,6 +78,9 @@
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Polls_2027-General-Election_Political-Parties-Presidency-and-Coalitions_24-July-2026.pdf",
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Extracted from TIFA grouped chart wave: November 2025"
   },
   {
@@ -87,6 +99,9 @@
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Candidate percentages, poll type, and date were identified."
   },
   {
@@ -105,6 +120,9 @@
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Candidate percentages, poll type, and date were identified."
   },
   {
@@ -123,6 +141,9 @@
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Candidate percentages, poll type, and date were identified."
   },
   {
@@ -141,6 +162,9 @@
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Candidate percentages, poll type, and date were identified."
   },
   {
@@ -159,6 +183,9 @@
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Candidate percentages, poll type, and date were identified."
   },
   {
@@ -177,6 +204,9 @@
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Candidate percentages, poll type, and date were identified."
   },
   {
@@ -195,6 +225,9 @@
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Candidate percentages, poll type, and date were identified."
   },
   {
@@ -213,6 +246,9 @@
     "source_url": "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
     "extraction_status": "MANUALLY_VERIFIED",
     "extraction_confidence": null,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Manually researched and cross-checked against five independent published reports (Daily Nation, The Standard, Tuko, Kenyans.co.ke, Nairobi Wire) of Infotrak's December 2025 national survey; figures consistent across all sources. Fieldwork 19-20 December 2025, n=1,000, CATI (Computer-Assisted Telephone Interviews) methodology, nationally representative. Automated scraping was not attempted for this record; added via manual research specifically to diversify pollster coverage beyond TIFA. Exact question wording not confirmed from available sources, so left blank rather than assumed."
   },
   {
@@ -231,6 +267,9 @@
     "source_url": "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
     "extraction_status": "MANUALLY_VERIFIED",
     "extraction_confidence": null,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Manually researched and cross-checked against a second independent write-up (OmarosaOmarosa, 29 Apr 2026) reporting the same Stats Kenya survey with matching figures at coarser rounding (23.4%, 12.3%, 8.2%, 7.4%, 4%). Methodology: telephone interviews, conducted March 2026. Exact fieldwork dates and sample size were not confirmed from available sources, so left blank rather than assumed. Automated scraping was not attempted for this record; added via manual research to further diversify pollster and methodology coverage (telephone, distinct from TIFA's face-to-face and Infotrak's CATI)."
   },
   {
@@ -249,6 +288,9 @@
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "extraction_status": "MANUALLY_VERIFIED",
     "extraction_confidence": null,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Extracted from TIFA grouped chart wave: May 2026 | Automated extraction failed at first attempt (DNS resolution error in the original build sandbox); figures were entered manually and cross-checked against public news coverage of this release. | Sample size and question text confirmed via public reporting of the May 2026 release (margin of error ±2.18%, fieldwork May 2–11 2026, n=2,013 across 47 counties). | CORRECTED 2026-07-08: a subsequent automated GitHub Actions run reached the real PDF (real internet access on the runner, unlike the original sandbox) but its chart-parsing logic misread the values (produced Ruto=2.0, Kalonzo=3.0, Matiang'i=14.0, Gachagua=9.0, Sifuna=10.0 at a false 0.98 confidence) and silently overwrote this manually-verified record, because the dedup logic ranked records by raw confidence number and treated this record's null confidence (a human verified it directly, so there is no extractor confidence to report) as 0, lower than the wrong automated extraction's 0.98. That dedup bug is fixed in backend/poll_tracker.py (manual verification now always outranks automated extraction). Figures restored to the correct, manually-verified values."
   },
   {
@@ -267,6 +309,9 @@
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Polls_2027-General-Election_Political-Parties-Presidency-and-Coalitions_24-July-2026.pdf",
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Extracted from TIFA grouped chart wave: May 2026"
   },
   {
@@ -285,6 +330,9 @@
     "source_url": "https://www.infotrakresearch.com/2743-2/",
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Candidate percentages, poll type, and date were identified."
   },
   {
@@ -303,6 +351,9 @@
     "source_url": "https://www.infotrakresearch.com/2743-2/",
     "extraction_status": "AUTO_ACCEPTED",
     "extraction_confidence": 0.98,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Candidate percentages, poll type, and date were identified."
   },
   {
@@ -321,6 +372,32 @@
     "source_url": "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
     "extraction_status": "MANUALLY_VERIFIED",
     "extraction_confidence": 0.8,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
     "notes": "Swiss Poll International survey released 20 August 2026. Fieldwork and methodology (stratified random sampling; CATI and CAPI; n=4,037; margin of error ±3.4% at 95% confidence) were cross-checked against TUKO reporting. National figures were cross-checked against Capital FM and AllAfrica. No original Swiss Poll report was located, so the record carries a conservative provisional pollster-quality prior. The published distribution also reported 16% undecided and approximately 1% other/unreported; these response categories are documented here but excluded from candidate-average calculations."
+  },
+  {
+    "poll_id": "2026_09_25_mizani_africa_preferred_presidential_candidate_https_capitalfm_africa_mizani_poll_ruto_leads_kalonzo_sifuna_in_presidential_preference_survey",
+    "date": "2026-09-25",
+    "fieldwork_dates": null,
+    "pollster_id": "mizani_africa",
+    "pollster": "Mizani Africa",
+    "poll_type": "preferred_presidential_candidate",
+    "compatible_group": "presidential_horse_race",
+    "question_text": "If elections were held today, who would you vote for as the next President?",
+    "geography_id": "kenya",
+    "geography": "Kenya",
+    "sample_size": null,
+    "source_title": "Mizani Poll: Ruto leads Kalonzo, Sifuna in presidential preference survey",
+    "source_url": "https://capitalfm.africa/mizani-poll-ruto-leads-kalonzo-sifuna-in-presidential-preference-survey/",
+    "extraction_status": "MANUALLY_VERIFIED_EXTERNAL",
+    "extraction_confidence": null,
+    "model_eligible": false,
+    "methodology_status": "NOT_DISCLOSED",
+    "response_categories": {
+      "Undecided": 5
+    },
+    "notes": "Results were transcribed from a Mizani Africa-branded graphic supplied for review and independently corroborated by Capital FM and TUKO coverage published 25 September 2026. Capital FM corroborates the headline candidate shares and 5% undecided. TUKO reports the same headline figures and explicitly states that Mizani Africa did not disclose the methodology, sample size or margin of error for this survey. A companion Mizani opposition-flagbearer release was reported as having fieldwork on 3–11 September 2026, but those field dates are not assumed here for the presidential-preference question. Published for source-transparent display, but excluded from polling averages until core methodology is disclosed or otherwise verified."
   }
 ]
