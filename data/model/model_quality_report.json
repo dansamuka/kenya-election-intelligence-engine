@@ -1,13 +1,14 @@
 {
-  "generated_at": "2026-09-26T09:28:00+00:00",
+  "generated_at": "2026-09-26T10:03:14+00:00",
   "phase": "Phase 3 - Polling model",
-  "model_version": "phase3.0-descriptive-weighted-average",
+  "model_version": "phase3.1-dual-scope-descriptive-weighted-average",
   "status": "generated_with_caveats",
   "records": {
     "approved_poll_records": 19,
     "model_eligible_records": 18,
     "model_excluded_records": 1,
     "polling_average_rows": 15,
+    "all_published_average_rows": 16,
     "pollster_quality_rows": 4
   },
   "coverage": {
@@ -22,6 +23,14 @@
     "poll_types": [
       "popularity_rating",
       "preferred_presidential_aspirant"
+    ],
+    "all_published_date_max": "2026-09-25",
+    "all_published_pollsters": [
+      "Infotrak Research",
+      "Mizani Africa",
+      "Stats Kenya",
+      "Swiss Poll International",
+      "TIFA Research"
     ]
   },
   "methodology": {
@@ -34,10 +43,14 @@
       "poll_type_comparability"
     ],
     "uncertainty_method": "Weighted empirical variation with a minimum ±3.5 point floor for polling/model error.",
-    "forecast_status": "Not a full election forecast; this is a polling-summary model."
+    "forecast_status": "Not a full election forecast; this is a polling-summary model.",
+    "average_scopes": {
+      "model_eligible_only": "Excludes methodology-held records.",
+      "all_published": "Includes published methodology-held records with the same transparent weighting rules; missing sample size and extraction confidence receive the model defaults."
+    }
   },
   "warnings": [
-    "1 published poll record(s) are excluded from model calculations because required methodology or comparability checks are unresolved."
+    "1 published poll record(s) are methodology-held: they appear in the optional all-published average but are excluded from the model-eligible-only average."
   ],
   "next_requirements_for_higher_rigor": [
     "Add more pollsters and more polling waves.",
