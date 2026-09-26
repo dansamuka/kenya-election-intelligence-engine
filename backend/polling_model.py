@@ -414,7 +414,7 @@ def build_momentum(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
 
 def build_model_exclusions(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """List published poll records that are intentionally excluded from model calculations."""
+    """List methodology-held records excluded from the model-eligible-only average."""
     rows = []
     for record in polls:
         if record.get("model_eligible") is not False:
@@ -431,10 +431,17 @@ def build_model_exclusions(polls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return sorted(rows, key=lambda item: (item.get("date") or "", item.get("pollster") or ""))
 
 
-def build_model_quality_report(polls: List[Dict[str, Any]], averages: List[Dict[str, Any]], pollster_quality: List[Dict[str, Any]]) -> Dict[str, Any]:
+def build_model_quality_report(
+    polls: List[Dict[str, Any]],
+    averages: List[Dict[str, Any]],
+    pollster_quality: List[Dict[str, Any]],
+    averages_all: Optional[List[Dict[str, Any]]] = None,
+) -> Dict[str, Any]:
     approved_records = len(polls)
     model_excluded_records = sum(1 for record in polls if record.get("model_eligible") is False)
     model_records = [record for record in polls if record.get("model_eligible") is not False]
+    all_records = list(polls)
+    averages_all = averages_all or []
     pollsters = sorted({record.get("pollster") for record in model_records if record.get("pollster")})
     poll_types = sorted({record.get("poll_type") for record in model_records if record.get("poll_type")})
     dates = sorted([record.get("date") for record in model_records if record.get("date")])
@@ -452,13 +459,14 @@ def build_model_quality_report(polls: List[Dict[str, Any]], averages: List[Dict[
     return {
         "generated_at": utc_now_iso(),
         "phase": "Phase 3 - Polling model",
-        "model_version": "phase3.0-descriptive-weighted-average",
+        "model_version": "phase3.1-dual-scope-descriptive-weighted-average",
         "status": "generated_with_caveats",
         "records": {
             "approved_poll_records": approved_records,
             "model_eligible_records": len(model_records),
             "model_excluded_records": model_excluded_records,
             "polling_average_rows": len(averages),
+            "all_published_average_rows": len(averages_all),
             "pollster_quality_rows": len(pollster_quality),
         },
         "coverage": {
@@ -466,12 +474,18 @@ def build_model_quality_report(polls: List[Dict[str, Any]], averages: List[Dict[
             "date_max": dates[-1] if dates else None,
             "pollsters": pollsters,
             "poll_types": poll_types,
+            "all_published_date_max": max((record.get("date") for record in all_records if record.get("date")), default=None),
+            "all_published_pollsters": sorted({record.get("pollster") for record in all_records if record.get("pollster")}),
         },
         "methodology": {
             "recency_half_life_days": DEFAULT_HALF_LIFE_DAYS,
             "weight_components": ["recency", "sample_size", "extraction_confidence", "pollster_quality", "poll_type_comparability"],
             "uncertainty_method": "Weighted empirical variation with a minimum ±3.5 point floor for polling/model error.",
             "forecast_status": "Not a full election forecast; this is a polling-summary model.",
+            "average_scopes": {
+                "model_eligible_only": "Excludes methodology-held records.",
+                "all_published": "Includes published methodology-held records with the same transparent weighting rules; missing sample size and extraction confidence receive the model defaults.",
+            },
         },
         "warnings": warnings + ([
             f"{model_excluded_records} published poll record(s) are methodology-held: they appear in the optional all-published average but are excluded from the model-eligible-only average."
@@ -521,6 +535,7 @@ def main() -> None:
         polls,
         averages_validated,
         pollster_quality,
+        averages_all=averages_all,
     )
     manifest = build_manifest()
 
