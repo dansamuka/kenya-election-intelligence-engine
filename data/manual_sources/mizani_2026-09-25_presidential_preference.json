@@ -22,15 +22,23 @@
     "sampling_method": null,
     "survey_mode": null,
     "weighting": null,
-    "margin_of_error": null
+    "margin_of_error": null,
+    "disclosure_note": "TUKO reported on 25 September 2026 that Mizani Africa did not disclose the methodology, sample size or margin of error for the presidential-preference survey. A companion opposition-flagbearer release was reported as conducted 3–11 September 2026, but those dates are not assumed for this question."
   },
   "evidence": {
-    "type": "user_supplied_screenshot",
+    "type": "user_supplied_screenshot_plus_independent_press_corroboration",
     "pollster_website": "https://www.mizaniafrica.com/",
     "pollster_social_profile": "https://x.com/Mizaniafrica",
-    "direct_post_url": null
+    "direct_post_url": null,
+    "corroborating_sources": [
+      "https://capitalfm.africa/mizani-poll-ruto-leads-kalonzo-sifuna-in-presidential-preference-survey/",
+      "https://www.tuko.co.ke/politics/641108-william-ruto-win-vote-election-held-today-mizani-poll/",
+      "https://www.tuko.co.ke/politics/641096-2027-presidential-race-kalonzo-emerges-favourite-opposition-candidate-unseat-ruto-poll/"
+    ]
   },
-  "review_status": "NEEDS_SOURCE_AND_METHODOLOGY_VERIFICATION",
+  "review_status": "FINALIZED_PUBLICATION_WITH_METHODOLOGY_HOLD",
   "approved_for_polling_average": false,
-  "notes": "Percentages transcribed from the supplied Mizani Africa-branded graphic. Candidate shares plus undecided sum to 100.0%. This record is evidence for review only and must not enter the polling average until the original release and methodology are verified."
+  "notes": "Candidate percentages are preserved as a published, source-transparent observation. Capital FM and TUKO independently corroborate the headline presidential figures; however, core methodology remains undisclosed. The record is therefore public-display eligible but excluded from aggregate polling averages until methodology is verified.",
+  "approved_for_public_display": true,
+  "model_eligible": false
 }
