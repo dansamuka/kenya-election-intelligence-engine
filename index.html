@@ -916,11 +916,14 @@ function buildTrust(){
   let rows='';
   polls.slice().sort((a,b)=>b.date.localeCompare(a.date)).forEach(p=>{
     const n=p.sample_size?`n=${p.sample_size.toLocaleString()}`:'sample n/a';
+    const held=p.model_eligible===false;
+    const status=held?'published · not in average · methodology pending':'included in polling model';
     rows+=`<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line-soft)">
-      <div><div style="font-weight:700;font-family:'Libre Franklin';font-size:14px">${p.pollster}</div><div class="faint" style="font-size:12px">${fmtDate(p.date)} · ${n} · checked by hand</div></div>
+      <div><div style="font-weight:700;font-family:'Libre Franklin';font-size:14px">${p.pollster}</div><div class="faint" style="font-size:12px">${fmtDate(p.date)} · ${n} · ${status}</div></div>
       <a class="src" style="align-self:center" href="${p.source_url}" target="_blank" rel="noopener">View</a></div>`;
   });
-  srcCard.innerHTML=`<h3 class="franklin" style="font-weight:900;font-size:19px;margin:0 0 8px">Every poll behind these numbers</h3>${rows}`;
+  srcCard.innerHTML=`<h3 class="franklin" style="font-weight:900;font-size:19px;margin:0 0 8px">Published polls and sources</h3>
+    <p class="faint" style="font-size:12.5px;margin:0 0 8px">A published poll can appear here without entering the polling average when its methodology is not sufficiently disclosed.</p>${rows}`;
   body.appendChild(srcCard);
 
   const mapWrap=el('div');mapWrap.id='countyExplorer';
@@ -957,7 +960,8 @@ function buildTrust(){
 }
 function renderModelMini(){
   const host=$('#modelMini');if(!host)return;
-  const polls=DATA.polls||[];const houses=uniq(polls.map(p=>p.pollster));
+  const polls=(DATA.polls||[]).filter(p=>p.model_eligible!==false);
+  const houses=uniq(polls.map(p=>p.pollster));
   const dates=uniq(polls.map(p=>p.date)).sort();
   const cards=[
     ['Polls in the average',polls.length],
