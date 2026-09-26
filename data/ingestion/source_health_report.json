@@ -1,49 +1,52 @@
 {
   "phase": "phase_2_source_ingestion",
-  "generated_at": "2026-09-21T12:21:10+00:00",
+  "generated_at": "2026-09-26T09:28:00+00:00",
   "summary": {
-    "catalog_sources": 19,
-    "registered_sources": 19,
-    "approved_poll_records": 18,
-    "approved_source_urls": 7,
-    "review_queue_items": 6,
-    "high_priority_review_items": 1
+    "catalog_sources": 20,
+    "registered_sources": 20,
+    "approved_poll_records": 19,
+    "approved_source_urls": 8,
+    "review_queue_items": 7,
+    "high_priority_review_items": 2
   },
   "processing_status_counts": {
     "rejected": 9,
     "needs_review": 3,
     "manually_verified_external": 3,
-    "processed": 4
+    "processed": 4,
+    "published_with_methodology_hold": 1
   },
   "source_class_counts": {
     "unknown_external_source": 3,
     "official_pdf_report_candidate": 9,
+    "official_social_poll_candidate": 1,
     "official_article_or_archive_candidate": 7
   },
   "pollster_catalog_counts": {
     "Infotrak Research": 15,
     "TIFA Research": 2,
     "Stats Kenya": 1,
+    "Mizani Africa": 1,
     "Swiss Poll International": 1
   },
   "warnings": [
-    "1 high-priority review item(s) require human inspection."
+    "2 high-priority review item(s) require human inspection."
   ],
   "quality_gates": [
     {
       "gate": "official_source_only",
       "status": "implemented",
-      "description": "Discovery modules restrict sources to known pollster domains and block social-share/admin links."
+      "description": "Discovery modules restrict sources to known pollster domains and block social-share/admin links, with explicit handling for verified official pollster social profiles."
     },
     {
       "gate": "review_before_publication",
       "status": "implemented",
-      "description": "Only AUTO_ACCEPTED parser records enter polls_data.json; uncertain records enter review outputs."
+      "description": "AUTO_ACCEPTED records and explicitly corroborated manual records may enter polls_data.json; records with unresolved methodology can be published for transparent display while remaining model-ineligible."
     },
     {
       "gate": "source_provenance",
       "status": "implemented",
-      "description": "Source URL, SHA-256 hash where available, extraction status, and confidence are retained."
+      "description": "Source URL, corroborating URLs, SHA-256 hash where available, extraction status, and confidence are retained."
     },
     {
       "gate": "human_review_workbench",
