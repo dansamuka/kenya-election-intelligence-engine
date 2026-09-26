@@ -47,6 +47,9 @@ CANONICAL_CANDIDATE_ALIASES: Dict[str, List[str]] = {
     "Fred Matiang'i": ["Matiang'i", "Matiang’i", "Fred Matiang'i", "Fred Matiang’i"],
     "Rigathi Gachagua": ["Gachagua", "Rigathi Gachagua"],
     "Edwin Sifuna": ["Sifuna", "Edwin Sifuna"],
+    "Ndindi Nyoro": ["Ndindi Nyoro", "Nyoro"],
+    "Martha Karua": ["Martha Karua", "Karua"],
+    "David Maraga": ["David Maraga", "Maraga"],
 }
 
 POLL_TYPE_COMPATIBILITY = {
