@@ -168,6 +168,7 @@ def build_polls_normalized(records: Iterable[Dict[str, Any]]) -> List[Dict[str, 
                 "extraction_confidence": record.get("extraction_confidence"),
                 "model_eligible": record.get("model_eligible", True),
                 "methodology_status": record.get("methodology_status"),
+                "response_categories": record.get("response_categories") or {},
                 "notes": record.get("notes"),
             }
         )
