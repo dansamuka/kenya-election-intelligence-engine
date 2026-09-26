@@ -185,15 +185,18 @@
     "source_id": "mizani-2026-09-25-presidential-screenshot",
     "pollster": "Mizani Africa",
     "title": "Mizani Africa Presidential Preference — 25 September 2026",
-    "page_url": "https://x.com/Mizaniafrica",
+    "page_url": "https://capitalfm.africa/mizani-poll-ruto-leads-kalonzo-sifuna-in-presidential-preference-survey/",
     "pdf_url": null,
     "published_date": "2026-09-25",
     "first_seen_at": "2026-09-25T13:57:00+00:00",
-    "last_checked_at": "2026-09-25T13:57:00+00:00",
+    "last_checked_at": "2026-09-26T09:28:00+00:00",
     "sha256": null,
-    "processing_status": "needs_review_manual_social_source",
+    "processing_status": "published_with_methodology_hold",
     "processing_error": null,
-    "notes": "Observed from a user-supplied screenshot of a Mizani Africa-branded social post. The direct post URL and methodology document were not available at ingestion time. Hold outside approved polling averages until provenance and methodology are verified."
+    "notes": "Mizani Africa-branded poll results are corroborated by Capital FM and TUKO reporting from 25 September 2026. TUKO explicitly reports that methodology, sample size and margin of error were not disclosed. Public display is allowed with caveat; polling-model inclusion remains blocked pending methodology verification. Official Mizani social channels remain a monitoring target for any later methodology release.",
+    "corroborating_urls": [
+      "https://www.tuko.co.ke/politics/641108-william-ruto-win-vote-election-held-today-mizani-poll/"
+    ]
   },
   {
     "source_id": "statskenya-mar2026-manual",
