@@ -1,13 +1,14 @@
 {
-  "generated_at": "2026-09-26T09:28:00+00:00",
+  "generated_at": "2026-09-26T10:03:14+00:00",
   "phase": "Phase 3 - Polling model",
   "files": [
     "data/model/polling_average.json",
+    "data/model/polling_average_all.json",
     "data/model/candidate_momentum.json",
     "data/model/pollster_quality.json",
     "data/model/model_quality_report.json",
-    "data/model/manifest.json",
-    "data/model/model_exclusions.json"
+    "data/model/model_exclusions.json",
+    "data/model/manifest.json"
   ],
   "inputs": [
     "data/polls_data.json",
