@@ -1,23 +1,25 @@
 {
-  "generated_at": "2026-09-21T12:21:10+00:00",
+  "generated_at": "2026-09-26T09:28:00+00:00",
   "phase": "phase_1_data_foundation",
   "prototype_status": "data_foundation_scaffold_with_normalized_poll_layer",
   "records": {
-    "approved_poll_records": 18,
-    "source_registry_records": 19,
-    "review_queue_records": 6,
-    "poll_results_long_rows": 96
+    "approved_poll_records": 19,
+    "source_registry_records": 20,
+    "review_queue_records": 7,
+    "poll_results_long_rows": 104
   },
   "coverage": {
     "pollsters": {
       "TIFA Research": 6,
       "Infotrak Research": 10,
       "Stats Kenya": 1,
-      "Swiss Poll International": 1
+      "Swiss Poll International": 1,
+      "Mizani Africa": 1
     },
     "poll_types": {
       "preferred_presidential_aspirant": 15,
-      "popularity_rating": 3
+      "popularity_rating": 3,
+      "preferred_presidential_candidate": 1
     },
     "candidates": [
       "Babu Owino",
@@ -26,25 +28,27 @@
       "Fred Matiang'i",
       "Kalonzo Musyoka",
       "Martha Karua",
+      "Ndindi Nyoro",
       "Oburu Odinga",
       "Okiya Omtata",
       "Rigathi Gachagua",
       "William Ruto"
     ],
     "date_min": "2025-08-01",
-    "date_max": "2026-08-20",
+    "date_max": "2026-09-25",
     "geography_levels_available": [
       "country",
       "county_entities_without_values"
     ]
   },
   "missingness": {
-    "extraction_confidence": 5,
+    "extraction_confidence": 6,
     "question_text": 14,
-    "sample_size": 1
+    "sample_size": 2
   },
   "quality_flags": [
     "Only public approved poll records are included in the normalized poll layer.",
+    "Published records can carry model_eligible=false when provenance is sufficient for display but methodology/comparability checks are unresolved.",
     "Sample sizes and question text are missing for some records and should be ingested from source methodology pages/PDFs.",
     "County, constituency, ward, voter-registration, demographic, and historical election-result value layers are scaffolded but not yet populated with public official datasets.",
     "Phase 1 improves data structure and auditability; it does not yet provide a polling average or forecast model."
