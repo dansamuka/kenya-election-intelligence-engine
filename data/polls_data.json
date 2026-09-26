@@ -113,11 +113,11 @@
     "geography": "Kenya",
     "sample_size": 600,
     "figures": {
-      "William Ruto": 25.0,
-      "Kalonzo Musyoka": 13.0,
-      "Fred Matiang'i": 15.0,
-      "Rigathi Gachagua": 2.0,
-      "Edwin Sifuna": 31.0
+      "William Ruto": 25,
+      "Kalonzo Musyoka": 13,
+      "Fred Matiang'i": 15,
+      "Rigathi Gachagua": 2,
+      "Edwin Sifuna": 31
     },
     "source_title": "Mulembe Nation Poll",
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
@@ -155,11 +155,11 @@
     "geography": "Kenya",
     "sample_size": 600,
     "figures": {
-      "William Ruto": 25.0,
-      "Kalonzo Musyoka": 13.0,
-      "Fred Matiang'i": 15.0,
-      "Rigathi Gachagua": 2.0,
-      "Edwin Sifuna": 31.0
+      "William Ruto": 25,
+      "Kalonzo Musyoka": 13,
+      "Fred Matiang'i": 15,
+      "Rigathi Gachagua": 2,
+      "Edwin Sifuna": 31
     },
     "source_title": "Mulembe Nation Poll",
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
@@ -197,11 +197,11 @@
     "geography": "Kenya",
     "sample_size": 600,
     "figures": {
-      "William Ruto": 25.0,
-      "Kalonzo Musyoka": 13.0,
-      "Fred Matiang'i": 15.0,
-      "Rigathi Gachagua": 2.0,
-      "Edwin Sifuna": 31.0
+      "William Ruto": 25,
+      "Kalonzo Musyoka": 13,
+      "Fred Matiang'i": 15,
+      "Rigathi Gachagua": 2,
+      "Edwin Sifuna": 31
     },
     "source_title": "Mulembe Nation Poll",
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
@@ -218,11 +218,11 @@
     "geography": "Kenya",
     "sample_size": 600,
     "figures": {
-      "William Ruto": 25.0,
-      "Kalonzo Musyoka": 13.0,
-      "Fred Matiang'i": 15.0,
-      "Rigathi Gachagua": 2.0,
-      "Edwin Sifuna": 31.0
+      "William Ruto": 25,
+      "Kalonzo Musyoka": 13,
+      "Fred Matiang'i": 15,
+      "Rigathi Gachagua": 2,
+      "Edwin Sifuna": 31
     },
     "source_title": "Mulembe Nation Poll",
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
@@ -382,5 +382,35 @@
     "extraction_status": "MANUALLY_VERIFIED",
     "extraction_confidence": 0.8,
     "notes": "Swiss Poll International survey released 20 August 2026. Fieldwork and methodology (stratified random sampling; CATI and CAPI; n=4,037; margin of error ±3.4% at 95% confidence) were cross-checked against TUKO reporting. National figures were cross-checked against Capital FM and AllAfrica. No original Swiss Poll report was located, so the record carries a conservative provisional pollster-quality prior. The published distribution also reported 16% undecided and approximately 1% other/unreported; these response categories are documented here but excluded from candidate-average calculations."
+  },
+  {
+    "date": "2026-09-25",
+    "fieldwork_dates": null,
+    "pollster": "Mizani Africa",
+    "poll_type": "preferred_presidential_candidate",
+    "question_text": "If elections were held today, who would you vote for as the next President?",
+    "geography": "Kenya",
+    "sample_size": null,
+    "figures": {
+      "William Ruto": 38.7,
+      "Kalonzo Musyoka": 27.5,
+      "Edwin Sifuna": 13.2,
+      "Fred Matiang'i": 7.7,
+      "Rigathi Gachagua": 4.4,
+      "Ndindi Nyoro": 3.1,
+      "Martha Karua": 0.3,
+      "David Maraga": 0.1,
+      "Undecided": 5
+    },
+    "source_title": "Mizani Poll: Ruto leads Kalonzo, Sifuna in presidential preference survey",
+    "source_url": "https://capitalfm.africa/mizani-poll-ruto-leads-kalonzo-sifuna-in-presidential-preference-survey/",
+    "extraction_status": "MANUALLY_VERIFIED_EXTERNAL",
+    "extraction_confidence": null,
+    "model_eligible": false,
+    "methodology_status": "NOT_DISCLOSED",
+    "corroborating_sources": [
+      "https://www.tuko.co.ke/politics/641108-william-ruto-win-vote-election-held-today-mizani-poll/"
+    ],
+    "notes": "Results were transcribed from a Mizani Africa-branded graphic supplied for review and independently corroborated by Capital FM and TUKO coverage published 25 September 2026. Capital FM corroborates the headline candidate shares and 5% undecided. TUKO reports the same headline figures and explicitly states that Mizani Africa did not disclose the methodology, sample size or margin of error for this survey. A companion Mizani opposition-flagbearer release was reported as having fieldwork on 3–11 September 2026, but those field dates are not assumed here for the presidential-preference question. Published for source-transparent display, but excluded from polling averages until core methodology is disclosed or otherwise verified."
   }
 ]
