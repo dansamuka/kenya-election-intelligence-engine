@@ -44,17 +44,6 @@
     "feeds_public_poll_record": true
   },
   {
-    "source_id": "e299a44d39950380ed68",
-    "pollster": "Infotrak Research",
-    "title": "Infotrak Voice of the People Poll – September 2025",
-    "page_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
-    "pdf_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Infotrak-VOP-Poll_Sep-2025_Phase-One2.pdf",
-    "published_date": "2025-09-25",
-    "processing_status": "rejected",
-    "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
-    "feeds_public_poll_record": false
-  },
-  {
     "source_id": "d487dc5d26ae5dfd1523",
     "pollster": "Infotrak Research",
     "title": "Infotrak Voice Of The People Poll July 2026",
@@ -74,6 +63,17 @@
     "published_date": null,
     "processing_status": "rejected",
     "sha256": "7a7e3ad4c9228ffbe9dbcfbdb9be35c5754d5a202d2f6478cc024d90188ce172",
+    "feeds_public_poll_record": false
+  },
+  {
+    "source_id": "e299a44d39950380ed68",
+    "pollster": "Infotrak Research",
+    "title": "Infotrak Voice of the People Poll – September 2025",
+    "page_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
+    "pdf_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Infotrak-VOP-Poll_Sep-2025_Phase-One2.pdf",
+    "published_date": "2025-09-25",
+    "processing_status": "rejected",
+    "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
     "feeds_public_poll_record": false
   },
   {

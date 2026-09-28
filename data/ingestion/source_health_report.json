@@ -1,13 +1,13 @@
 {
   "phase": "phase_2_source_ingestion",
-  "generated_at": "2026-09-26T09:28:00+00:00",
+  "generated_at": "2026-09-28T13:17:21+00:00",
   "summary": {
     "catalog_sources": 20,
     "registered_sources": 20,
-    "approved_poll_records": 19,
+    "approved_poll_records": 20,
     "approved_source_urls": 8,
-    "review_queue_items": 7,
-    "high_priority_review_items": 2
+    "review_queue_items": 8,
+    "high_priority_review_items": 3
   },
   "processing_status_counts": {
     "rejected": 9,
@@ -30,13 +30,13 @@
     "Swiss Poll International": 1
   },
   "warnings": [
-    "2 high-priority review item(s) require human inspection."
+    "3 high-priority review item(s) require human inspection."
   ],
   "quality_gates": [
     {
       "gate": "official_source_only",
       "status": "implemented",
-      "description": "Discovery modules restrict sources to known pollster domains and block social-share/admin links, with explicit handling for verified official pollster social profiles."
+      "description": "Discovery modules restrict sources to known pollster domains and block social-share/admin links."
     },
     {
       "gate": "review_before_publication",
@@ -46,7 +46,7 @@
     {
       "gate": "source_provenance",
       "status": "implemented",
-      "description": "Source URL, corroborating URLs, SHA-256 hash where available, extraction status, and confidence are retained."
+      "description": "Source URL, SHA-256 hash where available, extraction status, and confidence are retained."
     },
     {
       "gate": "human_review_workbench",

@@ -1,6 +1,6 @@
 {
   "phase": "phase_2_source_ingestion",
-  "generated_at": "2026-09-26T09:28:00+00:00",
+  "generated_at": "2026-09-28T13:17:21+00:00",
   "description": "Auditable source-ingestion layer for discovery, classification, extraction audit, and human review routing.",
   "source_feeds": [
     {
@@ -50,10 +50,10 @@
   "summary": {
     "catalog_sources": 20,
     "registered_sources": 20,
-    "approved_poll_records": 19,
+    "approved_poll_records": 20,
     "approved_source_urls": 8,
-    "review_queue_items": 7,
-    "high_priority_review_items": 2
+    "review_queue_items": 8,
+    "high_priority_review_items": 3
   },
   "next_phase_dependency": "Phase 3 polling model should use ingestion health and source quality scores before calculating weighted averages."
 }
