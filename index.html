@@ -367,7 +367,7 @@ function renderStandings(){
   const overlap=second ? !(first.lower_95>second.upper_95 || second.lower_95>first.upper_95) : null;
   $('#standNote').innerHTML=`Weighted descriptive average using <b>${scope}</b>. The shaded bands show model uncertainty. `+
     (second?`The difference between the two highest displayed averages is about <b>${gap.toFixed(1)} points</b>; their uncertainty bands ${overlap?'overlap':'do not overlap'}. `:'')+
-    (DATA.includeUnvalidated&&held?`The current view includes methodology-held data, including Mizani; switch it off above to see the model-eligible-only calculation. `:'')+
+    (DATA.includeUnvalidated&&held?`The current view includes methodology-held data; switch it off above to see the model-eligible-only calculation. `:'')+
     `This is a polling summary, not an election forecast.`;
 }
 
@@ -749,15 +749,15 @@ function buildTrend(){
   ranked.forEach((c)=>{
     const hasEligible=polls.some(p=>p.model_eligible!==false&&Number.isFinite(p.figures?.[c]));
     const hasHeld=polls.some(p=>p.model_eligible===false&&Number.isFinite(p.figures?.[c]));
-    const suffix=!hasEligible&&hasHeld?' · Mizani only':'';
+    const suffix=!hasEligible&&hasHeld?' · held only':'';
     const b=el('button','chip-toggle'+(trendState.selected.has(c)?' on':''),c+suffix);
-    if(!hasEligible&&hasHeld){b.title='This candidate currently appears only in the methodology-held Mizani release.';}
+    if(!hasEligible&&hasHeld){b.title='This candidate currently appears only in methodology-held published releases.';}
     b.onclick=()=>{trendState.selected.has(c)?trendState.selected.delete(c):trendState.selected.add(c);b.classList.toggle('on');drawTrend(polls,dates,ranked);};
     toggles.appendChild(b);
   });
   body.appendChild(toggles);
   const hold=el('div','chart-hold');hold.id='trendHold';body.appendChild(hold);
-  const cap=el('p','faint','Mizani is plotted on the chart. Solid segments and filled dots are model-eligible observations; dashed segments and hollow dots mark methodology-held published observations. The average switch above controls whether methodology-held polls are included in the displayed average. Polls are spaced evenly by wave for readability, not by exact day gaps.');cap.style.fontSize='12.5px';cap.style.marginTop='10px';
+  const cap=el('p','faint','Methodology-held polls are plotted on the chart. Solid segments and filled dots are model-eligible observations; dashed segments and hollow dots mark methodology-held published observations. The average switch above controls whether methodology-held polls are included in the displayed average. Polls are spaced evenly by wave for readability, not by exact day gaps.');cap.style.fontSize='12.5px';cap.style.marginTop='10px';
   body.appendChild(cap);
   drawTrend(polls,dates,ranked);
 }
@@ -797,10 +797,10 @@ function drawTrend(polls,dates,ranked){
     });
 
     const last=pts[pts.length-1];
-    const heldMark=last.held?' · Mizani':'';
+    const heldMark=last.held?' · held':'';
     g+=`<text class="end-lab" fill="${color}" x="${last.x+10}" y="${last.y+4}">${c.split(' ').slice(-1)[0]} ${last.v.toFixed(last.v%1?1:0)}%${heldMark}</text>`;
   });
-  hold.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Published presidential preference over time, including the latest Mizani observation">${g}</svg>`;
+  hold.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Published presidential preference over time, including methodology-held observations">${g}</svg>`;
 }
 
 /* ================= WIN RULES ================= */
