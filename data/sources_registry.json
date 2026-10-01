@@ -250,5 +250,25 @@
     "last_checked_at": "2026-09-28T13:16:40+00:00",
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "processing_status": "processed"
+  },
+  {
+    "source_id": "politrack-2026-10-01-presidential",
+    "pollster": "Politrack Africa",
+    "title": "Politrack Africa Presidential Preference — 1 October 2026",
+    "page_url": "https://capitalfm.africa/ruto-leads-2027-presidential-race-with-45-1-politrack-africa-poll/",
+    "pdf_url": null,
+    "official_poll_portal": "https://www.politrack.africa/polls",
+    "published_date": "2026-10-01",
+    "first_seen_at": "2026-10-01T14:46:00+00:00",
+    "last_checked_at": "2026-10-01T14:46:00+00:00",
+    "sha256": null,
+    "processing_status": "published_with_methodology_hold",
+    "processing_error": null,
+    "notes": "Results and core fieldwork metadata were corroborated across Capital FM, Daily Express, The Star and TV47. Reported methodology: 20,419 respondents, all 47 counties, text-based technology platform, county weighting by registered-voter share, reported ±3pp margin of error at 95% confidence. Sampling-frame and respondent-selection details remain insufficiently documented for model-eligible status.",
+    "corroborating_urls": [
+      "https://dailyexpress.co.ke/ruto-leads-in-new-politrack-africa-poll-as-sifuna-emerges-second",
+      "https://www.the-star.co.ke/news/2026-10-01-ruto-tops-presidential-race-poll-with-451",
+      "https://www.tv47.digital/ruto-leads-2027-presidential-preference-poll-at-45-1-sifuna-second-at-19-6-164576/"
+    ]
   }
 ]

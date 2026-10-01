@@ -7,5 +7,14 @@
     "source_url": "https://capitalfm.africa/mizani-poll-ruto-leads-kalonzo-sifuna-in-presidential-preference-survey/",
     "methodology_status": "NOT_DISCLOSED",
     "reason": "Published for source-transparent display. Included only in the optional all-published polling average; excluded from the model-eligible-only average until methodology/comparability requirements are satisfied."
+  },
+  {
+    "date": "2026-10-01",
+    "pollster": "Politrack Africa",
+    "poll_type": "preferred_presidential_candidate",
+    "source_title": "Politrack poll: Ruto 45.1%, Sifuna 19.6%, Kalonzo 10.3% if elections held today",
+    "source_url": "https://capitalfm.africa/ruto-leads-2027-presidential-race-with-45-1-politrack-africa-poll/",
+    "methodology_status": "PARTIALLY_DISCLOSED_PLATFORM_SAMPLE",
+    "reason": "Published for source-transparent display. Included only in the optional all-published polling average; excluded from the model-eligible-only average until methodology/comparability requirements are satisfied."
   }
 ]

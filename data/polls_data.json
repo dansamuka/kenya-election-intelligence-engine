@@ -263,14 +263,14 @@
     "geography": "Kenya",
     "sample_size": 600,
     "figures": {
-      "William Ruto": 25.0,
-      "Kalonzo Musyoka": 13.0,
-      "Fred Matiang'i": 15.0,
-      "Rigathi Gachagua": 2.0,
-      "Edwin Sifuna": 31.0,
+      "William Ruto": 25,
+      "Kalonzo Musyoka": 13,
+      "Fred Matiang'i": 15,
+      "Rigathi Gachagua": 2,
+      "Edwin Sifuna": 31,
       "Ndindi Nyoro": null,
-      "Martha Karua": 2.0,
-      "David Maraga": 2.0
+      "Martha Karua": 2,
+      "David Maraga": 2
     },
     "source_title": "Mulembe Nation Poll",
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
@@ -437,6 +437,46 @@
     "notes": "Results were transcribed from a Mizani Africa-branded graphic supplied for review and independently corroborated by Capital FM and TUKO coverage published 25 September 2026. Capital FM corroborates the headline candidate shares and 5% undecided. TUKO reports the same headline figures and explicitly states that Mizani Africa did not disclose the methodology, sample size or margin of error for this survey. A companion Mizani opposition-flagbearer release was reported as having fieldwork on 3–11 September 2026, but those field dates are not assumed here for the presidential-preference question. Published for source-transparent display, but excluded from polling averages until core methodology is disclosed or otherwise verified.",
     "response_categories": {
       "Undecided": 5
+    }
+  },
+  {
+    "date": "2026-10-01",
+    "fieldwork_dates": "15–25 September 2026",
+    "pollster": "Politrack Africa",
+    "poll_type": "preferred_presidential_candidate",
+    "question_text": "Which presidential candidate would you vote for if elections were held today?",
+    "geography": "Kenya",
+    "sample_size": 20419,
+    "figures": {
+      "William Ruto": 45.1,
+      "Edwin Sifuna": 19.6,
+      "Kalonzo Musyoka": 10.3,
+      "Fred Matiang'i": 7.2,
+      "Rigathi Gachagua": 6,
+      "George Wajackoyah": 1.1,
+      "Martha Karua": 0.8,
+      "David Maraga": 0.8,
+      "James Orengo": 0.4,
+      "Jimi Wanjigi": 0.3
+    },
+    "source_title": "Politrack poll: Ruto 45.1%, Sifuna 19.6%, Kalonzo 10.3% if elections held today",
+    "source_url": "https://capitalfm.africa/ruto-leads-2027-presidential-race-with-45-1-politrack-africa-poll/",
+    "extraction_status": "MANUALLY_VERIFIED_EXTERNAL",
+    "extraction_confidence": null,
+    "model_eligible": false,
+    "methodology_status": "PARTIALLY_DISCLOSED_PLATFORM_SAMPLE",
+    "reported_margin_of_error_pct": 3,
+    "reported_confidence_level_pct": 95,
+    "weighting": "National estimates weighted according to each county's share of registered voters.",
+    "collection_mode": "Text-based technology platform; sampled users were invited to participate and respond at their convenience.",
+    "corroborating_sources": [
+      "https://dailyexpress.co.ke/ruto-leads-in-new-politrack-africa-poll-as-sifuna-emerges-second",
+      "https://www.the-star.co.ke/news/2026-10-01-ruto-tops-presidential-race-poll-with-451",
+      "https://www.tv47.digital/ruto-leads-2027-presidential-preference-poll-at-45-1-sifuna-second-at-19-6-164576/"
+    ],
+    "notes": "Released 1 October 2026 from fieldwork conducted 15–25 September 2026. Public reporting consistently gives n=20,419 across Kenya, a reported ±3 percentage-point margin of error at 95% confidence, county weighting by registered-voter share, and a text-based technology platform. The reviewed public sources do not sufficiently document the sampling frame, recruitment/selection probabilities, nonresponse treatment, or full weighting procedure. The record is therefore published transparently but held out of the model-eligible-only average pending fuller methodology documentation.",
+    "response_categories": {
+      "Undecided": 8.4
     }
   }
 ]
