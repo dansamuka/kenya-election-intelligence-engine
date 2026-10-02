@@ -1,399 +1,1021 @@
 <!doctype html>
-<!-- deployment: election-calendar-2026-08-23 -->
+<!-- deployment: design-overhaul-2026-10-02 -->
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#0E2E22" />
+<meta name="description" content="An independent, source-checked tracker of Kenya's 2027 presidential race: the polling average, what it takes to win, and every source." />
 <title>Kenya 2027 — The Race, Plainly</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Libre+Franklin:wght@800;900&family=Public+Sans:ital,wght@0,400..700;1,400&display=swap" rel="stylesheet">
+<script>
+  /* apply a saved theme before first paint so there is no flash */
+  try{const t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}
+</script>
 <style>
-  :root{
-    --paper:#F6F5F1; --ink:#1A1714; --ink-soft:#5C5751; --ink-faint:#8A847C;
-    --card:#FFFFFF; --line:#E6E3DC; --line-soft:#F0EEE8;
-    --forest:#1B5E43; --forest-deep:#0E2E22; --forest-mist:#E7F0EB;
-    --ochre:#B8722A; --ochre-mist:#F6ECDD;
-    --slate:#48586A; --teal:#3F7C7A; --plum:#7A4E6E;
-    --rose:#B23A34; --rose-mist:#F7E4E2;
-    --amber:#C79A2E;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Public Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
-  h1,h2,h3,h4,.franklin{font-family:'Libre Franklin',system-ui,sans-serif}
-  .tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
-  a{color:var(--forest)}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-  .section{padding:56px 0;border-top:1px solid var(--line)}
-  .eyebrow{font-family:'Libre Franklin';font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--forest)}
-  .h-sec{font-family:'Libre Franklin';font-weight:900;font-size:clamp(26px,4.2vw,38px);line-height:1.06;letter-spacing:-.02em;margin:10px 0 0}
-  .sub{color:var(--ink-soft);font-size:16px;line-height:1.6;max-width:65ch;margin:12px 0 0}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:18px}
-  .muted{color:var(--ink-soft)} .faint{color:var(--ink-faint)}
-  .pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;font-family:'Libre Franklin'}
+/* ======================================================================
+   Design tokens. Every colour pair below was contrast-checked:
+   body text >= 10:1, meta text >= 4.9:1, control borders >= 3:1.
+   ====================================================================== */
+:root{
+  color-scheme:light;
+  --f-display:'Libre Franklin',system-ui,sans-serif;
+  --f-text:'Public Sans',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 
-  /* top bar */
-  .topbar{position:sticky;top:0;z-index:50;background:rgba(246,245,241,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  .topbar-inner{display:flex;align-items:center;gap:14px;height:56px}
-  .brand{font-family:'Libre Franklin';font-weight:900;letter-spacing:-.02em;font-size:16px;white-space:nowrap}
-  .brand b{color:var(--forest)}
-  .nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
-  .nav::-webkit-scrollbar{display:none}
-  .nav a{font-family:'Libre Franklin';font-weight:700;font-size:13px;color:var(--ink-soft);text-decoration:none;white-space:nowrap;padding:7px 11px;border-radius:9px}
-  .nav a:hover{background:var(--forest-mist);color:var(--forest)}
+  --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;--s-8:64px;--s-9:96px;
+  --r-xs:6px;--r-sm:10px;--r-md:14px;--r-lg:20px;--r-pill:999px;
 
-  /* hero */
-  .hero{background:var(--forest-deep);color:#EDF3EF}
-  .hero .wrap{padding-top:52px;padding-bottom:52px}
-  .hero-eyebrow{font-family:'Libre Franklin';font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8FC7AE}
-  .hero h1{font-weight:900;font-size:clamp(32px,6vw,58px);line-height:1.02;letter-spacing:-.03em;margin:14px 0 0}
-  .hero h1 em{font-style:normal;color:#5FD3A3}
-  .hero-lead{color:#B9CFC4;font-size:clamp(16px,2.2vw,20px);line-height:1.55;max-width:60ch;margin:18px 0 0}
-  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
-  .hero-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600;color:#DDEAE3}
-  .hero-chip b{color:#fff;font-family:'Libre Franklin';font-weight:800}
-  .avg-filter{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:12px}
-  .avg-filter label{display:inline-flex;align-items:center;gap:9px;cursor:pointer;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 12px;font-family:'Libre Franklin';font-weight:700;font-size:12.5px;color:#EAF2ED}
-  .avg-filter input{width:16px;height:16px;accent-color:#5FD3A3}
-  .avg-scope{font-size:12px;color:#9DBBAD}
-  .avg-scope b{color:#EAF2ED}
+  --canvas:#F6F5F1;--surface-sunken:#EFEDE7;--surface-1:#FBFAF7;--surface-2:#FFFFFF;--surface-3:#FFFFFF;
+  --surface-hero:#0E2E22;--hero-ink:#EDF3EF;--hero-ink-2:#B9CFC4;--hero-meta:#8FB5A4;--hero-line:rgba(255,255,255,.09);
+  --ink:#1A1714;--ink-2:#3F3A35;--ink-3:#6B655E;
+  --line:rgba(26,23,20,.10);--line-strong:rgba(26,23,20,.16);--line-control:#8E877E;--hair:1px;
+  --accent:#1B5E43;--accent-hover:#154A35;--accent-mist:#E7F0EB;--on-accent:#FFFFFF;--mint:#5FD3A3;
+  --held:#7A5C0F;--held-mist:#F7F0DC;--held-line:#E2C98A;
+  --danger:#9E2F2A;--danger-mist:#F7E4E2;
+  --ochre:#8A5517;
+  /* candidate colours: fixed per person (see CAND_COLOR), never by rank */
+  --c1:#1F5F99;--c2:#A6532B;--c3:#5B4B8A;--c4:#2F7F6F;--c5:#7D6A1E;--c6:#9B3B5A;--c7:#4E5D6C;--c8:#3F7A3A;
+  /* calendar tags */
+  --tag-parties:#1B5E43;--tag-registrar:#6A3F5F;--tag-iebc:#3C4A5A;--tag-aspirants:#8A5517;
+  --tag-disputes:#2F6563;--tag-campaign:#7A5C0F;--tag-vote:#9E2F2A;
 
-  /* standings */
-  .stand{display:flex;flex-direction:column;gap:0}
-  .stand-row{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;padding:14px 0;border-top:1px solid rgba(255,255,255,.09)}
-  .stand-row:first-child{border-top:none}
-  .stand-name{font-family:'Libre Franklin';font-weight:700;font-size:15px;color:#EAF2ED;line-height:1.15}
-  .stand-name .rank{color:#6E9585;font-weight:800;margin-right:7px}
-  .stand-track{position:relative;height:34px}
-  .stand-range{position:absolute;top:50%;transform:translateY(-50%);height:34px;background:rgba(95,211,163,.14);border-radius:6px;border-left:1px dashed rgba(180,220,200,.5);border-right:1px dashed rgba(180,220,200,.5)}
-  .stand-bar{position:absolute;top:50%;transform:translateY(-50%);height:22px;border-radius:6px;background:#3E8E6C}
-  .stand-bar.lead{background:linear-gradient(90deg,#3FB985,#5FD3A3)}
-  .stand-val{position:absolute;top:50%;transform:translateY(-50%);font-family:'Libre Franklin';font-weight:900;font-size:15px;color:#fff;padding-left:8px}
-  .stand-foot{margin-top:16px;font-size:13px;color:#9DBBAD;line-height:1.55}
+  --hl:inset 0 1px 0 rgba(255,255,255,.7);
+  --shadow-1:var(--hl),0 0 0 var(--hair) var(--line),0 1px 2px rgba(26,23,20,.04);
+  --shadow-2:var(--hl),0 0 0 var(--hair) var(--line-strong),0 2px 4px rgba(26,23,20,.04),0 8px 24px -6px rgba(26,23,20,.10);
+  --shadow-3:var(--hl),0 0 0 var(--hair) var(--line-strong),0 4px 8px rgba(26,23,20,.06),0 24px 56px -12px rgba(26,23,20,.20);
+  --ring:0 0 0 2px var(--canvas),0 0 0 4px var(--accent);
 
-  /* generic stat */
-  .stat-grid{display:grid;gap:14px}
-  .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
-  .stat .k{font-size:12.5px;font-weight:700;color:var(--ink-soft);font-family:'Libre Franklin';letter-spacing:.02em}
-  .stat .v{font-family:'Libre Franklin';font-weight:900;font-size:34px;line-height:1;margin-top:8px;letter-spacing:-.02em}
-  .stat .d{font-size:12.5px;color:var(--ink-faint);margin-top:8px;line-height:1.4}
+  --ease-out:cubic-bezier(.16,1,.3,1);--ease-std:cubic-bezier(.2,0,0,1);--ease-in:cubic-bezier(.4,0,1,1);
+  --d-1:120ms;--d-2:180ms;--d-3:240ms;--d-4:420ms;--d-5:720ms;
+}
+@media (min-resolution:2dppx){:root{--hair:.5px}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --canvas:#0C1A14;--surface-sunken:#0A1611;--surface-1:#11231B;--surface-2:#162C22;--surface-3:#1C3529;
+  --surface-hero:#081510;
+  --ink:#ECF2EE;--ink-2:#B9CFC4;--ink-3:#8FAA9C;
+  --line:rgba(236,242,238,.10);--line-strong:rgba(236,242,238,.16);--line-control:#648574;
+  --accent:#5FD3A3;--accent-hover:#7FDDB6;--accent-mist:rgba(95,211,163,.12);--on-accent:#062016;
+  --held:#E3A65E;--held-mist:rgba(227,166,94,.12);--held-line:rgba(227,166,94,.4);
+  --danger:#F08A84;--danger-mist:rgba(240,138,132,.12);--ochre:#E3A65E;
+  --c1:#7FB2E5;--c2:#E79A72;--c3:#AFA0E0;--c4:#6CC4B0;--c5:#D4BC62;--c6:#E58AA6;--c7:#A9B6C3;--c8:#8CC97F;
+  --tag-parties:#5FD3A3;--tag-registrar:#D9A6C9;--tag-iebc:#A9B6C3;--tag-aspirants:#E3A65E;
+  --tag-disputes:#6CC4B0;--tag-campaign:#D4BC62;--tag-vote:#F08A84;
+  --hl:inset 0 1px 0 rgba(255,255,255,.06);
+  --shadow-1:var(--hl),0 0 0 var(--hair) var(--line);
+  --shadow-2:var(--hl),0 0 0 var(--hair) var(--line-strong),0 8px 24px -6px rgba(0,0,0,.5);
+  --shadow-3:var(--hl),0 0 0 var(--hair) var(--line-strong),0 24px 56px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --canvas:#0C1A14;--surface-sunken:#0A1611;--surface-1:#11231B;--surface-2:#162C22;--surface-3:#1C3529;
+  --surface-hero:#081510;
+  --ink:#ECF2EE;--ink-2:#B9CFC4;--ink-3:#8FAA9C;
+  --line:rgba(236,242,238,.10);--line-strong:rgba(236,242,238,.16);--line-control:#648574;
+  --accent:#5FD3A3;--accent-hover:#7FDDB6;--accent-mist:rgba(95,211,163,.12);--on-accent:#062016;
+  --held:#E3A65E;--held-mist:rgba(227,166,94,.12);--held-line:rgba(227,166,94,.4);
+  --danger:#F08A84;--danger-mist:rgba(240,138,132,.12);--ochre:#E3A65E;
+  --c1:#7FB2E5;--c2:#E79A72;--c3:#AFA0E0;--c4:#6CC4B0;--c5:#D4BC62;--c6:#E58AA6;--c7:#A9B6C3;--c8:#8CC97F;
+  --tag-parties:#5FD3A3;--tag-registrar:#D9A6C9;--tag-iebc:#A9B6C3;--tag-aspirants:#E3A65E;
+  --tag-disputes:#6CC4B0;--tag-campaign:#D4BC62;--tag-vote:#F08A84;
+  --hl:inset 0 1px 0 rgba(255,255,255,.06);
+  --shadow-1:var(--hl),0 0 0 var(--hair) var(--line);
+  --shadow-2:var(--hl),0 0 0 var(--hair) var(--line-strong),0 8px 24px -6px rgba(0,0,0,.5);
+  --shadow-3:var(--hl),0 0 0 var(--hair) var(--line-strong),0 24px 56px -12px rgba(0,0,0,.6);
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media (prefers-reduced-motion:reduce){:root{--d-1:.01ms;--d-2:.01ms;--d-3:.01ms;--d-4:.01ms;--d-5:.01ms}}
 
-  /* countdown */
-  .cd-band{display:grid;gap:16px;grid-template-columns:1fr}
-  .cd-big{font-family:'Libre Franklin';font-weight:900;font-size:clamp(40px,9vw,72px);line-height:.95;letter-spacing:-.03em;color:var(--forest)}
-  .cd-track{height:10px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:14px}
-  .cd-fill{height:100%;background:linear-gradient(90deg,var(--forest),#3FB985);border-radius:999px}
+/* ===================== base ===================== */
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(var(--topbar-h) + 16px)}
+:root{--topbar-h:56px}
+@media (max-width:640px){:root{--topbar-h:92px}}
+body{margin:0;background:var(--canvas);color:var(--ink);font:400 16px/24px var(--f-text);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,h4{font-family:var(--f-display);margin:0}
+p{margin:0}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums slashed-zero}
+.tnum{font-variant-numeric:tabular-nums}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:none;box-shadow:var(--ring);border-radius:var(--r-xs)}
+::selection{background:var(--mint);color:#0E2E22}
 
-  /* distance-to-win gauge */
-  .gauge{position:relative;height:56px;background:var(--line-soft);border-radius:12px;border:1px solid var(--line);overflow:hidden}
-  .gauge-fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#2C7A5A,#3FB985);border-radius:12px 0 0 12px}
-  .gauge-mark{position:absolute;top:0;bottom:0;width:2px;background:var(--ink)}
-  .gauge-mark.win{background:var(--rose)}
-  .gauge-lab{position:absolute;top:calc(100% + 6px);transform:translateX(-50%);font-size:11px;font-weight:700;font-family:'Libre Franklin';white-space:nowrap;color:var(--ink-soft)}
-  .gauge-lab.win{color:var(--rose)}
-  .gauge-you{position:absolute;top:-24px;transform:translateX(-50%);font-family:'Libre Franklin';font-weight:900;font-size:13px;color:var(--forest);white-space:nowrap}
+.wrap{max-width:1200px;margin:0 auto;padding:0 var(--s-5)}
+@media (max-width:767px){.wrap{padding:0 var(--s-4)}}
+.section{padding:var(--s-8) 0;border-top:var(--hair) solid var(--line)}
+.section.sunken{background:var(--surface-sunken)}
+@media (max-width:767px){.section{padding:var(--s-7) 0}}
+.section > .wrap{container:section / inline-size}
+.eyebrow{font:500 11px/16px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.h-sec{font-weight:900;font-size:clamp(30px,4vw,40px);line-height:1.05;letter-spacing:-.022em;margin-top:var(--s-2)}
+.answer{font:600 18px/28px var(--f-text);color:var(--ink);max-width:64ch;margin-top:var(--s-3)}
+.answer strong{font-weight:800}
+.answer b{font-family:var(--f-mono);font-weight:500;font-variant-numeric:tabular-nums}
+.sub{color:var(--ink-2);font-size:16px;line-height:24px;max-width:64ch;margin-top:var(--s-2)}
+.sec-body{margin-top:var(--s-6)}
+.card{background:var(--surface-2);border-radius:var(--r-md);box-shadow:var(--shadow-1);padding:var(--s-5);container-type:inline-size}
+@container (max-width:420px){.card{padding:var(--s-4)}}
+.card-h{font:800 20px/28px var(--f-display);letter-spacing:-.01em}
+.card-sub{font-size:14px;line-height:20px;color:var(--ink-2);margin-top:var(--s-1)}
+.meta{font-size:12px;line-height:16px;color:var(--ink-3)}
+.mono-xs{font:500 11px/16px var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.src{font:600 12px/16px var(--f-text);color:var(--accent);text-decoration:none;box-shadow:inset 0 -1px 0 currentColor}
+.src:hover{color:var(--accent-hover)}
+.note{background:var(--accent-mist);border-radius:var(--r-sm);padding:var(--s-3) var(--s-4);font-size:14px;line-height:20px;color:var(--ink);box-shadow:inset 0 0 0 var(--hair) color-mix(in oklab,var(--accent) 25%,transparent)}
+.note.warn{background:var(--held-mist);box-shadow:inset 0 0 0 var(--hair) var(--held-line)}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:var(--r-pill);padding:3px 9px;font:500 11px/16px var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.pill.held{background:var(--held-mist);color:var(--held)}
+.pill.ok{background:var(--accent-mist);color:var(--accent)}
+.pill.bad{background:var(--danger-mist);color:var(--danger)}
+.pill.sub{background:var(--surface-sunken);color:var(--ink-2);box-shadow:inset 0 0 0 var(--hair) var(--line-strong);
+  background-image:repeating-linear-gradient(135deg,transparent 0 4px,var(--line) 4px 5px);margin:0}
 
-  /* trend svg */
-  .chart-hold{width:100%;overflow-x:auto}
-  svg .grid{stroke:var(--line);stroke-width:1}
-  svg .axis-lab{fill:var(--ink-faint);font-size:11px;font-family:'Public Sans'}
-  svg .line{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
-  svg .dot{stroke:#fff;stroke-width:1.5}
-  svg .end-lab{font-family:'Libre Franklin';font-weight:800;font-size:12px}
+/* skeletons: final geometry, so nothing shifts when data lands */
+.sk{border-radius:var(--r-sm);background:linear-gradient(90deg,var(--surface-sunken),var(--surface-1),var(--surface-sunken)) 0 0/200% 100%;animation:sk 1.4s linear infinite}
+.sk-line{display:inline-block;width:min(40ch,100%);height:1em;vertical-align:middle}
+@keyframes sk{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.sk{animation:none}}
 
-  /* win rule gates */
-  .gates{display:grid;gap:14px;grid-template-columns:1fr}
-  .gate{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;position:relative}
-  .gate-num{font-family:'Libre Franklin';font-weight:900;font-size:13px;color:#fff;background:var(--forest);width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center}
-  .gate h4{font-family:'Libre Franklin';font-weight:800;font-size:17px;margin:12px 0 0}
+/* buttons & controls */
+.btn{display:inline-flex;align-items:center;gap:6px;font:800 14px/20px var(--f-display);border-radius:var(--r-sm);padding:10px 16px;border:0;
+  background:var(--surface-2);color:var(--ink);cursor:pointer;box-shadow:var(--shadow-1),inset 0 0 0 1px var(--line-control);
+  transition:background var(--d-2) var(--ease-std),transform var(--d-1) var(--ease-std)}
+.btn:hover{background:var(--surface-1)}
+.btn:active{transform:scale(.98)}
+.btn-sm{padding:6px 10px;font-size:12px;line-height:16px}
+.btn-primary{background:var(--accent);color:var(--on-accent);box-shadow:var(--shadow-1)}
+.btn-primary:hover{background:var(--accent-hover)}
+input[type=text],input[type=search],textarea{width:100%;border:0;background:var(--surface-2);border-radius:var(--r-sm);padding:10px 12px;
+  font:500 14px/20px var(--f-text);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line-control)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.chip{display:inline-flex;align-items:center;gap:8px;border:0;background:var(--surface-2);color:var(--ink-2);border-radius:var(--r-pill);
+  padding:6px 12px;font:700 13px/20px var(--f-text);cursor:pointer;box-shadow:inset 0 0 0 1px var(--line-strong);
+  transition:background var(--d-3) var(--ease-std),color var(--d-3) var(--ease-std),transform var(--d-1) var(--ease-std)}
+.chip:hover{background:var(--surface-1);color:var(--ink)}
+.chip:active{transform:scale(.97)}
+.chip i{width:10px;height:10px;border-radius:3px;background:var(--cc,var(--ink-3));flex:none}
+.chip[aria-pressed="true"]{background:var(--surface-2);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--cc,var(--accent))}
+.chip[aria-pressed="true"]::after{content:"✓";font-size:11px;color:var(--cc,var(--accent))}
+.chip[aria-pressed="false"] i{opacity:.4}
+.chip small{font:500 11px/16px var(--f-mono);color:var(--held)}
 
-  /* controls */
-  label.fld{display:block}
-  label.fld > span{display:block;font-size:13px;font-weight:700;color:var(--ink-soft);margin-bottom:6px;font-family:'Libre Franklin'}
-  select,input[type=number],input[type=text],input[type=date]{width:100%;border:1px solid var(--line);background:#fff;border-radius:11px;padding:11px 13px;font-family:'Public Sans';font-size:14px;font-weight:600;color:var(--ink)}
-  input[type=number]{appearance:textfield}
-  input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{appearance:none;margin:0}
-  .btn{font-family:'Libre Franklin';font-weight:800;font-size:14px;border-radius:11px;padding:11px 18px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
-  .btn:hover{background:var(--line-soft)}
-  .btn-primary{background:var(--forest);color:#fff;border-color:var(--forest)}
-  .btn-primary:hover{background:#164e38}
-  .chip-toggle{border:1px solid var(--line);background:#fff;color:var(--ink-soft);border-radius:999px;padding:7px 12px;font-family:'Libre Franklin';font-weight:700;font-size:13px;cursor:pointer}
-  .chip-toggle.on{background:var(--forest);color:#fff;border-color:var(--forest)}
+/* ===================== top bar ===================== */
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--canvas) 78%,transparent);
+  backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);box-shadow:0 var(--hair) 0 var(--line)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.topbar{background:var(--canvas)}}
+.topbar-inner{display:flex;align-items:center;gap:var(--s-3);height:56px}
+.brand{font:900 16px/1 var(--f-display);letter-spacing:-.02em;white-space:nowrap;color:var(--ink);text-decoration:none}
+.brand b{color:var(--accent)}
+.nav-wrap{position:relative;margin-left:auto;min-width:0}
+.nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;mask-image:linear-gradient(90deg,#000 calc(100% - 24px),transparent)}
+.nav::-webkit-scrollbar{display:none}
+.nav a{font:700 13px/20px var(--f-text);color:var(--ink-2);text-decoration:none;white-space:nowrap;padding:6px 10px;border-radius:var(--r-sm);
+  transition:background var(--d-2) var(--ease-std),color var(--d-2) var(--ease-std)}
+.nav a:hover{background:var(--accent-mist);color:var(--accent)}
+.nav a[aria-current="true"]{color:var(--accent);background:var(--accent-mist)}
+@media (min-width:1100px){.nav{mask-image:none}}
+@media (max-width:640px){
+  .topbar-inner{flex-wrap:wrap;height:auto;padding-top:var(--s-2);padding-bottom:var(--s-1);row-gap:var(--s-1)}
+  .brand{line-height:36px}
+  .theme-btn{margin-left:auto}
+  .nav-wrap{order:3;flex:1 0 100%;margin-left:calc(-1 * var(--s-2))}
+}
+.theme-btn{flex:none;width:36px;height:36px;border-radius:var(--r-sm);border:0;background:transparent;color:var(--ink-2);cursor:pointer;display:grid;place-items:center}
+.theme-btn:hover{background:var(--accent-mist);color:var(--accent)}
 
-  .barrow{display:grid;grid-template-columns:1fr;gap:6px;margin-top:14px}
-  .barrow .lab{display:flex;justify-content:space-between;font-size:14px;font-weight:600}
-  .barrow .lab b{font-family:'Libre Franklin';font-weight:900}
-  .barline{height:14px;background:var(--line-soft);border-radius:999px;overflow:hidden}
-  .barline > span{display:block;height:100%;border-radius:999px}
+/* ===================== hero ===================== */
+.hero{background:var(--surface-hero);color:var(--hero-ink);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-30% -10% auto auto;width:70%;height:120%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(95,211,163,.08),transparent)}
+.hero .wrap{position:relative;padding-top:var(--s-8);padding-bottom:var(--s-8)}
+.hero-grid{display:grid;gap:var(--s-7)}
+@media (min-width:1100px){.hero-grid{grid-template-columns:5fr 7fr;gap:var(--s-8);align-items:start}}
+.hero-eyebrow{font:500 11px/16px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--hero-meta)}
+.hero h1{font-weight:900;font-size:clamp(40px,5.2vw,64px);line-height:.98;letter-spacing:-.035em;margin-top:var(--s-4);color:#fff}
+.hero h1 em{font-style:normal;color:var(--mint)}
+.hero-lead{color:var(--hero-ink-2);font-size:clamp(18px,1.6vw,20px);line-height:28px;max-width:46ch;margin-top:var(--s-5)}
+.status{display:flex;flex-wrap:wrap;gap:var(--s-2) var(--s-4);margin-top:var(--s-6);font:400 12px/16px var(--f-mono);color:var(--hero-ink-2);font-variant-numeric:tabular-nums}
+.status b{color:#fff;font-weight:500}
+.status span{display:inline-flex;align-items:center;gap:6px}
+.pip{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px rgba(95,211,163,.18)}
+.pip.amber{background:#E3A65E;box-shadow:0 0 0 3px rgba(227,166,94,.18)}
+.pip.red{background:#F08A84;box-shadow:0 0 0 3px rgba(240,138,132,.18)}
 
-  details.adv{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:0}
-  details.adv > summary{cursor:pointer;list-style:none;padding:18px 20px;font-family:'Libre Franklin';font-weight:800;font-size:16px;display:flex;align-items:center;gap:10px}
-  details.adv > summary::-webkit-details-marker{display:none}
-  details.adv[open] > summary{border-bottom:1px solid var(--line)}
-  .adv-body{padding:20px}
+.race{container:race / inline-size}
+.race-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s-3);margin-bottom:var(--s-4)}
+.seg-dark{display:inline-flex;padding:3px;border-radius:var(--r-sm);background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.seg-dark label{position:relative}
+.seg-dark input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.seg-dark span{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;font:700 12px/16px var(--f-text);color:var(--hero-ink-2);
+  transition:background var(--d-3) var(--ease-std),color var(--d-3) var(--ease-std)}
+.seg-dark input:checked + span{background:rgba(255,255,255,.12);color:#fff}
+.seg-dark input:focus-visible + span{box-shadow:0 0 0 2px var(--surface-hero),0 0 0 4px var(--mint)}
+.seg-dark .count{font:500 11px/14px var(--f-mono);background:rgba(227,166,94,.18);color:#E3A65E;padding:1px 6px;border-radius:var(--r-pill)}
 
-  .src{font-size:12px;font-weight:700;color:var(--forest);text-decoration:none;border-bottom:1px solid rgba(27,94,67,.3)}
-  .note{background:var(--forest-mist);border:1px solid #CFE3D8;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.55;color:#1f4636}
-  .note.warn{background:var(--ochre-mist);border-color:#E9D2B0;color:#6b481f}
+.rs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:max-content max-content minmax(0,1fr) max-content;column-gap:var(--s-3)}
+.rs > li{display:grid;grid-column:1/-1;grid-template-columns:subgrid;align-items:center;min-height:48px}
+.rs-row + .rs-row{box-shadow:0 calc(-1 * var(--hair)) 0 var(--hero-line)}
+.rs-rank{font:500 11px/16px var(--f-mono);color:var(--hero-meta)}
+.rs-name{font:800 15px/20px var(--f-display);color:var(--hero-ink);white-space:nowrap}
+.rs-track{position:relative;height:28px}
+.rs-track::after{content:"";position:absolute;top:-10px;bottom:-10px;left:var(--x50);width:1px;
+  background:repeating-linear-gradient(to bottom,rgba(255,255,255,.5) 0 3px,transparent 3px 6px)}
+.rs-band,.rs-bar,.rs-dotw{position:absolute;left:0;width:100%;transform-origin:left center;
+  transition:transform var(--d-5) var(--ease-out)}
+.rs-band{top:2px;bottom:2px;border-radius:var(--r-xs);background:rgba(95,211,163,.16);
+  transform:translateX(calc(var(--lon) * 100%)) scaleX(var(--wn))}
+.rs-bar{top:50%;height:10px;margin-top:-5px;border-radius:var(--r-xs);background:#3E8E6C;transform:scaleX(var(--vn))}
+.is-lead .rs-bar{background:linear-gradient(90deg,#3FB985,var(--mint))}
+.rs-dotw{top:0;bottom:0;transform:translateX(calc(var(--vn) * 100%))}
+.rs-dotw::before{content:"";position:absolute;left:-6px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;
+  background:var(--hero-ink);box-shadow:0 0 0 2px var(--surface-hero)}
+.rs-val{font:900 17px/1 var(--f-display);color:#fff;text-align:right;font-variant-numeric:tabular-nums}
+.rs-val small{display:block;font:400 11px/14px var(--f-mono);color:var(--hero-meta);margin-top:4px}
+.rs-axis{min-height:24px!important}
+.rs-axis .rs-track{height:16px}
+.rs-axis .rs-track::after{display:none}
+.rs-axis span.t{position:absolute;left:var(--x);transform:translateX(-50%);font:400 11px/16px var(--f-mono);color:var(--hero-meta)}
+.rs-axis span.t.win{color:#fff;font-weight:500}
+.rs-enter .rs-bar{transform:scaleX(0)}
+.rs-enter .rs-dotw{transform:translateX(0)}
+.rs-enter .rs-band{transform:translateX(calc(var(--lon) * 100%)) scaleX(0)}
+.rs-sk{display:grid;gap:12px}
+.rs-sk .sk{height:36px;background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.09),rgba(255,255,255,.04)) 0 0/200% 100%}
+@container race (max-width:460px){
+  .rs{grid-template-columns:minmax(0,1fr) max-content}
+  .rs > li{row-gap:4px;padding:var(--s-2) 0}
+  .rs-rank{display:none}
+  .rs-name{grid-column:1/-1}
+  .rs-axis .rs-track{grid-column:1}
+  .rs-axis > span:not(.rs-track){display:none}
+}
+.rs-summary{margin-top:var(--s-4);font-size:14px;line-height:20px;color:var(--hero-ink-2)}
+.rs-summary b{color:#fff}
+.rs-more{margin-top:var(--s-3);font-size:13px;line-height:20px;color:var(--hero-ink-2)}
+.rs-more summary{cursor:pointer;font:700 13px/20px var(--f-text);color:var(--mint);list-style:none;display:inline-flex;gap:6px}
+.rs-more summary::-webkit-details-marker{display:none}
+.rs-more table{margin-top:var(--s-2);border-collapse:collapse;font:400 12px/20px var(--f-mono);font-variant-numeric:tabular-nums}
+.rs-more td{padding:2px var(--s-4) 2px 0;color:var(--hero-ink-2)}
+.rs-more td:first-child{font-family:var(--f-text);color:var(--hero-ink)}
 
-  footer{background:var(--forest-deep);color:#AEC6BA;padding:44px 0}
-  footer a{color:#7FD1AB}
-  footer .foot-h{font-family:'Libre Franklin';font-weight:900;color:#EAF2ED;font-size:14px;letter-spacing:.02em}
+/* ===================== what it takes to win ===================== */
+.gates{display:grid;gap:var(--s-5);align-items:start}
+@container section (min-width:900px){.gates{grid-template-columns:1fr 1.15fr}}
+.gate-head{display:flex;align-items:center;gap:var(--s-3)}
+.gate-num{flex:none;font:900 13px/1 var(--f-display);color:var(--on-accent);background:var(--accent);width:28px;height:28px;border-radius:8px;display:grid;place-items:center}
+.gate-rule{font-size:14px;line-height:20px;color:var(--ink-2);margin-top:var(--s-3)}
+.nat{position:relative;margin:var(--s-7) 0 var(--s-6)}
+.nat-track{position:relative;height:40px;border-radius:var(--r-sm);background:var(--surface-sunken);box-shadow:inset 0 0 0 var(--hair) var(--line-strong);overflow:hidden}
+.nat-band{position:absolute;inset-block:0;left:0;width:100%;transform-origin:left;background:color-mix(in oklab,var(--accent) 20%,transparent);
+  transform:translateX(calc(var(--lon) * 100%)) scaleX(var(--wn))}
+.nat-bar{position:absolute;inset-block:10px;left:0;width:100%;transform-origin:left;border-radius:0 var(--r-xs) var(--r-xs) 0;background:var(--accent);transform:scaleX(var(--vn));
+  transition:transform var(--d-5) var(--ease-out)}
+.nat-line{position:absolute;top:-8px;bottom:-8px;left:50%;width:2px;margin-left:-1px;background:var(--danger)}
+.nat-lab{position:absolute;font:500 11px/16px var(--f-mono);white-space:nowrap;transform:translateX(-50%)}
+.nat-lab.top{bottom:calc(100% + 10px)}
+.nat-lab.bot{top:calc(100% + 10px)}
+.nat-lab.win{color:var(--danger)}
+.nat-lab.you{color:var(--accent);font-weight:500}
+.tiles{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));grid-template-rows:repeat(9,auto);gap:4px;margin-top:var(--s-5);max-width:440px}
+.tile{aspect-ratio:1;border:0;border-radius:6px;background:var(--surface-sunken);color:var(--ink-2);cursor:pointer;padding:0;
+  font:500 10px/1 var(--f-mono);letter-spacing:.02em;box-shadow:inset 0 0 0 var(--hair) var(--line-strong);
+  transition:background var(--d-2) var(--ease-std),color var(--d-2) var(--ease-std),transform var(--d-1) var(--ease-std)}
+.tile:hover{background:var(--accent-mist);color:var(--accent)}
+.tile:active{transform:scale(.94)}
+.tile[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);box-shadow:none}
+.tile.match{box-shadow:inset 0 0 0 2px var(--accent)}
+.tile.dim{opacity:.35}
+@container (max-width:380px){.tile{font-size:8px}}
+.county-pick{display:grid;gap:var(--s-3);margin-top:var(--s-4)}
+@container (min-width:520px){.county-pick{grid-template-columns:1fr 1fr;align-items:center}}
+.county-name{font:800 18px/24px var(--f-display)}
+.need{display:grid;grid-template-columns:repeat(47,1fr);gap:2px;margin-top:var(--s-4)}
+.need i{height:10px;border-radius:2px;background:var(--surface-sunken);box-shadow:inset 0 0 0 var(--hair) var(--line-strong)}
+.need i.req{background:color-mix(in oklab,var(--accent) 28%,transparent);box-shadow:none}
+.need-lab{display:flex;justify-content:space-between;margin-top:var(--s-2)}
 
-  ::selection{background:#5FD3A3;color:#0E2E22}
-  @media(min-width:640px){
-    .cd-band{grid-template-columns:1.4fr 1fr 1fr}
-    .stat-grid.c2{grid-template-columns:1fr 1fr}
-    .stat-grid.c3{grid-template-columns:1fr 1fr 1fr}
-    .stat-grid.c4{grid-template-columns:repeat(4,1fr)}
-    .gates{grid-template-columns:1fr 1fr}
-    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    .grid2-wide{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
-  }
-  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-  /* ===== 2027 electoral calendar: countdown + timeline spine ===== */
-  .cal{display:grid;gap:20px;grid-template-columns:1fr;align-items:start}
-  .cal-clock{display:grid;gap:14px}
+/* ===================== trend ===================== */
+.held-card{background:var(--held-mist);box-shadow:inset 0 0 0 var(--hair) var(--held-line);border-radius:var(--r-md);padding:var(--s-4) var(--s-5);margin-bottom:var(--s-5)}
+.held-card .eyebrow{color:var(--held)}
+.held-card h3{font:800 18px/24px var(--f-display);margin-top:var(--s-1)}
+.held-figs{font:400 13px/20px var(--f-mono);font-variant-numeric:tabular-nums;margin-top:var(--s-2);color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s-2);margin-bottom:var(--s-5)}
+.chart-hold{position:relative;width:100%;touch-action:pan-y}
+.chart-hold svg{display:block;width:100%;height:auto;overflow:visible}
+.chart-hold svg:focus-visible{box-shadow:var(--ring)}
+.ax{fill:var(--ink-3);font:400 11px var(--f-mono)}
+.gridl{stroke:var(--line);stroke-width:1}
+.trend-line{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.end-lab{font:800 12px var(--f-display)}
+.end-lab tspan{font:500 12px var(--f-mono)}
+.xhair{stroke:var(--ink-3);stroke-width:1;stroke-dasharray:2 3}
+.tip{position:absolute;top:0;pointer-events:none;background:var(--surface-3);border-radius:var(--r-sm);box-shadow:var(--shadow-3);padding:var(--s-2) var(--s-3);
+  font:400 12px/18px var(--f-mono);font-variant-numeric:tabular-nums;min-width:170px;opacity:0;transform:translateY(4px);
+  transition:opacity var(--d-2) var(--ease-std),transform var(--d-2) var(--ease-out);z-index:2}
+.tip.on{opacity:1;transform:none}
+.tip b{font-family:var(--f-text);font-weight:700}
+.tip .r{display:flex;justify-content:space-between;gap:var(--s-3)}
+.tip i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px}
+.legend-row{display:flex;flex-wrap:wrap;gap:var(--s-2) var(--s-5);margin-top:var(--s-3)}
+.legend-row span{display:inline-flex;align-items:center;gap:6px}
 
-  .nextcard{position:relative;overflow:hidden;background:var(--forest-deep);color:#EDF3EF;border:1px solid #17422F;border-radius:18px;padding:22px}
-  .nextcard::after{content:"";position:absolute;right:-70px;bottom:-80px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(95,211,163,.18),transparent 70%);pointer-events:none}
-  .nextcard > *{position:relative}
-  .ne{font-family:'Libre Franklin';font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8FC7AE}
-  .nextcard h3{font-family:'Libre Franklin';font-weight:900;font-size:clamp(20px,3.4vw,27px);line-height:1.12;letter-spacing:-.02em;margin:10px 0 0;color:#fff}
-  .nextcard .nd{color:#B9CFC4;font-size:13.5px;line-height:1.5;margin:8px 0 0}
-  .clock{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
-  .unit{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:13px 6px;text-align:center}
-  .unit .n{font-family:'Libre Franklin';font-weight:900;font-size:clamp(21px,5.2vw,30px);line-height:1;letter-spacing:-.02em;color:#fff}
-  .unit .l{font-family:'Libre Franklin';font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8FC7AE;margin-top:8px}
-  .unit.tick .n{animation:cdpop .3s ease}
-  @keyframes cdpop{from{transform:translateY(-3px);opacity:.35}to{transform:none;opacity:1}}
+/* ===================== calendar ===================== */
+.cal{display:grid;gap:var(--s-5);grid-template-columns:1fr;align-items:start}
+@container section (min-width:880px){.cal{grid-template-columns:1fr 1.06fr}}
+.nextcard{position:relative;overflow:hidden;background:var(--surface-hero);color:var(--hero-ink);border-radius:var(--r-lg);padding:var(--s-5);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 var(--hair) rgba(255,255,255,.06),0 8px 24px -8px rgba(14,46,34,.35)}
+.nextcard::before{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(95,211,163,.12),transparent);pointer-events:none}
+.nextcard > *{position:relative}
+.ne{font:500 11px/16px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--hero-meta)}
+.nextcard h3{font-weight:900;font-size:clamp(22px,3.2vw,28px);line-height:1.12;letter-spacing:-.02em;margin-top:var(--s-2);color:#fff}
+.nextcard .nd{color:var(--hero-ink-2);font-size:14px;line-height:20px;margin-top:var(--s-2)}
+.clock{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-2);margin-top:var(--s-3)}
+.unit{background:rgba(255,255,255,.06);border-radius:var(--r-sm);padding:var(--s-3) var(--s-1);text-align:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.10),inset 0 1px 0 rgba(255,255,255,.06)}
+.unit .n{font:900 clamp(22px,5vw,32px)/1 var(--f-display);letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums}
+.unit .l{font:500 10px/14px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--hero-meta);margin-top:var(--s-2)}
+.unit.tick .n{animation:cdfade 160ms var(--ease-out)}
+@keyframes cdfade{from{opacity:.4}to{opacity:1}}
+.gap-track{height:4px;border-radius:2px;background:rgba(255,255,255,.1);margin-top:var(--s-4);overflow:hidden}
+.gap-fill{height:100%;width:100%;transform-origin:left;background:var(--mint);transform:scaleX(var(--p,0))}
+.nc-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s-2);margin-top:var(--s-5);padding-top:var(--s-4);
+  box-shadow:0 -1px 0 rgba(255,255,255,.08);font:400 12px/16px var(--f-mono);color:var(--hero-ink-2);font-variant-numeric:tabular-nums}
+.nc-foot b{color:#fff;font-weight:500;font-size:20px;font-family:var(--f-display);font-weight:900;letter-spacing:-.01em}
+.el-track{height:6px;border-radius:3px;background:rgba(255,255,255,.1);margin-top:var(--s-3);overflow:hidden}
+.el-fill{height:100%;width:100%;transform-origin:left;background:linear-gradient(90deg,#3FB985,var(--mint));transform:scaleX(var(--p,0))}
 
-  /* timeline panel */
-  .tl{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
-  .tl-head{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;justify-content:space-between;padding:17px 20px;border-bottom:1px solid var(--line)}
-  .tl-head h3{font-family:'Libre Franklin';font-weight:900;font-size:17px;letter-spacing:-.01em;margin:0}
-  .tl-count{font-size:12.5px;font-weight:600;color:var(--ink-faint)}
-  .tl-body{position:relative}
-  .tl-scroll{position:relative;overflow-y:auto;overscroll-behavior:contain}
-  .tl-scroll:focus-visible{outline:2px solid var(--forest);outline-offset:-2px;border-radius:4px}
-  .tl-list{position:relative;padding:16px 18px 20px 76px}
-  .tl-svg{position:absolute;left:0;top:0;pointer-events:none;z-index:2}
-  .tl-row{position:relative;z-index:1;padding:9px 0}
-  .tl-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-  .tl-date{font-family:'Libre Franklin';font-weight:900;font-size:13px;letter-spacing:-.01em}
-  .tl-away{font-size:11.5px;font-weight:700;color:var(--ink-faint);font-variant-numeric:tabular-nums}
-  .tl-tag{font-family:'Libre Franklin';font-weight:800;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:3px 8px;margin-left:auto}
-  .tl-t{font-size:14px;font-weight:700;line-height:1.3;margin:4px 0 0}
-  .tl-s{font-size:12.5px;line-height:1.45;color:var(--ink-soft);margin:3px 0 0}
-  .tl-s em{font-style:normal;color:var(--ochre);font-weight:700}
-  .tl-row.past .tl-date,.tl-row.past .tl-t{color:var(--ink-faint)}
-  .tl-row.past .tl-s{display:none}
-  .tl-row.next{background:var(--forest-mist);border-radius:12px;padding:12px 6px;margin:4px -6px}
-  .tl-row.next .tl-date{color:var(--forest)}
-  .tl-row.vote{background:linear-gradient(105deg,var(--rose-mist),#FDF4F2);border:1px solid #EED0CB;border-radius:12px;padding:14px 6px;margin:6px -6px}
-  .tl-row.vote .tl-date,.tl-row.vote .tl-t{color:#8E2B26}
-  .tl-row.vote .tl-t{font-family:'Libre Franklin';font-weight:900;font-size:16px}
-  .tl-fade{display:none;position:absolute;left:0;right:0;bottom:0;height:46px;background:linear-gradient(180deg,rgba(255,255,255,0),#fff 85%);pointer-events:none}
-  .tl-legend{display:flex;flex-wrap:wrap;gap:5px 12px;padding:13px 20px;border-top:1px solid var(--line);background:var(--line-soft)}
-  .tl-key{display:inline-flex;align-items:center;gap:6px;font-family:'Libre Franklin';font-weight:700;font-size:10.5px;letter-spacing:.06em;color:var(--ink-soft)}
-  .tl-key i{display:block;width:9px;height:9px;border-radius:3px}
+.tl{background:var(--surface-2);border-radius:var(--r-lg);box-shadow:var(--shadow-1);overflow:hidden}
+.tl-head{display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center;justify-content:space-between;padding:var(--s-4) var(--s-5);box-shadow:0 var(--hair) 0 var(--line)}
+.tl-head h3{font:900 17px/24px var(--f-display);letter-spacing:-.01em}
+.tl-count{font:400 12px/16px var(--f-mono);color:var(--ink-3)}
+.tl-body{position:relative}
+.tl-scroll{position:relative;overflow-y:auto;overscroll-behavior:contain;max-height:560px}
+.tl-list{position:relative;padding:var(--s-4) var(--s-4) var(--s-5) 76px}
+@media (min-width:560px){.tl-list{padding-left:112px}}
+.tl-svg{position:absolute;left:0;top:0;pointer-events:none;z-index:2}
+.tl-row{position:relative;z-index:1;padding:var(--s-2) 0}
+.tl-top{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2)}
+.tl-date{font:900 13px/20px var(--f-display);letter-spacing:-.01em}
+.tl-away{font:400 11px/16px var(--f-mono);color:var(--ink-3)}
+.tl-tag{font:500 11px/14px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;border-radius:var(--r-pill);padding:2px 8px;margin-left:auto;
+  color:var(--tc);background:color-mix(in oklab,var(--tc) 12%,var(--surface-2))}
+.tl-t{font-size:14px;font-weight:700;line-height:20px;margin-top:var(--s-1);display:flex;align-items:center;gap:6px}
+.tl-s{font-size:13px;line-height:20px;color:var(--ink-2);margin-top:2px}
+.tl-s em{font-style:normal;color:var(--ochre);font-weight:700}
+.tl-row.past .tl-date,.tl-row.past .tl-t{color:var(--ink-3)}
+.tl-row.past .tl-s{display:none}
+.tl-row.next{background:var(--accent-mist);border-radius:var(--r-sm);padding:var(--s-3) var(--s-2);margin:var(--s-1) calc(-1 * var(--s-2))}
+.tl-row.next .tl-date{color:var(--accent)}
+.tl-row.vote{background:var(--danger-mist);border-radius:var(--r-sm);padding:var(--s-3) var(--s-2);margin:var(--s-2) calc(-1 * var(--s-2))}
+.tl-row.vote .tl-date,.tl-row.vote .tl-t{color:var(--danger)}
+.tl-row.vote .tl-t{font:900 16px/24px var(--f-display)}
+.tl-fade{position:absolute;left:0;right:0;bottom:0;height:40px;background:linear-gradient(180deg,transparent,var(--surface-2) 85%);pointer-events:none}
+.tl-legend{display:flex;flex-wrap:wrap;gap:var(--s-1) var(--s-3);padding:var(--s-3) var(--s-5);box-shadow:0 calc(-1 * var(--hair)) 0 var(--line);background:var(--surface-1)}
+.tl-key{display:inline-flex;align-items:center;gap:6px;font:500 11px/16px var(--f-mono);letter-spacing:.06em;color:var(--ink-2)}
+.tl-key i{display:block;width:9px;height:9px;border-radius:3px;background:var(--tc)}
+.flag{flex:none;border-radius:2px;box-shadow:0 0 0 var(--hair) var(--line-strong)}
 
-  @media(min-width:560px){
-    .tl-list{padding-left:112px}
-  }
-  @media(min-width:900px){
-    .cal{grid-template-columns:1fr 1.06fr;gap:22px}
-    .tl-scroll{max-height:660px}
-    .tl-fade{display:block}
-  }
+/* ===================== coalition builder ===================== */
+.cb{display:grid;gap:var(--s-5)}
+.cb-knobs{display:grid;gap:var(--s-5)}
+@container (min-width:640px){.cb-knobs{grid-template-columns:1fr 1fr}}
+.cb-knob{display:grid;grid-template-columns:1fr auto;gap:var(--s-2);align-items:baseline;font:600 14px/20px var(--f-text);color:var(--ink-2)}
+.cb-knob output{font:500 14px/20px var(--f-mono);color:var(--ink)}
+.cb-knob input{grid-column:1/-1}
+.cb-knob .meta{grid-column:1/-1}
+.cb-teams{display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center}
+.cb-team{display:inline-flex;align-items:center;gap:var(--s-2);padding:6px 6px 6px 12px;border-radius:var(--r-pill);background:var(--surface-1);box-shadow:inset 0 0 0 var(--hair) var(--line-strong)}
+.cb-team b{font:500 11px/16px var(--f-mono);width:18px;height:18px;border-radius:5px;display:grid;place-items:center;background:var(--tc);color:var(--surface-2)}
+.cb-team input{border:0;background:transparent;font:800 13px/20px var(--f-display);color:var(--ink);width:auto;min-width:6ch;padding:2px 4px;box-shadow:none;field-sizing:content}
+.cb-team button{border:0;background:transparent;color:var(--ink-3);cursor:pointer;width:24px;height:24px;border-radius:50%}
+.cb-team button:hover{background:var(--surface-sunken);color:var(--danger)}
+.cb-grid{display:grid;grid-template-columns:minmax(0,1fr) max-content max-content;column-gap:var(--s-3)}
+.cb-row[hidden]{display:none}
+.cb-row{display:grid;grid-column:1/-1;grid-template-columns:subgrid;align-items:center;padding:6px 0;box-shadow:0 calc(-1 * var(--hair)) 0 var(--line)}
+.cb-name{font:600 14px/20px var(--f-text);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cb-avg{font:400 12px/16px var(--f-mono);color:var(--ink-3);text-align:right;font-variant-numeric:tabular-nums}
+@container (max-width:460px){
+  .cb-grid{grid-template-columns:minmax(0,1fr) max-content}
+  .cb-avg{display:none}
+}
+.seg{display:inline-flex;padding:2px;border-radius:var(--r-sm);background:var(--surface-sunken);box-shadow:inset 0 0 0 var(--hair) var(--line-strong)}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.seg span{display:block;min-width:34px;padding:5px 9px;text-align:center;border-radius:8px;font:700 12px/16px var(--f-display);color:var(--ink-3);
+  transition:background var(--d-2) var(--ease-std),color var(--d-2) var(--ease-std),transform var(--d-1) var(--ease-std)}
+.seg label:hover span{color:var(--ink)}
+.seg input:checked + span{background:var(--surface-2);color:var(--ink);box-shadow:var(--shadow-1),inset 0 -2px 0 var(--tc,var(--ink-3))}
+.seg input:focus-visible + span{box-shadow:var(--ring)}
+.seg input:active + span{transform:scale(.96)}
+.cb-out{min-height:200px}
+.stack{display:flex;height:32px;border-radius:var(--r-xs);overflow:hidden;position:relative;background:var(--surface-sunken)}
+.stack > i{flex:0 0 var(--w);background:var(--tc);box-shadow:inset -1px 0 0 var(--surface-2);transition:flex-basis var(--d-4) var(--ease-out)}
+.stack > i.solo{background:repeating-linear-gradient(135deg,var(--surface-sunken) 0 4px,var(--line-strong) 4px 5px)}
+.stack-wrap{position:relative;padding-top:20px}
+.stack-wrap .half{position:absolute;top:0;bottom:-4px;left:50%;width:2px;margin-left:-1px;background:var(--ink)}
+.stack-wrap .half::before{content:"50%";position:absolute;top:0;left:6px;font:500 11px/14px var(--f-mono);color:var(--ink)}
+.cb-res{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:var(--s-2) var(--s-3);align-items:baseline;margin-top:var(--s-5)}
+.cb-res .sw{width:10px;height:10px;border-radius:3px;background:var(--tc);align-self:center}
+.cb-res .mem{color:var(--ink-3);font-size:12px;display:block}
+.cb-res .num{text-align:right;font-size:14px}
+.cb-res .big{font:900 22px/1 var(--f-display);font-variant-numeric:tabular-nums}
+@container (max-width:480px){
+  .cb-res{grid-template-columns:auto minmax(0,1fr) auto;row-gap:var(--s-1)}
+  .cb-res > :nth-child(4n){grid-column:2/-1;text-align:left;margin-bottom:var(--s-2)}
+}
+.runoff{margin-top:var(--s-5)}
+.runoff-bar{display:flex;height:12px;border-radius:var(--r-pill);overflow:hidden;background:var(--surface-sunken);margin-top:var(--s-2)}
+.runoff-bar i:first-child{background:var(--accent)}
+.runoff-bar i:last-child{background:var(--held)}
+.runoff-bar i{transition:flex-basis var(--d-4) var(--ease-out)}
+
+/* ===================== signals bento ===================== */
+.signals{display:grid;gap:var(--s-4);grid-template-columns:1fr}
+@container section (min-width:720px){
+  .signals{grid-template-columns:repeat(6,1fr)}
+  .signals > .s-alliance{grid-column:span 4}
+  .signals > .s-voters{grid-column:span 2}
+  .signals > .s-trust,.signals > .s-bbg{grid-column:span 3}
+}
+.bars{display:grid;gap:var(--s-3);margin-top:var(--s-4)}
+.bar-lab{display:flex;justify-content:space-between;gap:var(--s-3);font-size:14px;line-height:20px;font-weight:600}
+.bar-lab b{font:500 14px/20px var(--f-mono);font-variant-numeric:tabular-nums}
+.barline{position:relative;height:10px;border-radius:var(--r-pill);background:var(--surface-sunken);margin-top:var(--s-1)}
+.barline > span{position:absolute;inset:0;border-radius:inherit;transform-origin:left;transform:scaleX(var(--v));background:var(--bc,var(--accent));
+  transition:transform var(--d-5) var(--ease-out)}
+.barline.hatch > span{background:repeating-linear-gradient(135deg,var(--bc) 0 6px,color-mix(in oklab,var(--bc) 70%,var(--surface-2)) 6px 9px)}
+.barline .mid{position:absolute;top:-3px;bottom:-3px;left:50%;width:1px;background:var(--ink-3)}
+.stat-big{font:900 clamp(44px,6vw,64px)/.95 var(--f-display);letter-spacing:-.04em;color:var(--accent);margin-top:var(--s-4);font-variant-numeric:tabular-nums}
+.slope svg{display:block;width:100%;max-width:400px;height:auto;margin-top:var(--s-3)}
+
+/* ===================== history ===================== */
+.margins{display:grid;grid-template-columns:max-content minmax(0,1fr) max-content;gap:var(--s-4) var(--s-4);align-items:center}
+.m-row{display:contents}
+.m-year{font:900 18px/24px var(--f-display)}
+.m-year small{display:block;margin-top:2px}
+.m-track{position:relative;height:36px;border-radius:var(--r-xs);background:var(--surface-sunken)}
+.m-track.annulled{background:repeating-linear-gradient(135deg,var(--surface-sunken) 0 6px,var(--line-strong) 6px 7px)}
+.m-gap{position:absolute;top:50%;height:4px;margin-top:-2px;left:var(--a);right:calc(100% - var(--b));background:var(--ink-3);border-radius:2px}
+.m-dot{position:absolute;top:50%;left:var(--x);width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--dc);box-shadow:0 0 0 2px var(--surface-2)}
+.m-dot.ru{background:var(--surface-2);box-shadow:inset 0 0 0 3px var(--ink-3)}
+.m-half{position:absolute;top:-6px;bottom:-6px;left:var(--x);width:1px;background:var(--danger)}
+.m-lab{position:absolute;top:calc(100% + 2px);left:var(--x);transform:translateX(-50%);white-space:nowrap}
+.m-margin{font:500 14px/20px var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.m-axis{position:relative;height:16px}
+.m-axis span{position:absolute;left:var(--x);transform:translateX(-50%)}
+.m-notes{display:grid;gap:var(--s-2);margin-top:var(--s-6);padding:0;list-style:none}
+.m-notes li{font-size:13px;line-height:20px;color:var(--ink-2)}
+.m-notes b{font-family:var(--f-mono);font-weight:500}
+
+/* ===================== trust & sources ===================== */
+.claim{display:grid;gap:var(--s-4);margin-top:var(--s-3)}
+@container (min-width:640px){.claim{grid-template-columns:1fr 1fr}}
+.claim h4{font:500 11px/16px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.claim p{font-size:14px;line-height:20px;margin-top:var(--s-1)}
+.ledger-filter{display:flex;flex-wrap:wrap;gap:var(--s-2);margin:var(--s-4) 0 var(--s-2)}
+.ledger{display:grid;grid-template-columns:max-content minmax(0,1fr) 120px max-content max-content;column-gap:var(--s-4)}
+.ledger > .row{display:grid;grid-column:1/-1;grid-template-columns:subgrid;align-items:center;padding:var(--s-3) 0;box-shadow:0 calc(-1 * var(--hair)) 0 var(--line)}
+.ledger > .row.head{position:sticky;top:var(--topbar-h);background:var(--surface-2);z-index:1;padding:var(--s-2) 0;box-shadow:0 var(--hair) 0 var(--line-strong)}
+.ledger .date{font:400 12px/16px var(--f-mono);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.ledger .who{font:700 14px/20px var(--f-text);min-width:0}
+.ledger .who small{display:block;font-weight:400;font-size:12px;line-height:16px;color:var(--ink-3)}
+.ledger .n{font:400 12px/16px var(--f-mono);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.ledger .n-bar{height:4px;border-radius:2px;background:var(--ink-3);transform-origin:left;transform:scaleX(var(--n));margin-top:4px}
+.ledger .row[hidden]{display:none}
+.ledger .row > *{align-self:center}
+.ledger .status{display:flex}
+.ledger .who small .m{display:none}
+@container (max-width:600px){
+  .ledger{grid-template-columns:minmax(0,1fr) max-content}
+  .ledger .date,.ledger .nwrap,.ledger .status,.ledger .row.head{display:none}
+  .ledger .who small .m{display:inline}
+}
+details.adv{border-radius:var(--r-md);background:var(--surface-2);box-shadow:var(--shadow-1);margin-top:var(--s-5)}
+details.adv > summary{cursor:pointer;list-style:none;padding:var(--s-4) var(--s-5);font:800 16px/24px var(--f-display);display:flex;align-items:center;gap:var(--s-3)}
+details.adv > summary::-webkit-details-marker{display:none}
+details.adv > summary::before{content:"";width:8px;height:8px;border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);transform:rotate(-45deg);transition:transform var(--d-3) var(--ease-std)}
+details.adv[open] > summary::before{transform:rotate(45deg)}
+.adv-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--d-4) var(--ease-out)}
+details.adv[open] .adv-body{grid-template-rows:1fr}
+.adv-inner{overflow:hidden}
+.adv-pad{padding:0 var(--s-5) var(--s-5);box-shadow:0 calc(-1 * var(--hair)) 0 var(--line) inset}
+.stat-grid{display:grid;gap:var(--s-3);grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-top:var(--s-4)}
+.stat{background:var(--surface-1);border-radius:var(--r-sm);padding:var(--s-4);box-shadow:inset 0 0 0 var(--hair) var(--line)}
+.stat .k{font:500 11px/16px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.stat .v{font:900 26px/1 var(--f-display);margin-top:var(--s-2);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+
+/* ===================== footer ===================== */
+footer{background:var(--surface-hero);color:var(--hero-ink-2);padding:var(--s-7) 0}
+footer a{color:var(--mint)}
+.foot-h{font:500 11px/16px var(--f-mono);letter-spacing:.08em;color:#fff}
+.foot-stamp{font:400 12px/16px var(--f-mono);color:var(--hero-meta);margin-top:var(--s-4)}
 </style>
 </head>
 <body>
 
-<div class="topbar">
+<header class="topbar">
   <div class="wrap topbar-inner">
-    <span class="brand">Kenya <b>2027</b> · Poll Tracker</span>
-    <nav class="nav">
-      <a href="#race">The race</a>
-      <a href="#countdown">Calendar</a>
-      <a href="#trend">Trends</a>
-      <a href="#whatif">What-if</a>
-      <a href="#picture">Bigger picture</a>
-      <a href="#rules">Rules</a>
-      <a href="#trust">Trust &amp; sources</a>
-    </nav>
-  </div>
-</div>
-
-<header class="hero" id="top">
-  <div class="wrap">
-    <p class="hero-eyebrow">Independent · Source-checked · Not a forecast</p>
-    <h1>Where the 2027 race<br>stands, <em>plainly.</em></h1>
-    <p class="hero-lead">A plain-language tracker of Kenya's presidential contest — who's ahead, how sure we can be, and what would have to happen for someone to win. Built on published polls, with every number traced to its source.</p>
-    <div class="hero-meta" id="heroMeta">
-      <span class="hero-chip">Loading the latest polls…</span>
+    <a class="brand" href="#race">Kenya <b>2027</b> · Poll Tracker</a>
+    <div class="nav-wrap">
+      <nav class="nav" aria-label="Sections">
+        <a href="#race">The race</a>
+        <a href="#rules">To win</a>
+        <a href="#trend">Trends</a>
+        <a href="#countdown">Calendar</a>
+        <a href="#whatif">What-if</a>
+        <a href="#picture">Signals</a>
+        <a href="#history">History</a>
+        <a href="#trust">Sources</a>
+      </nav>
     </div>
-
-    <div style="margin-top:34px">
-      <p class="hero-eyebrow" style="color:#8FC7AE">The polling average today</p>
-      <div class="avg-filter" aria-label="Polling average data filter">
-        <label>
-          <input type="checkbox" id="includeUnvalidated" checked>
-          Include methodology-held polls
-        </label>
-        <span class="avg-scope" id="avgScopeLabel">Loading average scope…</span>
-      </div>
-      <div class="stand" id="standings" style="margin-top:14px">
-        <div class="stand-foot">Reading the polls…</div>
-      </div>
-      <p class="stand-foot" id="standNote"></p>
-    </div>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch colour theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+    </button>
   </div>
 </header>
 
 <main>
-<!-- CONTENT INJECTED BELOW -->
+<section class="hero" id="race" aria-labelledby="race-h">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow">Independent · Source-checked · Not a forecast</p>
+        <h1 id="race-h">Where the 2027 race stands, <em>plainly.</em></h1>
+        <p class="hero-lead">Who's ahead, how sure we can be, and what it would take to win — built only on published polls, with every number traced to its source.</p>
+        <p class="status" id="heroStatus"><span>Loading the latest polls…</span></p>
+      </div>
+      <div class="race" aria-labelledby="race-avg-h">
+        <div class="race-head">
+          <h2 class="hero-eyebrow" id="race-avg-h">The polling average today</h2>
+          <div class="seg-dark" role="radiogroup" aria-label="Which polls the average uses">
+            <label><input type="radio" name="scope" value="all" checked><span>All published <i class="count" id="heldCount" hidden></i></span></label>
+            <label><input type="radio" name="scope" value="eligible"><span>Model-eligible only</span></label>
+          </div>
+        </div>
+        <div id="raceStrip" aria-busy="true"><div class="rs-sk">
+          <div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div>
+        </div></div>
+        <p class="rs-summary" id="rsSummary" aria-live="polite"></p>
+        <div id="rsMore"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section sunken" id="rules" aria-labelledby="rules-h">
+  <div class="wrap">
+    <p class="eyebrow">The rulebook</p>
+    <h2 class="h-sec" id="rules-h">What it actually takes to win</h2>
+    <p class="answer" id="rulesAnswer"><span class="sk sk-line"></span></p>
+    <p class="sub">Kenya's constitution sets two bars, and a winner must clear both in the first round. Leading the national vote isn't enough.</p>
+    <div class="sec-body" id="rulesBody"><div class="sk" style="height:420px"></div></div>
+  </div>
+</section>
+
+<section class="section" id="trend" aria-labelledby="trend-h">
+  <div class="wrap">
+    <p class="eyebrow">Movement</p>
+    <h2 class="h-sec" id="trend-h">How support has shifted</h2>
+    <p class="answer" id="trendAnswer"><span class="sk sk-line"></span></p>
+    <p class="sub">Each dot is one published poll. The line is a smoothed trend across pollsters, and the bars on the right are today's average with its uncertainty.</p>
+    <div class="sec-body" id="trendBody"><div class="sk" style="height:420px"></div></div>
+  </div>
+</section>
+
+<section class="section" id="countdown" aria-labelledby="countdown-h">
+  <div class="wrap">
+    <p class="eyebrow">The clock</p>
+    <h2 class="h-sec" id="countdown-h">The road to 10 August 2027</h2>
+    <p class="answer" id="calAnswer"><span class="sk sk-line"></span></p>
+    <p class="sub">Before polling day comes a legal calendar of filings, resignations, primaries and registration windows that decides who is even on the ballot.</p>
+    <div class="sec-body" id="calBody"><div class="sk" style="height:560px"></div></div>
+  </div>
+</section>
+
+<section class="section sunken" id="whatif" aria-labelledby="whatif-h">
+  <div class="wrap">
+    <p class="eyebrow">Play it out</p>
+    <h2 class="h-sec" id="whatif-h">What if candidates joined forces?</h2>
+    <p class="sub">Kenyan elections are won by alliances. Put candidates on teams, decide how well their supporters would stick together, and see how often the vote goes to a run-off — with an honest allowance for polls being off.</p>
+    <div class="sec-body" id="whatifBody"><div class="sk" style="height:640px"></div></div>
+  </div>
+</section>
+
+<section class="section" id="picture" aria-labelledby="picture-h">
+  <div class="wrap">
+    <p class="eyebrow">Beyond the headline number</p>
+    <h2 class="h-sec" id="picture-h">The signals that decide the race</h2>
+    <p class="answer" id="picAnswer"><span class="sk sk-line"></span></p>
+    <p class="sub">Who leads a poll matters less than who can build a coalition, whether people trust the vote, and whether the governing alliance holds.</p>
+    <div class="sec-body" id="picBody"><div class="sk" style="height:520px"></div></div>
+  </div>
+</section>
+
+<section class="section" id="history" aria-labelledby="history-h">
+  <div class="wrap">
+    <p class="eyebrow">The record</p>
+    <h2 class="h-sec" id="history-h">How past presidential races ended</h2>
+    <p class="answer" id="histAnswer"><span class="sk sk-line"></span></p>
+    <p class="sub">Winner and runner-up in the first round of the last three elections, on a shared scale around the 50% line.</p>
+    <div class="sec-body" id="histBody"><div class="sk" style="height:220px"></div></div>
+  </div>
+</section>
+
+<section class="section" id="trust" aria-labelledby="trust-h">
+  <div class="wrap">
+    <p class="eyebrow">Trust &amp; sources</p>
+    <h2 class="h-sec" id="trust-h">How to trust these numbers</h2>
+    <p class="answer" id="trustAnswer"><span class="sk sk-line"></span></p>
+    <p class="sub">Only figures traced to a named, published source appear here. Fabricated “polls” we've checked are flagged, and every source is listed.</p>
+    <div class="sec-body" id="trustBody"><div class="sk" style="height:640px"></div></div>
+  </div>
+</section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-h">KENYA 2027 · POLL TRACKER</p>
+    <p style="max-width:70ch;font-size:14px;line-height:22px;margin-top:var(--s-3)">An independent, source-checked reading of Kenya's 2027 presidential race. It aggregates published opinion polls for public understanding — it is <b>not</b> a forecast, not affiliated with the IEBC or any campaign, and does no voter targeting. Where data is thin, it says so.</p>
+    <p style="font-size:13px;margin-top:var(--s-4)"><a href="https://github.com/dansamuka/kenya-election-intelligence-engine" target="_blank" rel="noopener">Open-source code &amp; full methodology →</a></p>
+    <p class="foot-stamp" id="footStamp"></p>
+  </div>
+</footer>
 
 <script>
 /* ================= data + helpers ================= */
-const BUST='v='+Date.now();
 const F={
   polls:'data/polls_data.json',
   avgValidated:'data/model/polling_average.json',
   avgAll:'data/model/polling_average_all.json',
+  manifest:'data/model/manifest.json',
   ctx:'data/electoral_context.json',
   alliance:'data/alliance_preference.json',
   integrity:'data/integrity_confidence.json',
   coalition:'data/coalition_realignment.json',
   claims:'data/verified_claims.json',
-  counties:'data/kenya_counties.geojson',
   baseline:'data/constituency_baseline.json'
 };
-const PALETTE=['#1B5E43','#B8722A','#48586A','#3F7C7A','#7A4E6E','#9C6B3F','#557A55'];
 const $=s=>document.querySelector(s);
 const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
-const fmtDate=s=>{if(!s)return '—';const d=new Date(s+'T00:00:00');return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});};
-const fmtShort=s=>{if(!s)return '';const d=new Date(s+'T00:00:00');return d.toLocaleDateString('en-GB',{month:'short',year:'2-digit'});};
-const pct=v=>Number.isFinite(v)?v.toFixed(v%1?1:0)+'%':'—';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const MON3=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const fmtDate=s=>{if(!s)return '—';const p=s.split('-');return (+p[2])+' '+MON3[+p[1]-1]+' '+p[0];};
+const fmtShort=s=>{if(!s)return '';const p=s.split('-');return MON3[+p[1]-1]+' '+p[0].slice(2);};
+const f1=v=>Number.isFinite(v)?v.toFixed(1):'—';
+const pct1=v=>Number.isFinite(v)?v.toFixed(1)+'%':'—';
 const uniq=a=>[...new Set(a.filter(Boolean))];
-const NON_CANDIDATE_LABELS=new Set(['undecided','other','others','none','no response','prefer not to say','not sure','don\u2019t know',"don't know"]);
+const surname=n=>String(n).split(' ').slice(-1)[0];
+const reduceMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+const NON_CANDIDATE_LABELS=new Set(['undecided','other','others','none','no response','prefer not to say','not sure','don’t know',"don't know"]);
 const isCandidate=name=>name&&!NON_CANDIDATE_LABELS.has(String(name).trim().toLowerCase());
-async function getJSON(path){const r=await fetch(path+'?'+BUST,{cache:'no-store'});if(!r.ok)throw new Error(path+' '+r.status);return r.json();}
-const DATA={includeUnvalidated:true,avg:[],avgAll:[],avgValidated:[]};
+const HORSE_RACE=new Set(['preferred_presidential_aspirant','preferred_presidential_candidate']);
+const isHorseRace=p=>HORSE_RACE.has(p.poll_type);
+/* 'no-cache' revalidates with the server (cheap 304s) instead of re-downloading
+   every file on every visit. */
+async function getJSON(path){const r=await fetch(path,{cache:'no-cache'});if(!r.ok)throw new Error(path+' '+r.status);return r.json();}
+
+/* Candidate colours are fixed per person so a line keeps its colour when the
+   ranking changes. Anyone not listed falls back to a hash of their name. */
+const CAND_COLOR={
+  'William Ruto':1,'Kalonzo Musyoka':2,'Edwin Sifuna':3,"Fred Matiang'i":4,
+  'Rigathi Gachagua':5,'Babu Owino':6,'Ndindi Nyoro':7,'Martha Karua':8,
+  'David Maraga':4,'George Wajackoyah':6,'Oburu Odinga':7,'James Orengo':8,
+  'Okiya Omtata':1,'Jimi Wanjigi':5
+};
+function candColor(name){
+  let i=CAND_COLOR[name];
+  if(!i){let h=0;for(const ch of String(name))h=(h*31+ch.charCodeAt(0))>>>0;i=1+h%8;}
+  return `var(--c${i})`;
+}
+
+const DATA={includeUnvalidated:true,avgAll:[],avgValidated:[]};
 const activeAverage=()=>DATA.includeUnvalidated?(DATA.avgAll||[]):(DATA.avgValidated||[]);
 const presidentialAverageRows=()=>activeAverage()
   .filter(a=>a.poll_type==='presidential_horse_race'&&isCandidate(a.candidate))
-  .slice()
-  .sort((a,b)=>b.weighted_average-a.weighted_average);
+  .slice().sort((a,b)=>b.weighted_average-a.weighted_average);
+const horseRacePolls=()=>(DATA.polls||[]).filter(isHorseRace).slice().sort((a,b)=>a.date.localeCompare(b.date));
+const heldPollCount=()=>horseRacePolls().filter(p=>p.model_eligible===false).length;
 
-function updateAverageScopeLabel(){
-  const label=$('#avgScopeLabel');
-  if(!label)return;
-  const rows=presidentialAverageRows();
-  const held=Math.max(0,...rows.map(r=>r.unvalidated_poll_count||0));
-  if(DATA.includeUnvalidated){
-    label.innerHTML=held
-      ? '<b>All published</b> · includes '+held+' methodology-held poll'+(held===1?'':'s')
-      : '<b>All published</b>';
-  }else{
-    label.innerHTML='<b>Model-eligible only</b> · methodology-held polls excluded';
-  }
-}
-
-function refreshAverageViews(){
-  DATA.avg=activeAverage();
-  updateAverageScopeLabel();
-  renderStandings();
-  renderDistanceGauge();
-  renderModelMini();
-}
-
-/* ================= section shell builder ================= */
-function section(id,eyebrow,title,sub){
-  const s=el('section','section');s.id=id;
-  const w=el('div','wrap');
-  w.appendChild(el('p','eyebrow',eyebrow));
-  w.appendChild(el('h2','h-sec',title));
-  if(sub)w.appendChild(el('p','sub',sub));
-  const body=el('div');body.style.marginTop='28px';
-  w.appendChild(body);s.appendChild(w);
-  document.querySelector('main').appendChild(s);
-  return body;
-}
-
-/* ================= HERO standings ================= */
-function renderStandings(){
-  const all=presidentialAverageRows();
-  const host=$('#standings');host.innerHTML='';
-  if(!all.length){host.innerHTML='<div class="stand-foot">Polling average not available.</div>';return;}
-  const TOP=6;
-  const avg=all.slice(0,TOP);
-  const rest=all.slice(TOP);
-  const max=Math.max(...avg.map(a=>a.upper_95||a.weighted_average),35);
-  avg.forEach((a,i)=>{
-    const row=el('div','stand-row');
-    row.appendChild(el('div','stand-name',`<span class="rank">${i+1}</span>${a.candidate}`));
-    const track=el('div','stand-track');
-    const lo=a.lower_95??a.weighted_average, hi=a.upper_95??a.weighted_average;
-    const range=el('div','stand-range');
-    range.style.left=(lo/max*100)+'%';range.style.width=((hi-lo)/max*100)+'%';
-    const bar=el('div','stand-bar'+(i===0?' lead':''));
-    bar.style.width=(a.weighted_average/max*100)+'%';
-    const val=el('div','stand-val');
-    val.style.left=(a.weighted_average/max*100)+'%';
-    val.textContent=a.weighted_average.toFixed(a.weighted_average%1?1:0)+'%';
-    track.appendChild(range);track.appendChild(bar);track.appendChild(val);
-    row.appendChild(track);
-    host.appendChild(row);
-  });
-  if(rest.length){
-    const names=rest.map(r=>`${r.candidate} ${r.weighted_average.toFixed(r.weighted_average%1?1:0)}%`).join(' · ');
-    const more=el('div','stand-foot');more.style.paddingTop='14px';more.style.borderTop='1px solid rgba(255,255,255,.09)';more.style.marginTop='0';
-    more.innerHTML=`<span style="color:#6E9585;font-weight:700">Other displayed averages:</span> ${names}`;
-    host.appendChild(more);
-  }
-  const first=avg[0], second=avg[1];
-  const scope=DATA.includeUnvalidated?'all published polls':'model-eligible polls only';
-  const held=first?.unvalidated_poll_count||0;
-  const gap=second?Math.abs(first.weighted_average-second.weighted_average):null;
-  const overlap=second ? !(first.lower_95>second.upper_95 || second.lower_95>first.upper_95) : null;
-  $('#standNote').innerHTML=`Weighted descriptive average using <b>${scope}</b>. The shaded bands show model uncertainty. `+
-    (second?`The difference between the two highest displayed averages is about <b>${gap.toFixed(1)} points</b>; their uncertainty bands ${overlap?'overlap':'do not overlap'}. `:'')+
-    (DATA.includeUnvalidated&&held?`The current view includes methodology-held data; switch it off above to see the model-eligible-only calculation. `:'')+
-    `This is a polling summary, not an election forecast.`;
-}
-
-/* ================= hero meta chips ================= */
-function renderHeroMeta(){
-  const polls=DATA.polls||[];
-  const dates=uniq(polls.map(p=>p.date)).sort();
-  const latest=dates[dates.length-1];
+/* ================= hero: status line ================= */
+function renderHeroStatus(){
+  const polls=horseRacePolls();
+  const latest=polls.length?polls[polls.length-1].date:null;
   const houses=uniq(polls.map(p=>p.pollster));
-  const elDate=((DATA.ctx||{}).calendar||{}).election_date_estimated||'2027-08-10';
-  const days=Math.max(0,Math.round((new Date(elDate+'T00:00:00')-new Date())/864e5));
-  const m=$('#heroMeta');m.innerHTML='';
-  const chip=(h)=>{const c=el('span','hero-chip',h);m.appendChild(c);};
-  chip(`<b>${days.toLocaleString()}</b> days to election day`);
-  const nx=calRows(new Date()).find(r=>!r.past);
-  if(nx)chip(`Next milestone <b>${rangeLab(nx)}</b>`);
-  chip(`Latest poll <b>${fmtDate(latest)}</b>`);
-  chip(`<b>${polls.length}</b> polls · <b>${houses.length}</b> pollsters`);
+  const elDate=electionDate();
+  const now=new Date();
+  const days=Math.max(0,Math.ceil((at(elDate)-now)/864e5));
+  const age=latest?Math.round((now-at(latest))/864e5):null;
+  const pip=age==null?'red':age<=14?'':age<=45?'amber':'red';
+  const nx=calRows(now).find(r=>!r.past);
+  $('#heroStatus').innerHTML=
+    `<span><b>${days.toLocaleString()}</b> days to polling day</span>`+
+    (nx?`<span>next <b>${esc(rangeLab(nx))}</b></span>`:'')+
+    `<span><i class="pip ${pip}" aria-hidden="true"></i>latest poll <b>${fmtDate(latest)}</b>${age!=null?` (${age===0?'today':age===1?'1 day ago':age+' days ago'})`:''}</span>`+
+    `<span><b>${polls.length}</b> polls · <b>${houses.length}</b> pollsters</span>`;
+}
+
+/* ================= hero: Race Strip =================
+   One fixed 0–55% scale with the 50%+1 line through every row, so the gap to
+   an outright win is visible in the first screen. All motion is transform-only. */
+const RS_MAX=55;
+const rsX=v=>Math.min(1,Math.max(0,v/RS_MAX));
+function renderRaceStrip(){
+  const host=$('#raceStrip'), rows=presidentialAverageRows();
+  host.removeAttribute('aria-busy');
+  const held=heldPollCount(), hc=$('#heldCount');
+  if(held){hc.hidden=false;hc.textContent=held+' held';}
+  if(!rows.length){host.innerHTML='<p class="rs-summary">Polling average not available.</p>';$('#rsSummary').textContent='';return;}
+  const top=rows.slice(0,6);
+  let ol=host.querySelector('ol.rs');
+  const fresh=!ol;
+  if(fresh){
+    host.innerHTML='';
+    ol=el('ol','rs');ol.setAttribute('aria-label','Polling average with 95% uncertainty range');
+    ol.style.setProperty('--x50',(rsX(50)*100).toFixed(2)+'%');
+    ol.innerHTML=`<li class="rs-axis" aria-hidden="true"><span></span><span></span><span class="rs-track">
+      ${[0,10,20,30,40].map(t=>`<span class="t" style="--x:${(rsX(t)*100).toFixed(2)}%">${t}</span>`).join('')}
+      <span class="t win" style="--x:${(rsX(50)*100).toFixed(2)}%">50%+1</span></span><span></span></li>`;
+    host.appendChild(ol);
+  }
+  /* rows are keyed by candidate, so switching the average scope moves the
+     existing bars to their new values instead of redrawing them */
+  const existing=new Map([...ol.querySelectorAll('li.rs-row')].map(li=>[li.dataset.c,li]));
+  top.forEach((r,i)=>{
+    const lo=r.lower_95??r.weighted_average, hi=r.upper_95??r.weighted_average;
+    let li=existing.get(r.candidate);
+    if(li)existing.delete(r.candidate);
+    else{
+      li=el('li','rs-row');li.dataset.c=r.candidate;
+      li.innerHTML=`<span class="rs-rank"></span><span class="rs-name">${esc(r.candidate)}</span>
+        <span class="rs-track" aria-hidden="true"><i class="rs-band"></i><i class="rs-bar"></i><i class="rs-dotw"></i></span>
+        <span class="rs-val"></span>`;
+    }
+    li.classList.toggle('is-lead',i===0);
+    li.style.setProperty('--lon',rsX(lo).toFixed(4));
+    li.style.setProperty('--wn',Math.max(0.002,rsX(hi)-rsX(lo)).toFixed(4));
+    li.style.setProperty('--vn',rsX(r.weighted_average).toFixed(4));
+    li.querySelector('.rs-rank').textContent=String(i+1).padStart(2,'0');
+    li.querySelector('.rs-val').innerHTML=`${f1(r.weighted_average)}%<small>${f1(lo)}–${f1(hi)}</small>`;
+    li.setAttribute('aria-label',`${i+1}. ${r.candidate}: ${f1(r.weighted_average)}%, range ${f1(lo)} to ${f1(hi)}`);
+    ol.appendChild(li);
+  });
+  existing.forEach(li=>li.remove());
+
+  const a=top[0], b=top[1];
+  const overlap=b&&!(a.lower_95>b.upper_95||b.lower_95>a.upper_95);
+  $('#rsSummary').innerHTML=`<b>${esc(a.candidate)} ${f1(a.weighted_average)}%</b> · ${f1(50-a.weighted_average)} pts short of 50%`+
+    (b?` · ${f1(a.weighted_average-b.weighted_average)} pts ahead of ${esc(surname(b.candidate))}; ranges ${overlap?'overlap':'don’t overlap'}`:'')+
+    `. ${DATA.includeUnvalidated?'Includes methodology-held polls.':'Model-eligible polls only.'} A polling summary, not a forecast.`;
+
+  const rest=rows.slice(6);
+  $('#rsMore').innerHTML=rest.length?`<details class="rs-more"><summary>+${rest.length} more candidates</summary>
+    <table><tbody>${rest.map(r=>`<tr><td>${esc(r.candidate)}</td><td>${f1(r.weighted_average)}%</td><td>${f1(r.lower_95)}–${f1(r.upper_95)}</td></tr>`).join('')}</tbody></table></details>`:'';
+
+  if(fresh&&!reduceMotion()){
+    ol.classList.add('rs-enter');
+    const io=new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){
+      requestAnimationFrame(()=>requestAnimationFrame(()=>ol.classList.remove('rs-enter')));o.disconnect();}},{threshold:.3});
+    io.observe(ol);
+  }
+}
+
+/* ================= what it takes to win ================= */
+/* A tile cartogram: one square per county, laid out roughly by geography.
+   [code, column, row] on a 9×9 grid. */
+const COUNTY_TILES=[[1,7,8],[2,6,8],[3,7,7],[4,7,6],[5,8,6],[6,6,7],[7,6,4],[8,7,1],[9,8,0],[10,5,0],[11,5,2],[12,5,3],[13,5,4],[14,6,5],
+  [15,6,6],[16,5,6],[17,5,7],[18,3,4],[19,4,4],[20,5,5],[21,4,5],[22,4,6],[23,2,0],[24,2,1],[25,4,2],[26,2,2],[27,2,3],[28,3,2],[29,2,4],
+  [30,3,3],[31,4,3],[32,3,5],[33,3,6],[34,3,7],[35,2,5],[36,2,6],[37,1,3],[38,0,4],[39,1,2],[40,0,2],[41,0,3],[42,1,4],[43,0,5],[44,0,6],
+  [45,1,5],[46,1,6],[47,4,7]];
+const COUNTIES={1:'Mombasa',2:'Kwale',3:'Kilifi',4:'Tana River',5:'Lamu',6:'Taita Taveta',7:'Garissa',8:'Wajir',9:'Mandera',10:'Marsabit',
+  11:'Isiolo',12:'Meru',13:'Tharaka-Nithi',14:'Embu',15:'Kitui',16:'Machakos',17:'Makueni',18:'Nyandarua',19:'Nyeri',20:'Kirinyaga',
+  21:"Murang'a",22:'Kiambu',23:'Turkana',24:'West Pokot',25:'Samburu',26:'Trans Nzoia',27:'Uasin Gishu',28:'Elgeyo-Marakwet',29:'Nandi',
+  30:'Baringo',31:'Laikipia',32:'Nakuru',33:'Narok',34:'Kajiado',35:'Kericho',36:'Bomet',37:'Kakamega',38:'Vihiga',39:'Bungoma',
+  40:'Busia',41:'Siaya',42:'Kisumu',43:'Homa Bay',44:'Migori',45:'Kisii',46:'Nyamira',47:'Nairobi'};
+const tileAbbr=n=>({'Tana River':'TAN','Taita Taveta':'TAI','Tharaka-Nithi':'THA','Trans Nzoia':'TRN','Uasin Gishu':'UAS','West Pokot':'WPK',
+  'Elgeyo-Marakwet':'ELG','Homa Bay':'HBY',"Murang'a":'MUR','Nyandarua':'NDR','Nyamira':'NYM','Nyeri':'NYR','Kisumu':'KSM','Kisii':'KSI',
+  'Kilifi':'KLF','Kitui':'KTU','Kiambu':'KBU','Kirinyaga':'KRN','Kericho':'KRC','Kakamega':'KAK','Kajiado':'KJD','Machakos':'MKS','Makueni':'MKN',
+  'Marsabit':'MRS','Mandera':'MND','Mombasa':'MSA','Migori':'MIG','Nakuru':'NKR','Nairobi':'NBI','Baringo':'BAR','Bungoma':'BGM',
+  'Samburu':'SAM','Laikipia':'LAI'}[n]||n.slice(0,3).toUpperCase());
+
+function buildRules(){
+  const wr=(DATA.ctx||{}).win_rule||{};
+  const body=$('#rulesBody');body.innerHTML='';
+  const gates=el('div','gates');
+  const c=wr.conditions||['More than 50% of all valid votes cast nationwide (50% + 1).','At least 25% of the votes cast in a minimum of 24 of Kenya’s 47 counties.'];
+
+  const g1=el('div','card');
+  g1.innerHTML=`<div class="gate-head"><span class="gate-num">1</span><h3 class="card-h">Win the national vote</h3></div>
+    <p class="gate-rule">${esc(c[0])}</p>
+    <div class="nat" id="natGauge"></div>
+    <p class="meta" id="natNote"></p>`;
+  gates.appendChild(g1);
+
+  const g2=el('div','card');
+  g2.innerHTML=`<div class="gate-head"><span class="gate-num">2</span><h3 class="card-h">Win broadly across the country</h3></div>
+    <p class="gate-rule">${esc(c[1]||'')}</p>
+    <div class="need" aria-hidden="true">${Array.from({length:47},(_,i)=>`<i class="${i<24?'req':''}"></i>`).join('')}</div>
+    <div class="need-lab meta"><span><b class="num">24</b> counties needed at ≥25%</span><span><b class="num">47</b> counties</span></div>
+    <div class="tiles" id="tiles" role="group" aria-label="Kenya's 47 counties">${COUNTY_TILES.map(([code,col,row])=>
+      `<button class="tile" type="button" style="grid-column:${col+1};grid-row:${row+1}" data-code="${code}" aria-pressed="false" aria-label="${esc(COUNTIES[code])} (county ${code})">${tileAbbr(COUNTIES[code])}</button>`).join('')}</div>
+    <div class="county-pick">
+      <div><p class="mono-xs" style="color:var(--ink-3)">Selected county</p><p class="county-name" id="countyName">Tap a county</p><p class="meta" id="countyCode">Tiles are laid out roughly by geography.</p></div>
+      <label><span class="vh">Find a county</span><input id="countySearch" type="search" placeholder="Find a county…" autocomplete="off"></label>
+    </div>
+    <p class="note warn" style="margin-top:var(--s-4)">There is no reliable county-level polling yet, so no county is shaded as won or lost — and we won't invent any. This shows the rule, not a result.</p>`;
+  gates.appendChild(g2);
+  body.appendChild(gates);
+  if(wr.if_no_winner){const n=el('p','note','<b>If nobody clears both bars:</b> '+esc(wr.if_no_winner));n.style.marginTop='var(--s-5)';body.appendChild(n);}
+
+  const tiles=[...g2.querySelectorAll('.tile')];
+  const pick=code=>{tiles.forEach(t=>t.setAttribute('aria-pressed',String(t.dataset.code==code)));
+    $('#countyName').textContent=COUNTIES[code];$('#countyCode').textContent='County '+code+' of 47';};
+  tiles.forEach(t=>t.onclick=()=>pick(t.dataset.code));
+  $('#countySearch').oninput=e=>{
+    const q=e.target.value.trim().toLowerCase();
+    const hits=tiles.filter(t=>q&&COUNTIES[t.dataset.code].toLowerCase().includes(q));
+    tiles.forEach(t=>{t.classList.toggle('match',hits.includes(t));t.classList.toggle('dim',!!q&&!hits.includes(t));});
+    if(hits.length===1)pick(hits[0].dataset.code);
+  };
+  renderNationalGauge();
+}
+function renderNationalGauge(){
+  const host=$('#natGauge');if(!host)return;
+  const rows=presidentialAverageRows();
+  if(!rows.length){host.innerHTML='<p class="meta">Polling average not available.</p>';return;}
+  const a=rows[0], lo=a.lower_95??a.weighted_average, hi=a.upper_95??a.weighted_average;
+  const v=a.weighted_average/100;
+  host.style.setProperty('--lon',(lo/100).toFixed(4));host.style.setProperty('--wn',((hi-lo)/100).toFixed(4));host.style.setProperty('--vn',v.toFixed(4));
+  host.innerHTML=`<span class="nat-lab top you" style="left:${(v*100).toFixed(1)}%">${esc(surname(a.candidate))} ${f1(a.weighted_average)}%</span>
+    <div class="nat-track" role="img" aria-label="${esc(a.candidate)} at ${f1(a.weighted_average)}% against the 50% line">
+      <i class="nat-band"></i><i class="nat-bar"></i></div>
+    <i class="nat-line" aria-hidden="true"></i>
+    <span class="nat-lab bot" style="left:0;transform:none">0%</span>
+    <span class="nat-lab bot win" style="left:50%">50% + 1</span>
+    <span class="nat-lab bot" style="left:100%;transform:translateX(-100%)">100%</span>`;
+  const gap=50-a.weighted_average;
+  $('#natNote').innerHTML=`Shaded: the 95% range of the highest polling average (${f1(lo)}–${f1(hi)}%). National share only; it says nothing about the county test.`;
+  $('#rulesAnswer').innerHTML=`<b>${esc(surname(a.candidate))} ${f1(a.weighted_average)}%</b> — ${gap>=0?`<b>${f1(gap)} pts short</b> of an outright national majority`:`<b>${f1(-gap)} pts above</b> 50%`}. The county test can't be measured yet.`;
+}
+
+/* ================= trend ================= */
+const TREND={sel:null,cands:[],dates:[],focus:-1};
+function buildTrend(){
+  const body=$('#trendBody');body.innerHTML='';
+  const polls=horseRacePolls();
+  const held=polls.filter(p=>p.model_eligible===false).slice().sort((a,b)=>b.date.localeCompare(a.date));
+  if(held.length){
+    const p=held[0];
+    const vals=Object.entries(p.figures||{}).filter(([n,v])=>isCandidate(n)&&Number.isFinite(v)).sort((a,b)=>b[1]-a[1]);
+    const und=p.response_categories?.Undecided;
+    const card=el('div','held-card');
+    card.innerHTML=`<p class="eyebrow">Latest published poll · methodology hold</p>
+      <h3>${esc(p.pollster)} · ${fmtDate(p.date)}</h3>
+      <p class="held-figs">${vals.slice(0,5).map(([n,v])=>`${esc(surname(n))} ${pct1(v)}`).join(' · ')}${Number.isFinite(und)?` · Undecided ${pct1(und)}`:''}</p>
+      <p class="meta" style="margin-top:var(--s-2)">Drawn as a hollow dot. Counted in the all-published average; left out of the model-eligible one. <a class="src" href="${esc(p.source_url)}" target="_blank" rel="noopener">Source</a></p>`;
+    body.appendChild(card);
+  }
+
+  const avgOrder=presidentialAverageRows().map(r=>r.candidate);
+  const inPolls=uniq(polls.flatMap(p=>Object.entries(p.figures||{}).filter(([,v])=>Number.isFinite(v)).map(([n])=>n))).filter(isCandidate);
+  TREND.cands=[...avgOrder.filter(c=>inPolls.includes(c)),...inPolls.filter(c=>!avgOrder.includes(c)).sort()];
+  TREND.sel=new Set(TREND.cands.slice(0,5));
+
+  const chips=el('div','chips');chips.setAttribute('role','group');chips.setAttribute('aria-label','Candidates shown on the chart');
+  TREND.cands.forEach(c=>{
+    const eligible=polls.some(p=>p.model_eligible!==false&&Number.isFinite(p.figures?.[c]));
+    const b=el('button','chip',`<i></i>${esc(c)}${eligible?'':' <small>held only</small>'}`);
+    b.type='button';b.style.setProperty('--cc',candColor(c));b.setAttribute('aria-pressed',String(TREND.sel.has(c)));
+    if(!eligible)b.title='Appears only in methodology-held releases';
+    b.onclick=()=>{TREND.sel.has(c)?TREND.sel.delete(c):TREND.sel.add(c);b.setAttribute('aria-pressed',String(TREND.sel.has(c)));drawTrend();};
+    chips.appendChild(b);
+  });
+  body.appendChild(chips);
+
+  const hold=el('div','chart-hold');hold.id='trendHold';
+  hold.innerHTML='<div class="tip" id="trendTip" role="status"></div>';
+  body.appendChild(hold);
+  const leg=el('div','legend-row meta',`<span><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="4" fill="var(--ink-3)"/></svg>Model-eligible poll</span>
+    <span><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="4" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="2"/></svg>Methodology-held poll</span>
+    <span><svg width="18" height="12" aria-hidden="true"><path d="M1 6h16" stroke="var(--ink-3)" stroke-width="2.5"/></svg>Smoothed trend (45-day window)</span>
+    <span><svg width="10" height="14" aria-hidden="true"><path d="M5 1v12" stroke="var(--ink-3)" stroke-width="5" stroke-linecap="round" opacity=".3"/></svg>Today's average, 95% range</span>`);
+  body.appendChild(leg);
+
+  const top=presidentialAverageRows()[0];
+  if(top){
+    const led=polls.filter(p=>{const v=Object.entries(p.figures||{}).filter(([n,x])=>isCandidate(n)&&Number.isFinite(x)).sort((a,b)=>b[1]-a[1]);return v[0]&&v[0][0]===top.candidate;}).length;
+    const seconds=uniq(polls.map(p=>Object.entries(p.figures||{}).filter(([n,x])=>isCandidate(n)&&Number.isFinite(x)).sort((a,b)=>b[1]-a[1])[1]?.[0]));
+    $('#trendAnswer').innerHTML=`${esc(surname(top.candidate))} tops <b>${led} of ${polls.length}</b> published polls since ${fmtShort(polls[0]?.date)}. `+
+      (seconds.length>1?`Second place changes hands between <b>${seconds.length}</b> candidates depending on the pollster.`:seconds.length?`${esc(surname(seconds[0]))} is second in every poll.`:'');
+  }
+  drawTrend();
+  if(window.ResizeObserver){let raf=0;new ResizeObserver(()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(drawTrend);}).observe(hold);}
+}
+function drawTrend(){
+  const hold=$('#trendHold');if(!hold)return;
+  const tip=$('#trendTip');
+  const polls=horseRacePolls();
+  const W=Math.max(300,hold.clientWidth||720), narrow=W<600;
+  const H=narrow?300:380, padL=34, padR=narrow?56:128, padT=16, padB=32;
+  const T=d=>Date.parse(d+'T00:00:00Z');
+  const avgRows=presidentialAverageRows(), asOf=(avgRows[0]?.as_of)||polls[polls.length-1]?.date;
+  const sel=TREND.cands.filter(c=>TREND.sel.has(c));
+  if(!polls.length){hold.querySelector('svg')?.remove();return;}
+  const t0=T(polls[0].date)-21*864e5, t1=Math.max(T(polls[polls.length-1].date),T(asOf))+10*864e5;
+  const AVG_GAP=narrow?18:32;
+  const X=t=>padL+(t-t0)/(t1-t0)*(W-padL-padR-AVG_GAP);
+  const vals=sel.flatMap(c=>polls.map(p=>p.figures?.[c]).filter(Number.isFinite)).concat(sel.map(c=>avgRows.find(r=>r.candidate===c)?.upper_95).filter(Number.isFinite));
+  const maxY=Math.max(20,Math.ceil((Math.max(0,...vals)+3)/10)*10);
+  const Y=v=>padT+(1-v/maxY)*(H-padT-padB);
+  let g='';
+  for(let t=0;t<=maxY;t+=10)g+=`<line class="gridl" x1="${padL}" x2="${W-padR+AVG_GAP}" y1="${Y(t)}" y2="${Y(t)}"/><text class="ax" x="${padL-8}" y="${Y(t)+4}" text-anchor="end">${t}%</text>`;
+  /* quarter ticks, or half-year ticks on narrow screens */
+  const step=narrow?6:3;const d0=new Date(t0);let y=d0.getUTCFullYear(),m=d0.getUTCMonth()+1;
+  for(let k=0;k<40;k++){if(m>11){m-=12;y++;}const t=Date.UTC(y,m,1);if(t>t1)break;
+    if(m%step===0){const x=X(t);g+=`<line class="gridl" x1="${x}" x2="${x}" y1="${H-padB}" y2="${H-padB+5}"/><text class="ax" x="${x}" y="${H-padB+18}" text-anchor="middle">${MON3[m]} ${String(y).slice(2)}</text>`;}
+    m++;}
+  /* today's-average column */
+  const xA=X(t1)+AVG_GAP;
+  g+=`<line x1="${xA}" x2="${xA}" y1="${padT}" y2="${H-padB}" stroke="var(--line-strong)" stroke-dasharray="2 3"/>`;
+  if(!narrow)g+=`<text class="ax" x="${xA}" y="${padT-4}" text-anchor="middle">avg today</text>`;
+
+  const labels=[];
+  sel.forEach(c=>{
+    const col=candColor(c);
+    const pts=polls.map(p=>({t:T(p.date),v:p.figures?.[c],held:p.model_eligible===false})).filter(p=>Number.isFinite(p.v));
+    if(!pts.length)return;
+    /* smoothed trend: Gaussian kernel (45-day bandwidth). Held polls only count
+       when the all-published scope is on, mirroring the headline average. */
+    const usable=pts.filter(p=>DATA.includeUnvalidated||!p.held);
+    if(usable.length>=2){
+      const bw=45*864e5, a=usable[0].t, b=usable[usable.length-1].t, n=48;let d='';
+      for(let i=0;i<=n;i++){const t=a+(b-a)*i/n;let sw=0,sv=0;
+        usable.forEach(p=>{const w=Math.exp(-.5*((t-p.t)/bw)**2)*(p.held?.6:1);sw+=w;sv+=w*p.v;});
+        if(sw>1e-6)d+=(d?'L':'M')+X(t).toFixed(1)+','+Y(sv/sw).toFixed(1);}
+      g+=`<path class="trend-line" d="${d}" stroke="${col}" opacity=".9"/>`;
+    }
+    pts.forEach(p=>{g+=p.held
+      ?`<circle cx="${X(p.t)}" cy="${Y(p.v)}" r="4.5" fill="var(--surface-2)" stroke="${col}" stroke-width="2"/>`
+      :`<circle cx="${X(p.t)}" cy="${Y(p.v)}" r="3.5" fill="${col}" stroke="var(--canvas)" stroke-width="1.5"/>`;});
+    const avg=avgRows.find(r=>r.candidate===c);
+    if(avg){
+      g+=`<line x1="${xA}" x2="${xA}" y1="${Y(avg.upper_95)}" y2="${Y(Math.max(0,avg.lower_95))}" stroke="${col}" stroke-width="6" stroke-linecap="round" opacity=".28"/>`+
+         `<line x1="${xA-5}" x2="${xA+5}" y1="${Y(avg.weighted_average)}" y2="${Y(avg.weighted_average)}" stroke="${col}" stroke-width="2.5" stroke-linecap="round"/>`;
+      labels.push({c,col,y:Y(avg.weighted_average),v:avg.weighted_average});
+    }
+  });
+  /* push overlapping end labels apart */
+  labels.sort((a,b)=>a.y-b.y);
+  for(let i=1;i<labels.length;i++)if(labels[i].y-labels[i-1].y<15)labels[i].y=labels[i-1].y+15;
+  const over=labels.length?labels[labels.length-1].y-(H-padB-4):0;
+  if(over>0)labels.forEach(l=>l.y-=over);
+  labels.forEach(l=>{g+=narrow
+    ?`<text class="end-lab" x="${xA+10}" y="${l.y+4}" fill="${l.col}"><tspan>${f1(l.v)}</tspan></text>`
+    :`<text class="end-lab" x="${xA+10}" y="${l.y+4}" fill="${l.col}">${esc(surname(l.c))} <tspan>${f1(l.v)}</tspan></text>`;});
+
+  /* crosshair, driven by pointer or arrow keys */
+  TREND.dates=uniq(polls.map(p=>p.date));
+  g+=`<g id="xh" style="display:none"><line class="xhair" y1="${padT}" y2="${H-padB}"/></g>`;
+  let svg=hold.querySelector('svg');
+  if(!svg){svg=document.createElementNS('http://www.w3.org/2000/svg','svg');hold.insertBefore(svg,tip);
+    svg.setAttribute('tabindex','0');svg.setAttribute('role','img');}
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.setAttribute('aria-label','Published presidential preference by poll date, with a smoothed trend and today’s average. Use the left and right arrow keys to step through polls.');
+  svg.innerHTML=g;
+
+  const show=i=>{
+    TREND.focus=i;const xh=svg.querySelector('#xh');
+    if(i<0){xh.style.display='none';tip.classList.remove('on');return;}
+    const d=TREND.dates[i], x=X(T(d)), rows=polls.filter(p=>p.date===d);
+    xh.style.display='';xh.firstChild.setAttribute('x1',x);xh.firstChild.setAttribute('x2',x);
+    tip.innerHTML=rows.map(p=>`<div><b>${esc(p.pollster)}</b> · ${fmtDate(p.date)}${p.model_eligible===false?' · held':''}</div>`+
+      sel.filter(c=>Number.isFinite(p.figures?.[c])).map(c=>`<div class="r"><span><i style="background:${candColor(c)}"></i>${esc(surname(c))}</span><span>${f1(p.figures[c])}</span></div>`).join('')).join('<hr style="border:0;border-top:1px solid var(--line);margin:6px 0">');
+    const scale=hold.clientWidth/W, tw=tip.offsetWidth||180;
+    tip.style.left=Math.max(0,Math.min(hold.clientWidth-tw,x*scale+12))+'px';
+    tip.classList.add('on');
+  };
+  const nearest=clientX=>{const r=svg.getBoundingClientRect(),x=(clientX-r.left)*W/r.width;let bi=0,bd=1e9;
+    TREND.dates.forEach((d,i)=>{const dd=Math.abs(X(T(d))-x);if(dd<bd){bd=dd;bi=i;}});return bd<40?bi:-1;};
+  svg.onpointermove=e=>show(nearest(e.clientX));
+  svg.onpointerleave=()=>show(-1);
+  svg.onkeydown=e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();
+    const n=TREND.dates.length;show(TREND.focus<0?(e.key==='ArrowRight'?0:n-1):Math.max(0,Math.min(n-1,TREND.focus+(e.key==='ArrowRight'?1:-1))));}
+    else if(e.key==='Escape')show(-1);};
+  svg.onblur=()=>show(-1);
 }
 
 /* ================= 2027 ELECTORAL CALENDAR ================= */
 /* All milestone instants are anchored to East Africa Time so the countdown
-   reads the same in Nairobi as it does anywhere else.                      */
+   reads the same in Nairobi as it does anywhere else. */
 const EAT='+03:00';
-const MON3=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const TAGC={PARTIES:'#1B5E43',REGISTRAR:'#7A4E6E',IEBC:'#48586A',ASPIRANTS:'#B8722A',DISPUTES:'#3F7C7A',CAMPAIGN:'#C79A2E',VOTE:'#B23A34'};
+const TAGC={PARTIES:'var(--tag-parties)',REGISTRAR:'var(--tag-registrar)',IEBC:'var(--tag-iebc)',ASPIRANTS:'var(--tag-aspirants)',
+  DISPUTES:'var(--tag-disputes)',CAMPAIGN:'var(--tag-campaign)',VOTE:'var(--tag-vote)'};
+const KE_FLAG='<svg class="flag" width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect width="18" height="3.4" fill="#000"/><rect y="3.4" width="18" height=".8" fill="#fff"/><rect y="4.2" width="18" height="3.6" fill="#BB0000"/><rect y="7.8" width="18" height=".8" fill="#fff"/><rect y="8.6" width="18" height="3.4" fill="#006600"/><ellipse cx="9" cy="6" rx="2" ry="4.6" fill="#BB0000" stroke="#000" stroke-width=".6"/><path d="M9 2.2v7.6" stroke="#fff" stroke-width=".6"/></svg>';
 
 const KEY_DATES=[
   {d:'2026-10-15',tag:'PARTIES',t:'Parties name their signatories',
@@ -434,6 +1056,7 @@ const KEY_DATES=[
 
 const at=iso=>new Date(iso+'T00:00:00'+EAT);
 const endAt=iso=>new Date(at(iso).getTime()+864e5-1);
+const electionDate=()=>((DATA.ctx||{}).calendar||{}).election_date_estimated||'2027-08-10';
 function isoLab(iso,withYear){const p=iso.split('-');return (+p[2])+' '+MON3[(+p[1])-1]+(withYear===false?'':' '+p[0]);}
 function rangeLab(m){
   if(m.label)return m.label;
@@ -457,60 +1080,35 @@ function awayLab(r,now){
   return 'in '+d.toLocaleString()+' days';
 }
 
-/* ---------- left column: the live clock ---------- */
 function calClockCol(elDate){
-  const col=el('div','cal-clock');
-  const now=new Date();
-  const nx=calRows(now).find(r=>!r.past);
-
-  const nc=el('div','nextcard');
-  nc.innerHTML=`<div class="ne">Next on the calendar</div>
-    <h3 id="calNextT">${nx?nx.t:'Kenya has voted'}</h3>
-    <p class="nd" id="calNextD">${nx?rangeLab(nx)+' · East Africa Time':''}</p>
-    <div class="ne" id="calPre" style="margin-top:20px">Starts in</div>
-    <div class="clock" id="calClock">
-      ${['Days','Hours','Minutes','Seconds'].map(l=>`<div class="unit"><div class="n tnum">–</div><div class="l">${l}</div></div>`).join('')}
-    </div>
-    <p class="nd" id="calNextS" style="margin-top:16px">${nx?nx.s:''}</p>`;
-  col.appendChild(nc);
-
+  const col=el('div');
+  const now=new Date(), rows=calRows(now), nxI=rows.findIndex(r=>!r.past), nx=rows[nxI];
   const target=at(elDate),start=at('2022-08-09');
   const days=Math.max(0,Math.ceil((target-now)/864e5));
-  const prog=Math.min(100,Math.max(0,(now-start)/(target-start)*100));
-  const c1=el('div','card');c1.style.padding='22px';
-  c1.innerHTML=`<div style="font-family:'Libre Franklin';font-weight:700;font-size:12.5px;letter-spacing:.02em;color:var(--ink-soft)">DAYS TO ELECTION DAY</div>
-    <div class="cd-big tnum" id="calElDays">${days.toLocaleString()}</div>
-    <div class="muted" style="font-size:13px;margin-top:6px">Polling day <b>${isoLab(elDate)}</b></div>
-    <div class="cd-track"><div class="cd-fill" style="width:${prog.toFixed(1)}%"></div></div>
-    <div class="faint" style="font-size:12px;margin-top:8px">${prog.toFixed(0)}% of the way from the 2022 vote to 2027</div>`;
-  col.appendChild(c1);
-
-  const polls=DATA.polls||[];
-  const latest=uniq(polls.map(p=>p.date)).sort().pop();
-  const sinceLatest=latest?Math.round((now-new Date(latest+'T00:00:00'))/864e5):null;
-  const reg=(DATA.ctx||{}).registration||{};
-  const strip=el('div','stat-grid c2');
-  const s1=el('div','stat');
-  s1.innerHTML=`<div class="k">HOW FRESH IS THIS?</div><div class="v tnum">${sinceLatest!=null?sinceLatest:'—'}</div><div class="d">days since the newest published poll (${fmtDate(latest)})</div>`;
-  const s2=el('div','stat');
-  s2.innerHTML=`<div class="k">NEW VOTERS EXPECTED</div><div class="v tnum">${reg.expected_new_voters_2027?'+'+(reg.expected_new_voters_2027/1e6).toFixed(1)+'M':'—'}</div><div class="d">mostly young Kenyans — the biggest unknown in any projection</div>`;
-  strip.appendChild(s1);strip.appendChild(s2);
-  col.appendChild(strip);
+  const prog=Math.min(1,Math.max(0,(now-start)/(target-start)));
+  const nc=el('div','nextcard');
+  nc.innerHTML=`<p class="ne">Next on the calendar</p>
+    <h3 id="calNextT">${nx?esc(nx.t):'Kenya has voted'}</h3>
+    <p class="nd" id="calNextD">${nx?esc(rangeLab(nx))+' · East Africa Time':''}</p>
+    <p class="ne" id="calPre" style="margin-top:var(--s-5)">Starts in</p>
+    <div class="clock" id="calClock" role="timer" aria-label="Time until the next milestone">
+      ${['Days','Hours','Minutes','Seconds'].map(l=>`<div class="unit"><div class="n">–</div><div class="l">${l}</div></div>`).join('')}
+    </div>
+    <div class="gap-track" aria-hidden="true"><div class="gap-fill" id="calGap"></div></div>
+    <p class="nd" id="calNextS" style="margin-top:var(--s-4)">${nx?esc(nx.s):''}</p>
+    <div class="nc-foot"><span><b id="calElDays">${days.toLocaleString()}</b> days to polling day, ${isoLab(elDate)}</span><span>${(prog*100).toFixed(0)}% of the way from 2022</span></div>
+    <div class="el-track" aria-hidden="true"><div class="el-fill" style="--p:${prog.toFixed(4)}"></div></div>`;
+  col.appendChild(nc);
   return col;
 }
 
-/* ---------- right column: the timeline chart ---------- */
 function calTimeline(){
-  const now=new Date();
-  const rows=calRows(now);
-  const nxIdx=rows.findIndex(r=>!r.past);
-  const done=rows.filter(r=>r.past).length;
-
+  const now=new Date(), rows=calRows(now);
+  const nxIdx=rows.findIndex(r=>!r.past), done=rows.filter(r=>r.past).length;
   const panel=el('div','tl');
-  const head=el('div','tl-head');
-  head.innerHTML=`<h3>The road to the ballot</h3><span class="tl-count tnum">${rows.length} milestones · ${done} passed</span>`;
-  panel.appendChild(head);
-
+  panel.innerHTML=`<div class="tl-head"><h3>The road to the ballot</h3>
+    <span style="display:flex;align-items:center;gap:var(--s-3)"><span class="tl-count">${rows.length} milestones · ${done} passed</span>
+    <button class="btn btn-sm" type="button" id="tlToday">Jump to next</button></span></div>`;
   const wrap=el('div','tl-body');
   const scroll=el('div','tl-scroll');scroll.id='tlScroll';
   scroll.tabIndex=0;scroll.setAttribute('role','group');
@@ -519,33 +1117,25 @@ function calTimeline(){
   const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
   svg.setAttribute('class','tl-svg');svg.setAttribute('aria-hidden','true');svg.id='tlSvg';
   list.appendChild(svg);
-
   rows.forEach((r,i)=>{
-    const cls='tl-row'+(r.past?' past':'')+(i===nxIdx?' next':'')+(r.vote?' vote':'');
-    const row=el('div',cls);
-    const c=TAGC[r.tag]||'#1B5E43';
+    const row=el('div','tl-row'+(r.past?' past':'')+(i===nxIdx?' next':'')+(r.vote?' vote':''));
+    row.style.setProperty('--tc',TAGC[r.tag]);
     row.innerHTML=`<div class="tl-top">
-        <span class="tl-date">${rangeLab(r)}</span>
-        <span class="tl-away tnum">${awayLab(r,now)}</span>
-        <span class="tl-tag" style="color:${c};background:${c}1A">${r.tag}</span>
+        <span class="tl-date">${esc(rangeLab(r))}</span>
+        <span class="tl-away">${awayLab(r,now)}</span>
+        <span class="tl-tag">${r.tag}</span>
       </div>
-      <p class="tl-t">${r.vote?'🇰🇪 ':''}${r.t}</p>
-      <p class="tl-s">${r.s}${r.approx?' <em>Date is indicative.</em>':''}</p>`;
+      <p class="tl-t">${r.vote?KE_FLAG:''}${esc(r.t)}</p>
+      <p class="tl-s">${esc(r.s)}${r.approx?' <em>Date is indicative.</em>':''}</p>`;
     list.appendChild(row);
   });
-
-  scroll.appendChild(list);
-  wrap.appendChild(scroll);
-  wrap.appendChild(el('div','tl-fade'));
-  panel.appendChild(wrap);
-
+  scroll.appendChild(list);wrap.appendChild(scroll);wrap.appendChild(el('div','tl-fade'));panel.appendChild(wrap);
   const leg=el('div','tl-legend');
-  leg.innerHTML=Object.keys(TAGC).map(k=>`<span class="tl-key"><i style="background:${TAGC[k]}"></i>${k}</span>`).join('');
+  leg.innerHTML=Object.keys(TAGC).map(k=>`<span class="tl-key" style="--tc:${TAGC[k]}"><i></i>${k}</span>`).join('');
   panel.appendChild(leg);
   return panel;
 }
 
-/* ---------- the spine: milestones drawn at their true position in time ---------- */
 function calElbow(x1,y1,xb,x2,y2){
   const dy=y2-y1;
   if(Math.abs(dy)<10)return 'M'+x1+','+y1+' L'+x2+','+y2;
@@ -567,10 +1157,13 @@ function calDrawSpine(){
   const yTop=16,yBot=H-16;
   const Y=t=>yTop+(t-t0)/(t1-t0)*(yBot-yTop);
   const yNow=Y(now.getTime());
+  const showToday=yNow>=yTop-2&&yNow<=yBot+2;
   const P=[];
-
-  /* month gridlines along the time axis */
   const long=gut>=100;
+  const mono='font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="500"';
+
+  /* month ticks along the time axis; a month label that would sit under the
+     TODAY marker is dropped so the two never print on top of each other */
   const d0=new Date(t0);let mm=d0.getUTCMonth(),yy=d0.getUTCFullYear();
   for(let k=0;k<30;k++){
     mm++;if(mm>11){mm=0;yy++;}
@@ -578,67 +1171,56 @@ function calDrawSpine(){
     if(t>t1)break;
     if(t<t0)continue;
     const y=Y(t);
-    P.push('<line x1="'+(xS-5)+'" y1="'+y+'" x2="'+(xS+5)+'" y2="'+y+'" stroke="var(--line)" stroke-width="1"/>');
-    P.push('<text x="'+(xS-10)+'" y="'+(y+3)+'" text-anchor="end" font-family="Libre Franklin,sans-serif" font-size="9" font-weight="700" letter-spacing="0.06em" fill="var(--ink-faint)">'+
+    P.push('<line x1="'+(xS-5)+'" y1="'+y+'" x2="'+(xS+5)+'" y2="'+y+'" stroke="var(--line-strong)" stroke-width="1"/>');
+    if(showToday&&Math.abs(y-yNow)<13)continue;
+    P.push('<text x="'+(xS-10)+'" y="'+(y+3)+'" text-anchor="end" '+mono+' letter-spacing="0.04em" fill="var(--ink-3)">'+
       MON3[mm].toUpperCase()+(long?(' '+String(yy).slice(2)):'')+'</text>');
   }
+  P.push('<line x1="'+xS+'" y1="'+yTop+'" x2="'+xS+'" y2="'+yBot+'" stroke="var(--line-strong)" stroke-width="3" stroke-linecap="round"/>');
+  P.push('<line x1="'+xS+'" y1="'+yTop+'" x2="'+xS+'" y2="'+Math.max(yTop,Math.min(yBot,yNow))+'" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>');
 
-  /* the spine, filled up to today */
-  P.push('<line x1="'+xS+'" y1="'+yTop+'" x2="'+xS+'" y2="'+yBot+'" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>');
-  P.push('<line x1="'+xS+'" y1="'+yTop+'" x2="'+xS+'" y2="'+Math.max(yTop,Math.min(yBot,yNow))+'" stroke="var(--forest)" stroke-width="3" stroke-linecap="round"/>');
-
-  /* one milestone per row: true time position on the spine, leader line to the card */
   const rowEls=list.querySelectorAll('.tl-row');
   const nxIdx=rows.findIndex(r=>!r.past);
   rowEls.forEach((node,i)=>{
     const r=rows[i];if(!r)return;
-    const c=TAGC[r.tag]||'#1B5E43';
+    const c=TAGC[r.tag];
     const yR=node.offsetTop+node.offsetHeight/2;
     const yT=Y(at(r.d).getTime());
     const o=r.past?0.34:1;
-    if(r.end){
-      P.push('<line x1="'+xS+'" y1="'+yT+'" x2="'+xS+'" y2="'+Y(at(r.end).getTime())+'" stroke="'+c+'" stroke-width="5" stroke-linecap="round" opacity="'+(o*0.85).toFixed(2)+'"/>');
-    }
+    if(r.end)P.push('<line x1="'+xS+'" y1="'+yT+'" x2="'+xS+'" y2="'+Y(at(r.end).getTime())+'" stroke="'+c+'" stroke-width="5" stroke-linecap="round" opacity="'+(o*0.85).toFixed(2)+'"/>');
     P.push('<path d="'+calElbow(xS+6,yT,xB,xD-6,yR)+'" fill="none" stroke="'+c+'" stroke-width="1.2" stroke-linecap="round" opacity="'+(o*0.5).toFixed(2)+'"/>');
     P.push('<circle cx="'+xS+'" cy="'+yT+'" r="3.2" fill="'+c+'" opacity="'+o+'"/>');
     const rr=r.vote?7:4.6;
-    P.push('<circle cx="'+xD+'" cy="'+yR+'" r="'+rr+'" fill="'+c+'" stroke="#fff" stroke-width="2" opacity="'+o+'"/>');
+    P.push('<circle cx="'+xD+'" cy="'+yR+'" r="'+rr+'" fill="'+c+'" stroke="var(--surface-2)" stroke-width="2" opacity="'+o+'"/>');
     if(i===nxIdx)P.push('<circle cx="'+xD+'" cy="'+yR+'" r="'+(rr+4)+'" fill="none" stroke="'+c+'" stroke-width="1.4" opacity="0.5"/>');
     if(r.vote)P.push('<circle cx="'+xD+'" cy="'+yR+'" r="'+(rr+5)+'" fill="none" stroke="'+c+'" stroke-width="1.6" opacity="0.35"/>');
   });
-
-  /* today reference line */
-  if(yNow>=yTop-2&&yNow<=yBot+2){
-    P.push('<line x1="'+(xS+7)+'" y1="'+yNow+'" x2="'+(xD+6)+'" y2="'+yNow+'" stroke="var(--rose)" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>');
-    P.push('<circle cx="'+xS+'" cy="'+yNow+'" r="4.4" fill="var(--rose)" stroke="#fff" stroke-width="2"/>');
-    if(long)P.push('<text x="'+(xS-10)+'" y="'+(yNow+3)+'" text-anchor="end" font-family="Libre Franklin,sans-serif" font-size="9" font-weight="800" letter-spacing="0.12em" fill="var(--rose)" stroke="#fff" stroke-width="3.5" paint-order="stroke">TODAY</text>');
-    else P.push('<path d="M'+(xS-14)+','+(yNow-4.5)+' L'+(xS-7)+','+yNow+' L'+(xS-14)+','+(yNow+4.5)+' Z" fill="var(--rose)"/>');
+  if(showToday){
+    P.push('<line x1="'+(xS+7)+'" y1="'+yNow+'" x2="'+(xD+6)+'" y2="'+yNow+'" stroke="var(--danger)" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>');
+    P.push('<circle cx="'+xS+'" cy="'+yNow+'" r="4.4" fill="var(--danger)" stroke="var(--surface-2)" stroke-width="2"/>');
+    if(long)P.push('<text x="'+(xS-10)+'" y="'+(yNow+3)+'" text-anchor="end" '+mono+' letter-spacing="0.08em" fill="var(--danger)">TODAY</text>');
+    else P.push('<path d="M'+(xS-14)+','+(yNow-4.5)+' L'+(xS-7)+','+yNow+' L'+(xS-14)+','+(yNow+4.5)+' Z" fill="var(--danger)"/>');
   }
-
   svg.setAttribute('width',W);svg.setAttribute('height',H);
   svg.setAttribute('viewBox','0 0 '+W+' '+H);
   svg.innerHTML=P.join('');
 }
 
-/* ---------- the ticker ---------- */
-let CAL_TIMER=null,CAL_RAF=0;
+/* The ticker runs once a second but only animates when the minutes change,
+   and stops entirely while the clock is off-screen or the tab is hidden. */
+let CAL_TIMER=null,CAL_VISIBLE=true;
 function calTick(elDate){
   const clock=document.getElementById('calClock');if(!clock)return;
-  const units=[].slice.call(clock.querySelectorAll('.unit'));
+  const units=[...clock.querySelectorAll('.unit')];
   const elT=at(elDate);
   const step=()=>{
-    const now=new Date();
-    const nx=calRows(now).find(r=>!r.past);
-    const tEl=document.getElementById('calNextT'),dEl=document.getElementById('calNextD'),
-          sEl=document.getElementById('calNextS'),pEl=document.getElementById('calPre');
-    let target,pre;
-    if(nx){target=nx.live?nx.dEnd:nx.dStart;pre=nx.live?'Closes in':'Starts in';}
-    else{target=elT;pre='Counted from';}
-    if(nx&&tEl&&tEl.dataset.k!==nx.d){
-      tEl.dataset.k=nx.d;tEl.textContent=nx.t;
-      dEl.textContent=rangeLab(nx)+' · East Africa Time';
-      sEl.textContent=nx.s;
-    }
+    const now=new Date(), rows=calRows(now), nxI=rows.findIndex(r=>!r.past), nx=rows[nxI];
+    const tEl=$('#calNextT'),dEl=$('#calNextD'),sEl=$('#calNextS'),pEl=$('#calPre');
+    let target,pre,from;
+    if(nx){target=nx.live?nx.dEnd:nx.dStart;pre=nx.live?'Closes in':'Starts in';
+      from=nx.live?nx.dStart:(nxI>0?rows[nxI-1].dEnd:at('2026-09-01'));}
+    else{target=elT;pre='Counted from';from=elT;}
+    if(nx&&tEl&&tEl.dataset.k!==nx.d){tEl.dataset.k=nx.d;tEl.textContent=nx.t;dEl.textContent=rangeLab(nx)+' · East Africa Time';sEl.textContent=nx.s;}
     if(pEl&&pEl.textContent!==pre)pEl.textContent=pre;
     const ms=Math.max(0,target-now);
     const parts=[Math.floor(ms/864e5),Math.floor(ms%864e5/36e5),Math.floor(ms%36e5/6e4),Math.floor(ms%6e4/1e3)];
@@ -647,495 +1229,391 @@ function calTick(elDate){
       const txt=i===0?v.toLocaleString():String(v).padStart(2,'0');
       if(n.textContent!==txt){
         n.textContent=txt;
-        units[i].classList.remove('tick');void units[i].offsetWidth;units[i].classList.add('tick');
+        if(i<3&&!reduceMotion()){units[i].classList.remove('tick');void units[i].offsetWidth;units[i].classList.add('tick');}
       }
     });
-    const ed=document.getElementById('calElDays');
+    const gap=$('#calGap');if(gap&&target>from)gap.style.setProperty('--p',Math.min(1,Math.max(0,(now-from)/(target-from))).toFixed(4));
+    const ed=$('#calElDays');
     if(ed){const t=Math.max(0,Math.ceil((elT-now)/864e5)).toLocaleString();if(ed.textContent!==t)ed.textContent=t;}
   };
+  const run=()=>{clearInterval(CAL_TIMER);CAL_TIMER=null;if(CAL_VISIBLE&&!document.hidden){step();CAL_TIMER=setInterval(step,1000);}};
   step();
-  if(CAL_TIMER)clearInterval(CAL_TIMER);
-  CAL_TIMER=setInterval(step,1000);
+  if(window.IntersectionObserver)new IntersectionObserver(e=>{CAL_VISIBLE=e[0].isIntersecting;run();}).observe(clock);
+  document.addEventListener('visibilitychange',run);
+  run();
 }
 
-/* ---------- section assembly ---------- */
 function buildCountdown(){
-  const body=section('countdown','The clock','The road to 10 August 2027',
-    'Kenya votes on the second Tuesday of August 2027. Everything before it runs on a legal calendar — filings, resignations, primaries and registration windows that decide who is even on the ballot. Here is the whole road, and how long is left on each stretch.');
-  const elDate=((DATA.ctx||{}).calendar||{}).election_date_estimated||'2027-08-10';
-
+  const body=$('#calBody');body.innerHTML='';
+  const elDate=electionDate();
   const grid=el('div','cal');
   grid.appendChild(calClockCol(elDate));
   grid.appendChild(calTimeline());
   body.appendChild(grid);
-
-  const foot=el('p','note');
-  foot.style.marginTop='18px';
-  foot.innerHTML='<b>How to read the chart:</b> dots on the green spine sit at each milestone\u2019s true position in time, so you can see the long quiet stretch after December and the pile-up between March and June. Dates marked <em style="font-style:normal;color:var(--ochre);font-weight:700">indicative</em> can move with gazette notices or court rulings — treat the calendar as the shape of the race, not the final word.';
+  const foot=el('p','note');foot.style.marginTop='var(--s-5)';
+  foot.innerHTML='<b>How to read the chart:</b> dots on the spine sit at each milestone’s true position in time, so you can see the long quiet stretch after December and the pile-up between March and June. Dates marked <em style="font-style:normal;color:var(--ochre);font-weight:700">indicative</em> can move with gazette notices or court rulings.';
   body.appendChild(foot);
 
+  const now=new Date(), nx=calRows(now).find(r=>!r.past);
+  const days=Math.max(0,Math.ceil((at(elDate)-now)/864e5));
+  $('#calAnswer').innerHTML=nx?`Next: <strong>${esc(nx.t.toLowerCase())}</strong>, ${awayLab(nx,now)}. <b>${days.toLocaleString()}</b> days to polling day.`:'Kenya has voted.';
+
   calTick(elDate);
-  requestAnimationFrame(()=>{
-    calDrawSpine();
-    const sc=document.getElementById('tlScroll'),nxEl=document.querySelector('.tl-row.next'),fade=document.querySelector('.tl-fade');
-    const scrollable=sc&&sc.scrollHeight>sc.clientHeight+8;
-    if(scrollable&&nxEl)sc.scrollTop=Math.max(0,nxEl.offsetTop-90);
-    if(fade)fade.style.display=scrollable?'block':'none';
-  });
-  const list=document.getElementById('tlList');
-  if(list&&window.ResizeObserver){
-    new ResizeObserver(()=>{cancelAnimationFrame(CAL_RAF);CAL_RAF=requestAnimationFrame(calDrawSpine);}).observe(list);
-  }
+  const sc=$('#tlScroll');
+  const toNext=(smooth)=>{const n=document.querySelector('.tl-row.next');if(n&&sc)sc.scrollTo({top:Math.max(0,n.offsetTop-80),behavior:smooth&&!reduceMotion()?'smooth':'auto'});};
+  $('#tlToday').onclick=()=>toNext(true);
+  requestAnimationFrame(()=>{calDrawSpine();toNext(false);
+    const fade=document.querySelector('.tl-fade');if(fade)fade.style.display=sc.scrollHeight>sc.clientHeight+8?'block':'none';});
+  const list=$('#tlList');
+  if(list&&window.ResizeObserver){let raf=0;new ResizeObserver(()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(calDrawSpine);}).observe(list);}
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>requestAnimationFrame(calDrawSpine));
 }
 
-/* ================= DISTANCE TO WIN ================= */
-function buildDistance(){
-  const body=section('distance','National threshold','How the highest displayed average compares with 50%','Kenya\'s presidential rules include both a national-vote threshold and a county-distribution requirement. This panel shows only the national 50% reference line; it does not assess the county requirement or predict the election outcome.');
-  const holder=el('div');holder.id='distanceDynamic';body.appendChild(holder);
-  renderDistanceGauge();
-}
-function renderDistanceGauge(){
-  const host=$('#distanceDynamic');if(!host)return;
-  const avg=presidentialAverageRows();
-  if(!avg.length){host.innerHTML='<p class="faint">Polling average not available.</p>';return;}
-  const top=avg[0];
-  const g=el('div');g.style.margin='40px 0 8px';
-  const you=Math.min(100,top.weighted_average);
-  g.innerHTML=
-    '<div class="gauge">'+
-      '<div class="gauge-fill" style="width:'+you+'%"></div>'+
-      '<div class="gauge-you" style="left:'+you+'%">'+top.candidate.split(' ').slice(-1)[0]+' '+top.weighted_average.toFixed(1)+'%</div>'+
-      '<div class="gauge-mark" style="left:25%"></div>'+
-      '<div class="gauge-lab" style="left:25%">25% reference</div>'+
-      '<div class="gauge-mark win" style="left:50%"></div>'+
-      '<div class="gauge-lab win" style="left:50%">50% national line</div>'+
-    '</div>';
-  const gap=50-top.weighted_average;
-  host.innerHTML='';
-  host.appendChild(g);
-  host.appendChild(el('p','note','The highest displayed polling average is <b>'+top.weighted_average.toFixed(1)+'%</b>, which is <b>'+Math.abs(gap).toFixed(1)+' points '+(gap>=0?'below':'above')+'</b> the 50% national reference line. This comparison does not incorporate the county-distribution requirement and is not a forecast.'));
-}
-
-/* ================= TREND (hand-built SVG) ================= */
-let trendState={selected:null};
-function buildTrend(){
-  const body=section('trend','Movement','How support has shifted','The trend chart shows published presidential-preference observations. Methodology-held observations are visually marked so they can be distinguished from model-eligible data.');
-  const held=(DATA.polls||[]).filter(p=>p.model_eligible===false).slice().sort((a,b)=>b.date.localeCompare(a.date));
-  if(held.length){
-    const p=held[0];
-    const vals=Object.entries(p.figures||{}).filter(([name,v])=>isCandidate(name)&&Number.isFinite(v)).sort((a,b)=>b[1]-a[1]);
-    const top=vals.slice(0,5).map(([name,v])=>`<b>${name}</b> ${pct(v)}`).join(' · ');
-    const undecided=p.response_categories?.Undecided;
-    const card=el('div','card');
-    card.style.cssText='padding:16px;margin-bottom:18px;border-color:#E7C98D;background:#FFF9EC';
-    card.innerHTML=`<div class="eyebrow" style="color:#8A6421">Latest published poll · methodology hold</div>
-      <div class="franklin" style="font-weight:900;font-size:17px;margin-top:5px">${p.pollster} · ${fmtDate(p.date)}</div>
-      <p style="font-size:13.5px;line-height:1.55;margin:8px 0 0">${top}${Number.isFinite(undecided)?` · <b>Undecided</b> ${pct(undecided)}`:''}</p>
-      <p class="faint" style="font-size:12.5px;margin:8px 0 0">Published here with a methodology hold. It is included in the all-published average when that option is switched on, and excluded from the model-eligible-only average. <a class="src" href="${p.source_url}" target="_blank" rel="noopener">Source</a></p>`;
-    body.appendChild(card);
-  }
-  const polls=(DATA.polls||[]).filter(p=>
-    p.poll_type==='preferred_presidential_aspirant' ||
-    (p.poll_type==='preferred_presidential_candidate' && p.model_eligible===false)
-  ).slice().sort((a,b)=>a.date.localeCompare(b.date));
-  const dates=uniq(polls.map(p=>p.date)).sort();
-  const cands=uniq(polls.flatMap(p=>Object.keys(p.figures||{}))).filter(isCandidate);
-  const latestVal=c=>{for(let i=polls.length-1;i>=0;i--){const v=polls[i].figures?.[c];if(Number.isFinite(v))return v;}return 0;};
-  const ranked=cands.slice().sort((a,b)=>latestVal(b)-latestVal(a));
-  trendState.selected=new Set(ranked.slice(0,5));
-
-  const toggles=el('div');toggles.style.cssText='display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px';
-  ranked.forEach((c)=>{
-    const hasEligible=polls.some(p=>p.model_eligible!==false&&Number.isFinite(p.figures?.[c]));
-    const hasHeld=polls.some(p=>p.model_eligible===false&&Number.isFinite(p.figures?.[c]));
-    const suffix=!hasEligible&&hasHeld?' · held only':'';
-    const b=el('button','chip-toggle'+(trendState.selected.has(c)?' on':''),c+suffix);
-    if(!hasEligible&&hasHeld){b.title='This candidate currently appears only in methodology-held published releases.';}
-    b.onclick=()=>{trendState.selected.has(c)?trendState.selected.delete(c):trendState.selected.add(c);b.classList.toggle('on');drawTrend(polls,dates,ranked);};
-    toggles.appendChild(b);
-  });
-  body.appendChild(toggles);
-  const hold=el('div','chart-hold');hold.id='trendHold';body.appendChild(hold);
-  const cap=el('p','faint','Methodology-held polls are plotted on the chart. Solid segments and filled dots are model-eligible observations; dashed segments and hollow dots mark methodology-held published observations. The average switch above controls whether methodology-held polls are included in the displayed average. Polls are spaced evenly by wave for readability, not by exact day gaps.');cap.style.fontSize='12.5px';cap.style.marginTop='10px';
-  body.appendChild(cap);
-  drawTrend(polls,dates,ranked);
-}
-function drawTrend(polls,dates,ranked){
-  const hold=$('#trendHold');if(!hold)return;
-  const W=Math.max(680,dates.length*150), H=380, padL=40,padR=135,padT=20,padB=44;
-  const sel=[...trendState.selected];
-  const maxY=Math.max(45,...polls.flatMap(p=>Object.values(p.figures||{}).filter(Number.isFinite)))+3;
-  const x=i=>padL+(dates.length<=1?0:i/(dates.length-1))*(W-padL-padR);
-  const y=v=>padT+(1-v/maxY)*(H-padT-padB);
-  let g='';
-  for(let t=0;t<=maxY;t+=10){g+=`<line class="grid" x1="${padL}" y1="${y(t)}" x2="${W-padR}" y2="${y(t)}"/><text class="axis-lab" x="${padL-8}" y="${y(t)+4}" text-anchor="end">${t}%</text>`;}
-  dates.forEach((d,i)=>{g+=`<text class="axis-lab" x="${x(i)}" y="${H-padB+20}" text-anchor="middle">${fmtDate(d)}</text>`;});
-  sel.forEach((c)=>{
-    const color=PALETTE[ranked.indexOf(c)%PALETTE.length];
-    const pts=[];
-    dates.forEach((d,i)=>{
-      const rec=polls.find(p=>p.date===d&&Number.isFinite(p.figures?.[c]));
-      const v=rec?.figures?.[c];
-      if(Number.isFinite(v))pts.push({x:x(i),y:y(v),v,held:rec.model_eligible===false,pollster:rec.pollster});
-    });
-    if(!pts.length)return;
-
-    for(let i=1;i<pts.length;i++){
-      const a=pts[i-1],b=pts[i];
-      const held=a.held||b.held;
-      g+=`<line class="line" stroke="${color}" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"${held?' stroke-dasharray="7 6" opacity=".78"':''}/>`;
-    }
-
-    pts.forEach(p=>{
-      if(p.held){
-        g+=`<circle cx="${p.x}" cy="${p.y}" r="6" fill="#fff" stroke="${color}" stroke-width="3"/>`;
-        g+=`<circle cx="${p.x}" cy="${p.y}" r="2" fill="${color}"/>`;
-      }else{
-        g+=`<circle class="dot" fill="${color}" cx="${p.x}" cy="${p.y}" r="4"/>`;
-      }
-    });
-
-    const last=pts[pts.length-1];
-    const heldMark=last.held?' · held':'';
-    g+=`<text class="end-lab" fill="${color}" x="${last.x+10}" y="${last.y+4}">${c.split(' ').slice(-1)[0]} ${last.v.toFixed(last.v%1?1:0)}%${heldMark}</text>`;
-  });
-  hold.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Published presidential preference over time, including methodology-held observations">${g}</svg>`;
-}
-
-/* ================= WIN RULES ================= */
-function buildRules(){
-  const wr=(DATA.ctx||{}).win_rule||{};
-  const body=section('rules','The rulebook','What it actually takes to win',wr.why_it_matters||'');
-  const gates=el('div','gates');
-  (wr.conditions||[]).forEach((c,i)=>{
-    const g=el('div','gate');
-    g.innerHTML=`<div class="gate-num">${i+1}</div><h4>${i===0?'Win the national vote':'Win broadly across the country'}</h4><p class="muted" style="font-size:14px;margin:8px 0 0">${c}</p>`;
-    gates.appendChild(g);
-  });
-  body.appendChild(gates);
-  if(wr.if_no_winner)body.appendChild(el('p','note',`<b>If nobody clears both bars:</b> ${wr.if_no_winner}`));
-}
-
-/* ================= HISTORY ================= */
-function buildHistory(){
-  const hist=((DATA.ctx||{}).historical_results||[]);
-  if(!hist.length)return;
-  const body=section('history','The record','How past presidential races ended','Winner versus runner-up in the first round of Kenya\u2019s last three presidential elections. Recent contests have been close.');
-  const max=Math.max(...hist.flatMap(h=>[h.winner_pct,h.runner_up_pct]),60);
-  hist.forEach(h=>{
-    const card=el('div','card');card.style.cssText='padding:18px;margin-bottom:12px';
-    card.innerHTML=`
-      <div style="display:flex;justify-content:space-between;align-items:baseline">
-        <span class="franklin" style="font-weight:900;font-size:18px">${h.year}</span>
-        <span class="faint" style="font-size:12.5px">First round</span>
-      </div>
-      <div class="barrow">
-        <div class="lab"><span>${h.winner} · winner</span><b>${h.winner_pct}%</b></div>
-        <div class="barline"><span style="width:${h.winner_pct/max*100}%;background:var(--forest)"></span></div>
-        <div class="lab" style="margin-top:8px"><span class="muted">${h.runner_up}</span><b class="muted">${h.runner_up_pct}%</b></div>
-        <div class="barline"><span style="width:${h.runner_up_pct/max*100}%;background:var(--ink-faint)"></span></div>
-      </div>
-      <p class="faint" style="font-size:12.5px;margin:12px 0 0">${h.note||''}</p>`;
-    body.appendChild(card);
-  });
-}
-
-/* ================= WHAT-IF (coalition) ================= */
-let scenarioState={coalitions:null};
+/* ================= WHAT-IF: coalition builder =================
+   Each candidate is assigned to exactly one team (or runs solo) with a radio
+   group, so nobody can be on two teams. Shares come from the same average as
+   the headline, and every candidate stays in the race: the run-off test is
+   measured against the whole decided field, not just the selected teams. */
+const TEAM_COLORS=['var(--c1)','var(--c2)','var(--c3)','var(--c4)'];
+const CB={teams:[{name:'Ruto’s side'},{name:'United opposition'}],assign:{}};
 function buildWhatIf(){
-  const body=section('whatif','Play it out','What if candidates joined forces?','Kenyan elections are won by alliances, not lone runners. Build two or more teams from the current candidates, decide how well their supporters would actually stick together, and see who would come out ahead — with an honest allowance for polls being off.');
-  const cands=uniq((DATA.polls||[]).flatMap(p=>Object.keys(p.figures||{}))).filter(isCandidate).sort();
-  const ctrl=el('div','card');ctrl.style.padding='20px';
-  ctrl.innerHTML=`
-    <div class="grid2" style="gap:14px">
-      <label class="fld"><span>How much could the polls be off? (points either way)</span><input id="wiUncert" type="number" value="4.5" step="0.5" min="0" max="20"></label>
-      <label class="fld"><span>How well do combined supporters stick together? (%)</span><input id="wiTransfer" type="number" value="85" step="5" min="50" max="100"></label>
+  const body=$('#whatifBody');body.innerHTML='';
+  const rows=presidentialAverageRows();
+  if(!rows.length){body.innerHTML='<p class="meta">Polling average not available.</p>';return;}
+  let opp=0;
+  rows.forEach(r=>{if(/ruto/i.test(r.candidate))CB.assign[r.candidate]=0;else if(opp<4){CB.assign[r.candidate]=1;opp++;}else CB.assign[r.candidate]=-1;});
+  const card=el('div','card cb');
+  card.innerHTML=`<div class="cb-knobs">
+      <label class="cb-knob">Polls could be off by <output id="cbUo">±4.5 pts</output>
+        <input id="cbU" type="range" min="0" max="10" step="0.5" value="4.5" list="cbUt">
+        <datalist id="cbUt"><option value="3"></option><option value="5"></option></datalist>
+        <span class="meta">Typical error for a single Kenyan poll is 3–5 points.</span></label>
+      <label class="cb-knob">Supporters who follow into a coalition <output id="cbTo">85%</output>
+        <input id="cbT" type="range" min="50" max="100" step="5" value="85" list="cbTt">
+        <datalist id="cbTt"><option value="80"></option><option value="90"></option></datalist>
+        <span class="meta">Real coalitions leak, so 80–90% is usually more realistic than 100%.</span></label>
     </div>
-    <p class="faint" style="font-size:12.5px;margin:10px 0 0">100% means every supporter follows their candidate into the alliance. Real coalitions leak — supporters stay home or defect — so 80\u201390% is usually more realistic.</p>
-    <div id="wiTeams" style="margin-top:16px"></div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
-      <button class="btn" id="wiAdd">+ Add a team</button>
-      <button class="btn btn-primary" id="wiRun">See who wins</button>
-    </div>`;
-  body.appendChild(ctrl);
-  const out=el('div');out.id='wiOut';out.style.marginTop='20px';body.appendChild(out);
-
-  const ruto=cands.find(c=>/ruto/i.test(c));
-  const opp=cands.filter(c=>!/ruto/i.test(c));
-  scenarioState.coalitions=[{name:'President Ruto\u2019s side',members:ruto?[ruto]:[]},{name:'Opposition alliance',members:opp.slice(0,3)}];
-  renderTeams(cands);
-  $('#wiAdd').onclick=()=>{scenarioState.coalitions.push({name:'New team',members:[]});renderTeams(cands);};
-  $('#wiRun').onclick=runWhatIf;
-  runWhatIf();
-}
-function renderTeams(cands){
-  const host=$('#wiTeams');host.innerHTML='';
-  scenarioState.coalitions.forEach((coal,idx)=>{
-    const box=el('div','card');box.style.cssText='padding:14px;margin-bottom:10px;background:var(--line-soft)';
-    const head=el('input');head.type='text';head.value=coal.name;head.style.fontWeight='800';head.style.fontFamily="'Libre Franklin'";
-    head.oninput=()=>{coal.name=head.value;};
-    box.appendChild(head);
-    const grid=el('div');grid.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;margin-top:10px';
-    cands.forEach(c=>{
-      const lab=el('label');lab.style.cssText='display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600';
-      const cb=el('input');cb.type='checkbox';cb.checked=coal.members.includes(c);
-      cb.onchange=()=>{cb.checked?(coal.members.includes(c)||coal.members.push(c)):(coal.members=coal.members.filter(m=>m!==c));};
-      lab.appendChild(cb);lab.appendChild(document.createTextNode(c));grid.appendChild(lab);
-    });
-    box.appendChild(grid);host.appendChild(box);
-  });
+    <div><p class="mono-xs" style="color:var(--ink-3);margin-bottom:var(--s-2)">Teams</p><div class="cb-teams" id="cbTeams"></div></div>
+    <div><p class="mono-xs" style="color:var(--ink-3)">Who joins which team · defaults: Ruto vs the four highest-polling challengers</p>
+      <div class="cb-grid" id="cbGrid" role="group" aria-label="Assign each candidate to a team"></div></div>
+    <div class="cb-out" id="cbOut" aria-live="polite"></div>`;
+  body.appendChild(card);
+  let raf=0;const schedule=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(simulateCoalitions);};
+  const paintTeams=()=>{
+    $('#cbTeams').innerHTML=CB.teams.map((t,i)=>`<span class="cb-team" style="--tc:${TEAM_COLORS[i]}"><b>${String.fromCharCode(65+i)}</b>
+        <input value="${esc(t.name)}" data-t="${i}" aria-label="Team ${String.fromCharCode(65+i)} name">
+        ${CB.teams.length>2?`<button type="button" data-rm="${i}" aria-label="Remove team ${String.fromCharCode(65+i)}">×</button>`:''}</span>`).join('')+
+      (CB.teams.length<4?'<button class="btn btn-sm" type="button" id="cbAdd">+ Add a team</button>':'');
+    $('#cbTeams').querySelectorAll('input').forEach(n=>n.oninput=()=>{CB.teams[n.dataset.t].name=n.value||('Team '+String.fromCharCode(65+ +n.dataset.t));schedule();});
+    $('#cbTeams').querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{const i=+b.dataset.rm;CB.teams.splice(i,1);
+      Object.keys(CB.assign).forEach(k=>{if(CB.assign[k]===i)CB.assign[k]=-1;else if(CB.assign[k]>i)CB.assign[k]--;});paintTeams();paintGrid();schedule();});
+    const add=$('#cbAdd');if(add)add.onclick=()=>{CB.teams.push({name:'Team '+String.fromCharCode(65+CB.teams.length)});paintTeams();paintGrid();schedule();};
+  };
+  const paintGrid=()=>{
+    $('#cbGrid').innerHTML=rows.map((r,ri)=>`<div class="cb-row" role="radiogroup" aria-labelledby="cbn${ri}" data-c="${esc(r.candidate)}">
+        <span class="cb-name" id="cbn${ri}">${esc(r.candidate)}</span><span class="cb-avg">${f1(r.weighted_average)}%</span>
+        <span class="seg">${CB.teams.map((t,ti)=>`<label style="--tc:${TEAM_COLORS[ti]}"><input type="radio" name="cb${ri}" value="${ti}" aria-label="${esc(t.name)}"
+          ${CB.assign[r.candidate]===ti?'checked':''}><span>${String.fromCharCode(65+ti)}</span></label>`).join('')}
+          <label><input type="radio" name="cb${ri}" value="-1" aria-label="Runs solo" ${!(CB.assign[r.candidate]>=0)?'checked':''}><span>Solo</span></label></span>
+      </div>`).join('');
+    $('#cbGrid').querySelectorAll('input').forEach(n=>n.onchange=()=>{CB.assign[rows[+n.name.slice(2)].candidate]=+n.value;schedule();});
+    const extra=[...$('#cbGrid').children].slice(8);
+    if(extra.length&&!CB.showAll){
+      extra.forEach(r=>r.hidden=true);
+      const more=el('button','btn btn-sm',`Show ${extra.length} more candidates`);more.type='button';more.style.cssText='grid-column:1/-1;justify-self:start;margin-top:var(--s-2)';
+      more.onclick=()=>{CB.showAll=true;extra.forEach(r=>r.hidden=false);more.remove();};
+      $('#cbGrid').appendChild(more);
+    }
+  };
+  const knob=()=>{$('#cbUo').value='±'+$('#cbU').value+' pts';$('#cbTo').value=$('#cbT').value+'%';schedule();};
+  $('#cbU').oninput=knob;$('#cbT').oninput=knob;
+  paintTeams();paintGrid();simulateCoalitions();
 }
 function randn(){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
-function latestFigures(){
-  const polls=(DATA.polls||[]).filter(p=>p.poll_type==='preferred_presidential_aspirant').slice().sort((a,b)=>a.date.localeCompare(b.date));
-  return polls[polls.length-1]?.figures||{};
+function coalitionField(){
+  const rows=presidentialAverageRows(), t=+($('#cbT')?.value||85)/100;
+  const blocs=CB.teams.map((tm,i)=>{const m=rows.filter(r=>CB.assign[r.candidate]===i);
+      return {name:tm.name,c:TEAM_COLORS[i],members:m.map(r=>r.candidate),base:m.reduce((s,r)=>s+r.weighted_average,0)*(m.length>1?t:1)};})
+    .filter(b=>b.members.length);
+  const solo=rows.filter(r=>!(CB.assign[r.candidate]>=0)).map(r=>({name:r.candidate,c:'var(--ink-3)',members:[r.candidate],base:r.weighted_average,solo:true}));
+  return [...blocs,...solo];
 }
-function runWhatIf(){
-  const fig=latestFigures();
-  const uncert=Math.max(0,+$('#wiUncert').value||0);
-  const transfer=Math.min(100,Math.max(50,+$('#wiTransfer').value||100))/100;
-  const teams=scenarioState.coalitions.map(c=>({name:c.name,members:c.members,base:c.members.reduce((s,m)=>s+(+fig[m]||0),0)*(c.members.length>1?transfer:1)})).filter(t=>t.members.length);
-  const out=$('#wiOut');
-  if(teams.length<1){out.innerHTML='<p class="faint">Add at least one team with a candidate.</p>';return;}
-  const runs=5000;const wins=Object.fromEntries(teams.map(t=>[t.name,0]));let outright=0;
-  for(let i=0;i<runs;i++){
-    const draw=teams.map(t=>({name:t.name,v:Math.max(0,t.base+randn()*uncert)})).sort((a,b)=>b.v-a.v);
-    const tot=draw.reduce((s,d)=>s+d.v,0)||1;
-    if(draw[0].v/tot*100>50)outright++;
-    wins[draw[0].name]++;
+function simulateCoalitions(){
+  const out=$('#cbOut');if(!out)return;
+  const u=+$('#cbU').value, field=coalitionField();
+  if(!field.length){out.innerHTML='<p class="meta">Put at least one candidate on a team.</p>';return;}
+  const N=4000, lead=new Map(field.map(f=>[f.name,0]));let outright=0;
+  for(let k=0;k<N;k++){
+    let tot=0,best=null;
+    for(const f of field){const v=Math.max(0,f.base+randn()*u);tot+=v;if(!best||v>best.v)best={n:f.name,v};}
+    lead.set(best.n,lead.get(best.n)+1);
+    if(tot>0&&best.v/tot>.5)outright++;
   }
-  const res=teams.map(t=>({...t,share:t.base,win:wins[t.name]/runs*100})).sort((a,b)=>b.share-a.share);
-  const max=Math.max(...res.map(r=>r.share),1);
-  let html='';
-  res.forEach((r,i)=>{
-    html+=`<div class="card" style="padding:16px;margin-bottom:10px${i===0?';border-color:var(--forest)':''}">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
-        <div><div class="franklin" style="font-weight:900;font-size:16px">${r.name}</div><div class="faint" style="font-size:12px;margin-top:2px">${r.members.join(' + ')}</div></div>
-        <div style="text-align:right"><div class="franklin tnum" style="font-weight:900;font-size:26px;color:${i===0?'var(--forest)':'var(--ink)'}">${r.share.toFixed(0)}%</div><div class="faint" style="font-size:12px">of the vote</div></div>
-      </div>
-      <div class="barline" style="margin-top:10px"><span style="width:${r.share/max*100}%;background:${i===0?'var(--forest)':'var(--ink-faint)'}"></span></div>
-      <div class="muted" style="font-size:13px;margin-top:8px">Leads the field in <b>${r.win.toFixed(0)}%</b> of simulations</div>
-    </div>`;
-  });
-  html+=`<p class="note ${outright/runs*100<50?'warn':''}">In <b>${(100-outright/runs*100).toFixed(0)}%</b> of runs no team clears 50%+1 — meaning a <b>run-off</b> between the top two. Supporters assumed to stick together at <b>${($('#wiTransfer').value)}%</b>, with polls allowed to be off by <b>\u00b1${$('#wiUncert').value} points</b>. This is a what-if, not a prediction.</p>`;
-  out.innerHTML=html;
+  const decided=field.reduce((s,f)=>s+f.base,0)||1, runPct=100-outright/N*100;
+  const blocs=field.filter(f=>!f.solo).sort((a,b)=>b.base-a.base);
+  const solos=field.filter(f=>f.solo);
+  const soloShare=solos.reduce((s,f)=>s+f.base,0)/decided*100;
+  out.innerHTML=`<p class="mono-xs" style="color:var(--ink-3)">Share of decided voters</p>
+    <div class="stack-wrap"><i class="half" aria-hidden="true"></i>
+      <div class="stack" role="img" aria-label="Share of decided vote by team">${blocs.map(f=>`<i style="--w:${(f.base/decided*100).toFixed(2)}%;--tc:${f.c}" title="${esc(f.name)}"></i>`).join('')}${soloShare>0?`<i class="solo" style="--w:${soloShare.toFixed(2)}%" title="Running solo"></i>`:''}</div></div>
+    <div class="cb-res">${blocs.map(f=>`<i class="sw" style="--tc:${f.c}"></i>
+        <span><b>${esc(f.name)}</b><span class="mem">${f.members.map(esc).join(' + ')}</span></span>
+        <span class="big">${f1(f.base/decided*100)}%</span>
+        <span class="num meta">leads ${(lead.get(f.name)/N*100).toFixed(0)}% of runs</span>`).join('')}
+      ${solos.length?`<i class="sw" style="--tc:var(--line-strong)"></i><span><b>Running solo</b><span class="mem">${solos.length} candidate${solos.length===1?'':'s'}, largest ${esc(surname(solos.sort((a,b)=>b.base-a.base)[0].name))}</span></span><span class="big" style="color:var(--ink-3)">${f1(soloShare)}%</span><span></span>`:''}
+    </div>
+    <div class="runoff"><div style="display:flex;justify-content:space-between" class="meta"><span>Outright win <b class="num">${(100-runPct).toFixed(0)}%</b></span><span>Run-off <b class="num">${runPct.toFixed(0)}%</b></span></div>
+      <div class="runoff-bar" aria-hidden="true"><i style="flex:0 0 ${(100-runPct).toFixed(1)}%"></i><i style="flex:1"></i></div></div>
+    <p class="note ${runPct>50?'warn':''}" style="margin-top:var(--s-4)">In <b>${runPct.toFixed(0)}%</b> of ${N.toLocaleString()} simulated runs nobody passes 50% of decided voters, which means a <b>run-off</b>. Undecided voters are left out; ${(100-+$('#cbT').value)}% of coalition supporters leak away; polls are allowed to be off by ±${$('#cbU').value} points. The 25%-in-24-counties rule isn't modelled. A what-if, not a prediction.</p>`;
 }
 
-/* ================= BIGGER PICTURE ================= */
+/* ================= SIGNALS ================= */
 function buildPicture(){
-  const body=section('picture','Beyond the headline number','The signals that decide the race','Who leads a poll matters less than who can build a winning coalition, whether people trust the vote, and whether the governing alliance holds. Here is what the data shows on each.');
-
+  const body=$('#picBody');body.innerHTML='';
+  const grid=el('div','signals');
   const ap=(DATA.alliance||[])[0];
   if(ap){
-    const c=el('div','card');c.style.cssText='padding:20px;margin-bottom:16px';
-    let bars='';const max=Math.max(...ap.pairings.map(p=>p.support_pct),1);
-    ap.pairings.forEach(p=>{bars+=`<div class="lab" style="margin-top:10px"><span>${p.name}</span><b>${p.support_pct}%</b></div><div class="barline"><span style="width:${p.support_pct/max*100}%;background:var(--forest)"></span></div>`;});
-    const bp=(ap.best_placed_to_beat_incumbent||[]).map(x=>`${x.name.split(' ').slice(-1)[0]} ${x.support_pct}%`).join(' · ');
-    c.innerHTML=`<h3 class="franklin" style="font-weight:900;font-size:19px;margin:0">Which alliance would voters prefer?</h3>
-      <p class="muted" style="font-size:13.5px;margin:6px 0 0">${ap.base} Asked ${fmtDate(ap.date)} by ${ap.pollster}.</p>
-      <div class="barrow">${bars}</div>
-      ${bp?`<p class="faint" style="font-size:13px;margin:14px 0 0">Seen as best-placed to beat the incumbent: ${bp}</p>`:''}
-      <a class="src" href="${ap.source_url}" target="_blank" rel="noopener">Source</a>`;
-    body.appendChild(c);
+    const c=el('div','card s-alliance');
+    const max=Math.max(...ap.pairings.map(p=>p.support_pct),1);
+    const bp=(ap.best_placed_to_beat_incumbent||[]).map(x=>`${esc(surname(x.name))} ${x.support_pct}%`).join(' · ');
+    c.innerHTML=`<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s-2)"><h3 class="card-h">Which opposition ticket do supporters prefer?</h3><span class="pill sub">Subsample</span></div>
+      <p class="card-sub">${esc(ap.base)} ${esc(ap.pollster)}, ${fmtDate(ap.date)}.</p>
+      <div class="bars">${ap.pairings.map(p=>`<div><div class="bar-lab"><span>${esc(p.name)}</span><b>${p.support_pct}%</b></div>
+        <div class="barline hatch" style="--bc:var(--accent)"><span style="--v:${(p.support_pct/max).toFixed(3)}"></span></div></div>`).join('')}</div>
+      ${bp?`<p class="meta" style="margin-top:var(--s-4)">Seen as best placed to beat the incumbent: <span class="num">${bp}</span></p>`:''}
+      <p style="margin-top:var(--s-3)"><a class="src" href="${esc(ap.source_url)}" target="_blank" rel="noopener">Source</a></p>`;
+    grid.appendChild(c);
   }
-
-  const grid=el('div','grid2');
+  const reg=(DATA.ctx||{}).registration||{};
+  if(reg.expected_new_voters_2027){
+    const c=el('div','card s-voters');
+    c.innerHTML=`<h3 class="card-h">New voters expected</h3>
+      <p class="stat-big">+${(reg.expected_new_voters_2027/1e6).toFixed(1)}M</p>
+      <p class="card-sub" style="margin-top:var(--s-3)">On top of ${(reg.registered_voters_2022/1e6).toFixed(1)}M registered in 2022 — mostly young Kenyans, who are harder to poll. The biggest unknown in any projection.</p>
+      <p style="margin-top:var(--s-3)"><a class="src" href="${esc(reg.source_url)}" target="_blank" rel="noopener">Source</a></p>`;
+    grid.appendChild(c);
+  }
   const ig=(DATA.integrity||[])[0];
   if(ig){
     const m=ig.metrics||{};
-    const items=[
-      ['Have no confidence in a fair 2027 vote',m.no_confidence_2027_election_integrity_pct],
+    const items=[['Have no confidence in a fair 2027 vote',m.no_confidence_2027_election_integrity_pct],
       ['Doubt the results of the last 3 elections',m.question_validity_last_three_presidential_elections_pct],
-      ['Distrust how the IEBC was picked',m.no_confidence_iebc_vetting_process_pct]
-    ];
-    const c=el('div','card');c.style.padding='20px';
-    let rows='';items.forEach(([lab,v])=>{rows+=`<div class="lab" style="margin-top:12px"><span>${lab}</span><b>${v}%</b></div><div class="barline"><span style="width:${v}%;background:var(--ochre)"></span></div>`;});
-    c.innerHTML=`<h3 class="franklin" style="font-weight:900;font-size:19px;margin:0">Do people trust the vote?</h3>
-      <p class="muted" style="font-size:13.5px;margin:6px 0 0">Share of Kenyans who say they don\u2019t. A different question from who they support.</p>
-      <div class="barrow">${rows}</div>
-      <p class="faint" style="font-size:12.5px;margin:14px 0 0">${ig.pollster}, ${fmtDate(ig.date)}. One survey — a snapshot, not a trend. <a class="src" href="${ig.source_url}" target="_blank" rel="noopener">Source</a></p>`;
+      ['Distrust how the IEBC was picked',m.no_confidence_iebc_vetting_process_pct]].filter(([,v])=>Number.isFinite(v));
+    const c=el('div','card s-trust');
+    c.innerHTML=`<h3 class="card-h">Do people trust the vote?</h3>
+      <p class="card-sub">Share of Kenyans who say they don’t. The tick marks half.</p>
+      <div class="bars">${items.map(([lab,v])=>`<div><div class="bar-lab"><span>${lab}</span><b>${v}%</b></div>
+        <div class="barline" style="--bc:var(--ochre)"><span style="--v:${(v/100).toFixed(3)}"></span><i class="mid"></i></div></div>`).join('')}</div>
+      <p class="meta" style="margin-top:var(--s-4)">${esc(ig.pollster)}, ${fmtDate(ig.date)}. One survey — a snapshot, not a trend. <a class="src" href="${esc(ig.source_url)}" target="_blank" rel="noopener">Source</a></p>`;
     grid.appendChild(c);
   }
   const cr=DATA.coalition;
-  if(cr&&cr.support_series){
-    const s=cr.support_series;const first=s[0],last=s[s.length-1];
-    const c=el('div','card');c.style.padding='20px';
-    const down=last.support_broad_based_government_pct<first.support_broad_based_government_pct;
-    const arrow=down?'\u25BC':'\u25B2';
-    const col=down?'var(--rose)':'var(--forest)';
-    c.innerHTML=`<h3 class="franklin" style="font-weight:900;font-size:19px;margin:0">Is the governing alliance holding?</h3>
-      <p class="muted" style="font-size:13.5px;margin:6px 0 0">Public support for the Broad-Based Government arrangement.</p>
-      <div style="display:flex;align-items:flex-end;gap:16px;margin-top:18px">
-        <div><div class="faint" style="font-size:12px">${fmtShort(first.date)}</div><div class="franklin tnum" style="font-weight:900;font-size:30px">${first.support_broad_based_government_pct}%</div></div>
-        <div class="franklin" style="font-size:22px;color:${col};padding-bottom:6px">${arrow}</div>
-        <div><div class="faint" style="font-size:12px">${fmtShort(last.date)}</div><div class="franklin tnum" style="font-weight:900;font-size:30px;color:${col}">${last.support_broad_based_government_pct}%</div></div>
-        ${last.oppose_broad_based_government_pct!=null?`<div style="margin-left:auto;text-align:right"><div class="faint" style="font-size:12px">now oppose</div><div class="franklin tnum" style="font-weight:900;font-size:30px;color:var(--ochre)">${last.oppose_broad_based_government_pct}%</div></div>`:''}
-      </div>
-      <p class="faint" style="font-size:12.5px;margin:16px 0 0">Two readings only; the earlier one is second-hand. Directional, not definitive.</p>`;
+  if(cr&&cr.support_series&&cr.support_series.length>=2){
+    const s=cr.support_series, a=s[0], b=s[s.length-1];
+    const va=a.support_broad_based_government_pct, vb=b.support_broad_based_government_pct, op=b.oppose_broad_based_government_pct;
+    const W=320,H=150,pl=44,pr=64,pt=14,pb=26, Y=v=>pt+(1-v/70)*(H-pt-pb);
+    const c=el('div','card s-bbg slope');
+    c.innerHTML=`<h3 class="card-h">Is the governing alliance holding?</h3>
+      <p class="card-sub">Support for the Broad-Based Government arrangement.</p>
+      <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Support fell from ${va}% to ${vb}%${op!=null?`; ${op}% now oppose`:''}">
+        ${[0,25,50].map(t=>`<line class="gridl" x1="${pl}" x2="${W-pr}" y1="${Y(t)}" y2="${Y(t)}"/><text class="ax" x="${pl-8}" y="${Y(t)+4}" text-anchor="end">${t}%</text>`).join('')}
+        <line x1="${pl+10}" y1="${Y(va)}" x2="${W-pr-10}" y2="${Y(vb)}" stroke="var(--danger)" stroke-width="2.5" stroke-dasharray="6 5"/>
+        <circle cx="${pl+10}" cy="${Y(va)}" r="5.5" fill="var(--surface-2)" stroke="var(--ink-2)" stroke-width="2"/>
+        <circle cx="${W-pr-10}" cy="${Y(vb)}" r="5.5" fill="var(--danger)"/>
+        <text x="${pl+10}" y="${Y(va)-12}" text-anchor="middle" class="end-lab" fill="var(--ink-2)"><tspan>${va}%</tspan></text>
+        <text x="${W-pr-10}" y="${Y(vb)-12}" text-anchor="middle" class="end-lab" fill="var(--danger)"><tspan>${vb}%</tspan></text>
+        ${op!=null?`<circle cx="${W-pr-10}" cy="${Y(op)}" r="4.5" fill="var(--ochre)"/><text x="${W-pr}" y="${Y(op)+4}" class="end-lab" fill="var(--ochre)">oppose <tspan>${op}%</tspan></text>`:''}
+        <text class="ax" x="${pl+10}" y="${H-6}" text-anchor="middle">${fmtShort(a.date)}</text>
+        <text class="ax" x="${W-pr-10}" y="${H-6}" text-anchor="middle">${fmtShort(b.date)}</text>
+      </svg>
+      <p class="meta" style="margin-top:var(--s-2)">Two readings only; the hollow first point is second-hand. Directional, not definitive.</p>`;
     grid.appendChild(c);
+    if(ig)$('#picAnswer').innerHTML=`<b>${ig.metrics?.no_confidence_2027_election_integrity_pct}%</b> have no confidence in a fair 2027 vote; support for the broad-based government went from <b>${va}%</b> to <b>${vb}%</b>.`;
   }
   body.appendChild(grid);
 }
 
-/* ================= TRUST + fact-checks + sources + map ================= */
+/* ================= HISTORY: margin chart ================= */
+function buildHistory(){
+  const hist=((DATA.ctx||{}).historical_results||[]);
+  const body=$('#histBody');body.innerHTML='';
+  if(!hist.length){$('#history').hidden=true;return;}
+  const lo=35, hi=60, X=v=>((Math.min(hi,Math.max(lo,v))-lo)/(hi-lo)*100).toFixed(2)+'%';
+  const annulled=h=>/annul/i.test(h.note||'');
+  const card=el('div','card');
+  card.innerHTML=`<div class="margins">
+      <span></span><div class="m-axis meta num" aria-hidden="true">${[35,40,45,50,55,60].map(t=>`<span style="--x:${X(t)}">${t}%</span>`).join('')}</div><span class="meta" style="text-align:right">margin</span>
+      ${hist.map(h=>`<div class="m-row">
+        <span class="m-year">${h.year}${annulled(h)?'<small><span class="pill bad">Annulled</span></small>':''}</span>
+        <div class="m-track${annulled(h)?' annulled':''}" role="img" aria-label="${h.year}: ${esc(h.winner)} ${h.winner_pct}%, ${esc(h.runner_up)} ${h.runner_up_pct}%">
+          <i class="m-half" style="--x:${X(50)}"></i>
+          <i class="m-gap" style="--a:${X(h.runner_up_pct)};--b:${X(h.winner_pct)}"></i>
+          <i class="m-dot ru" style="--x:${X(h.runner_up_pct)}" title="${esc(h.runner_up)}"></i>
+          <i class="m-dot" style="--x:${X(h.winner_pct)};--dc:var(--accent)" title="${esc(h.winner)}"></i>
+        </div>
+        <span class="m-margin">+${(h.winner_pct-h.runner_up_pct).toFixed(1)}</span>
+      </div>`).join('')}
+    </div>
+    <div class="legend-row meta" style="margin-top:var(--s-4)"><span><i class="m-dot" style="position:static;display:inline-block;margin:0;--dc:var(--accent);width:10px;height:10px"></i>Winner</span>
+      <span><i class="m-dot ru" style="position:static;display:inline-block;margin:0;width:10px;height:10px"></i>Runner-up</span>
+      <span><i style="display:inline-block;width:1px;height:12px;background:var(--danger)"></i>50% line</span></div>
+    <ul class="m-notes">${hist.map(h=>`<li><b>${h.year}</b> · ${esc(h.winner)} ${h.winner_pct}% vs ${esc(h.runner_up)} ${h.runner_up_pct}%. ${esc(h.note||'')} <a class="src" href="${esc(h.source_url)}" target="_blank" rel="noopener">Source</a></li>`).join('')}</ul>`;
+  body.appendChild(card);
+  const valid=hist.filter(h=>!annulled(h));
+  $('#histAnswer').innerHTML=`Upheld winners cleared 50% by ${valid.map(h=>`<b>${(h.winner_pct-50).toFixed(2)}</b> pts in ${h.year}`).join(' and ')} — less than a point either time.`;
+}
+
+/* ================= TRUST: fact-checks, sources ledger, method ================= */
+const TYPE_LABEL={preferred_presidential_aspirant:'Presidential preference',preferred_presidential_candidate:'Presidential preference',popularity_rating:'Popularity rating'};
 function buildTrust(){
-  const body=section('trust','Trust & sources','How to trust these numbers','This tracker only shows figures traced to a named, published source, and is upfront about how thin the data still is. Below: fabricated \u201Cpolls\u201D we\u2019ve flagged, and every source behind the numbers above.');
-
+  const body=$('#trustBody');body.innerHTML='';
   const claims=DATA.claims||[];
-  if(claims.length){
-    const wrap=el('div');wrap.style.marginBottom='24px';
-    const h=el('h3','franklin','Fake polls, flagged');h.style.cssText='font-weight:900;font-size:19px;margin:0 0 4px';
-    wrap.appendChild(h);
-    wrap.appendChild(el('p','muted','Kenya\u2019s 2027 cycle will see invented \u201Cpoll results\u201D spread online. Verified against real evidence:'));
-    claims.forEach(c=>{
-      const badge=c.verdict==='DEBUNKED_FAKE'?'background:var(--rose-mist);color:var(--rose)':'background:var(--forest-mist);color:var(--forest)';
-      const card=el('div','card');card.style.cssText='padding:16px;margin-top:12px';
-      card.innerHTML=`<span class="pill" style="${badge}">${(c.verdict||'').replace(/_/g,' ')}</span>
-        <p style="font-size:14.5px;margin:10px 0 0">${c.claim_summary}</p>
-        <p class="faint" style="font-size:12.5px;margin:8px 0 0">${c.verdict_detail||''}</p>
-        <p class="faint" style="font-size:12px;margin:8px 0 0">Checked ${fmtDate(c.checked_date)} by ${c.checked_by}. <a class="src" href="${c.source_url}" target="_blank" rel="noopener">Fact-check</a></p>`;
-      wrap.appendChild(card);
-    });
-    body.appendChild(wrap);
-  }
-
-  const polls=DATA.polls||[];
-  const srcCard=el('div','card');srcCard.style.cssText='padding:20px;margin-bottom:24px';
-  let rows='';
-  polls.slice().sort((a,b)=>b.date.localeCompare(a.date)).forEach(p=>{
-    const n=p.sample_size?`n=${p.sample_size.toLocaleString()}`:'sample n/a';
-    const held=p.model_eligible===false;
-    const status=held?'published · included in all-published average · methodology pending':'model-eligible';
-    rows+=`<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line-soft)">
-      <div><div style="font-weight:700;font-family:'Libre Franklin';font-size:14px">${p.pollster}</div><div class="faint" style="font-size:12px">${fmtDate(p.date)} · ${n} · ${status}</div></div>
-      <a class="src" style="align-self:center" href="${p.source_url}" target="_blank" rel="noopener">View</a></div>`;
+  claims.forEach(c=>{
+    const fake=c.verdict==='DEBUNKED_FAKE';
+    const card=el('div','card');card.style.marginBottom='var(--s-5)';
+    card.innerHTML=`<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center;justify-content:space-between">
+        <h3 class="card-h">Fake poll, flagged</h3><span class="pill ${fake?'bad':'ok'}">${esc((c.verdict||'').replace(/_/g,' '))}</span></div>
+      <div class="claim"><div><h4>What circulated</h4><p>${esc(c.claim_summary)}</p></div>
+        <div><h4>What the check found</h4><p>${esc(c.verdict_detail||'')}</p></div></div>
+      <p class="meta" style="margin-top:var(--s-3)">Checked ${fmtDate(c.checked_date)} by ${esc(c.checked_by)}. <a class="src" href="${esc(c.source_url)}" target="_blank" rel="noopener">Fact-check</a></p>`;
+    body.appendChild(card);
   });
-  srcCard.innerHTML=`<h3 class="franklin" style="font-weight:900;font-size:19px;margin:0 0 8px">Published polls and sources</h3>
-    <p class="faint" style="font-size:12.5px;margin:0 0 8px">Methodology-held polls remain visible and can be included in the all-published average; the model-eligible-only switch excludes them.</p>${rows}`;
-  body.appendChild(srcCard);
 
-  const mapWrap=el('div');mapWrap.id='countyExplorer';
-  mapWrap.innerHTML=`<h3 class="franklin" style="font-weight:900;font-size:19px;margin:0 0 4px">Kenya, county by county</h3>
-    <p class="muted" style="font-size:14px">All 47 counties. This is a reference map — there is no reliable county-level polling to show yet, and we won\u2019t invent any.</p>
-    <div class="grid2-wide" style="margin-top:16px">
-      <div id="countyMap" style="height:420px;border-radius:16px;border:1px solid var(--line)"></div>
-      <div class="card" style="padding:16px">
-        <div class="faint" style="font-size:12px;font-weight:700;font-family:'Libre Franklin'">SELECTED COUNTY</div>
-        <div id="countyName" class="franklin" style="font-weight:900;font-size:22px;margin-top:4px">Tap a county</div>
-        <div id="countyCode" class="faint" style="font-size:13px;margin-top:4px"></div>
-        <input id="countySearch" type="text" placeholder="Search a county…" style="margin-top:14px">
-        <div id="countyList" style="max-height:230px;overflow:auto;margin-top:10px;font-size:14px"></div>
-      </div>
-    </div>`;
-  body.appendChild(mapWrap);
+  const polls=(DATA.polls||[]).slice().sort((a,b)=>b.date.localeCompare(a.date));
+  const maxN=Math.max(...polls.map(p=>p.sample_size||0),1);
+  const houses=uniq(polls.map(p=>p.pollster)).sort();
+  const held=polls.filter(p=>p.model_eligible===false).length;
+  const src=el('div','card');
+  src.innerHTML=`<h3 class="card-h">Published polls and sources</h3>
+    <p class="card-sub">Methodology-held polls stay visible and can be included in the all-published average; the model-eligible view leaves them out.</p>
+    <div class="ledger-filter" role="group" aria-label="Filter by pollster">
+      <button class="chip" type="button" aria-pressed="true" data-h="">All <span class="num">${polls.length}</span></button>
+      ${houses.map(h=>`<button class="chip" type="button" aria-pressed="false" data-h="${esc(h)}">${esc(h)} <span class="num">${polls.filter(p=>p.pollster===h).length}</span></button>`).join('')}
+    </div>
+    <div class="ledger" role="table" aria-label="Published polls">
+      <div class="row head mono-xs" role="row" style="color:var(--ink-3)"><span role="columnheader">Date</span><span role="columnheader">Pollster</span><span role="columnheader">Sample</span><span role="columnheader">Status</span><span role="columnheader"><span class="vh">Source</span></span></div>
+      ${polls.map(p=>{const h=p.model_eligible===false;return `<div class="row" role="row" data-h="${esc(p.pollster)}">
+        <span class="date" role="cell">${fmtDate(p.date)}</span>
+        <span class="who" role="cell">${esc(p.pollster)}<small>${esc(TYPE_LABEL[p.poll_type]||p.poll_type)}<span class="m"> · ${fmtDate(p.date)}${p.sample_size?' · n='+p.sample_size.toLocaleString():''}${h?' · held':''}</span></small></span>
+        <span class="nwrap" role="cell"><span class="n">${p.sample_size?'n='+p.sample_size.toLocaleString():'n/a'}</span>${p.sample_size?`<div class="n-bar" style="--n:${Math.sqrt(p.sample_size/maxN).toFixed(3)}"></div>`:''}</span>
+        <span class="status" role="cell"><span class="pill ${h?'held':'ok'}">${h?'Held':'Eligible'}</span></span>
+        <span role="cell"><a class="src" href="${esc(p.source_url)}" target="_blank" rel="noopener">View<span class="vh"> ${esc(p.pollster)} source</span></a></span></div>`;}).join('')}
+    </div>
+    <p class="meta" style="margin-top:var(--s-3)">Sample bars scale with √n, which tracks how much a poll's precision grows with size.</p>`;
+  body.appendChild(src);
+  src.querySelectorAll('.ledger-filter .chip').forEach(b=>b.onclick=()=>{
+    src.querySelectorAll('.ledger-filter .chip').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+    src.querySelectorAll('.ledger .row:not(.head)').forEach(r=>r.hidden=!!b.dataset.h&&r.dataset.h!==b.dataset.h);
+  });
 
-  const adv=el('details','adv');adv.style.marginTop='24px';
-  adv.innerHTML=`<summary>Advanced: how the average is built &amp; parliament seat estimator</summary>
-    <div class="adv-body">
-      <p class="muted" style="font-size:14px;margin:0 0 12px">The polling average weights each poll by recency, sample size, extraction confidence and pollster-quality inputs. Direct presidential aspirant/preference questions are combined into one horse-race series; popularity and approval questions remain separate. The all-published view can include methodology-held polls, while the model-eligible-only view excludes them. It is a descriptive summary, <b>not a forecast</b>. Details in <a class="src" href="https://github.com/dansamuka/kenya-election-intelligence-engine" target="_blank" rel="noopener">the open-source code</a>.</p>
-      <div id="modelMini" class="stat-grid c3"></div>
-      <h4 class="franklin" style="font-weight:800;margin:22px 0 6px">Parliament seat estimator (for analysts)</h4>
-      <p class="faint" style="font-size:13px;margin:0 0 10px">Paste a constituency baseline in JSON to apply the current what-if swing. Most users can skip this.</p>
-      <textarea id="seatInput" style="width:100%;min-height:120px;border:1px solid var(--line);border-radius:12px;padding:12px;font-family:monospace;font-size:12px" placeholder='[{"constituency":"Example","region":"X","baseline":{"Team A":42,"Team B":38}}]'></textarea>
-      <div style="display:flex;gap:8px;margin-top:8px"><button class="btn" id="seatLoad">Load hosted baseline</button><button class="btn btn-primary" id="seatRun">Estimate seats</button></div>
-      <div id="seatOut" style="margin-top:14px"></div>
-    </div>`;
+  const analyst=new URLSearchParams(location.search).has('analyst');
+  const adv=el('details','adv');
+  adv.innerHTML=`<summary>How the average is built${analyst?' &amp; parliament seat estimator':''}</summary>
+    <div class="adv-body"><div class="adv-inner"><div class="adv-pad">
+      <p class="card-sub" style="padding-top:var(--s-4)">The polling average weights each poll by recency, sample size, extraction confidence and pollster quality. Direct presidential preference questions are combined into one series; popularity and approval questions stay separate. Duplicate releases of the same poll are merged before averaging. The all-published view can include methodology-held polls; the model-eligible view excludes them. It is a descriptive summary, <b>not a forecast</b>. Details in <a class="src" href="https://github.com/dansamuka/kenya-election-intelligence-engine" target="_blank" rel="noopener">the open-source code</a>.</p>
+      <div id="modelMini" class="stat-grid"></div>
+      ${analyst?`<h4 style="font:800 16px/24px var(--f-display);margin-top:var(--s-6)">Parliament seat estimator</h4>
+      <p class="meta" style="margin:var(--s-1) 0 var(--s-3)">Paste a constituency baseline in JSON to apply the current what-if teams as a uniform swing.</p>
+      <textarea id="seatInput" rows="6" style="font-family:var(--f-mono);font-size:12px" placeholder='[{"constituency":"Example","region":"X","baseline":{"Team A":42,"Team B":38}}]'></textarea>
+      <div style="display:flex;gap:var(--s-2);margin-top:var(--s-2)"><button class="btn" type="button" id="seatLoad">Load hosted baseline</button><button class="btn btn-primary" type="button" id="seatRun">Estimate seats</button></div>
+      <div id="seatOut" style="margin-top:var(--s-3)"></div>`:''}
+    </div></div></div>`;
   body.appendChild(adv);
   renderModelMini();
-  initMap();
-  $('#seatLoad').onclick=loadBaseline;
-  $('#seatRun').onclick=runSeats;
+  if(analyst){$('#seatLoad').onclick=loadBaseline;$('#seatRun').onclick=runSeats;}
+
+  $('#trustAnswer').innerHTML=`<b>${polls.length}</b> published polls from <b>${houses.length}</b> pollsters · <b>${held}</b> methodology-held · <b>${claims.length}</b> fake poll${claims.length===1?'':'s'} flagged.`;
 }
 function renderModelMini(){
   const host=$('#modelMini');if(!host)return;
-  const polls=(DATA.polls||[]).filter(p=>
-    ['preferred_presidential_aspirant','preferred_presidential_candidate'].includes(p.poll_type) &&
-    (DATA.includeUnvalidated || p.model_eligible!==false)
-  );
-  const houses=uniq(polls.map(p=>p.pollster));
+  const polls=horseRacePolls().filter(p=>DATA.includeUnvalidated||p.model_eligible!==false);
   const dates=uniq(polls.map(p=>p.date)).sort();
-  const cards=[
-    ['Polls in this average',polls.length],
-    ['Different pollsters',houses.length],
-    ['Span covered',dates.length?`${fmtShort(dates[0])} → ${fmtShort(dates[dates.length-1])}`:'—']
-  ];
-  host.innerHTML=cards.map(([k,v])=>`<div class="stat"><div class="k">${k.toUpperCase()}</div><div class="v tnum" style="font-size:26px">${v}</div></div>`).join('');
-}
-
-let mapObj=null,selLayer=null;
-async function initMap(){
-  if(!$('#countyMap'))return;
-  if(typeof L==='undefined'){$('#countyName').textContent='Map couldn\u2019t load';$('#countyCode').textContent='The map library was blocked by your network.';return;}
-  mapObj=L.map('countyMap',{scrollWheelZoom:false}).setView([0.35,37.9],6);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap',maxZoom:10}).addTo(mapObj);
-  let geo;try{geo=await getJSON(F.counties);}catch(e){$('#countyName').textContent='Map data unavailable';return;}
-  const byName={};
-  const layer=L.geoJSON(geo,{style:{color:'#1B5E43',weight:1,fillColor:'#CFE3D8',fillOpacity:.35},onEachFeature:(f,l)=>{byName[f.properties.county]=l;l.on('click',()=>selCounty(f.properties,l));l.bindTooltip(f.properties.county,{sticky:true});}}).addTo(mapObj);
-  mapObj.fitBounds(layer.getBounds());
-  const names=Object.keys(byName).sort();
-  $('#countyList').innerHTML=names.map(n=>`<button style="display:block;width:100%;text-align:left;border:none;background:none;padding:6px 4px;cursor:pointer;font-family:'Public Sans';font-size:14px;color:var(--ink)" data-c="${n}">${n}</button>`).join('');
-  $('#countyList').querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{const l=byName[b.dataset.c];selCounty(l.feature.properties,l);mapObj.fitBounds(l.getBounds());});
-  $('#countySearch').oninput=()=>{const q=$('#countySearch').value.toLowerCase();$('#countyList').querySelectorAll('[data-c]').forEach(b=>b.style.display=b.dataset.c.toLowerCase().includes(q)?'':'none');};
-  function selCounty(p,l){if(selLayer)selLayer.setStyle({color:'#1B5E43',weight:1,fillColor:'#CFE3D8',fillOpacity:.35});l.setStyle({color:'#0E2E22',weight:3,fillColor:'#1B5E43',fillOpacity:.5});selLayer=l;$('#countyName').textContent=p.county;$('#countyCode').textContent=`County ${p.code}${p.proxyFallback?' · boundary approximated':''}`;}
+  host.innerHTML=[['Polls in this average',polls.length],['Pollsters',uniq(polls.map(p=>p.pollster)).length],
+    ['Span',dates.length?`${fmtShort(dates[0])} → ${fmtShort(dates[dates.length-1])}`:'—']]
+    .map(([k,v])=>`<div class="stat"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
 }
 async function loadBaseline(){try{const b=await getJSON(F.baseline);$('#seatInput').value=JSON.stringify(b,null,2);if(!b.length)$('#seatOut').innerHTML='<p class="note warn">The hosted baseline is empty — paste your own constituency data.</p>';}catch(e){$('#seatOut').innerHTML='<p class="note warn">No hosted baseline available. Paste your own.</p>';}}
-function runSeats(){let rows;try{rows=JSON.parse($('#seatInput').value||'[]');}catch(e){$('#seatOut').innerHTML='<p class="note warn">That isn\u2019t valid JSON.</p>';return;}if(!Array.isArray(rows)||!rows.length){$('#seatOut').innerHTML='<p class="note warn">Add at least one constituency.</p>';return;}const nat=Object.fromEntries(scenarioState.coalitions.map(c=>{const fig=latestFigures();return [c.name,c.members.reduce((s,m)=>s+(+fig[m]||0),0)];}));const seats={};rows.forEach(r=>{const base=r.baseline||{};const adj={};Object.keys(base).forEach(k=>adj[k]=Math.max(0,(base[k]||0)+(nat[k]||0)-((base.__nat||{})[k]||0)));const w=Object.entries(adj).sort((a,b)=>b[1]-a[1])[0]?.[0]||'—';seats[w]=(seats[w]||0)+1;});$('#seatOut').innerHTML='<div class="stat-grid c3">'+Object.entries(seats).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="stat"><div class="k">${k.toUpperCase()}</div><div class="v tnum">${v}</div><div class="d">projected seats</div></div>`).join('')+'</div>';}
+function runSeats(){
+  let rows;try{rows=JSON.parse($('#seatInput').value||'[]');}catch(e){$('#seatOut').innerHTML='<p class="note warn">That isn’t valid JSON.</p>';return;}
+  if(!Array.isArray(rows)||!rows.length){$('#seatOut').innerHTML='<p class="note warn">Add at least one constituency.</p>';return;}
+  const nat=Object.fromEntries(coalitionField().map(f=>[f.name,f.base]));
+  const seats={};
+  rows.forEach(r=>{const base=r.baseline||{};const adj={};
+    Object.keys(base).forEach(k=>adj[k]=Math.max(0,(base[k]||0)+(nat[k]||0)-((base.__nat||{})[k]||0)));
+    const w=Object.entries(adj).sort((a,b)=>b[1]-a[1])[0]?.[0]||'—';seats[w]=(seats[w]||0)+1;});
+  $('#seatOut').innerHTML='<div class="stat-grid">'+Object.entries(seats).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="stat"><div class="k">${esc(k)}</div><div class="v">${v}</div><div class="meta">projected seats</div></div>`).join('')+'</div>';
+}
 
-/* ================= FOOTER ================= */
-function buildFooter(){
-  const f=el('footer');
-  const w=el('div','wrap');
-  w.innerHTML=`<div class="foot-h">KENYA 2027 · POLL TRACKER</div>
-    <p style="max-width:70ch;font-size:13.5px;line-height:1.6;margin:12px 0 0">An independent, source-checked reading of Kenya\u2019s 2027 presidential race. It aggregates published opinion polls for public understanding — it is <b>not</b> a forecast, not affiliated with the IEBC or any campaign, and does no voter targeting. Where data is thin, it says so.</p>
-    <p style="font-size:12.5px;margin:16px 0 0"><a href="https://github.com/dansamuka/kenya-election-intelligence-engine" target="_blank" rel="noopener">Open-source code &amp; full methodology →</a></p>
-    <p class="tnum" id="footStamp" style="font-size:12px;color:#6E9585;margin:16px 0 0"></p>`;
-  f.appendChild(w);
-  const main=document.querySelector('main');
-  main.parentNode.insertBefore(f,main.nextSibling);
+/* ================= chrome: scroll-spy, theme ================= */
+function initScrollSpy(){
+  const links=[...document.querySelectorAll('.nav a')];
+  const byId=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const visible=new Map();
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>visible.set(e.target.id,e.isIntersecting?e.intersectionRatio:0));
+    let best=null,br=0;visible.forEach((r,id)=>{if(r>br){br=r;best=id;}});
+    links.forEach(a=>a.removeAttribute('aria-current'));
+    const a=best&&byId.get(best);
+    if(a){a.setAttribute('aria-current','true');
+      const nav=a.parentElement, l=a.offsetLeft, r=l+a.offsetWidth;
+      if(l<nav.scrollLeft||r>nav.scrollLeft+nav.clientWidth)nav.scrollLeft=l-16;}
+  },{rootMargin:`-${parseInt(getComputedStyle(document.documentElement).getPropertyValue('--topbar-h'))||56}px 0px -55% 0px`,threshold:[0,.1,.3,.6]});
+  byId.forEach((a,id)=>{const s=document.getElementById(id);if(s)io.observe(s);});
+}
+function initTheme(){
+  const btn=$('#themeBtn'), root=document.documentElement;
+  const current=()=>root.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  const label=()=>btn.setAttribute('aria-label',current()==='dark'?'Switch to light theme':'Switch to dark theme');
+  label();
+  btn.onclick=()=>{const next=current()==='dark'?'light':'dark';root.dataset.theme=next;
+    try{localStorage.setItem('theme',next);}catch(e){}label();
+    /* SVG charts read colours at draw time */
+    requestAnimationFrame(()=>{drawTrend();calDrawSpine();});};
 }
 
 /* ================= BOOT ================= */
+function refreshAverageViews(){
+  renderRaceStrip();
+  renderNationalGauge();
+  drawTrend();
+  renderModelMini();
+  /* keep the user's team assignments; only the shares change */
+  const avg=new Map(presidentialAverageRows().map(r=>[r.candidate,r.weighted_average]));
+  document.querySelectorAll('.cb-row').forEach(row=>{const v=avg.get(row.dataset.c);row.querySelector('.cb-avg').textContent=Number.isFinite(v)?f1(v)+'%':'—';});
+  simulateCoalitions();
+}
 async function boot(){
-  const results=await Promise.allSettled([
-    getJSON(F.polls),getJSON(F.avgValidated),getJSON(F.avgAll),getJSON(F.ctx),getJSON(F.alliance),
-    getJSON(F.integrity),getJSON(F.coalition),getJSON(F.claims)
-  ]);
-  const [polls,avgValidated,avgAll,ctx,alliance,integrity,coalition,claims]=results.map(r=>r.status==='fulfilled'?r.value:null);
-  DATA.polls=polls||[];
-  DATA.avgValidated=avgValidated||[];
-  DATA.avgAll=(avgAll&&avgAll.length)?avgAll:DATA.avgValidated;
-  DATA.avg=activeAverage();
-  DATA.ctx=ctx||{};DATA.alliance=alliance||[];
-  DATA.integrity=integrity||[];DATA.coalition=coalition||{};DATA.claims=claims||[];
+  initTheme();
+  const keys=['polls','avgValidated','avgAll','manifest','ctx','alliance','integrity','coalition','claims'];
+  const results=await Promise.allSettled(keys.map(k=>getJSON(F[k])));
+  const got=Object.fromEntries(keys.map((k,i)=>[k,results[i].status==='fulfilled'?results[i].value:null]));
+  DATA.polls=got.polls||[];
+  DATA.avgValidated=got.avgValidated||[];
+  DATA.avgAll=(got.avgAll&&got.avgAll.length)?got.avgAll:DATA.avgValidated;
+  DATA.ctx=got.ctx||{};DATA.alliance=got.alliance||[];
+  DATA.integrity=got.integrity||[];DATA.coalition=got.coalition||{};DATA.claims=got.claims||[];
 
-  const avgToggle=$('#includeUnvalidated');
-  if(avgToggle){
-    avgToggle.checked=DATA.includeUnvalidated;
-    avgToggle.addEventListener('change',()=>{
-      DATA.includeUnvalidated=avgToggle.checked;
-      refreshAverageViews();
-    });
-  }
+  document.querySelectorAll('input[name=scope]').forEach(r=>r.onchange=()=>{
+    if(!r.checked)return;
+    DATA.includeUnvalidated=r.value==='all';
+    refreshAverageViews();
+  });
 
-  renderHeroMeta();
-  renderStandings();
-  updateAverageScopeLabel();
-  buildCountdown();
-  buildDistance();
-  buildTrend();
-  buildWhatIf();
-  buildPicture();
-  buildRules();
-  buildHistory();
-  buildTrust();
-  buildFooter();
+  renderHeroStatus();
+  renderRaceStrip();
+  const steps=[buildRules,buildTrend,buildCountdown,buildWhatIf,buildPicture,buildHistory,buildTrust];
+  for(const s of steps){try{s();}catch(e){console.error(s.name,e);}}
+  initScrollSpy();
 
-  const stamp=new Date().toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
-  const fs=$('#footStamp');if(fs)fs.textContent='Page loaded '+stamp+' · data refreshes as new polls are published';
+  const gen=got.manifest?.generated_at;
+  $('#footStamp').textContent=gen
+    ?'Data updated '+new Date(gen).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'Africa/Nairobi'})+' EAT · refreshed as new polls are published'
+    :'Data refreshes as new polls are published';
+
+  /* sections were placeholders at load; re-honour a deep link once they have content */
+  if(location.hash){const t=document.getElementById(location.hash.slice(1));if(t)requestAnimationFrame(()=>t.scrollIntoView());}
 }
 boot();
 </script>
 </body>
 </html>
-

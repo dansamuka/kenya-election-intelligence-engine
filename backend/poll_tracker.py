@@ -342,7 +342,28 @@ def dedupe_poll_records(records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         confidence = float(record.get("extraction_confidence") or 0)
         return (status_score, confidence)
 
-    by_key: Dict[str, Dict[str, Any]] = {}
+    def known_figures(record: Dict[str, Any]) -> Dict[str, Any]:
+        return {name: value for name, value in (record.get("figures") or {}).items() if value is not None}
+
+    def same_poll(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
+        # The date is deliberately not compared. Re-scraping the same report
+        # on a later run used to stamp it with a new date, so one poll
+        # (Infotrak's Mulembe Nation release) was published eight times, each
+        # copy adding weight to the average. A later extraction may also pick
+        # up a few more candidates, so the figures only need to agree where
+        # both copies have a value.
+        fa, fb = known_figures(a), known_figures(b)
+        shared = fa.keys() & fb.keys()
+        return len(shared) >= 3 and all(fa[name] == fb[name] for name in shared)
+
+    def preference(record: Dict[str, Any]) -> Tuple[int, int, float, str]:
+        status_score, confidence = record_rank(record)
+        # Most complete copy wins; on a full tie, the earliest date (closest
+        # to first release) is kept, hence the inverted date string.
+        inverted_date = "".join(chr(0x10FFFF - ord(ch)) for ch in (record.get("date") or ""))
+        return (status_score, len(known_figures(record)), confidence, inverted_date)
+
+    groups: Dict[str, List[Dict[str, Any]]] = {}
 
     for record in records:
         key = "|".join(
@@ -350,21 +371,21 @@ def dedupe_poll_records(records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                 str(record.get("source_url")),
                 str(record.get("pollster")),
                 str(record.get("poll_type")),
-                str(record.get("date")),
+                str(record.get("sample_size")),
             ]
         )
+        kept = groups.setdefault(key, [])
 
-        current = by_key.get(key)
-
-        if current is None:
-            by_key[key] = record
-            continue
-
-        if record_rank(record) > record_rank(current):
-            by_key[key] = record
+        for index, current in enumerate(kept):
+            if same_poll(record, current):
+                if preference(record) > preference(current):
+                    kept[index] = record
+                break
+        else:
+            kept.append(record)
 
     return sorted(
-        by_key.values(),
+        (record for kept in groups.values() for record in kept),
         key=lambda item: item.get("date") or "",
     )
 
