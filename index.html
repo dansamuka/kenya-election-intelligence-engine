@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- deployment: design-overhaul-2026-10-02 -->
+<!-- deployment: hero-motion-2026-10-02 -->
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -264,6 +264,102 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .rs-more td{padding:2px var(--s-4) 2px 0;color:var(--hero-ink-2)}
 .rs-more td:first-child{font-family:var(--f-text);color:var(--hero-ink)}
 
+/* ===================== hero motion ===================== */
+.hero{display:flex;flex-direction:column}
+.hero > .wrap{flex:1;width:100%}
+@media (min-width:1100px){
+  .hero{min-height:min(880px,calc(100svh - var(--topbar-h)))}
+  .hero > .wrap{display:flex;align-items:center}
+  .hero-grid{width:100%}
+}
+.hero::before{display:none}
+.hero-fx{position:absolute;inset:0;overflow:hidden;pointer-events:none;transform:translate3d(0,var(--sy,0px),0)}
+.aurora{position:absolute;width:62vw;height:62vw;max-width:980px;max-height:980px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(63,185,133,.20),transparent);animation:drift 22s ease-in-out infinite alternate;will-change:transform}
+.aurora.a1{left:-18vw;top:-24vw}
+.aurora.a2{right:-22vw;bottom:-34vw;background:radial-gradient(closest-side,rgba(95,211,163,.13),transparent);animation-duration:29s;animation-direction:alternate-reverse}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(9vw,7vw,0) scale(1.18)}}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.075) 1px,transparent 1.3px);background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 75% at 25% 45%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 70% 75% at 25% 45%,#000 10%,transparent 70%)}
+.spot{position:absolute;inset:0;background:radial-gradient(560px circle at var(--mx,30%) var(--my,40%),rgba(95,211,163,.11),transparent 62%);
+  opacity:0;transition:opacity .8s var(--ease-std)}
+.hero.lit .spot{opacity:1}
+
+/* the 47 counties, drawn in stroke by stroke, then lighting up one at a time */
+.kmap{position:absolute;top:52%;left:calc(max(24px,50% - 600px) + 60px);height:92%;aspect-ratio:1000/1285;width:auto;overflow:visible;
+  transform:translate3d(calc(var(--px,0) * -18px),calc(-50% + var(--py,0) * -18px),0);
+  -webkit-mask-image:radial-gradient(ellipse 75% 70% at 45% 50%,#000 50%,transparent 100%);mask-image:radial-gradient(ellipse 75% 70% at 45% 50%,#000 50%,transparent 100%)}
+.kmap path{fill:rgba(95,211,163,0);stroke:rgba(143,199,174,.30);stroke-width:1.1;vector-effect:non-scaling-stroke;stroke-linejoin:round;
+  stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.8s var(--ease-out) forwards;animation-delay:calc(250ms + var(--d) * 30ms)}
+.kmap path.ping{animation:draw 0s forwards,ping 3s var(--ease-out)}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes ping{0%{fill:rgba(95,211,163,0)}15%{fill:rgba(95,211,163,.30);stroke:rgba(170,245,210,.95)}100%{fill:rgba(95,211,163,0)}}
+@media (max-width:1099px){
+  .kmap{left:auto;right:-30%;top:2%;width:min(92vw,560px);height:auto;transform:none;opacity:.55;
+    -webkit-mask-image:linear-gradient(180deg,#000 50%,transparent);mask-image:linear-gradient(180deg,#000 50%,transparent)}
+}
+
+/* entrance choreography */
+.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--mint);margin-right:10px;vertical-align:1px;position:relative}
+.live-dot::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 1.5px var(--mint);animation:halo 2.2s var(--ease-out) infinite}
+.enter{opacity:0;transform:translate3d(0,16px,0);animation:fadeup 1s var(--ease-out) forwards;animation-delay:var(--e,0ms)}
+@keyframes fadeup{to{opacity:1;transform:none}}
+.hero h1 .w{display:inline-block;overflow:clip;padding:0 .02em .1em;margin:0 -.02em -.1em;vertical-align:top}
+.hero h1 .w > *{display:inline-block;transform:translate3d(0,110%,0) rotate(4deg);transform-origin:0 100%;
+  animation:rise 1.1s var(--ease-out) forwards;animation-delay:calc(150ms + var(--i) * 75ms)}
+@keyframes rise{to{transform:none}}
+.hero h1 em{background:linear-gradient(100deg,var(--mint) 0 38%,#E9FFF5 50%,var(--mint) 62% 100%) 0 0/260% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:rise 1.1s var(--ease-out) forwards,shimmer 1.8s var(--ease-std) both;animation-delay:calc(150ms + var(--i) * 75ms),1.35s}
+@keyframes shimmer{from{background-position:100% 0}to{background-position:0 0}}
+.pl{position:relative;display:inline-block}
+.swash{position:absolute;left:2%;bottom:-.02em;width:92%;height:.24em;overflow:visible}
+.swash path{fill:none;stroke:var(--mint);stroke-width:5;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.85;
+  stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1s 1.15s var(--ease-out) forwards}
+
+/* race strip: rows cascade in, numbers count up, the leader pulses */
+.rs-row{border-radius:8px;transition:background var(--d-2) var(--ease-std),opacity .7s var(--ease-out),transform .7s var(--ease-out);
+  transition-delay:0s,calc(var(--i,0) * 80ms),calc(var(--i,0) * 80ms)}
+.rs-row:hover{background:rgba(255,255,255,.04)}
+.rs-row .rs-band,.rs-row .rs-bar,.rs-row .rs-dotw{transition-delay:calc(var(--i,0) * 80ms)}
+.rs-enter .rs-row{opacity:0;transform:translate3d(-12px,0,0)}
+.rs-track::after{transform-origin:top;transition:transform 1s var(--ease-out) .55s}
+.rs-enter .rs-track::after{transform:scaleY(0)}
+.is-lead .rs-dotw::after{content:"";position:absolute;left:-6px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;
+  box-shadow:0 0 0 2px var(--mint);opacity:0;animation:halo 2.4s var(--ease-out) 1.8s infinite}
+@keyframes halo{0%{transform:scale(1);opacity:.9}100%{transform:scale(3);opacity:0}}
+
+/* live poll ticker along the foot of the hero */
+.ticker{position:relative;box-shadow:0 -1px 0 var(--hero-line);overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.ticker-track{display:flex;width:max-content;animation:tick var(--tdur,60s) linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.tk{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;font:400 12px/16px var(--f-mono);color:var(--hero-ink-2);white-space:nowrap;
+  box-shadow:inset -1px 0 0 var(--hero-line);font-variant-numeric:tabular-nums}
+.tk b{color:#fff;font-weight:500}
+.tk .who{font:700 12px/16px var(--f-text);color:var(--mint)}
+.tk .hd{color:#E3A65E;font-size:11px;letter-spacing:.06em}
+@keyframes tick{to{transform:translate3d(-50%,0,0)}}
+
+/* reading progress */
+.progress{position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,#3FB985,var(--mint));
+  transform-origin:left;transform:scaleX(var(--sp,0));pointer-events:none;z-index:1}
+
+/* scroll reveals */
+.rv{opacity:0;transform:translate3d(0,28px,0);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out);transition-delay:calc(var(--rv,0) * 90ms)}
+.rv.in{opacity:1;transform:none}
+/* headings: a clip-path would also hide them from IntersectionObserver, so blur instead */
+.h-sec.rv{transform:translate3d(0,32px,0);filter:blur(10px);transition:opacity 1s var(--ease-out),transform 1.1s var(--ease-out),filter 1s var(--ease-out);transition-delay:calc(var(--rv,0) * 90ms)}
+.h-sec.rv.in{filter:none}
+
+@media (prefers-reduced-motion:reduce){
+  .aurora,.kmap path,.swash path,.hero h1 .w > *,.hero h1 em,.enter,.ticker-track,.live-dot::after,.is-lead .rs-dotw::after{animation:none!important}
+  .kmap path,.swash path{stroke-dashoffset:0}
+  .hero h1 .w > *,.enter{transform:none;opacity:1}
+  .ticker{overflow-x:auto}
+  .rv{opacity:1!important;transform:none!important;filter:none!important}
+}
+
 /* ===================== what it takes to win ===================== */
 .gates{display:grid;gap:var(--s-5);align-items:start}
 @container section (min-width:900px){.gates{grid-template-columns:1fr 1.15fr}}
@@ -520,17 +616,18 @@ footer a{color:var(--mint)}
 <body>
 
 <header class="topbar">
+  <i class="progress" id="progress" aria-hidden="true"></i>
   <div class="wrap topbar-inner">
     <a class="brand" href="#race">Kenya <b>2027</b> · Poll Tracker</a>
     <div class="nav-wrap">
       <nav class="nav" aria-label="Sections">
         <a href="#race">The race</a>
-        <a href="#rules">To win</a>
         <a href="#trend">Trends</a>
         <a href="#countdown">Calendar</a>
         <a href="#whatif">What-if</a>
         <a href="#picture">Signals</a>
         <a href="#history">History</a>
+        <a href="#rules">Rulebook</a>
         <a href="#trust">Sources</a>
       </nav>
     </div>
@@ -542,15 +639,21 @@ footer a{color:var(--mint)}
 
 <main>
 <section class="hero" id="race" aria-labelledby="race-h">
+  <div class="hero-fx" id="heroFx" aria-hidden="true">
+    <div class="aurora a1"></div><div class="aurora a2"></div>
+    <div class="hero-dots"></div>
+    <svg class="kmap" id="kmap" viewBox="0 0 1000 1285"></svg>
+    <div class="spot"></div>
+  </div>
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <p class="hero-eyebrow">Independent · Source-checked · Not a forecast</p>
-        <h1 id="race-h">Where the 2027 race stands, <em>plainly.</em></h1>
-        <p class="hero-lead">Who's ahead, how sure we can be, and what it would take to win — built only on published polls, with every number traced to its source.</p>
+        <p class="hero-eyebrow enter" style="--e:0ms"><i class="live-dot"></i>Independent · Source-checked · Not a forecast</p>
+        <h1 id="race-h" aria-label="Where the 2027 race stands, plainly."><span aria-hidden="true"><span class="w"><span style="--i:0">Where</span></span> <span class="w"><span style="--i:1">the</span></span> <span class="w"><span style="--i:2">2027</span></span> <span class="w"><span style="--i:3">race</span></span> <span class="w"><span style="--i:4">stands,</span></span> <span class="pl"><span class="w"><em style="--i:5">plainly.</em></span><svg class="swash" viewBox="0 0 300 24" preserveAspectRatio="none"><path pathLength="1" d="M6 17 C 70 6, 190 3, 294 12"/></svg></span></span></h1>
+        <p class="hero-lead enter" style="--e:650ms">Who's ahead, how sure we can be, and what it would take to win — built only on published polls, with every number traced to its source.</p>
         <p class="status" id="heroStatus"><span>Loading the latest polls…</span></p>
       </div>
-      <div class="race" aria-labelledby="race-avg-h">
+      <div class="race enter" style="--e:450ms" aria-labelledby="race-avg-h">
         <div class="race-head">
           <h2 class="hero-eyebrow" id="race-avg-h">The polling average today</h2>
           <div class="seg-dark" role="radiogroup" aria-label="Which polls the average uses">
@@ -566,16 +669,7 @@ footer a{color:var(--mint)}
       </div>
     </div>
   </div>
-</section>
-
-<section class="section sunken" id="rules" aria-labelledby="rules-h">
-  <div class="wrap">
-    <p class="eyebrow">The rulebook</p>
-    <h2 class="h-sec" id="rules-h">What it actually takes to win</h2>
-    <p class="answer" id="rulesAnswer"><span class="sk sk-line"></span></p>
-    <p class="sub">Kenya's constitution sets two bars, and a winner must clear both in the first round. Leading the national vote isn't enough.</p>
-    <div class="sec-body" id="rulesBody"><div class="sk" style="height:420px"></div></div>
-  </div>
+  <div class="ticker" id="tickerWrap" aria-label="Latest published polls" hidden><div class="ticker-track" id="ticker"></div></div>
 </section>
 
 <section class="section" id="trend" aria-labelledby="trend-h">
@@ -624,6 +718,16 @@ footer a{color:var(--mint)}
     <p class="answer" id="histAnswer"><span class="sk sk-line"></span></p>
     <p class="sub">Winner and runner-up in the first round of the last three elections, on a shared scale around the 50% line.</p>
     <div class="sec-body" id="histBody"><div class="sk" style="height:220px"></div></div>
+  </div>
+</section>
+
+<section class="section sunken" id="rules" aria-labelledby="rules-h">
+  <div class="wrap">
+    <p class="eyebrow">The rulebook</p>
+    <h2 class="h-sec" id="rules-h">What it actually takes to win</h2>
+    <p class="answer" id="rulesAnswer"><span class="sk sk-line"></span></p>
+    <p class="sub">Kenya's constitution sets two bars, and a winner must clear both in the first round. Leading the national vote isn't enough.</p>
+    <div class="sec-body" id="rulesBody"><div class="sk" style="height:420px"></div></div>
   </div>
 </section>
 
@@ -718,6 +822,8 @@ function renderHeroStatus(){
     (nx?`<span>next <b>${esc(rangeLab(nx))}</b></span>`:'')+
     `<span><i class="pip ${pip}" aria-hidden="true"></i>latest poll <b>${fmtDate(latest)}</b>${age!=null?` (${age===0?'today':age===1?'1 day ago':age+' days ago'})`:''}</span>`+
     `<span><b>${polls.length}</b> polls · <b>${houses.length}</b> pollsters</span>`;
+  $('#heroStatus').querySelectorAll(':scope > span').forEach((sp,i)=>{sp.classList.add('enter');sp.style.setProperty('--e',(800+i*90)+'ms');});
+  const d=$('#heroStatus b');tween(0,days,1400,800,v=>d.textContent=Math.round(v).toLocaleString());
 }
 
 /* ================= hero: Race Strip =================
@@ -754,14 +860,19 @@ function renderRaceStrip(){
       li=el('li','rs-row');li.dataset.c=r.candidate;
       li.innerHTML=`<span class="rs-rank"></span><span class="rs-name">${esc(r.candidate)}</span>
         <span class="rs-track" aria-hidden="true"><i class="rs-band"></i><i class="rs-bar"></i><i class="rs-dotw"></i></span>
-        <span class="rs-val"></span>`;
+        <span class="rs-val"><span class="v">0.0%</span><small></small></span>`;
     }
+    li.style.setProperty('--i',i);
     li.classList.toggle('is-lead',i===0);
     li.style.setProperty('--lon',rsX(lo).toFixed(4));
     li.style.setProperty('--wn',Math.max(0.002,rsX(hi)-rsX(lo)).toFixed(4));
     li.style.setProperty('--vn',rsX(r.weighted_average).toFixed(4));
     li.querySelector('.rs-rank').textContent=String(i+1).padStart(2,'0');
-    li.querySelector('.rs-val').innerHTML=`${f1(r.weighted_average)}%<small>${f1(lo)}–${f1(hi)}</small>`;
+    li.querySelector('.rs-val small').textContent=`${f1(lo)}–${f1(hi)}`;
+    const vEl=li.querySelector('.rs-val .v'), from=+li.dataset.v||0, to=r.weighted_average;
+    li.dataset.v=to;
+    if(fresh&&!reduceMotion())vEl.dataset.to=to;           /* counted up when the strip scrolls into view */
+    else tween(from,to,700,i*80,v=>vEl.textContent=f1(v)+'%');
     li.setAttribute('aria-label',`${i+1}. ${r.candidate}: ${f1(r.weighted_average)}%, range ${f1(lo)} to ${f1(hi)}`);
     ol.appendChild(li);
   });
@@ -779,9 +890,14 @@ function renderRaceStrip(){
 
   if(fresh&&!reduceMotion()){
     ol.classList.add('rs-enter');
-    const io=new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){
-      requestAnimationFrame(()=>requestAnimationFrame(()=>ol.classList.remove('rs-enter')));o.disconnect();}},{threshold:.3});
+    let done=false;
+    const go=()=>{if(done)return;done=true;io.disconnect();
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{ol.classList.remove('rs-enter');
+        ol.querySelectorAll('.rs-val .v').forEach((v,i)=>tween(0,+v.dataset.to,1100,250+i*80,x=>v.textContent=f1(x)+'%'));}));};
+    const io=new IntersectionObserver(e=>{if(e[0].isIntersecting)go();},{threshold:.3});
     io.observe(ol);
+    /* backstop: never leave the strip hidden if the observer doesn't fire */
+    setTimeout(()=>{if(ol.getBoundingClientRect().top<innerHeight)go();},2600);
   }
 }
 
@@ -1388,7 +1504,7 @@ function buildPicture(){
   if(reg.expected_new_voters_2027){
     const c=el('div','card s-voters');
     c.innerHTML=`<h3 class="card-h">New voters expected</h3>
-      <p class="stat-big">+${(reg.expected_new_voters_2027/1e6).toFixed(1)}M</p>
+      <p class="stat-big" data-count-to="${(reg.expected_new_voters_2027/1e6).toFixed(1)}" data-dec="1" data-pre="+" data-suf="M">+${(reg.expected_new_voters_2027/1e6).toFixed(1)}M</p>
       <p class="card-sub" style="margin-top:var(--s-3)">On top of ${(reg.registered_voters_2022/1e6).toFixed(1)}M registered in 2022 — mostly young Kenyans, who are harder to poll. The biggest unknown in any projection.</p>
       <p style="margin-top:var(--s-3)"><a class="src" href="${esc(reg.source_url)}" target="_blank" rel="noopener">Source</a></p>`;
     grid.appendChild(c);
@@ -1571,6 +1687,93 @@ function initTheme(){
     requestAnimationFrame(()=>{drawTrend();calDrawSpine();});};
 }
 
+/* ================= motion =================
+   Everything here animates transform/opacity (or a one-off stroke draw),
+   pauses when off-screen, and collapses to the end state under
+   prefers-reduced-motion. */
+const KMAP={"w":1000,"h":1285,"c":[[1,"M720,1192L715,1204L711,1196L707,1200L707,1189L705,1187L706,1182L709,1179L716,1179L715,1175L722,1175L724,1178L730,1179L723,1192L720,1192Z"],[2,"M675,1130L678,1134L679,1150L684,1152L682,1160L697,1171L703,1180L702,1183L706,1184L707,1190L707,1200L711,1196L715,1200L713,1203L727,1209L711,1246L682,1280L674,1285L661,1270L565,1202L628,1180L639,1154L626,1146L630,1139L641,1145L645,1131L675,1130Z"],[3,"M724,1173L715,1175L716,1179L710,1178L706,1184L702,1183L703,1180L697,1171L682,1160L684,1152L679,1150L678,1134L674,1130L645,1131L662,1068L747,972L785,1026L781,1052L784,1057L790,1057L782,1064L779,1077L775,1083L777,1091L774,1096L757,1108L759,1105L759,1098L752,1103L752,1105L756,1110L744,1138L737,1135L733,1136L735,1136L736,1138L733,1137L736,1140L743,1139L744,1147L731,1178L724,1178L724,1173Z"],[4,"M638,682L646,682L654,691L675,693L686,699L692,701L713,721L714,743L721,743L726,750L730,750L737,756L748,786L752,808L767,838L766,847L771,868L780,884L781,911L784,916L784,928L792,964L792,983L804,983L808,986L811,987L816,983L844,992L852,991L837,1003L825,999L804,1007L793,1014L785,1025L747,972L662,1067L655,1067L650,1061L645,1065L587,985L596,985L601,979L609,976L636,922L629,895L634,893L629,814L610,773L562,690L566,692L570,689L574,689L578,683L589,688L595,686L604,691L603,685L620,688L638,682Z"],[5,"M896,981L861,1008L855,990L844,992L817,983L810,987L804,983L794,983L792,983L792,964L788,937L872,897L957,890L957,914L930,950L896,981Z"],[6,"M530,1021L541,1028L554,1046L566,1058L576,1056L585,1058L592,1064L606,1064L610,1066L610,1067L638,1061L645,1066L650,1061L655,1067L662,1067L647,1123L641,1145L630,1139L626,1146L639,1154L628,1180L565,1202L481,1144L480,1133L476,1127L467,1122L459,1124L461,1118L456,1117L456,1114L468,1103L469,1099L472,1098L470,1081L490,1081L495,1044L498,1042L501,1030L505,1032L529,1019L530,1021Z"],[7,"M711,595L727,615L732,619L748,623L758,630L767,632L791,650L810,658L824,657L827,653L834,654L842,652L850,641L868,634L885,623L885,786L957,882L957,890L873,897L787,937L784,928L784,916L781,911L780,885L771,867L766,847L767,838L752,808L748,786L738,761L736,754L726,750L721,743L714,743L713,721L691,700L686,699L675,693L654,691L644,682L634,682L626,687L619,688L603,685L601,681L600,666L604,658L592,617L597,617L600,615L605,617L616,606L623,606L627,602L636,603L641,595L652,594L657,590L664,575L674,565L692,556L696,561L705,586L711,595Z"],[8,"M733,216L733,261L764,274L794,307L822,320L822,329L826,332L823,339L835,366L843,376L845,382L853,390L865,393L876,406L885,407L885,623L868,634L850,641L842,652L834,654L827,653L824,657L810,658L791,650L767,632L758,630L748,623L735,620L727,615L705,584L669,496L691,488L684,484L673,471L660,465L651,446L634,429L632,421L626,409L626,383L620,361L632,358L635,353L642,337L643,319L648,318L653,310L665,306L678,295L677,270L672,248L675,241L676,241L676,245L688,247L697,245L699,252L704,253L708,242L733,216Z"],[9,"M978,179L986,180L987,183L991,185L1000,181L928,284L885,326L885,407L876,406L865,393L853,390L845,382L843,376L835,366L823,339L826,332L822,329L822,320L794,307L764,274L733,261L733,236L733,216L743,195L784,172L852,146L856,142L867,147L871,151L874,158L881,160L891,168L899,179L911,186L916,183L927,185L936,182L939,184L949,182L950,183L955,180L958,181L966,180L971,183L976,179L978,179Z"],[10,"M289,121L363,121L385,131L387,129L399,141L509,212L525,227L532,225L565,228L574,225L573,222L576,221L581,227L586,226L592,229L595,225L598,231L622,239L629,239L630,237L637,239L645,236L659,244L668,244L675,241L672,248L677,270L678,295L665,306L653,310L648,318L643,319L642,337L635,353L632,358L620,361L625,378L626,410L629,417L557,460L551,483L526,503L502,522L502,507L490,498L489,502L465,505L460,508L458,506L456,509L428,464L421,461L417,446L412,445L404,439L403,434L384,432L376,426L372,427L369,405L363,395L352,365L345,365L345,372L342,373L337,380L335,377L333,380L331,378L325,379L323,373L324,364L321,359L312,350L313,341L305,324L292,317L289,308L288,310L272,306L276,293L274,284L276,277L263,274L263,121L289,121Z"],[11,"M431,647L432,637L427,626L429,617L366,609L373,598L374,586L380,587L395,582L403,588L410,588L415,585L420,590L429,607L432,609L442,607L450,610L463,606L470,598L474,599L477,596L488,596L493,588L498,591L510,580L518,583L514,580L513,545L502,531L502,522L551,483L557,460L628,418L632,421L634,429L652,448L660,465L673,471L684,484L691,488L669,496L692,556L674,565L664,575L656,590L652,594L641,595L636,603L627,602L623,606L616,606L605,617L600,615L597,617L591,617L594,619L604,658L601,663L600,673L605,690L595,687L589,688L578,683L574,689L570,689L566,692L560,689L559,683L553,679L546,661L533,652L533,641L530,639L516,597L487,610L457,621L456,629L459,637L453,640L450,648L437,644L431,647Z"],[12,"M527,628L531,640L533,641L533,652L546,661L549,672L559,683L561,690L557,692L526,675L514,678L508,673L506,673L507,676L503,675L495,680L500,682L499,690L483,705L479,701L475,706L464,708L456,704L421,700L400,686L394,678L408,673L412,671L412,668L414,669L419,662L426,658L428,649L433,644L450,648L453,640L459,637L458,631L456,630L457,621L487,610L516,597L527,628Z"],[13,"M508,673L516,678L522,675L526,675L536,680L539,684L544,684L547,688L543,693L540,692L536,695L532,701L529,711L523,716L508,715L503,734L499,735L495,731L494,724L484,736L473,738L452,727L421,700L456,704L464,708L475,706L479,701L484,705L500,688L500,681L495,682L495,680L503,675L507,676L506,673L508,673Z"],[14,"M443,755L436,745L436,734L421,700L452,727L473,738L484,736L494,724L495,731L500,735L494,749L494,755L499,760L495,764L498,773L494,783L489,783L484,782L479,785L476,779L472,780L468,782L466,788L462,787L456,792L451,792L448,797L435,788L424,787L419,780L416,780L417,776L422,776L427,778L439,773L445,773L442,767L443,755Z"],[15,"M550,690L557,692L561,690L610,773L629,814L634,893L629,895L636,922L609,976L601,979L596,985L587,985L644,1064L637,1061L610,1067L610,1066L606,1064L592,1064L585,1058L570,1053L563,1040L563,1032L543,986L537,983L535,978L524,973L518,966L515,954L511,951L504,954L503,939L497,925L498,921L495,913L488,905L490,902L488,894L470,870L480,868L485,863L484,857L475,850L469,837L458,824L458,818L475,817L482,823L484,822L492,804L489,803L490,799L486,792L489,783L494,783L498,773L495,763L499,760L494,755L494,749L500,735L504,733L508,715L523,716L529,711L536,695L540,692L543,693L547,688L550,690Z"],[16,"M476,779L478,785L484,782L489,783L486,794L490,799L489,803L492,804L489,807L489,813L483,823L475,817L457,818L458,824L469,837L475,850L484,857L486,863L480,868L470,870L477,878L473,884L469,881L469,885L466,888L463,881L458,877L455,878L452,875L444,872L437,874L430,873L425,878L435,894L423,895L419,897L416,893L414,882L412,881L405,885L407,898L402,905L401,900L397,899L377,876L380,867L376,864L367,867L369,859L378,863L371,853L374,849L378,851L381,846L379,843L382,842L383,845L392,845L398,836L402,835L406,828L405,821L409,817L418,815L426,822L436,811L425,805L429,802L427,800L426,802L422,800L423,797L411,789L415,787L416,780L419,780L424,787L435,788L448,797L451,793L456,792L462,787L466,788L471,780L476,779Z"],[17,"M444,872L452,875L455,878L458,877L460,878L466,888L469,885L469,881L473,884L477,879L480,881L489,897L490,902L488,905L495,913L498,921L497,925L503,939L504,954L511,951L515,954L518,966L523,972L535,978L536,983L543,986L563,1032L561,1035L563,1040L574,1056L566,1058L554,1046L541,1028L529,1019L505,1032L501,1030L499,1022L496,1021L489,1009L458,972L467,969L468,962L474,957L470,954L457,952L431,936L418,932L412,925L407,925L404,922L401,909L407,898L405,885L414,882L416,893L419,897L430,896L435,894L425,877L431,872L437,874L444,872Z"],[18,"M320,669L323,675L330,672L333,681L337,679L339,683L330,684L327,688L327,692L337,694L339,700L344,703L334,720L333,728L336,730L335,732L341,740L341,753L346,760L346,769L349,779L347,779L348,782L343,777L339,777L341,779L333,785L331,785L331,793L327,797L325,795L328,787L322,770L325,769L322,760L316,760L314,752L308,753L305,735L302,729L296,730L296,727L292,730L290,724L285,725L284,718L284,715L288,713L283,707L282,698L285,694L288,696L289,684L298,678L303,679L310,676L308,674L313,669L315,664L320,669Z"],[19,"M392,681L421,700L408,736L405,737L404,746L401,748L401,753L405,757L405,761L398,762L381,754L372,758L365,757L355,752L348,753L346,759L341,753L341,741L335,732L336,730L333,728L334,720L344,703L340,700L353,695L361,694L361,698L365,699L366,703L363,706L365,713L381,718L385,703L381,698L380,690L392,681Z"],[20,"M436,737L436,745L444,754L442,767L445,773L439,773L427,778L422,775L417,776L416,780L415,776L412,765L410,768L404,763L405,757L401,753L401,748L404,746L405,737L408,736L421,700L436,737Z"],[21,"M356,753L368,758L381,754L398,762L404,761L410,768L412,765L416,780L415,787L411,789L423,797L422,800L426,802L427,801L429,802L425,805L436,811L428,819L421,815L416,809L402,814L390,808L389,811L387,811L369,794L348,783L346,755L349,752L356,753Z"],[22,"M343,777L351,786L368,794L387,811L389,811L390,809L398,814L402,814L416,809L428,819L426,822L418,815L409,817L405,821L406,824L404,830L402,835L396,840L390,833L384,837L373,834L375,829L370,827L370,831L365,831L364,834L356,831L355,835L352,835L347,840L344,840L341,846L319,841L325,823L331,815L332,805L327,798L332,790L331,785L335,786L341,779L339,778L343,777Z"],[23,"M210,5L221,4L236,9L237,11L236,21L239,33L236,60L244,66L247,97L250,99L249,104L252,105L250,109L263,121L263,274L276,276L274,284L276,293L272,306L274,308L289,309L292,317L303,322L313,341L312,350L321,359L324,364L323,373L325,379L331,378L332,384L348,392L345,405L333,409L328,416L328,422L324,435L325,442L322,445L322,452L324,454L321,458L323,460L318,467L315,478L312,478L306,489L304,487L303,480L295,487L293,497L297,496L301,500L306,499L315,505L315,509L306,516L312,518L314,523L308,520L306,522L310,526L307,528L306,533L312,533L314,553L311,562L306,566L306,562L300,556L297,557L279,534L269,534L229,472L206,459L193,459L190,450L178,438L180,434L170,394L168,376L160,373L158,361L151,351L145,347L139,352L138,359L133,366L134,375L124,372L125,370L123,365L120,365L118,355L116,358L112,356L103,342L104,336L102,326L93,320L92,321L87,321L86,316L81,313L77,291L74,287L67,286L62,281L62,268L55,256L58,247L54,242L58,242L62,238L63,219L56,217L52,211L46,212L43,217L44,214L36,205L27,207L29,204L24,202L28,199L33,199L32,193L16,195L22,183L13,177L17,169L11,163L13,160L11,155L4,150L65,91L147,22L164,0L207,0L210,5Z"],[24,"M163,374L168,376L169,380L170,394L180,434L178,439L190,450L190,454L193,459L213,462L229,472L230,476L228,488L220,500L218,510L219,515L207,520L200,519L174,539L171,534L169,536L167,538L150,530L142,534L136,531L133,523L119,524L119,520L108,523L110,517L103,507L112,498L114,489L124,483L130,472L131,450L135,439L129,432L120,376L124,372L134,375L133,366L138,359L139,352L145,347L152,352L158,361L159,372L163,374Z"],[25,"M352,365L363,395L369,405L372,427L376,426L384,432L403,434L404,439L412,445L417,446L421,461L428,464L456,509L458,506L460,508L465,505L489,502L490,498L502,507L502,531L513,545L514,580L518,583L510,580L498,591L493,588L488,596L477,596L474,599L470,598L463,606L450,610L442,607L429,607L420,590L415,585L410,588L404,588L395,582L380,587L374,586L371,589L366,588L363,583L360,574L357,572L347,578L318,579L318,574L306,567L311,562L314,553L312,533L306,533L307,528L310,526L306,522L308,520L314,523L312,517L308,518L306,516L315,509L315,505L306,499L302,500L297,496L293,497L295,487L303,480L304,487L307,489L312,478L315,478L318,467L322,462L321,458L324,454L322,452L322,445L325,442L324,435L328,422L328,416L333,409L345,405L348,395L348,392L332,384L333,379L334,380L336,378L337,380L342,373L345,372L345,365L352,365Z"],[26,"M91,579L161,579L161,519L91,519L91,579Z"],[27,"M184,563L183,567L190,568L189,571L192,571L192,578L194,578L195,585L193,587L194,593L183,593L191,607L189,622L192,633L190,635L196,641L193,642L192,650L194,653L199,653L195,657L202,656L205,663L203,673L199,670L199,676L197,679L189,680L189,678L182,678L175,674L180,667L173,663L174,657L177,658L176,654L170,654L149,622L152,612L148,614L144,611L143,613L137,610L113,612L117,605L121,607L131,601L134,604L136,601L142,602L150,598L149,577L147,577L145,570L147,565L159,565L163,563L169,569L173,564L175,565L176,562L184,563Z"],[28,"M219,520L220,537L211,556L209,572L212,578L209,589L211,593L207,597L206,604L208,608L207,614L212,623L213,631L222,637L220,649L222,654L215,660L204,659L202,656L195,657L199,653L194,653L192,650L193,642L195,640L190,635L192,633L189,622L191,607L183,593L195,593L192,571L189,571L190,568L183,567L184,563L174,562L174,555L177,553L161,546L150,530L167,538L171,534L174,539L200,519L208,520L218,515L219,520Z"],[29,"M137,610L143,613L144,611L148,614L152,613L149,622L156,634L168,652L177,656L174,657L173,663L180,667L178,672L175,673L186,679L182,684L184,691L178,695L170,692L159,694L159,686L150,686L144,682L142,687L138,688L132,688L130,684L121,686L108,684L110,678L100,685L98,681L110,677L113,666L120,662L126,651L128,651L124,640L125,627L119,617L112,612L137,610Z"],[30,"M260,521L269,534L279,534L297,557L300,556L306,562L306,567L318,575L308,591L301,598L292,602L294,610L286,629L290,638L285,641L292,647L294,652L289,658L282,652L279,652L282,656L275,658L273,674L270,673L270,682L258,677L257,674L252,674L252,670L249,669L248,672L254,680L250,688L247,691L241,686L234,696L233,694L230,695L228,705L222,707L223,701L218,690L213,691L215,687L212,689L210,685L197,679L199,676L199,670L203,673L205,660L218,659L222,653L222,637L213,631L213,625L207,614L208,608L206,603L207,597L211,593L209,589L212,578L209,572L211,556L215,550L220,537L218,512L220,500L228,488L230,473L260,521Z"],[31,"M361,578L366,588L372,589L374,588L373,598L366,609L429,617L427,625L432,637L432,644L428,649L425,658L419,661L412,671L395,678L397,686L392,680L386,687L380,690L381,698L385,703L382,717L381,718L365,713L363,706L366,703L365,699L361,698L361,694L353,695L339,700L337,694L327,692L327,688L330,684L339,683L337,679L333,681L329,672L323,675L315,664L313,669L308,674L310,676L303,679L298,678L289,683L291,679L289,674L293,667L289,658L294,651L285,641L290,638L289,634L285,631L294,610L292,601L301,598L308,591L318,575L318,579L342,579L349,577L352,573L357,572L361,578Z"],[32,"M289,673L291,679L288,696L285,694L282,698L284,707L288,712L284,715L285,724L290,724L292,730L296,727L296,730L302,729L305,735L308,753L314,752L316,760L321,758L323,761L325,769L322,770L327,787L325,795L332,806L331,815L324,826L299,813L290,796L283,799L280,796L277,786L281,782L281,777L269,766L269,761L248,770L241,761L246,761L251,765L254,761L250,751L236,743L236,740L231,740L228,749L224,748L220,751L217,763L212,769L206,764L205,755L183,719L198,714L203,717L204,720L206,716L207,718L210,717L215,702L208,701L206,697L209,694L208,692L214,688L213,691L218,690L223,701L222,707L228,705L230,695L233,694L234,696L241,686L247,691L250,688L254,679L248,672L249,669L252,670L252,674L257,674L258,677L269,683L271,680L270,673L273,674L275,658L282,656L280,652L286,655L292,663L293,667L289,673Z"],[33,"M175,804L184,800L185,794L200,780L185,772L181,762L205,755L206,763L212,769L220,751L224,748L228,749L231,739L233,739L234,741L236,740L236,743L250,751L255,760L251,765L246,761L241,761L248,770L269,762L269,766L281,777L281,782L277,786L280,796L283,799L290,796L299,814L301,829L289,841L263,869L268,879L264,885L265,895L262,896L259,908L262,911L263,916L260,919L262,921L260,943L257,943L257,946L97,856L92,834L84,827L83,817L80,812L79,809L86,803L133,793L141,795L161,812L175,804Z"],[34,"M341,848L351,855L360,855L369,859L368,868L375,864L380,867L377,875L397,899L401,900L403,905L401,913L406,924L412,925L418,932L428,935L457,952L470,954L474,957L468,962L467,969L458,972L489,1009L496,1021L499,1022L500,1029L498,1042L495,1044L492,1069L490,1070L490,1081L470,1081L467,1066L447,1053L257,946L257,943L260,943L262,921L260,919L263,916L259,908L259,905L262,896L265,895L263,889L268,879L263,869L301,829L299,813L324,826L319,841L340,845L341,848Z"],[35,"M189,680L197,679L211,686L211,689L206,698L208,701L215,702L213,715L209,718L206,716L204,720L203,717L198,714L183,719L190,732L185,738L170,745L167,743L170,734L160,735L159,741L153,743L156,752L161,756L153,764L143,764L141,757L138,759L138,745L135,744L137,737L132,730L132,724L137,719L139,708L144,706L147,701L156,702L165,711L174,711L173,703L168,703L159,695L170,692L178,695L184,691L182,684L183,681L186,678L189,678L189,680Z"],[36,"M136,809L216,809L216,749L136,749L136,809Z"],[37,"M138,568L145,570L147,577L149,577L150,598L142,602L136,601L134,604L131,601L121,607L117,605L112,612L119,618L125,629L123,637L128,651L121,656L108,658L108,662L83,665L75,670L74,664L65,668L63,665L66,662L59,662L61,660L59,654L54,659L54,657L55,646L52,642L54,637L58,635L49,628L52,624L66,620L72,625L74,622L78,624L79,628L80,625L84,623L89,623L93,617L107,607L106,605L110,602L111,597L122,593L122,588L128,586L134,588L139,585L139,581L133,573L134,569L138,568Z"],[38,"M119,656L121,656L120,661L113,666L110,677L98,681L99,684L81,680L78,685L76,686L73,681L75,675L75,670L79,667L91,666L98,663L101,664L105,661L108,662L108,658L119,656Z"],[39,"M83,543L88,545L87,548L98,563L106,566L104,569L107,579L133,570L134,576L139,583L136,587L128,586L122,588L119,595L111,597L110,602L106,605L107,607L93,617L89,623L84,624L80,625L79,628L78,624L74,622L72,625L66,620L60,623L54,622L54,619L56,617L51,611L52,605L53,600L58,598L56,590L59,590L60,588L51,583L57,579L57,576L61,573L71,543L77,543L78,537L83,543Z"],[40,"M0,662L65,662L65,587L0,587L0,662Z"],[41,"M0,705L81,705L81,645L0,645L0,705Z"],[42,"M69,719L135,719L135,668L69,668L69,719Z"],[43,"M14,783L109,783L109,717L14,717L14,783Z"],[44,"M20,843L106,843L106,783L20,783L20,843Z"],[45,"M77,789L127,789L127,744L77,744L77,789Z"],[46,"M99,774L150,774L150,731L99,731L99,774Z"],[47,"M371,827L375,829L372,833L374,835L383,837L390,833L396,840L392,845L379,843L381,846L378,851L374,849L371,853L378,863L366,858L360,855L349,854L340,847L344,840L347,840L352,835L355,835L356,831L364,834L365,831L370,831L371,827Z"]]};
+function tween(from,to,dur,delay,fn){
+  if(reduceMotion()||!Number.isFinite(to)){fn(to);return;}
+  const t0=performance.now()+delay, ease=t=>t>=1?1:1-Math.pow(2,-10*t);
+  const step=now=>{const t=Math.min(1,Math.max(0,(now-t0)/dur));fn(from+(to-from)*ease(t));if(t<1)requestAnimationFrame(step);};
+  requestAnimationFrame(step);
+}
+function initHeroFx(){
+  const svg=$('#kmap'), hero=$('#race'), fx=$('#heroFx');
+  /* draw west to east so the country assembles across the screen */
+  const startX=d=>+d.slice(1,d.indexOf(','));
+  const order=KMAP.c.slice().sort((a,b)=>startX(a[1])-startX(b[1]));
+  svg.innerHTML=order.map((c,n)=>`<path pathLength="1" style="--d:${n}" d="${c[1]}"/>`).join('');
+  if(reduceMotion())return;
+  const paths=[...svg.querySelectorAll('path')];
+  paths.forEach(p=>p.addEventListener('animationend',e=>{if(e.animationName==='ping')p.classList.remove('ping');}));
+  let visible=true,timer=null;
+  const ping=()=>{const p=paths[Math.floor(Math.random()*paths.length)];if(!p.classList.contains('ping'))p.classList.add('ping');};
+  const run=()=>{clearInterval(timer);timer=null;if(visible&&!document.hidden)timer=setInterval(ping,650);};
+  setTimeout(run,3600);
+  new IntersectionObserver(e=>{visible=e[0].isIntersecting;run();}).observe(hero);
+  document.addEventListener('visibilitychange',run);
+  /* pointer spotlight and a little parallax on the map, smoothed with a lerp */
+  if(matchMedia('(hover: hover)').matches){
+    let tx=.3,ty=.4,cx=.3,cy=.4,raf=0;
+    const loop=()=>{cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;
+      fx.style.setProperty('--mx',(cx*100).toFixed(2)+'%');fx.style.setProperty('--my',(cy*100).toFixed(2)+'%');
+      fx.style.setProperty('--px',(cx-.5).toFixed(3));fx.style.setProperty('--py',(cy-.5).toFixed(3));
+      raf=Math.abs(tx-cx)+Math.abs(ty-cy)>.001?requestAnimationFrame(loop):0;};
+    hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height;
+      hero.classList.add('lit');if(!raf)raf=requestAnimationFrame(loop);});
+    hero.addEventListener('pointerleave',()=>hero.classList.remove('lit'));
+  }
+}
+function renderTicker(){
+  const polls=horseRacePolls().slice().reverse();
+  if(!polls.length)return;
+  const item=p=>{const v=Object.entries(p.figures||{}).filter(([n,x])=>isCandidate(n)&&Number.isFinite(x)).sort((a,b)=>b[1]-a[1]).slice(0,3);
+    return `<span class="tk"><span class="who">${esc(p.pollster)}</span><span>${fmtDate(p.date)}</span>`+
+      v.map(([n,x])=>`<span>${esc(surname(n))} <b>${f1(x)}</b></span>`).join('')+
+      (p.model_eligible===false?'<span class="hd">HELD</span>':'')+'</span>';};
+  const run=polls.map(item).join('');
+  /* the second copy makes the loop seamless; screen readers get it once */
+  $('#ticker').innerHTML=run+`<span style="display:contents" aria-hidden="true">${run}</span>`;
+  $('#ticker').style.setProperty('--tdur',Math.max(30,polls.length*6)+'s');
+  $('#tickerWrap').hidden=false;
+}
+let REVEAL_PENDING=new Set();
+function reveal(n,io){
+  if(!REVEAL_PENDING.delete(n))return;
+  n.classList.add('in');if(io)io.unobserve(n);
+  n.querySelectorAll('[data-count-to]').forEach(c=>{const d=+c.dataset.dec||0;
+    tween(0,+c.dataset.countTo,1400,200,v=>c.textContent=(c.dataset.pre||'')+v.toFixed(d)+(c.dataset.suf||''));});
+}
+/* backstop for the observer: anything that has reached (or been scrolled
+   past) the lower part of the viewport is revealed, so nothing stays hidden */
+function revealCheck(){
+  if(!REVEAL_PENDING.size)return;
+  const lim=innerHeight*.94;
+  REVEAL_PENDING.forEach(n=>{if(n.getBoundingClientRect().top<lim)reveal(n);});
+}
+function initReveal(){
+  if(reduceMotion()||!window.IntersectionObserver)return;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)reveal(e.target,io);}),{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  document.querySelectorAll('main > .section').forEach(sec=>{
+    const head=[...sec.querySelectorAll(':scope > .wrap > :not(.sec-body)')];
+    const body=sec.querySelector('.sec-body');
+    const kids=(body?[...body.children]:[]).flatMap(k=>k.matches('.gates,.signals,.cal')?[...k.children]:[k]);
+    head.forEach((n,i)=>{n.classList.add('rv');n.style.setProperty('--rv',i);REVEAL_PENDING.add(n);io.observe(n);});
+    kids.forEach((n,i)=>{n.classList.add('rv');n.style.setProperty('--rv',Math.min(i,4));REVEAL_PENDING.add(n);io.observe(n);});
+  });
+  revealCheck();
+}
+function initProgress(){
+  const bar=$('#progress'), fx=$('#heroFx'), hero=$('#race');let raf=0;
+  const upd=()=>{raf=0;const h=document.documentElement.scrollHeight-innerHeight;
+    bar.style.setProperty('--sp',h>0?(scrollY/h).toFixed(4):0);
+    if(!reduceMotion()&&scrollY<hero.offsetHeight+200)fx.style.setProperty('--sy',(scrollY*.35).toFixed(1)+'px');
+    revealCheck();};
+  addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(upd);},{passive:true});
+  upd();
+}
+
 /* ================= BOOT ================= */
 function refreshAverageViews(){
   renderRaceStrip();
@@ -1584,6 +1787,8 @@ function refreshAverageViews(){
 }
 async function boot(){
   initTheme();
+  initHeroFx();
+  initProgress();
   const keys=['polls','avgValidated','avgAll','manifest','ctx','alliance','integrity','coalition','claims'];
   const results=await Promise.allSettled(keys.map(k=>getJSON(F[k])));
   const got=Object.fromEntries(keys.map((k,i)=>[k,results[i].status==='fulfilled'?results[i].value:null]));
@@ -1601,9 +1806,11 @@ async function boot(){
 
   renderHeroStatus();
   renderRaceStrip();
-  const steps=[buildRules,buildTrend,buildCountdown,buildWhatIf,buildPicture,buildHistory,buildTrust];
+  renderTicker();
+  const steps=[buildTrend,buildCountdown,buildWhatIf,buildPicture,buildHistory,buildRules,buildTrust];
   for(const s of steps){try{s();}catch(e){console.error(s.name,e);}}
   initScrollSpy();
+  initReveal();
 
   const gen=got.manifest?.generated_at;
   $('#footStamp').textContent=gen
@@ -1611,7 +1818,7 @@ async function boot(){
     :'Data refreshes as new polls are published';
 
   /* sections were placeholders at load; re-honour a deep link once they have content */
-  if(location.hash){const t=document.getElementById(location.hash.slice(1));if(t)requestAnimationFrame(()=>t.scrollIntoView());}
+  if(location.hash){const t=document.getElementById(location.hash.slice(1));if(t)requestAnimationFrame(()=>{t.scrollIntoView();revealCheck();});}
 }
 boot();
 </script>
