@@ -1,31 +1,35 @@
 {
-  "generated_at": "2026-09-28T13:17:21+00:00",
+  "generated_at": "2026-10-02T06:40:20+00:00",
   "phase": "phase_1_data_foundation",
   "prototype_status": "data_foundation_scaffold_with_normalized_poll_layer",
   "records": {
-    "approved_poll_records": 20,
-    "source_registry_records": 20,
-    "review_queue_records": 8,
-    "poll_results_long_rows": 112
+    "approved_poll_records": 13,
+    "source_registry_records": 21,
+    "review_queue_records": 9,
+    "poll_results_long_rows": 82
   },
   "coverage": {
     "pollsters": {
       "TIFA Research": 6,
-      "Infotrak Research": 11,
+      "Infotrak Research": 3,
       "Stats Kenya": 1,
       "Swiss Poll International": 1,
-      "Mizani Africa": 1
+      "Mizani Africa": 1,
+      "Politrack Africa": 1
     },
     "poll_types": {
-      "preferred_presidential_aspirant": 16,
+      "preferred_presidential_aspirant": 8,
       "popularity_rating": 3,
-      "preferred_presidential_candidate": 1
+      "preferred_presidential_candidate": 2
     },
     "candidates": [
       "Babu Owino",
       "David Maraga",
       "Edwin Sifuna",
       "Fred Matiang'i",
+      "George Wajackoyah",
+      "James Orengo",
+      "Jimi Wanjigi",
       "Kalonzo Musyoka",
       "Martha Karua",
       "Ndindi Nyoro",
@@ -35,15 +39,15 @@
       "William Ruto"
     ],
     "date_min": "2025-08-01",
-    "date_max": "2026-09-25",
+    "date_max": "2026-10-01",
     "geography_levels_available": [
       "country",
       "county_entities_without_values"
     ]
   },
   "missingness": {
-    "extraction_confidence": 6,
-    "question_text": 15,
+    "extraction_confidence": 7,
+    "question_text": 7,
     "sample_size": 2
   },
   "quality_flags": [

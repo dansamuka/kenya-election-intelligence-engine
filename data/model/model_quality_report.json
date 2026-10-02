@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-01T14:46:00+00:00",
+  "generated_at": "2026-10-02T06:40:21+00:00",
   "phase": "Phase 3 - Polling model",
   "model_version": "phase3.1-dual-scope-descriptive-weighted-average",
   "status": "generated_with_caveats",
   "records": {
-    "approved_poll_records": 21,
-    "model_eligible_records": 19,
+    "approved_poll_records": 13,
+    "model_eligible_records": 11,
     "model_excluded_records": 2,
     "polling_average_rows": 15,
     "all_published_average_rows": 19,

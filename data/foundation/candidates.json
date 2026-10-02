@@ -45,6 +45,36 @@
     "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
   },
   {
+    "candidate_id": "george_wajackoyah",
+    "canonical_name": "George Wajackoyah",
+    "aliases": [
+      "George Wajackoyah"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  },
+  {
+    "candidate_id": "james_orengo",
+    "canonical_name": "James Orengo",
+    "aliases": [
+      "James Orengo"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  },
+  {
+    "candidate_id": "jimi_wanjigi",
+    "canonical_name": "Jimi Wanjigi",
+    "aliases": [
+      "Jimi Wanjigi"
+    ],
+    "status": "tracked_from_poll_data",
+    "party_or_alignment": null,
+    "notes": "Party/alignment intentionally left null until sourced from public, date-stamped records."
+  },
+  {
     "candidate_id": "kalonzo_musyoka",
     "canonical_name": "Kalonzo Musyoka",
     "aliases": [
