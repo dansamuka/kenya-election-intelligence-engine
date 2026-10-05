@@ -39,6 +39,48 @@
     "recommended_review_action": "manual_chart_or_table_mapping"
   },
   {
+    "source_id": "politrack-2026-10-01-presidential",
+    "pollster": "Politrack Africa",
+    "title": "Politrack Africa Presidential Preference — 1 October 2026",
+    "source_url": "https://capitalfm.africa/ruto-leads-2027-presidential-race-with-45-1-politrack-africa-poll/",
+    "reason": "Poll results and headline methodology are publicly corroborated and published in polls_data.json. Remaining review task: verify the sampling frame, respondent recruitment/selection method, nonresponse treatment and detailed weighting procedure. The poll remains model_eligible=false until those methodology gaps are resolved.",
+    "extracted_candidates": {
+      "William Ruto": 45.1,
+      "Edwin Sifuna": 19.6,
+      "Kalonzo Musyoka": 10.3,
+      "Fred Matiang'i": 7.2,
+      "Rigathi Gachagua": 6,
+      "George Wajackoyah": 1.1,
+      "Martha Karua": 0.8,
+      "David Maraga": 0.8,
+      "James Orengo": 0.4,
+      "Jimi Wanjigi": 0.3
+    },
+    "raw_snippet": "Presidential preference: William Ruto 45.1%; Edwin Sifuna 19.6%; Kalonzo Musyoka 10.3%; Fred Matiang'i 7.2%; Rigathi Gachagua 6.0%; George Wajackoyah 1.1%; Martha Karua 0.8%; David Maraga 0.8%; James Orengo 0.4%; Jimi Wanjigi 0.3%; Undecided 8.4%. Fieldwork 15–25 Sep 2026; n=20,419; text-based technology platform; county-weighted by registered-voter share; reported ±3pp at 95% confidence.",
+    "created_at": "2026-10-01T14:46:00+00:00",
+    "review_status": "METHODOLOGY_HOLD",
+    "publication_status": "PUBLISHED_NOT_MODELLED",
+    "corroborating_sources": [
+      "https://dailyexpress.co.ke/ruto-leads-in-new-politrack-africa-poll-as-sifuna-emerges-second",
+      "https://www.the-star.co.ke/news/2026-10-01-ruto-tops-presidential-race-poll-with-451",
+      "https://www.tv47.digital/ruto-leads-2027-presidential-preference-poll-at-45-1-sifuna-second-at-19-6-164576/"
+    ],
+    "review_priority_score": 41,
+    "review_priority": "high",
+    "review_signals": [
+      "election",
+      "gachagua",
+      "kalonzo",
+      "matiang",
+      "multiple_positive_candidate_values",
+      "president",
+      "presidential",
+      "ruto",
+      "sifuna"
+    ],
+    "recommended_review_action": "manual_chart_or_table_mapping"
+  },
+  {
     "source_id": "128682ecb936df9710dc",
     "pollster": "Infotrak Research",
     "title": "THE INFOTRAK VOICE OF THE PEOPLE – KENYANS HEROES",
@@ -74,8 +116,8 @@
     "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2026/07/INFOTRAK-ELECTED-LEADERS-PERFORMANCE-RATING-2026-GP-FIN.pdf",
     "reason": "Candidate values found but review is needed for: poll type",
     "extracted_candidates": {
-      "Edwin Sifuna": 62.0,
-      "Ndindi Nyoro": 78.0
+      "Edwin Sifuna": 62,
+      "Ndindi Nyoro": 78
     },
     "raw_snippet": "utu Samson Cherarkey Aaron Cheruiyot\nNyandarua Murang'a Nandi Kericho\n68% 65% 64% 63%\n6 Hon. 6 Hon. 6 Hon. 9 Hon. 9 Hon.\nVincent Kiprono Richard Onyonka Dan Maanzo Edwin Sifuna Steve Lelegwe\nBaringo Kisii Makueni Nairobi Samburu\n62% 62% 62% 61% 61%\n11 Hon. 11 Hon. 14 Hon. 14 Hon. 14 Hon.\nAli Roba Enock Wambua Julius Murgor Hillary Sigei Jackson\n---\nnfoTrak Elected Leaders Performance 2026\nTOP PERFORMING MEMBERS OF PARLIAMENT\nHon. Babu Owino\n1\nEmbakasi East\n80%\n2 Hon. 3 Hon. 3 Hon.\nJoseph Kalasinga John Bwire Ndindi Nyoro\nKabuchai Taveta Kiharu\n78% 76% 76%\n5 Hon. Naisula 5 Hon. Didmus 5 Hon. Reuben 5 Hon. Gideon 5 Hon. 5 Hon. Gichohi\nLesuuda Barasa Kiborek Kipkoech Nelson Koech Kaguchia\nS",
     "created_at": "2026-09-28T13:16:50+00:00",

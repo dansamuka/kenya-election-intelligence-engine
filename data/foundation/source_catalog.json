@@ -176,6 +176,17 @@
     "feeds_public_poll_record": true
   },
   {
+    "source_id": "politrack-2026-10-01-presidential",
+    "pollster": "Politrack Africa",
+    "title": "Politrack Africa Presidential Preference — 1 October 2026",
+    "page_url": "https://capitalfm.africa/ruto-leads-2027-presidential-race-with-45-1-politrack-africa-poll/",
+    "pdf_url": null,
+    "published_date": "2026-10-01",
+    "processing_status": "published_with_methodology_hold",
+    "sha256": null,
+    "feeds_public_poll_record": true
+  },
+  {
     "source_id": "statskenya-mar2026-manual",
     "pollster": "Stats Kenya",
     "title": "Ruto Takes Early Lead In 2027 Race As Kalonzo Comes Distant Third",
@@ -217,17 +228,6 @@
     "published_date": "2026-05-14",
     "processing_status": "processed",
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
-    "feeds_public_poll_record": true
-  },
-  {
-    "source_id": "politrack-2026-10-01-presidential",
-    "pollster": "Politrack Africa",
-    "title": "Politrack Africa Presidential Preference — 1 October 2026",
-    "page_url": "https://capitalfm.africa/ruto-leads-2027-presidential-race-with-45-1-politrack-africa-poll/",
-    "pdf_url": null,
-    "published_date": "2026-10-01",
-    "processing_status": "published_with_methodology_hold",
-    "sha256": null,
     "feeds_public_poll_record": true
   }
 ]

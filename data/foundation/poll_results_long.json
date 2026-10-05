@@ -240,6 +240,102 @@
     "model_eligible": true
   },
   {
+    "poll_id": "2025_12_05_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
+    "date": "2025-12-05",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "david_maraga",
+    "candidate": "David Maraga",
+    "metric": "percentage",
+    "value": 2.0,
+    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2025_12_05_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
+    "date": "2025-12-05",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "edwin_sifuna",
+    "candidate": "Edwin Sifuna",
+    "metric": "percentage",
+    "value": 31.0,
+    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2025_12_05_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
+    "date": "2025-12-05",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "fred_matiang_i",
+    "candidate": "Fred Matiang'i",
+    "metric": "percentage",
+    "value": 15.0,
+    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2025_12_05_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
+    "date": "2025-12-05",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "kalonzo_musyoka",
+    "candidate": "Kalonzo Musyoka",
+    "metric": "percentage",
+    "value": 13.0,
+    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2025_12_05_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
+    "date": "2025-12-05",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "martha_karua",
+    "candidate": "Martha Karua",
+    "metric": "percentage",
+    "value": 2.0,
+    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2025_12_05_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
+    "date": "2025-12-05",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "ndindi_nyoro",
+    "candidate": "Ndindi Nyoro",
+    "metric": "percentage",
+    "value": null,
+    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2025_12_05_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
+    "date": "2025-12-05",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "rigathi_gachagua",
+    "candidate": "Rigathi Gachagua",
+    "metric": "percentage",
+    "value": 2.0,
+    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2025_12_05_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
+    "date": "2025-12-05",
+    "pollster": "Infotrak Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "william_ruto",
+    "candidate": "William Ruto",
+    "metric": "percentage",
+    "value": 25.0,
+    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+    "model_eligible": true
+  },
+  {
     "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_nation_africa_kenya_news_politics_ruto_leads_in_popularity_poll_babu_owino_tipped_for_luo_kingpin_after_raila_dea",
     "date": "2025-12-28",
     "pollster": "Infotrak Research",
@@ -252,18 +348,6 @@
     "model_eligible": true
   },
   {
-    "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
-    "date": "2025-12-28",
-    "pollster": "Infotrak Research",
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate_id": "david_maraga",
-    "candidate": "David Maraga",
-    "metric": "percentage",
-    "value": 2,
-    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
-    "model_eligible": true
-  },
-  {
     "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_nation_africa_kenya_news_politics_ruto_leads_in_popularity_poll_babu_owino_tipped_for_luo_kingpin_after_raila_dea",
     "date": "2025-12-28",
     "pollster": "Infotrak Research",
@@ -273,18 +357,6 @@
     "metric": "percentage",
     "value": 2,
     "source_url": "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
-    "model_eligible": true
-  },
-  {
-    "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
-    "date": "2025-12-28",
-    "pollster": "Infotrak Research",
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate_id": "edwin_sifuna",
-    "candidate": "Edwin Sifuna",
-    "metric": "percentage",
-    "value": 31,
-    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
   {
@@ -300,18 +372,6 @@
     "model_eligible": true
   },
   {
-    "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
-    "date": "2025-12-28",
-    "pollster": "Infotrak Research",
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate_id": "fred_matiang_i",
-    "candidate": "Fred Matiang'i",
-    "metric": "percentage",
-    "value": 15,
-    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
-    "model_eligible": true
-  },
-  {
     "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_nation_africa_kenya_news_politics_ruto_leads_in_popularity_poll_babu_owino_tipped_for_luo_kingpin_after_raila_dea",
     "date": "2025-12-28",
     "pollster": "Infotrak Research",
@@ -321,18 +381,6 @@
     "metric": "percentage",
     "value": 13,
     "source_url": "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
-    "model_eligible": true
-  },
-  {
-    "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
-    "date": "2025-12-28",
-    "pollster": "Infotrak Research",
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate_id": "kalonzo_musyoka",
-    "candidate": "Kalonzo Musyoka",
-    "metric": "percentage",
-    "value": 13,
-    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
   {
@@ -348,18 +396,6 @@
     "model_eligible": true
   },
   {
-    "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
-    "date": "2025-12-28",
-    "pollster": "Infotrak Research",
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate_id": "martha_karua",
-    "candidate": "Martha Karua",
-    "metric": "percentage",
-    "value": 2,
-    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
-    "model_eligible": true
-  },
-  {
     "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_nation_africa_kenya_news_politics_ruto_leads_in_popularity_poll_babu_owino_tipped_for_luo_kingpin_after_raila_dea",
     "date": "2025-12-28",
     "pollster": "Infotrak Research",
@@ -369,30 +405,6 @@
     "metric": "percentage",
     "value": 2,
     "source_url": "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
-    "model_eligible": true
-  },
-  {
-    "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
-    "date": "2025-12-28",
-    "pollster": "Infotrak Research",
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate_id": "ndindi_nyoro",
-    "candidate": "Ndindi Nyoro",
-    "metric": "percentage",
-    "value": null,
-    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
-    "model_eligible": true
-  },
-  {
-    "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
-    "date": "2025-12-28",
-    "pollster": "Infotrak Research",
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate_id": "rigathi_gachagua",
-    "candidate": "Rigathi Gachagua",
-    "metric": "percentage",
-    "value": 2,
-    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
   {
@@ -405,18 +417,6 @@
     "metric": "percentage",
     "value": 5,
     "source_url": "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
-    "model_eligible": true
-  },
-  {
-    "poll_id": "2025_12_28_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
-    "date": "2025-12-28",
-    "pollster": "Infotrak Research",
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate_id": "william_ruto",
-    "candidate": "William Ruto",
-    "metric": "percentage",
-    "value": 25,
-    "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
   {
@@ -528,6 +528,18 @@
     "model_eligible": true
   },
   {
+    "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2026-05-14",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "david_maraga",
+    "candidate": "David Maraga",
+    "metric": "percentage",
+    "value": null,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+    "model_eligible": true
+  },
+  {
     "poll_id": "2026_05_14_tifa_research_popularity_rating_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_2027_general_election_political_parties_presidency_and_coalitions_24_jul",
     "date": "2026-05-14",
     "pollster": "TIFA Research",
@@ -548,6 +560,18 @@
     "candidate": "Edwin Sifuna",
     "metric": "percentage",
     "value": 9,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2026-05-14",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "edwin_sifuna",
+    "candidate": "Edwin Sifuna",
+    "metric": "percentage",
+    "value": 10.0,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "model_eligible": true
   },
@@ -576,6 +600,18 @@
     "model_eligible": true
   },
   {
+    "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2026-05-14",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "fred_matiang_i",
+    "candidate": "Fred Matiang'i",
+    "metric": "percentage",
+    "value": 14.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+    "model_eligible": true
+  },
+  {
     "poll_id": "2026_05_14_tifa_research_popularity_rating_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_2027_general_election_political_parties_presidency_and_coalitions_24_jul",
     "date": "2026-05-14",
     "pollster": "TIFA Research",
@@ -596,6 +632,42 @@
     "candidate": "Kalonzo Musyoka",
     "metric": "percentage",
     "value": 19,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2026-05-14",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "kalonzo_musyoka",
+    "candidate": "Kalonzo Musyoka",
+    "metric": "percentage",
+    "value": 3.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2026-05-14",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "martha_karua",
+    "candidate": "Martha Karua",
+    "metric": "percentage",
+    "value": 3.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2026-05-14",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "ndindi_nyoro",
+    "candidate": "Ndindi Nyoro",
+    "metric": "percentage",
+    "value": null,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "model_eligible": true
   },
@@ -624,6 +696,18 @@
     "model_eligible": true
   },
   {
+    "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2026-05-14",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "rigathi_gachagua",
+    "candidate": "Rigathi Gachagua",
+    "metric": "percentage",
+    "value": 9.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+    "model_eligible": true
+  },
+  {
     "poll_id": "2026_05_14_tifa_research_popularity_rating_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_2027_general_election_political_parties_presidency_and_coalitions_24_jul",
     "date": "2026-05-14",
     "pollster": "TIFA Research",
@@ -644,6 +728,18 @@
     "candidate": "William Ruto",
     "metric": "percentage",
     "value": 24,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2026_05_14_tifa_research_preferred_presidential_aspirant_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_research_political_alignments_and_2027_election_prospects_14_may",
+    "date": "2026-05-14",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate_id": "william_ruto",
+    "candidate": "William Ruto",
+    "metric": "percentage",
+    "value": 2.0,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "model_eligible": true
   },

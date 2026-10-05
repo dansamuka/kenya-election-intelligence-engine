@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-02T06:40:20+00:00",
+  "generated_at": "2026-10-05T14:02:43+00:00",
   "phase": "phase_1_data_foundation",
   "prototype_status": "data_foundation_scaffold_with_normalized_poll_layer",
   "records": {
-    "approved_poll_records": 13,
+    "approved_poll_records": 14,
     "source_registry_records": 21,
     "review_queue_records": 9,
-    "poll_results_long_rows": 82
+    "poll_results_long_rows": 90
   },
   "coverage": {
     "pollsters": {
-      "TIFA Research": 6,
+      "TIFA Research": 7,
       "Infotrak Research": 3,
       "Stats Kenya": 1,
       "Swiss Poll International": 1,
@@ -18,7 +18,7 @@
       "Politrack Africa": 1
     },
     "poll_types": {
-      "preferred_presidential_aspirant": 8,
+      "preferred_presidential_aspirant": 9,
       "popularity_rating": 3,
       "preferred_presidential_candidate": 2
     },
@@ -47,7 +47,7 @@
   },
   "missingness": {
     "extraction_confidence": 7,
-    "question_text": 7,
+    "question_text": 8,
     "sample_size": 2
   },
   "quality_flags": [

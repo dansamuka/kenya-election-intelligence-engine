@@ -38,9 +38,9 @@
     "prior_quality_score": 0.82,
     "transparency_score": 0.78,
     "methodology_score": 0.72,
-    "approved_records": 6,
+    "approved_records": 7,
     "unique_sources": 2,
-    "records_with_sample_size": 6,
+    "records_with_sample_size": 7,
     "notes": "Primary-source PDF present; sample-size/method details may require manual audit per release."
   }
 ]
