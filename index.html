@@ -611,6 +611,57 @@ footer{background:var(--surface-hero);color:var(--hero-ink-2);padding:var(--s-7)
 footer a{color:var(--mint)}
 .foot-h{font:500 11px/16px var(--f-mono);letter-spacing:.08em;color:#fff}
 .foot-stamp{font:400 12px/16px var(--f-mono);color:var(--hero-meta);margin-top:var(--s-4)}
+/* OCT-2026 SECTION LAYOUT AUDIT */
+
+/* October 2026 layout audit: isolate section heading rhythm from display-font
+   ink overhang and late-loaded Google Fonts. Applies to every editorial section. */
+.section > .wrap > .eyebrow{display:block;margin:0 0 12px}
+.section > .wrap > .h-sec{
+  display:block;
+  font-size:clamp(30px,3.5vw,44px);
+  line-height:1.28;
+  letter-spacing:-.028em;
+  overflow-wrap:break-word;
+  margin:0 0 18px;
+  padding:0 0 .12em;
+  text-wrap:balance;
+}
+.section > .wrap > .h-sec + .answer,
+.section > .wrap > .h-sec + .sub{margin-top:0}
+.section > .wrap > .answer{
+  position:relative;
+  display:block;
+  line-height:1.55;
+  margin-bottom:14px;
+  text-wrap:pretty;
+}
+.section > .wrap > .answer + .sub{margin-top:0}
+.section > .wrap > .sub{line-height:1.6;overflow-wrap:anywhere}
+.section > .wrap > .sec-body{margin-top:clamp(24px,3vw,40px)}
+/* Charts, grid children and long source labels should shrink instead of
+   forcing the viewport wider. Local scrollers retain their own overflow. */
+.section .wrap,.section .sec-body,.card,.gates,.tl{min-width:0}
+.section img,.section svg{max-width:100%}
+.section .card{overflow-wrap:break-word}
+.nav-wrap{max-width:100%}
+.nav a{flex-shrink:0}
+@media (max-width:767px){
+  .section > .wrap > .eyebrow{margin-bottom:10px}
+  .section > .wrap > .h-sec{
+    font-size:clamp(28px,7vw,38px);
+    line-height:1.27;
+    padding-bottom:.15em;
+    margin-bottom:16px;
+  }
+  .section > .wrap > .answer{font-size:16px;line-height:1.55;margin-bottom:12px}
+  .section > .wrap > .sub{font-size:15px;line-height:1.6}
+  .section > .wrap > .sec-body{margin-top:24px}
+  .card{max-width:100%}
+}
+@media (max-width:380px){
+  .section > .wrap > .h-sec{font-size:28px;letter-spacing:-.02em}
+}
+
 </style>
 </head>
 <body>
