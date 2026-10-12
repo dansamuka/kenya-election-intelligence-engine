@@ -134,5 +134,15 @@
       "https://www.the-star.co.ke/news/2026-10-01-ruto-tops-presidential-race-poll-with-451",
       "https://www.tv47.digital/ruto-leads-2027-presidential-preference-poll-at-45-1-sifuna-second-at-19-6-164576/"
     ]
+  },
+  {
+    "source_id": "e299a44d39950380ed68",
+    "pollster": "Infotrak Research",
+    "title": "Infotrak Voice of the People Poll – September 2025",
+    "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Infotrak-VOP-Poll_Sep-2025_Phase-One2.pdf",
+    "reason": "Processing failed: ('Connection broken: IncompleteRead(147102 bytes read, 14723429 more expected)', IncompleteRead(147102 bytes read, 14723429 more expected))",
+    "extracted_candidates": {},
+    "raw_snippet": "",
+    "created_at": "2026-10-12T14:46:14+00:00"
   }
 ]

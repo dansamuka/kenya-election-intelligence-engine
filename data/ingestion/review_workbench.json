@@ -208,6 +208,22 @@
     "recommended_review_action": "inspect_source_relevance"
   },
   {
+    "source_id": "e299a44d39950380ed68",
+    "pollster": "Infotrak Research",
+    "title": "Infotrak Voice of the People Poll – September 2025",
+    "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Infotrak-VOP-Poll_Sep-2025_Phase-One2.pdf",
+    "reason": "Processing failed: ('Connection broken: IncompleteRead(147102 bytes read, 14723429 more expected)', IncompleteRead(147102 bytes read, 14723429 more expected))",
+    "extracted_candidates": {},
+    "raw_snippet": "",
+    "created_at": "2026-10-12T14:46:14+00:00",
+    "review_priority_score": 1,
+    "review_priority": "low",
+    "review_signals": [
+      "voice of the people"
+    ],
+    "recommended_review_action": "inspect_source_relevance"
+  },
+  {
     "source_id": "f98574cfd387a9fd4a1c",
     "pollster": "Infotrak Research",
     "title": "Mulembe Nation Poll December 2025",
