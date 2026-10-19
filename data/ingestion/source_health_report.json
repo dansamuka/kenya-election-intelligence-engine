@@ -1,6 +1,6 @@
 {
   "phase": "phase_2_source_ingestion",
-  "generated_at": "2026-10-12T14:46:38+00:00",
+  "generated_at": "2026-10-19T12:34:10+00:00",
   "summary": {
     "catalog_sources": 21,
     "registered_sources": 21,
@@ -10,11 +10,10 @@
     "high_priority_review_items": 4
   },
   "processing_status_counts": {
-    "rejected": 8,
+    "rejected": 9,
     "needs_review": 3,
     "manually_verified_external": 3,
     "processed": 4,
-    "needs_review_processing_error": 1,
     "published_with_methodology_hold": 2
   },
   "source_class_counts": {

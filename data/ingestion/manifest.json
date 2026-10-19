@@ -1,6 +1,6 @@
 {
   "phase": "phase_2_source_ingestion",
-  "generated_at": "2026-10-12T14:46:38+00:00",
+  "generated_at": "2026-10-19T12:34:10+00:00",
   "description": "Auditable source-ingestion layer for discovery, classification, extraction audit, and human review routing.",
   "source_feeds": [
     {

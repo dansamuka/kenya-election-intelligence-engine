@@ -20,7 +20,7 @@
     "sha256": "c3de2eaacec991f50527f37dd84facd8cf4038c0441f5c9e2efff5857b0cfc7e",
     "feeds_public_poll_record": false,
     "review_items": 2,
-    "last_checked_at": "2026-10-12T14:46:24+00:00",
+    "last_checked_at": "2026-10-19T12:33:34+00:00",
     "processing_error": null
   },
   {
@@ -32,7 +32,7 @@
     "sha256": "3c839f966c7a57c899de086e16c6ce10d4be68d3e4fd3e8baac8ff026c35966a",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-10-12T14:46:38+00:00",
+    "last_checked_at": "2026-10-19T12:33:53+00:00",
     "processing_error": null
   },
   {
@@ -68,19 +68,7 @@
     "sha256": "7a7e3ad4c9228ffbe9dbcfbdb9be35c5754d5a202d2f6478cc024d90188ce172",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-10-12T14:46:22+00:00",
-    "processing_error": null
-  },
-  {
-    "source_id": "13628c27291888a32798",
-    "pollster": "Infotrak Research",
-    "title": "Infotrak Voice of the People Poll – September 2025",
-    "source_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
-    "processing_status": "rejected",
-    "sha256": "32d65ce54c2100cbf548d061c8c86bfa20e30b674208cb7fe17508ffbc48198f",
-    "feeds_public_poll_record": false,
-    "review_items": 0,
-    "last_checked_at": "2026-10-12T14:46:35+00:00",
+    "last_checked_at": "2026-10-19T12:33:32+00:00",
     "processing_error": null
   },
   {
@@ -88,12 +76,12 @@
     "pollster": "Infotrak Research",
     "title": "Infotrak Voice of the People Poll – September 2025",
     "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Infotrak-VOP-Poll_Sep-2025_Phase-One2.pdf",
-    "processing_status": "needs_review_processing_error",
-    "sha256": null,
+    "processing_status": "rejected",
+    "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
     "feeds_public_poll_record": false,
     "review_items": 2,
-    "last_checked_at": "2026-10-12T14:46:14+00:00",
-    "processing_error": "('Connection broken: IncompleteRead(147102 bytes read, 14723429 more expected)', IncompleteRead(147102 bytes read, 14723429 more expected))"
+    "last_checked_at": "2026-10-19T12:33:26+00:00",
+    "processing_error": null
   },
   {
     "source_id": "2f9615f90e93b60bad7f",
@@ -104,7 +92,7 @@
     "sha256": "6152f44126f5ec8794a684dd2bc943300880359103de6b376c7b43835061b750",
     "feeds_public_poll_record": true,
     "review_items": 0,
-    "last_checked_at": "2026-10-12T14:46:30+00:00",
+    "last_checked_at": "2026-10-19T12:33:39+00:00",
     "processing_error": null
   },
   {
@@ -116,7 +104,7 @@
     "sha256": "10706b99ed1e5cf595060fe5f554d668d2e4346adca948459c3f3f1d8d9f721b",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-10-12T14:46:15+00:00",
+    "last_checked_at": "2026-10-19T12:33:27+00:00",
     "processing_error": null
   },
   {
@@ -140,7 +128,7 @@
     "sha256": "67707ac0a6c22432d03c7ad9923a6bafdfd0d3b7a3ac4d53fb1c0040039f3fe7",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-10-05T14:02:29+00:00",
+    "last_checked_at": "2026-10-19T12:34:02+00:00",
     "processing_error": null
   },
   {
@@ -152,7 +140,7 @@
     "sha256": "4e6631b592898ea87223a0f1e97f2b0ab3f5c4ddc7a65339730b9a587d1aa15d",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-10-05T14:02:42+00:00",
+    "last_checked_at": "2026-10-19T12:34:09+00:00",
     "processing_error": null
   },
   {
@@ -177,6 +165,18 @@
     "feeds_public_poll_record": false,
     "review_items": 1,
     "last_checked_at": "2026-07-13T09:33:50+00:00",
+    "processing_error": null
+  },
+  {
+    "source_id": "13628c27291888a32798",
+    "pollster": "Infotrak Research",
+    "title": "Voice of the People Poll – August 2025",
+    "source_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
+    "processing_status": "rejected",
+    "sha256": "32d65ce54c2100cbf548d061c8c86bfa20e30b674208cb7fe17508ffbc48198f",
+    "feeds_public_poll_record": false,
+    "review_items": 0,
+    "last_checked_at": "2026-10-19T12:33:42+00:00",
     "processing_error": null
   },
   {
@@ -236,7 +236,7 @@
     "sha256": "aba2fa0781e96d1190eebadfcbc511c2c9eb6a41813d8e873d2f92b1293852b1",
     "feeds_public_poll_record": true,
     "review_items": 0,
-    "last_checked_at": "2026-10-12T14:46:21+00:00",
+    "last_checked_at": "2026-10-19T12:33:31+00:00",
     "processing_error": null
   },
   {
@@ -248,7 +248,7 @@
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "feeds_public_poll_record": true,
     "review_items": 1,
-    "last_checked_at": "2026-10-12T14:46:13+00:00",
+    "last_checked_at": "2026-10-19T12:33:25+00:00",
     "processing_error": null
   }
 ]

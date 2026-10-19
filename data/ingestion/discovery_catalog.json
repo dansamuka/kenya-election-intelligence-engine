@@ -200,8 +200,8 @@
     "priority": "medium",
     "recommended_action": "download_hash_extract_parse",
     "published_date": "2025-09-25",
-    "processing_status": "needs_review_processing_error",
-    "sha256": null,
+    "processing_status": "rejected",
+    "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
     "discovery_origin": "sources_registry",
     "discovery_error": null
   },
@@ -391,7 +391,7 @@
   {
     "source_id": "13628c27291888a32798",
     "pollster": "Infotrak Research",
-    "title": "Infotrak Voice of the People Poll – September 2025",
+    "title": "Voice of the People Poll – August 2025",
     "page_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
     "pdf_url": null,
     "source_url": "https://www.infotrakresearch.com/infotrak-voice-of-the-people-poll-september-2025/",
