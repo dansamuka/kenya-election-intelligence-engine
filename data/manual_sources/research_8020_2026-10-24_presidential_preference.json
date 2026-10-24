@@ -7,9 +7,12 @@
   "geography": "Kenya (national scope implied by news headline; unconfirmed in primary report)",
   "figures": {
     "William Ruto": 26,
-    "Edwin Sifuna": 25
+    "Edwin Sifuna": 25,
+    "Kalonzo Musyoka": 11,
+    "Fred Matiang'i": 9,
+    "Rigathi Gachagua": 7
   },
-  "figures_scope": "Only two percentages visible in provided K24 Digital news graphic; other candidate figures and undecided share not verified.",
+  "figures_scope": "Five candidate percentages and undecided share as supplied by user in a secondary table image. Only Ruto 26% and Sifuna 25% independently visible in K24 Digital headline image; remaining figures await confirmation from original poll report.",
   "methodology": {
     "fieldwork_dates": null,
     "sample_size": null,
@@ -32,7 +35,10 @@
   },
   "review_status": "PENDING_PRIMARY_SOURCE_AND_METHODOLOGY_VALIDATION",
   "approved_for_polling_average": false,
-  "approved_for_public_display": false,
+  "approved_for_public_display": true,
   "model_eligible": false,
-  "notes": "Preliminary evidence-only record; do not include in normalized/model-eligible polling averages or infer remaining candidate rankings. Source is a user-provided image of a K24 Digital news update; direct report and underlying sample details pending."
+  "notes": "Listed in public polling ledger as methodology-held, and excluded from model-eligible forecast/averages. Original Research 8020 report, fieldwork and sampling details await verification. Secondary table image provided by user supplies complete values; K24 Digital headline separately supports the top two.",
+  "response_categories": {
+    "Undecided": 5
+  }
 }
