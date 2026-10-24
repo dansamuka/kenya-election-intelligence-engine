@@ -92,14 +92,14 @@
     "geography": "Kenya",
     "sample_size": 600,
     "figures": {
-      "William Ruto": 25.0,
-      "Kalonzo Musyoka": 13.0,
-      "Fred Matiang'i": 15.0,
-      "Rigathi Gachagua": 2.0,
-      "Edwin Sifuna": 31.0,
+      "William Ruto": 25,
+      "Kalonzo Musyoka": 13,
+      "Fred Matiang'i": 15,
+      "Rigathi Gachagua": 2,
+      "Edwin Sifuna": 31,
       "Ndindi Nyoro": null,
-      "Martha Karua": 2.0,
-      "David Maraga": 2.0
+      "Martha Karua": 2,
+      "David Maraga": 2
     },
     "source_title": "Mulembe Nation Poll",
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
@@ -206,13 +206,13 @@
     "geography": "Kenya",
     "sample_size": 2027,
     "figures": {
-      "William Ruto": 2.0,
-      "Kalonzo Musyoka": 3.0,
-      "Fred Matiang'i": 14.0,
-      "Rigathi Gachagua": 9.0,
-      "Edwin Sifuna": 10.0,
+      "William Ruto": 2,
+      "Kalonzo Musyoka": 3,
+      "Fred Matiang'i": 14,
+      "Rigathi Gachagua": 9,
+      "Edwin Sifuna": 10,
       "Ndindi Nyoro": null,
-      "Martha Karua": 3.0,
+      "Martha Karua": 3,
       "David Maraga": null
     },
     "source_title": "TIFA National Poll 2026: Political Alignments and 2027 Election Prospects",
@@ -334,5 +334,31 @@
     "response_categories": {
       "Undecided": 8.4
     }
+  },
+  {
+    "date": "2026-10-24",
+    "fieldwork_dates": null,
+    "pollster": "Research 8020",
+    "poll_type": "preferred_presidential_candidate",
+    "question_text": null,
+    "geography": "Kenya (national scope not verified in primary report)",
+    "sample_size": null,
+    "figures": {
+      "William Ruto": 26,
+      "Edwin Sifuna": 25,
+      "Kalonzo Musyoka": 11,
+      "Fred Matiang'i": 9,
+      "Rigathi Gachagua": 7
+    },
+    "response_categories": {
+      "Undecided": 5
+    },
+    "source_title": "K24 Digital news graphic: Research 8020 October 2026 presidential poll",
+    "source_url": "https://github.com/dansamuka/kenya-election-intelligence-engine/blob/main/data/manual_sources/research_8020_2026-10-24_presidential_preference.json",
+    "extraction_status": "USER_SUPPLIED_SECONDARY_GRAPHIC_UNVERIFIED",
+    "extraction_confidence": null,
+    "model_eligible": false,
+    "methodology_status": "PENDING_PRIMARY_REPORT_AND_METHODOLOGY",
+    "notes": "Published 24 October 2026 per K24 Digital graphic. Five reported candidate percentages and undecided share supplied by user; original Research 8020 report, fieldwork, questionnaire, sample, and margin of error remain unverified. Visible for transparency; excluded from model-eligible calculations. Source link opens evidence record; not a direct publisher report."
   }
 ]
