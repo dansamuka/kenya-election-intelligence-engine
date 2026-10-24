@@ -1,0 +1,38 @@
+{
+  "evidence_id": "research-8020-2026-10-24-k24-screenshot",
+  "pollster": "Research 8020",
+  "release_date": "2026-10-24",
+  "poll_type": "presidential_preference_reported",
+  "question_text": null,
+  "geography": "Kenya (national scope implied by news headline; unconfirmed in primary report)",
+  "figures": {
+    "William Ruto": 26,
+    "Edwin Sifuna": 25
+  },
+  "figures_scope": "Only two percentages visible in provided K24 Digital news graphic; other candidate figures and undecided share not verified.",
+  "methodology": {
+    "fieldwork_dates": null,
+    "sample_size": null,
+    "sampling_method": null,
+    "survey_mode": null,
+    "weighting": null,
+    "margin_of_error": null,
+    "confidence_level": null,
+    "sponsor": null,
+    "disclosure_note": "Primary survey instrument, methodology and complete results not independently verified. News graphic is dated 24 October 2026; it does not establish fieldwork dates."
+  },
+  "evidence": {
+    "type": "user_supplied_k24_digital_news_graphic",
+    "publisher": "K24 Digital",
+    "publisher_website": "https://k24.digital/",
+    "direct_post_url": null,
+    "original_survey_url": null,
+    "headline": "Ruto leads presidential poll at 26% with Sifuna close behind at 25%, according to Research 8020",
+    "news_graphic_date": "2026-10-24"
+  },
+  "review_status": "PENDING_PRIMARY_SOURCE_AND_METHODOLOGY_VALIDATION",
+  "approved_for_polling_average": false,
+  "approved_for_public_display": false,
+  "model_eligible": false,
+  "notes": "Preliminary evidence-only record; do not include in normalized/model-eligible polling averages or infer remaining candidate rankings. Source is a user-provided image of a K24 Digital news update; direct report and underlying sample details pending."
+}
