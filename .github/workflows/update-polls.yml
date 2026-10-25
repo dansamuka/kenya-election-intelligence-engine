@@ -43,13 +43,32 @@ jobs:
         run: python backend/polling_model.py
 
       - name: Commit changes if any
+        id: commit_data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/
           if git diff --cached --quiet; then
             echo "No data changes to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "Automated data refresh: $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Request VoteWatch synchronization
+        if: steps.commit_data.outputs.changed == 'true'
+        env:
+          VOTEWATCH_TOKEN: ${{ secrets.VOTEWATCH_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$VOTEWATCH_TOKEN" ]; then
+            echo "::warning::Configure VOTEWATCH_DISPATCH_TOKEN to activate cross-repository synchronization."
+            exit 0
+          fi
+          curl --fail-with-body --retry 3 -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $VOTEWATCH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/dansamuka/votewatch/dispatches \
+            -d '{"event_type":"election-engine-polls-updated"}'
