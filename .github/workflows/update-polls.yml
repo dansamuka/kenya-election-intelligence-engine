@@ -54,7 +54,11 @@ jobs:
           else
             git commit -m "Automated data refresh: $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+            if git diff HEAD^ HEAD --name-only | grep -Eq '^data/(foundation/(polls_normalized|poll_results_long)\.json|manual_sources/|polls_data\.json)'; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+            fi
           fi
 
       - name: Request VoteWatch synchronization
