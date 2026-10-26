@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-19T12:34:10+00:00",
+  "generated_at": "2026-10-26T12:31:50+00:00",
   "phase": "phase_1_data_foundation",
   "prototype_status": "data_foundation_scaffold_with_normalized_poll_layer",
   "records": {
-    "approved_poll_records": 14,
+    "approved_poll_records": 15,
     "source_registry_records": 21,
     "review_queue_records": 10,
-    "poll_results_long_rows": 90
+    "poll_results_long_rows": 95
   },
   "coverage": {
     "pollsters": {
@@ -15,12 +15,13 @@
       "Stats Kenya": 1,
       "Swiss Poll International": 1,
       "Mizani Africa": 1,
-      "Politrack Africa": 1
+      "Politrack Africa": 1,
+      "Research 8020": 1
     },
     "poll_types": {
       "preferred_presidential_aspirant": 9,
       "popularity_rating": 3,
-      "preferred_presidential_candidate": 2
+      "preferred_presidential_candidate": 3
     },
     "candidates": [
       "Babu Owino",
@@ -39,16 +40,16 @@
       "William Ruto"
     ],
     "date_min": "2025-08-01",
-    "date_max": "2026-10-01",
+    "date_max": "2026-10-24",
     "geography_levels_available": [
       "country",
       "county_entities_without_values"
     ]
   },
   "missingness": {
-    "extraction_confidence": 7,
-    "question_text": 8,
-    "sample_size": 2
+    "extraction_confidence": 8,
+    "question_text": 9,
+    "sample_size": 3
   },
   "quality_flags": [
     "Only public approved poll records are included in the normalized poll layer.",

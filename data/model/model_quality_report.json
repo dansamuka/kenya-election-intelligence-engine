@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-19T12:34:10+00:00",
+  "generated_at": "2026-10-26T12:31:50+00:00",
   "phase": "Phase 3 - Polling model",
   "model_version": "phase3.1-dual-scope-descriptive-weighted-average",
   "status": "generated_with_caveats",
   "records": {
-    "approved_poll_records": 14,
+    "approved_poll_records": 15,
     "model_eligible_records": 12,
-    "model_excluded_records": 2,
+    "model_excluded_records": 3,
     "polling_average_rows": 15,
     "all_published_average_rows": 19,
     "pollster_quality_rows": 4
@@ -24,11 +24,12 @@
       "popularity_rating",
       "preferred_presidential_aspirant"
     ],
-    "all_published_date_max": "2026-10-01",
+    "all_published_date_max": "2026-10-24",
     "all_published_pollsters": [
       "Infotrak Research",
       "Mizani Africa",
       "Politrack Africa",
+      "Research 8020",
       "Stats Kenya",
       "Swiss Poll International",
       "TIFA Research"
@@ -51,7 +52,7 @@
     }
   },
   "warnings": [
-    "2 published poll record(s) are methodology-held: they appear in the optional all-published average but are excluded from the model-eligible-only average."
+    "3 published poll record(s) are methodology-held: they appear in the optional all-published average but are excluded from the model-eligible-only average."
   ],
   "next_requirements_for_higher_rigor": [
     "Add more pollsters and more polling waves.",

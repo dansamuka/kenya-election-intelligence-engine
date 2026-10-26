@@ -1,6 +1,6 @@
 [
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "popularity_rating",
     "candidate": "William Ruto",
     "weighted_average": 18.94,
@@ -27,7 +27,7 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "popularity_rating",
     "candidate": "Rigathi Gachagua",
     "weighted_average": 17.93,
@@ -54,7 +54,7 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "popularity_rating",
     "candidate": "Kalonzo Musyoka",
     "weighted_average": 16.35,
@@ -81,7 +81,7 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "popularity_rating",
     "candidate": "Fred Matiang'i",
     "weighted_average": 12.48,
@@ -108,7 +108,7 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "popularity_rating",
     "candidate": "Edwin Sifuna",
     "weighted_average": 2.63,
@@ -135,29 +135,30 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "presidential_horse_race",
     "candidate": "William Ruto",
-    "weighted_average": 29.97,
-    "lower_95": 21.13,
-    "upper_95": 38.82,
-    "uncertainty_margin": 8.85,
-    "effective_poll_count": 7.57,
-    "raw_poll_count": 11,
-    "unvalidated_poll_count": 2,
+    "weighted_average": 29.45,
+    "lower_95": 21.64,
+    "upper_95": 37.27,
+    "uncertainty_margin": 7.81,
+    "effective_poll_count": 8.56,
+    "raw_poll_count": 12,
+    "unvalidated_poll_count": 3,
     "average_scope": "all_published",
     "includes_unvalidated": true,
     "source_poll_types": [
       "preferred_presidential_aspirant",
       "preferred_presidential_candidate"
     ],
-    "latest_poll_value": 45.1,
-    "latest_poll_date": "2026-10-01",
-    "latest_pollster": "Politrack Africa",
+    "latest_poll_value": 26.0,
+    "latest_poll_date": "2026-10-24",
+    "latest_pollster": "Research 8020",
     "pollsters_in_average": [
       "Infotrak Research",
       "Mizani Africa",
       "Politrack Africa",
+      "Research 8020",
       "Stats Kenya",
       "Swiss Poll International",
       "TIFA Research"
@@ -166,6 +167,7 @@
       "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
       "https://capitalfm.africa/mizani-poll-ruto-leads-kalonzo-sifuna-in-presidential-preference-survey/",
       "https://capitalfm.africa/ruto-leads-2027-presidential-race-with-45-1-politrack-africa-poll/",
+      "https://github.com/dansamuka/kenya-election-intelligence-engine/blob/main/data/manual_sources/research_8020_2026-10-24_presidential_preference.json",
       "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
       "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
       "https://www.infotrakresearch.com/2743-2/",
@@ -175,69 +177,30 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-10-01",
-    "poll_type": "presidential_horse_race",
-    "candidate": "Kalonzo Musyoka",
-    "weighted_average": 13.69,
-    "lower_95": 7.66,
-    "upper_95": 19.72,
-    "uncertainty_margin": 6.03,
-    "effective_poll_count": 7.57,
-    "raw_poll_count": 11,
-    "unvalidated_poll_count": 2,
-    "average_scope": "all_published",
-    "includes_unvalidated": true,
-    "source_poll_types": [
-      "preferred_presidential_aspirant",
-      "preferred_presidential_candidate"
-    ],
-    "latest_poll_value": 10.3,
-    "latest_poll_date": "2026-10-01",
-    "latest_pollster": "Politrack Africa",
-    "pollsters_in_average": [
-      "Infotrak Research",
-      "Mizani Africa",
-      "Politrack Africa",
-      "Stats Kenya",
-      "Swiss Poll International",
-      "TIFA Research"
-    ],
-    "source_urls": [
-      "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
-      "https://capitalfm.africa/mizani-poll-ruto-leads-kalonzo-sifuna-in-presidential-preference-survey/",
-      "https://capitalfm.africa/ruto-leads-2027-presidential-race-with-45-1-politrack-africa-poll/",
-      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
-      "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
-      "https://www.infotrakresearch.com/2743-2/",
-      "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
-      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
-    ],
-    "model_status": "usable_with_caution"
-  },
-  {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "presidential_horse_race",
     "candidate": "Edwin Sifuna",
-    "weighted_average": 13.26,
-    "lower_95": 9.56,
-    "upper_95": 16.97,
-    "uncertainty_margin": 3.71,
-    "effective_poll_count": 7.57,
-    "raw_poll_count": 11,
-    "unvalidated_poll_count": 2,
+    "weighted_average": 14.8,
+    "lower_95": 10.6,
+    "upper_95": 18.99,
+    "uncertainty_margin": 4.2,
+    "effective_poll_count": 8.56,
+    "raw_poll_count": 12,
+    "unvalidated_poll_count": 3,
     "average_scope": "all_published",
     "includes_unvalidated": true,
     "source_poll_types": [
       "preferred_presidential_aspirant",
       "preferred_presidential_candidate"
     ],
-    "latest_poll_value": 19.6,
-    "latest_poll_date": "2026-10-01",
-    "latest_pollster": "Politrack Africa",
+    "latest_poll_value": 25.0,
+    "latest_poll_date": "2026-10-24",
+    "latest_pollster": "Research 8020",
     "pollsters_in_average": [
       "Infotrak Research",
       "Mizani Africa",
       "Politrack Africa",
+      "Research 8020",
       "Stats Kenya",
       "Swiss Poll International",
       "TIFA Research"
@@ -246,6 +209,7 @@
       "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
       "https://capitalfm.africa/mizani-poll-ruto-leads-kalonzo-sifuna-in-presidential-preference-survey/",
       "https://capitalfm.africa/ruto-leads-2027-presidential-race-with-45-1-politrack-africa-poll/",
+      "https://github.com/dansamuka/kenya-election-intelligence-engine/blob/main/data/manual_sources/research_8020_2026-10-24_presidential_preference.json",
       "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
       "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
       "https://www.infotrakresearch.com/2743-2/",
@@ -255,29 +219,72 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
+    "poll_type": "presidential_horse_race",
+    "candidate": "Kalonzo Musyoka",
+    "weighted_average": 13.34,
+    "lower_95": 8.02,
+    "upper_95": 18.66,
+    "uncertainty_margin": 5.32,
+    "effective_poll_count": 8.56,
+    "raw_poll_count": 12,
+    "unvalidated_poll_count": 3,
+    "average_scope": "all_published",
+    "includes_unvalidated": true,
+    "source_poll_types": [
+      "preferred_presidential_aspirant",
+      "preferred_presidential_candidate"
+    ],
+    "latest_poll_value": 11.0,
+    "latest_poll_date": "2026-10-24",
+    "latest_pollster": "Research 8020",
+    "pollsters_in_average": [
+      "Infotrak Research",
+      "Mizani Africa",
+      "Politrack Africa",
+      "Research 8020",
+      "Stats Kenya",
+      "Swiss Poll International",
+      "TIFA Research"
+    ],
+    "source_urls": [
+      "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
+      "https://capitalfm.africa/mizani-poll-ruto-leads-kalonzo-sifuna-in-presidential-preference-survey/",
+      "https://capitalfm.africa/ruto-leads-2027-presidential-race-with-45-1-politrack-africa-poll/",
+      "https://github.com/dansamuka/kenya-election-intelligence-engine/blob/main/data/manual_sources/research_8020_2026-10-24_presidential_preference.json",
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
+      "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
+      "https://www.infotrakresearch.com/2743-2/",
+      "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+    ],
+    "model_status": "usable_with_caution"
+  },
+  {
+    "as_of": "2026-10-24",
     "poll_type": "presidential_horse_race",
     "candidate": "Fred Matiang'i",
-    "weighted_average": 11.38,
-    "lower_95": 7.88,
-    "upper_95": 14.88,
+    "weighted_average": 11.07,
+    "lower_95": 7.57,
+    "upper_95": 14.57,
     "uncertainty_margin": 3.5,
-    "effective_poll_count": 7.57,
-    "raw_poll_count": 11,
-    "unvalidated_poll_count": 2,
+    "effective_poll_count": 8.56,
+    "raw_poll_count": 12,
+    "unvalidated_poll_count": 3,
     "average_scope": "all_published",
     "includes_unvalidated": true,
     "source_poll_types": [
       "preferred_presidential_aspirant",
       "preferred_presidential_candidate"
     ],
-    "latest_poll_value": 7.2,
-    "latest_poll_date": "2026-10-01",
-    "latest_pollster": "Politrack Africa",
+    "latest_poll_value": 9.0,
+    "latest_poll_date": "2026-10-24",
+    "latest_pollster": "Research 8020",
     "pollsters_in_average": [
       "Infotrak Research",
       "Mizani Africa",
       "Politrack Africa",
+      "Research 8020",
       "Stats Kenya",
       "Swiss Poll International",
       "TIFA Research"
@@ -286,6 +293,7 @@
       "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
       "https://capitalfm.africa/mizani-poll-ruto-leads-kalonzo-sifuna-in-presidential-preference-survey/",
       "https://capitalfm.africa/ruto-leads-2027-presidential-race-with-45-1-politrack-africa-poll/",
+      "https://github.com/dansamuka/kenya-election-intelligence-engine/blob/main/data/manual_sources/research_8020_2026-10-24_presidential_preference.json",
       "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
       "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
       "https://www.infotrakresearch.com/2743-2/",
@@ -295,7 +303,7 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "presidential_horse_race",
     "candidate": "Babu Owino",
     "weighted_average": 7.0,
@@ -322,29 +330,30 @@
     "model_status": "thin_series"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "presidential_horse_race",
     "candidate": "Rigathi Gachagua",
-    "weighted_average": 5.7,
-    "lower_95": 2.2,
-    "upper_95": 9.2,
+    "weighted_average": 5.87,
+    "lower_95": 2.37,
+    "upper_95": 9.37,
     "uncertainty_margin": 3.5,
-    "effective_poll_count": 7.57,
-    "raw_poll_count": 11,
-    "unvalidated_poll_count": 2,
+    "effective_poll_count": 8.56,
+    "raw_poll_count": 12,
+    "unvalidated_poll_count": 3,
     "average_scope": "all_published",
     "includes_unvalidated": true,
     "source_poll_types": [
       "preferred_presidential_aspirant",
       "preferred_presidential_candidate"
     ],
-    "latest_poll_value": 6.0,
-    "latest_poll_date": "2026-10-01",
-    "latest_pollster": "Politrack Africa",
+    "latest_poll_value": 7.0,
+    "latest_poll_date": "2026-10-24",
+    "latest_pollster": "Research 8020",
     "pollsters_in_average": [
       "Infotrak Research",
       "Mizani Africa",
       "Politrack Africa",
+      "Research 8020",
       "Stats Kenya",
       "Swiss Poll International",
       "TIFA Research"
@@ -353,6 +362,7 @@
       "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
       "https://capitalfm.africa/mizani-poll-ruto-leads-kalonzo-sifuna-in-presidential-preference-survey/",
       "https://capitalfm.africa/ruto-leads-2027-presidential-race-with-45-1-politrack-africa-poll/",
+      "https://github.com/dansamuka/kenya-election-intelligence-engine/blob/main/data/manual_sources/research_8020_2026-10-24_presidential_preference.json",
       "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
       "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
       "https://www.infotrakresearch.com/2743-2/",
@@ -362,7 +372,7 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "presidential_horse_race",
     "candidate": "Ndindi Nyoro",
     "weighted_average": 3.1,
@@ -389,7 +399,7 @@
     "model_status": "thin_series"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "presidential_horse_race",
     "candidate": "Martha Karua",
     "weighted_average": 1.34,
@@ -424,7 +434,7 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "presidential_horse_race",
     "candidate": "George Wajackoyah",
     "weighted_average": 1.1,
@@ -451,7 +461,7 @@
     "model_status": "thin_series"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "presidential_horse_race",
     "candidate": "Oburu Odinga",
     "weighted_average": 1.0,
@@ -478,7 +488,7 @@
     "model_status": "thin_series"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "presidential_horse_race",
     "candidate": "David Maraga",
     "weighted_average": 0.82,
@@ -513,7 +523,7 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "presidential_horse_race",
     "candidate": "James Orengo",
     "weighted_average": 0.4,
@@ -540,7 +550,7 @@
     "model_status": "thin_series"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "presidential_horse_race",
     "candidate": "Okiya Omtata",
     "weighted_average": 0.36,
@@ -567,7 +577,7 @@
     "model_status": "thin_series"
   },
   {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-24",
     "poll_type": "presidential_horse_race",
     "candidate": "Jimi Wanjigi",
     "weighted_average": 0.3,

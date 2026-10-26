@@ -247,7 +247,7 @@
     "candidate_id": "david_maraga",
     "candidate": "David Maraga",
     "metric": "percentage",
-    "value": 2.0,
+    "value": 2,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -259,7 +259,7 @@
     "candidate_id": "edwin_sifuna",
     "candidate": "Edwin Sifuna",
     "metric": "percentage",
-    "value": 31.0,
+    "value": 31,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -271,7 +271,7 @@
     "candidate_id": "fred_matiang_i",
     "candidate": "Fred Matiang'i",
     "metric": "percentage",
-    "value": 15.0,
+    "value": 15,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -283,7 +283,7 @@
     "candidate_id": "kalonzo_musyoka",
     "candidate": "Kalonzo Musyoka",
     "metric": "percentage",
-    "value": 13.0,
+    "value": 13,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -295,7 +295,7 @@
     "candidate_id": "martha_karua",
     "candidate": "Martha Karua",
     "metric": "percentage",
-    "value": 2.0,
+    "value": 2,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -319,7 +319,7 @@
     "candidate_id": "rigathi_gachagua",
     "candidate": "Rigathi Gachagua",
     "metric": "percentage",
-    "value": 2.0,
+    "value": 2,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -331,7 +331,7 @@
     "candidate_id": "william_ruto",
     "candidate": "William Ruto",
     "metric": "percentage",
-    "value": 25.0,
+    "value": 25,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -571,7 +571,7 @@
     "candidate_id": "edwin_sifuna",
     "candidate": "Edwin Sifuna",
     "metric": "percentage",
-    "value": 10.0,
+    "value": 10,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "model_eligible": true
   },
@@ -607,7 +607,7 @@
     "candidate_id": "fred_matiang_i",
     "candidate": "Fred Matiang'i",
     "metric": "percentage",
-    "value": 14.0,
+    "value": 14,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "model_eligible": true
   },
@@ -643,7 +643,7 @@
     "candidate_id": "kalonzo_musyoka",
     "candidate": "Kalonzo Musyoka",
     "metric": "percentage",
-    "value": 3.0,
+    "value": 3,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "model_eligible": true
   },
@@ -655,7 +655,7 @@
     "candidate_id": "martha_karua",
     "candidate": "Martha Karua",
     "metric": "percentage",
-    "value": 3.0,
+    "value": 3,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "model_eligible": true
   },
@@ -703,7 +703,7 @@
     "candidate_id": "rigathi_gachagua",
     "candidate": "Rigathi Gachagua",
     "metric": "percentage",
-    "value": 9.0,
+    "value": 9,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "model_eligible": true
   },
@@ -739,7 +739,7 @@
     "candidate_id": "william_ruto",
     "candidate": "William Ruto",
     "metric": "percentage",
-    "value": 2.0,
+    "value": 2,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "model_eligible": true
   },
@@ -1077,6 +1077,66 @@
     "metric": "percentage",
     "value": 45.1,
     "source_url": "https://capitalfm.africa/ruto-leads-2027-presidential-race-with-45-1-politrack-africa-poll/",
+    "model_eligible": false
+  },
+  {
+    "poll_id": "2026_10_24_research_8020_preferred_presidential_candidate_https_github_com_dansamuka_kenya_election_intelligence_engine_blob_main_data_manual_sources_research_8020_2026_10_24_presi",
+    "date": "2026-10-24",
+    "pollster": "Research 8020",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "edwin_sifuna",
+    "candidate": "Edwin Sifuna",
+    "metric": "percentage",
+    "value": 25,
+    "source_url": "https://github.com/dansamuka/kenya-election-intelligence-engine/blob/main/data/manual_sources/research_8020_2026-10-24_presidential_preference.json",
+    "model_eligible": false
+  },
+  {
+    "poll_id": "2026_10_24_research_8020_preferred_presidential_candidate_https_github_com_dansamuka_kenya_election_intelligence_engine_blob_main_data_manual_sources_research_8020_2026_10_24_presi",
+    "date": "2026-10-24",
+    "pollster": "Research 8020",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "fred_matiang_i",
+    "candidate": "Fred Matiang'i",
+    "metric": "percentage",
+    "value": 9,
+    "source_url": "https://github.com/dansamuka/kenya-election-intelligence-engine/blob/main/data/manual_sources/research_8020_2026-10-24_presidential_preference.json",
+    "model_eligible": false
+  },
+  {
+    "poll_id": "2026_10_24_research_8020_preferred_presidential_candidate_https_github_com_dansamuka_kenya_election_intelligence_engine_blob_main_data_manual_sources_research_8020_2026_10_24_presi",
+    "date": "2026-10-24",
+    "pollster": "Research 8020",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "kalonzo_musyoka",
+    "candidate": "Kalonzo Musyoka",
+    "metric": "percentage",
+    "value": 11,
+    "source_url": "https://github.com/dansamuka/kenya-election-intelligence-engine/blob/main/data/manual_sources/research_8020_2026-10-24_presidential_preference.json",
+    "model_eligible": false
+  },
+  {
+    "poll_id": "2026_10_24_research_8020_preferred_presidential_candidate_https_github_com_dansamuka_kenya_election_intelligence_engine_blob_main_data_manual_sources_research_8020_2026_10_24_presi",
+    "date": "2026-10-24",
+    "pollster": "Research 8020",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "rigathi_gachagua",
+    "candidate": "Rigathi Gachagua",
+    "metric": "percentage",
+    "value": 7,
+    "source_url": "https://github.com/dansamuka/kenya-election-intelligence-engine/blob/main/data/manual_sources/research_8020_2026-10-24_presidential_preference.json",
+    "model_eligible": false
+  },
+  {
+    "poll_id": "2026_10_24_research_8020_preferred_presidential_candidate_https_github_com_dansamuka_kenya_election_intelligence_engine_blob_main_data_manual_sources_research_8020_2026_10_24_presi",
+    "date": "2026-10-24",
+    "pollster": "Research 8020",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "william_ruto",
+    "candidate": "William Ruto",
+    "metric": "percentage",
+    "value": 26,
+    "source_url": "https://github.com/dansamuka/kenya-election-intelligence-engine/blob/main/data/manual_sources/research_8020_2026-10-24_presidential_preference.json",
     "model_eligible": false
   }
 ]
