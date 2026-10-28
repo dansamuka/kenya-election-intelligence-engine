@@ -1,0 +1,50 @@
+{
+  "evidence_id": "swiss-poll-international-2026-10-28-user-supplied-pollster-graphic",
+  "pollster": "Swiss Poll International",
+  "release_date": "2026-10-28",
+  "poll_type": "preferred_presidential_candidate",
+  "question_text": null,
+  "geography": "Kenya",
+  "figures": {
+    "William Ruto": 40.2,
+    "Kalonzo Musyoka": 19.7,
+    "Edwin Sifuna": 17.6,
+    "Rigathi Gachagua": 7.5,
+    "Fred Matiang'i": 6,
+    "Ndindi Nyoro": 4.5
+  },
+  "response_categories": {
+    "Undecided": 3.3,
+    "Other candidates": 1.2
+  },
+  "methodology": {
+    "fieldwork_dates": "19–22 October 2026 (reported, not verified against original methodology)",
+    "sample_size": 6146,
+    "sampling_method": null,
+    "survey_mode": null,
+    "weighting": null,
+    "reported_margin_of_error_percentage_points": 1.8,
+    "reported_confidence_level_percentage": 95,
+    "survey_population": null,
+    "sponsor": null,
+    "disclosure_note": "Field dates, sample size and the stated margin of error/confidence level are from 28 October news reports; the original survey instrument/report, recruitment frame, sample selection, nonresponse and weighting remain unverified. The claimed sampling error cannot be validated without methodology."
+  },
+  "evidence": {
+    "type": "user_supplied_swiss_poll_branded_graphic_and_secondary_press_corroboration",
+    "graphic_date_shown": null,
+    "news_release_date": "2026-10-28",
+    "primary_survey_report_url": null,
+    "pollster_website": "https://www.swisspollint.com/",
+    "directly_verified_pollster_post_url": null,
+    "corroborating_sources": [
+      "https://touchlinenews.com/ruto-leads-2027-presidential-race-at-40-2-as-kalonzo-and-sifuna-trail-swisspoll-survey-shows/",
+      "https://newswire.co.ke/uda-leads-in-party-popularity-as-ruto-tops-presidential-poll-survey-shows/",
+      "https://www.tuko.co.ke/politics/644815-2027-general-election-poll-shows-william-rutos-running-mate/"
+    ]
+  },
+  "review_status": "PUBLICLY_REPORTED_METHODOLOGY_HOLD",
+  "approved_for_public_display": true,
+  "approved_for_polling_average": false,
+  "model_eligible": false,
+  "notes": "The screenshot percentages sum to 100.0% across six named candidates, undecided, and other candidates. Press coverage corroborates the six candidate percentages, fieldwork dates and reported n/±1.8/95%. This is a published observation, not a model-validated national survey; full source questionnaire and sampling methodology are outstanding. Keep distinct from the earlier 20 August 2026 Swiss Poll wave."
+}

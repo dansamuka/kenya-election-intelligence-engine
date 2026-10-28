@@ -1,6 +1,10 @@
 name: Update Kenya Polls Data
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/manual_sources/**'
   schedule:
     # Runs every Monday at 06:00 UTC. GitHub Actions runners have normal
     # internet access, unlike the sandbox this pipeline was originally
