@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-10-26T12:31:50+00:00",
+  "generated_at": "2026-10-28T15:25:00+00:00",
   "phase": "phase_1_data_foundation",
   "prototype_status": "data_foundation_scaffold_with_normalized_poll_layer",
   "records": {
-    "approved_poll_records": 15,
+    "approved_poll_records": 16,
     "source_registry_records": 21,
     "review_queue_records": 10,
-    "poll_results_long_rows": 95
+    "poll_results_long_rows": 101
   },
   "coverage": {
     "pollsters": {
       "TIFA Research": 7,
       "Infotrak Research": 3,
       "Stats Kenya": 1,
-      "Swiss Poll International": 1,
+      "Swiss Poll International": 2,
       "Mizani Africa": 1,
       "Politrack Africa": 1,
       "Research 8020": 1
@@ -21,7 +21,7 @@
     "poll_types": {
       "preferred_presidential_aspirant": 9,
       "popularity_rating": 3,
-      "preferred_presidential_candidate": 3
+      "preferred_presidential_candidate": 4
     },
     "candidates": [
       "Babu Owino",
@@ -40,15 +40,15 @@
       "William Ruto"
     ],
     "date_min": "2025-08-01",
-    "date_max": "2026-10-24",
+    "date_max": "2026-10-28",
     "geography_levels_available": [
       "country",
       "county_entities_without_values"
     ]
   },
   "missingness": {
-    "extraction_confidence": 8,
-    "question_text": 9,
+    "extraction_confidence": 9,
+    "question_text": 10,
     "sample_size": 3
   },
   "quality_flags": [

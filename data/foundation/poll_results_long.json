@@ -1138,5 +1138,77 @@
     "value": 26,
     "source_url": "https://github.com/dansamuka/kenya-election-intelligence-engine/blob/main/data/manual_sources/research_8020_2026-10-24_presidential_preference.json",
     "model_eligible": false
+  },
+  {
+    "poll_id": "2026_10_28_swiss_poll_international_preferred_presidential_candidate_https_touchlinenews_com_ruto_leads_2027_presidential_race_at_40_2_as_kalonzo_and_sifuna_trail_swisspoll_survey_",
+    "date": "2026-10-28",
+    "pollster": "Swiss Poll International",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "edwin_sifuna",
+    "candidate": "Edwin Sifuna",
+    "metric": "percentage",
+    "value": 17.6,
+    "source_url": "https://touchlinenews.com/ruto-leads-2027-presidential-race-at-40-2-as-kalonzo-and-sifuna-trail-swisspoll-survey-shows/",
+    "model_eligible": false
+  },
+  {
+    "poll_id": "2026_10_28_swiss_poll_international_preferred_presidential_candidate_https_touchlinenews_com_ruto_leads_2027_presidential_race_at_40_2_as_kalonzo_and_sifuna_trail_swisspoll_survey_",
+    "date": "2026-10-28",
+    "pollster": "Swiss Poll International",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "fred_matiang_i",
+    "candidate": "Fred Matiang'i",
+    "metric": "percentage",
+    "value": 6,
+    "source_url": "https://touchlinenews.com/ruto-leads-2027-presidential-race-at-40-2-as-kalonzo-and-sifuna-trail-swisspoll-survey-shows/",
+    "model_eligible": false
+  },
+  {
+    "poll_id": "2026_10_28_swiss_poll_international_preferred_presidential_candidate_https_touchlinenews_com_ruto_leads_2027_presidential_race_at_40_2_as_kalonzo_and_sifuna_trail_swisspoll_survey_",
+    "date": "2026-10-28",
+    "pollster": "Swiss Poll International",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "kalonzo_musyoka",
+    "candidate": "Kalonzo Musyoka",
+    "metric": "percentage",
+    "value": 19.7,
+    "source_url": "https://touchlinenews.com/ruto-leads-2027-presidential-race-at-40-2-as-kalonzo-and-sifuna-trail-swisspoll-survey-shows/",
+    "model_eligible": false
+  },
+  {
+    "poll_id": "2026_10_28_swiss_poll_international_preferred_presidential_candidate_https_touchlinenews_com_ruto_leads_2027_presidential_race_at_40_2_as_kalonzo_and_sifuna_trail_swisspoll_survey_",
+    "date": "2026-10-28",
+    "pollster": "Swiss Poll International",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "ndindi_nyoro",
+    "candidate": "Ndindi Nyoro",
+    "metric": "percentage",
+    "value": 4.5,
+    "source_url": "https://touchlinenews.com/ruto-leads-2027-presidential-race-at-40-2-as-kalonzo-and-sifuna-trail-swisspoll-survey-shows/",
+    "model_eligible": false
+  },
+  {
+    "poll_id": "2026_10_28_swiss_poll_international_preferred_presidential_candidate_https_touchlinenews_com_ruto_leads_2027_presidential_race_at_40_2_as_kalonzo_and_sifuna_trail_swisspoll_survey_",
+    "date": "2026-10-28",
+    "pollster": "Swiss Poll International",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "rigathi_gachagua",
+    "candidate": "Rigathi Gachagua",
+    "metric": "percentage",
+    "value": 7.5,
+    "source_url": "https://touchlinenews.com/ruto-leads-2027-presidential-race-at-40-2-as-kalonzo-and-sifuna-trail-swisspoll-survey-shows/",
+    "model_eligible": false
+  },
+  {
+    "poll_id": "2026_10_28_swiss_poll_international_preferred_presidential_candidate_https_touchlinenews_com_ruto_leads_2027_presidential_race_at_40_2_as_kalonzo_and_sifuna_trail_swisspoll_survey_",
+    "date": "2026-10-28",
+    "pollster": "Swiss Poll International",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "william_ruto",
+    "candidate": "William Ruto",
+    "metric": "percentage",
+    "value": 40.2,
+    "source_url": "https://touchlinenews.com/ruto-leads-2027-presidential-race-at-40-2-as-kalonzo-and-sifuna-trail-swisspoll-survey-shows/",
+    "model_eligible": false
   }
 ]

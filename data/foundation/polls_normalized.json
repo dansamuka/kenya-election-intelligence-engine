@@ -319,5 +319,29 @@
       "Undecided": 5
     },
     "notes": "Published 24 October 2026 per K24 Digital graphic. Five reported candidate percentages and undecided share supplied by user; original Research 8020 report, fieldwork, questionnaire, sample, and margin of error remain unverified. Visible for transparency; excluded from model-eligible calculations. Source link opens evidence record; not a direct publisher report."
+  },
+  {
+    "poll_id": "2026_10_28_swiss_poll_international_preferred_presidential_candidate_https_touchlinenews_com_ruto_leads_2027_presidential_race_at_40_2_as_kalonzo_and_sifuna_trail_swisspoll_survey_",
+    "date": "2026-10-28",
+    "fieldwork_dates": "19–22 October 2026 (as reported)",
+    "pollster_id": "swiss_poll_international",
+    "pollster": "Swiss Poll International",
+    "poll_type": "preferred_presidential_candidate",
+    "compatible_group": "presidential_horse_race",
+    "question_text": null,
+    "geography_id": "kenya",
+    "geography": "Kenya",
+    "sample_size": 6146,
+    "source_title": "Swiss Poll International presidential preferences, released 28 October 2026 (graphic and public reporting)",
+    "source_url": "https://touchlinenews.com/ruto-leads-2027-presidential-race-at-40-2-as-kalonzo-and-sifuna-trail-swisspoll-survey-shows/",
+    "extraction_status": "USER_SUPPLIED_POLLSTER_GRAPHIC_PRESS_CORROBORATED",
+    "extraction_confidence": null,
+    "model_eligible": false,
+    "methodology_status": "PARTIAL_SECONDARY_DISCLOSURE_PRIMARY_METHODOLOGY_UNVERIFIED",
+    "response_categories": {
+      "Undecided": 3.3,
+      "Other candidates": 1.2
+    },
+    "notes": "Swiss Poll International-branded image supplied by user; six candidate percentages plus 3.3% undecided and 1.2% others sum to 100%. Release 28 Oct 2026; reported fieldwork 19–22 Oct, n=6,146, ±1.8 percentage points at 95% confidence. Two independent news articles corroborate the shares and published methodological claims, but primary survey/questionnaire, respondent selection, recruitment mode, weighting, sponsor and nonresponse detail remain unverified. This observation is displayed as methodology-held and excluded from model-eligible polling averages. Evidence metadata is in data/manual_sources/swiss_poll_international_2026-10-28_presidential_preference.json."
   }
 ]
