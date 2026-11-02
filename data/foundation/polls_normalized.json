@@ -84,8 +84,8 @@
     "notes": "Extracted from TIFA grouped chart wave: November 2025 | Automated extraction failed (source fetch could not resolve DNS at build time; see data/sources_registry.json and data/review_queue.json for the failed attempt). Figures were entered manually and cross-checked against public news coverage of this release. | Sample size and fieldwork dates confirmed via public reporting (Nairobi Wire, 19 Dec 2025): n=2,053, margin of error ±2.16%."
   },
   {
-    "poll_id": "2025_12_05_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
-    "date": "2025-12-05",
+    "poll_id": "2025_12_02_infotrak_research_preferred_presidential_aspirant_https_www_infotrakresearch_com_mulembe_nation_poll_2025",
+    "date": "2025-12-02",
     "fieldwork_dates": "Fieldwork conducted on 29th December, 2025",
     "pollster_id": "infotrak_research",
     "pollster": "Infotrak Research",

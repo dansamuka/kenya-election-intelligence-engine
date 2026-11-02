@@ -84,7 +84,7 @@
     "notes": "Extracted from TIFA grouped chart wave: November 2025 | Automated extraction failed (source fetch could not resolve DNS at build time; see data/sources_registry.json and data/review_queue.json for the failed attempt). Figures were entered manually and cross-checked against public news coverage of this release. | Sample size and fieldwork dates confirmed via public reporting (Nairobi Wire, 19 Dec 2025): n=2,053, margin of error ±2.16%."
   },
   {
-    "date": "2025-12-05",
+    "date": "2025-12-02",
     "fieldwork_dates": "Fieldwork conducted on 29th December, 2025",
     "pollster": "Infotrak Research",
     "poll_type": "preferred_presidential_aspirant",
@@ -92,14 +92,14 @@
     "geography": "Kenya",
     "sample_size": 600,
     "figures": {
-      "William Ruto": 25,
-      "Kalonzo Musyoka": 13,
-      "Fred Matiang'i": 15,
-      "Rigathi Gachagua": 2,
-      "Edwin Sifuna": 31,
+      "William Ruto": 25.0,
+      "Kalonzo Musyoka": 13.0,
+      "Fred Matiang'i": 15.0,
+      "Rigathi Gachagua": 2.0,
+      "Edwin Sifuna": 31.0,
       "Ndindi Nyoro": null,
-      "Martha Karua": 2,
-      "David Maraga": 2
+      "Martha Karua": 2.0,
+      "David Maraga": 2.0
     },
     "source_title": "Mulembe Nation Poll",
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
