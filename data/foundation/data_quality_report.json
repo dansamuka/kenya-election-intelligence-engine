@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-02T15:06:23+00:00",
+  "generated_at": "2026-11-09T15:39:08+00:00",
   "phase": "phase_1_data_foundation",
   "prototype_status": "data_foundation_scaffold_with_normalized_poll_layer",
   "records": {
     "approved_poll_records": 16,
     "source_registry_records": 21,
-    "review_queue_records": 10,
+    "review_queue_records": 11,
     "poll_results_long_rows": 101
   },
   "coverage": {

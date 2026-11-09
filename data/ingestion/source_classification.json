@@ -383,8 +383,8 @@
     "priority": "low",
     "recommended_action": "fetch_page_extract_pdf_links",
     "published_date": null,
-    "processing_status": "rejected",
-    "sha256": "32b949f4c9659127425bbc46caa7dee17c9159e3009a99cbe7b1276d2fae297c"
+    "processing_status": "needs_review",
+    "sha256": "eb0ca1a9f4c3877cae6a9a961e89f0e9c336cad2ed752f1f98af12c266b1cd2a"
   },
   {
     "source_id": "2f9615f90e93b60bad7f",

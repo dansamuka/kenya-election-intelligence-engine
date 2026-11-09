@@ -144,5 +144,17 @@
     "extracted_candidates": {},
     "raw_snippet": "",
     "created_at": "2026-10-12T14:46:14+00:00"
+  },
+  {
+    "source_id": "9da8f34c97c44ee94853",
+    "pollster": "Infotrak Research",
+    "title": "CountyTrak 2026: Citizen Ratings of Elected Leaders",
+    "source_url": "https://www.infotrakresearch.com/visual-composer-2733/",
+    "reason": "Candidate values found but review is needed for: at least two positive tracked candidate values",
+    "extracted_candidates": {
+      "Ndindi Nyoro": 76.0
+    },
+    "raw_snippet": "Hon. Babu Owino\ntops the national rankings with an impressive\n80%\n, followed by\nKabuchai MP Hon. Joseph Kalasinga (78%)\n, while\nHon. John Bwire (Taveta)\nand\nHon. Ndindi Nyoro (Kiharu)\nshare third place with\n76%\n. They are closely followed by a strong group of legislators, including\nHon. Naisula Lesuuda\n,\nHon. Didmus Barasa\n,\nHon. Reuben Kibor",
+    "created_at": "2026-11-09T15:37:58+00:00"
   }
 ]
