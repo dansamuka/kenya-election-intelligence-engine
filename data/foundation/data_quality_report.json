@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-14T17:14:42+00:00",
+  "generated_at": "2026-11-14T17:18:36+00:00",
   "phase": "phase_1_data_foundation",
   "prototype_status": "data_foundation_scaffold_with_normalized_poll_layer",
   "records": {
-    "approved_poll_records": 17,
+    "approved_poll_records": 18,
     "source_registry_records": 22,
     "review_queue_records": 11,
-    "poll_results_long_rows": 107
+    "poll_results_long_rows": 115
   },
   "coverage": {
     "pollsters": {
-      "TIFA Research": 8,
+      "TIFA Research": 9,
       "Infotrak Research": 3,
       "Stats Kenya": 1,
       "Swiss Poll International": 2,
@@ -20,7 +20,7 @@
     },
     "poll_types": {
       "preferred_presidential_aspirant": 9,
-      "popularity_rating": 3,
+      "popularity_rating": 4,
       "preferred_presidential_candidate": 5
     },
     "candidates": [
@@ -40,7 +40,7 @@
       "William Ruto"
     ],
     "date_min": "2025-08-01",
-    "date_max": "2026-11-12",
+    "date_max": "2027-11-14",
     "geography_levels_available": [
       "country",
       "county_entities_without_values"
@@ -48,7 +48,7 @@
   },
   "missingness": {
     "extraction_confidence": 10,
-    "question_text": 10,
+    "question_text": 11,
     "sample_size": 3
   },
   "quality_flags": [

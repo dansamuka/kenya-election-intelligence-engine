@@ -1,11 +1,11 @@
 {
   "phase": "phase_2_source_ingestion",
-  "generated_at": "2026-11-09T15:39:08+00:00",
+  "generated_at": "2026-11-14T17:18:36+00:00",
   "summary": {
-    "catalog_sources": 21,
-    "registered_sources": 21,
-    "approved_poll_records": 16,
-    "approved_source_urls": 11,
+    "catalog_sources": 22,
+    "registered_sources": 22,
+    "approved_poll_records": 18,
+    "approved_source_urls": 12,
     "review_queue_items": 11,
     "high_priority_review_items": 4
   },
@@ -13,18 +13,18 @@
     "needs_review": 4,
     "rejected": 8,
     "manually_verified_external": 3,
-    "processed": 4,
+    "processed": 5,
     "published_with_methodology_hold": 2
   },
   "source_class_counts": {
     "unknown_external_source": 4,
-    "official_pdf_report_candidate": 9,
+    "official_pdf_report_candidate": 10,
     "official_social_poll_candidate": 1,
     "official_article_or_archive_candidate": 7
   },
   "pollster_catalog_counts": {
     "Infotrak Research": 15,
-    "TIFA Research": 2,
+    "TIFA Research": 3,
     "Politrack Africa": 1,
     "Stats Kenya": 1,
     "Mizani Africa": 1,

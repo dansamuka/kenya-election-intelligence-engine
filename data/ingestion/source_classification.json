@@ -68,6 +68,28 @@
     "sha256": null
   },
   {
+    "source_id": "aaf54bd0fd990fed0314",
+    "pollster": "TIFA Research",
+    "title": "Kenya’s 2027 Electoral Landscape: Political Alignment and the Evolving Presidential Contest",
+    "page_url": "https://www.tifaresearch.com/kenyas-2027-electoral-landscape-political-alignment-and-the-evolving-presidential-contest/",
+    "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "source_class": "official_pdf_report_candidate",
+    "relevance_score": 84,
+    "matched_terms": [
+      "2027",
+      "pdf",
+      "political",
+      "president",
+      "presidential"
+    ],
+    "priority": "high",
+    "recommended_action": "download_hash_extract_parse",
+    "published_date": null,
+    "processing_status": "processed",
+    "sha256": "d2227358036302f8ce95d0c73b825975652299b767ad2b0c7c2994ac453ae16c"
+  },
+  {
     "source_id": "statskenya-mar2026-manual",
     "pollster": "Stats Kenya",
     "title": "Ruto Takes Early Lead In 2027 Race As Kalonzo Comes Distant Third",
@@ -296,7 +318,7 @@
     "recommended_action": "fetch_page_extract_pdf_links",
     "published_date": null,
     "processing_status": "rejected",
-    "sha256": "67707ac0a6c22432d03c7ad9923a6bafdfd0d3b7a3ac4d53fb1c0040039f3fe7"
+    "sha256": "13d1b03aa57b2d51878f0ab57a0adf06ed1e362ff1c42e490e7ed13f34a1bd75"
   },
   {
     "source_id": "d74528a4e7fd8f1711a5",
@@ -314,7 +336,7 @@
     "recommended_action": "fetch_page_extract_pdf_links",
     "published_date": null,
     "processing_status": "rejected",
-    "sha256": "4e6631b592898ea87223a0f1e97f2b0ab3f5c4ddc7a65339730b9a587d1aa15d"
+    "sha256": "7d91fc4b0a9a282bcf632591f542da71e9a749abccba4d041f79771196c8a952"
   },
   {
     "source_id": "ab6417506c79248cd2ee",
@@ -332,7 +354,7 @@
     "recommended_action": "fetch_page_extract_pdf_links",
     "published_date": null,
     "processing_status": "rejected",
-    "sha256": "3c839f966c7a57c899de086e16c6ce10d4be68d3e4fd3e8baac8ff026c35966a"
+    "sha256": "18e86b820c6982946489917ad40c4f01ce145fe87cc448f42d7de6662d1665a9"
   },
   {
     "source_id": "d487dc5d26ae5dfd1523",
@@ -368,7 +390,7 @@
     "recommended_action": "fetch_page_extract_pdf_links",
     "published_date": null,
     "processing_status": "rejected",
-    "sha256": "32d65ce54c2100cbf548d061c8c86bfa20e30b674208cb7fe17508ffbc48198f"
+    "sha256": "1c94ccf7ce0996dce73a8b8715b298e7647acbaa164efa17f3dd170545720ce7"
   },
   {
     "source_id": "9da8f34c97c44ee94853",
@@ -400,6 +422,6 @@
     "recommended_action": "fetch_page_extract_pdf_links",
     "published_date": null,
     "processing_status": "processed",
-    "sha256": "6152f44126f5ec8794a684dd2bc943300880359103de6b376c7b43835061b750"
+    "sha256": "da911d45627e5c47c0ffa59bf8e4c9792bfbe9ee2b8660326281739d59565b79"
   }
 ]

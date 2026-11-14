@@ -1,6 +1,6 @@
 {
   "phase": "phase_2_source_ingestion",
-  "generated_at": "2026-11-09T15:39:08+00:00",
+  "generated_at": "2026-11-14T17:18:36+00:00",
   "description": "Auditable source-ingestion layer for discovery, classification, extraction audit, and human review routing.",
   "source_feeds": [
     {
@@ -48,10 +48,10 @@
     "data/ingestion/manifest.json"
   ],
   "summary": {
-    "catalog_sources": 21,
-    "registered_sources": 21,
-    "approved_poll_records": 16,
-    "approved_source_urls": 11,
+    "catalog_sources": 22,
+    "registered_sources": 22,
+    "approved_poll_records": 18,
+    "approved_source_urls": 12,
     "review_queue_items": 11,
     "high_priority_review_items": 4
   },

@@ -19,7 +19,7 @@
     "pdf_url": "https://www.infotrakresearch.com/wp-content/uploads/2026/07/INFOTRAK-ELECTED-LEADERS-PERFORMANCE-RATING-2026-GP-FIN.pdf",
     "published_date": null,
     "first_seen_at": "2026-07-13T14:37:01+00:00",
-    "last_checked_at": "2026-11-02T15:05:31+00:00",
+    "last_checked_at": "2026-11-14T17:18:04+00:00",
     "sha256": "c3de2eaacec991f50527f37dd84facd8cf4038c0441f5c9e2efff5857b0cfc7e",
     "processing_status": "needs_review"
   },
@@ -31,8 +31,8 @@
     "pdf_url": null,
     "published_date": null,
     "first_seen_at": "2026-08-03T09:52:08+00:00",
-    "last_checked_at": "2026-11-09T15:38:52+00:00",
-    "sha256": "3c839f966c7a57c899de086e16c6ce10d4be68d3e4fd3e8baac8ff026c35966a",
+    "last_checked_at": "2026-11-14T17:18:25+00:00",
+    "sha256": "18e86b820c6982946489917ad40c4f01ce145fe87cc448f42d7de6662d1665a9",
     "processing_status": "rejected"
   },
   {
@@ -69,7 +69,7 @@
     "pdf_url": "https://www.infotrakresearch.com/wp-content/uploads/2026/07/INFOTRAK-VOP-POLITICAL-JULY-2026-GP.pdf",
     "published_date": null,
     "first_seen_at": "2026-07-20T09:21:11+00:00",
-    "last_checked_at": "2026-11-09T15:37:57+00:00",
+    "last_checked_at": "2026-11-14T17:18:02+00:00",
     "sha256": "7a7e3ad4c9228ffbe9dbcfbdb9be35c5754d5a202d2f6478cc024d90188ce172",
     "processing_status": "rejected"
   },
@@ -81,7 +81,7 @@
     "pdf_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Infotrak-VOP-Poll_Sep-2025_Phase-One2.pdf",
     "published_date": "2025-09-25",
     "first_seen_at": "2026-07-08T10:34:56+00:00",
-    "last_checked_at": "2026-11-09T15:37:50+00:00",
+    "last_checked_at": "2026-11-14T17:17:55+00:00",
     "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
     "processing_status": "rejected"
   },
@@ -93,8 +93,8 @@
     "pdf_url": null,
     "published_date": null,
     "first_seen_at": "2026-08-03T09:51:49+00:00",
-    "last_checked_at": "2026-11-09T15:38:15+00:00",
-    "sha256": "6152f44126f5ec8794a684dd2bc943300880359103de6b376c7b43835061b750",
+    "last_checked_at": "2026-11-14T17:18:14+00:00",
+    "sha256": "da911d45627e5c47c0ffa59bf8e4c9792bfbe9ee2b8660326281739d59565b79",
     "processing_status": "processed"
   },
   {
@@ -105,7 +105,7 @@
     "pdf_url": "https://www.infotrakresearch.com/wp-content/uploads/2025/09/Mulembe-Nation-Poll-Report_Internal_Report_Media_Release_Final-1.pdf",
     "published_date": "2026-01-08",
     "first_seen_at": "2026-07-08T10:35:01+00:00",
-    "last_checked_at": "2026-11-09T15:37:51+00:00",
+    "last_checked_at": "2026-11-14T17:17:56+00:00",
     "sha256": "10706b99ed1e5cf595060fe5f554d668d2e4346adca948459c3f3f1d8d9f721b",
     "processing_status": "rejected"
   },
@@ -129,8 +129,8 @@
     "pdf_url": null,
     "published_date": null,
     "first_seen_at": "2026-07-08T18:04:54+00:00",
-    "last_checked_at": "2026-11-09T15:38:52+00:00",
-    "sha256": "67707ac0a6c22432d03c7ad9923a6bafdfd0d3b7a3ac4d53fb1c0040039f3fe7",
+    "last_checked_at": "2026-11-14T17:18:27+00:00",
+    "sha256": "13d1b03aa57b2d51878f0ab57a0adf06ed1e362ff1c42e490e7ed13f34a1bd75",
     "processing_status": "rejected"
   },
   {
@@ -141,8 +141,8 @@
     "pdf_url": null,
     "published_date": null,
     "first_seen_at": "2026-07-08T18:05:31+00:00",
-    "last_checked_at": "2026-11-09T15:39:07+00:00",
-    "sha256": "4e6631b592898ea87223a0f1e97f2b0ab3f5c4ddc7a65339730b9a587d1aa15d",
+    "last_checked_at": "2026-11-14T17:18:36+00:00",
+    "sha256": "7d91fc4b0a9a282bcf632591f542da71e9a749abccba4d041f79771196c8a952",
     "processing_status": "rejected"
   },
   {
@@ -177,8 +177,8 @@
     "pdf_url": null,
     "published_date": null,
     "first_seen_at": "2026-08-03T09:52:00+00:00",
-    "last_checked_at": "2026-11-09T15:38:50+00:00",
-    "sha256": "32d65ce54c2100cbf548d061c8c86bfa20e30b674208cb7fe17508ffbc48198f",
+    "last_checked_at": "2026-11-14T17:18:18+00:00",
+    "sha256": "1c94ccf7ce0996dce73a8b8715b298e7647acbaa164efa17f3dd170545720ce7",
     "processing_status": "rejected"
   },
   {
@@ -248,6 +248,18 @@
     "notes": "No original Swiss Poll report located. Results verified across Capital FM, AllAfrica and TUKO; methodology and sample details reported by TUKO."
   },
   {
+    "source_id": "aaf54bd0fd990fed0314",
+    "pollster": "TIFA Research",
+    "title": "Kenya’s 2027 Electoral Landscape: Political Alignment and the Evolving Presidential Contest",
+    "page_url": "https://www.tifaresearch.com/kenyas-2027-electoral-landscape-political-alignment-and-the-evolving-presidential-contest/",
+    "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "published_date": null,
+    "first_seen_at": "2026-11-14T17:14:42+00:00",
+    "last_checked_at": "2026-11-14T17:18:01+00:00",
+    "sha256": "d2227358036302f8ce95d0c73b825975652299b767ad2b0c7c2994ac453ae16c",
+    "processing_status": "processed"
+  },
+  {
     "source_id": "ac9c873264583b09ab33",
     "pollster": "TIFA Research",
     "title": "Kenya’s Road to 2027 General Election: Political parties, presidential contest and coalition dynamics",
@@ -267,21 +279,8 @@
     "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
     "published_date": "2026-05-14",
     "first_seen_at": "2026-07-07T14:59:15+00:00",
-    "last_checked_at": "2026-11-09T15:37:49+00:00",
+    "last_checked_at": "2026-11-14T17:17:54+00:00",
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "processing_status": "processed"
-  },
-  {
-    "source_id": "aaf54bd0fd990fed0314",
-    "pollster": "TIFA Research",
-    "title": "TIFA November 2026 national survey: preferred 2027 presidential election winner",
-    "page_url": "https://www.tifaresearch.com/kenyas-2027-electoral-landscape-political-alignment-and-the-evolving-presidential-contest/",
-    "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
-    "published_date": "2026-11-12",
-    "first_seen_at": "2026-11-14T17:14:42+00:00",
-    "last_checked_at": "2026-11-14T17:14:42+00:00",
-    "sha256": null,
-    "processing_status": "manually_verified",
-    "notes": "Primary report verified through web retrieval; no binary content hash calculated. See manual_sources evidence record."
   }
 ]

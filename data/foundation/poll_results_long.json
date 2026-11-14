@@ -1282,5 +1282,101 @@
     "value": 31,
     "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
     "model_eligible": true
+  },
+  {
+    "poll_id": "2027_11_14_tifa_research_popularity_rating_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_nov_2026_pdf",
+    "date": "2027-11-14",
+    "pollster": "TIFA Research",
+    "poll_type": "popularity_rating",
+    "candidate_id": "david_maraga",
+    "candidate": "David Maraga",
+    "metric": "percentage",
+    "value": null,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2027_11_14_tifa_research_popularity_rating_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_nov_2026_pdf",
+    "date": "2027-11-14",
+    "pollster": "TIFA Research",
+    "poll_type": "popularity_rating",
+    "candidate_id": "edwin_sifuna",
+    "candidate": "Edwin Sifuna",
+    "metric": "percentage",
+    "value": 31.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2027_11_14_tifa_research_popularity_rating_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_nov_2026_pdf",
+    "date": "2027-11-14",
+    "pollster": "TIFA Research",
+    "poll_type": "popularity_rating",
+    "candidate_id": "fred_matiang_i",
+    "candidate": "Fred Matiang'i",
+    "metric": "percentage",
+    "value": 1.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2027_11_14_tifa_research_popularity_rating_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_nov_2026_pdf",
+    "date": "2027-11-14",
+    "pollster": "TIFA Research",
+    "poll_type": "popularity_rating",
+    "candidate_id": "kalonzo_musyoka",
+    "candidate": "Kalonzo Musyoka",
+    "metric": "percentage",
+    "value": 8.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2027_11_14_tifa_research_popularity_rating_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_nov_2026_pdf",
+    "date": "2027-11-14",
+    "pollster": "TIFA Research",
+    "poll_type": "popularity_rating",
+    "candidate_id": "martha_karua",
+    "candidate": "Martha Karua",
+    "metric": "percentage",
+    "value": null,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2027_11_14_tifa_research_popularity_rating_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_nov_2026_pdf",
+    "date": "2027-11-14",
+    "pollster": "TIFA Research",
+    "poll_type": "popularity_rating",
+    "candidate_id": "ndindi_nyoro",
+    "candidate": "Ndindi Nyoro",
+    "metric": "percentage",
+    "value": 3.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2027_11_14_tifa_research_popularity_rating_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_nov_2026_pdf",
+    "date": "2027-11-14",
+    "pollster": "TIFA Research",
+    "poll_type": "popularity_rating",
+    "candidate_id": "rigathi_gachagua",
+    "candidate": "Rigathi Gachagua",
+    "metric": "percentage",
+    "value": 4.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2027_11_14_tifa_research_popularity_rating_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_nov_2026_pdf",
+    "date": "2027-11-14",
+    "pollster": "TIFA Research",
+    "poll_type": "popularity_rating",
+    "candidate_id": "william_ruto",
+    "candidate": "William Ruto",
+    "metric": "percentage",
+    "value": 31.0,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
   }
 ]

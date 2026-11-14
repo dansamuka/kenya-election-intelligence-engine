@@ -369,5 +369,26 @@
       "No response": 2
     },
     "notes": "Verified against the official TIFA report, printed pages 7, 27 and 40, and official release page. Preferred winner among all adults; not a likely-voter estimate, expected-winner prediction, or election win probability. Six named candidates are stored in figures; other/undecided/none/no response are separate response categories. Printed page 7 groups None/NR at 4%; page 27 separates None 2% and No response 2%. Published rounded national values sum to 101%; preserved without rescaling. Only the current wave is imported; historical bars in this report are not new independent polls. Included in the existing presidential preference summary under the repository comparability rules."
+  },
+  {
+    "poll_id": "2027_11_14_tifa_research_popularity_rating_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_nov_2026_pdf",
+    "date": "2027-11-14",
+    "fieldwork_dates": "during 26 October - 5 November. The results are based on household, face-to-face interviews",
+    "pollster_id": "tifa_research",
+    "pollster": "TIFA Research",
+    "poll_type": "popularity_rating",
+    "compatible_group": "presidential_horse_race_when_question_text_matches",
+    "question_text": null,
+    "geography_id": "kenya",
+    "geography": "Kenya",
+    "sample_size": 2027,
+    "source_title": "Kenya’s 2027 Electoral Landscape: Political Alignment and the Evolving Presidential Contest",
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "extraction_status": "AUTO_ACCEPTED",
+    "extraction_confidence": 0.98,
+    "model_eligible": true,
+    "methodology_status": null,
+    "response_categories": {},
+    "notes": "Candidate percentages, poll type, and date were identified."
   }
 ]

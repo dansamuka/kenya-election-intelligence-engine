@@ -29,7 +29,7 @@
     "pdf_url": null,
     "published_date": null,
     "processing_status": "rejected",
-    "sha256": "3c839f966c7a57c899de086e16c6ce10d4be68d3e4fd3e8baac8ff026c35966a",
+    "sha256": "18e86b820c6982946489917ad40c4f01ce145fe87cc448f42d7de6662d1665a9",
     "feeds_public_poll_record": false
   },
   {
@@ -84,7 +84,7 @@
     "pdf_url": null,
     "published_date": null,
     "processing_status": "processed",
-    "sha256": "6152f44126f5ec8794a684dd2bc943300880359103de6b376c7b43835061b750",
+    "sha256": "da911d45627e5c47c0ffa59bf8e4c9792bfbe9ee2b8660326281739d59565b79",
     "feeds_public_poll_record": true
   },
   {
@@ -117,7 +117,7 @@
     "pdf_url": null,
     "published_date": null,
     "processing_status": "rejected",
-    "sha256": "67707ac0a6c22432d03c7ad9923a6bafdfd0d3b7a3ac4d53fb1c0040039f3fe7",
+    "sha256": "13d1b03aa57b2d51878f0ab57a0adf06ed1e362ff1c42e490e7ed13f34a1bd75",
     "feeds_public_poll_record": false
   },
   {
@@ -128,7 +128,7 @@
     "pdf_url": null,
     "published_date": null,
     "processing_status": "rejected",
-    "sha256": "4e6631b592898ea87223a0f1e97f2b0ab3f5c4ddc7a65339730b9a587d1aa15d",
+    "sha256": "7d91fc4b0a9a282bcf632591f542da71e9a749abccba4d041f79771196c8a952",
     "feeds_public_poll_record": false
   },
   {
@@ -161,7 +161,7 @@
     "pdf_url": null,
     "published_date": null,
     "processing_status": "rejected",
-    "sha256": "32d65ce54c2100cbf548d061c8c86bfa20e30b674208cb7fe17508ffbc48198f",
+    "sha256": "1c94ccf7ce0996dce73a8b8715b298e7647acbaa164efa17f3dd170545720ce7",
     "feeds_public_poll_record": false
   },
   {
@@ -209,6 +209,17 @@
     "feeds_public_poll_record": true
   },
   {
+    "source_id": "aaf54bd0fd990fed0314",
+    "pollster": "TIFA Research",
+    "title": "Kenya’s 2027 Electoral Landscape: Political Alignment and the Evolving Presidential Contest",
+    "page_url": "https://www.tifaresearch.com/kenyas-2027-electoral-landscape-political-alignment-and-the-evolving-presidential-contest/",
+    "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "published_date": null,
+    "processing_status": "processed",
+    "sha256": "d2227358036302f8ce95d0c73b825975652299b767ad2b0c7c2994ac453ae16c",
+    "feeds_public_poll_record": true
+  },
+  {
     "source_id": "ac9c873264583b09ab33",
     "pollster": "TIFA Research",
     "title": "Kenya’s Road to 2027 General Election: Political parties, presidential contest and coalition dynamics",
@@ -228,17 +239,6 @@
     "published_date": "2026-05-14",
     "processing_status": "processed",
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
-    "feeds_public_poll_record": true
-  },
-  {
-    "source_id": "aaf54bd0fd990fed0314",
-    "pollster": "TIFA Research",
-    "title": "TIFA November 2026 national survey: preferred 2027 presidential election winner",
-    "page_url": "https://www.tifaresearch.com/kenyas-2027-electoral-landscape-political-alignment-and-the-evolving-presidential-contest/",
-    "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
-    "published_date": "2026-11-12",
-    "processing_status": "manually_verified",
-    "sha256": null,
     "feeds_public_poll_record": true
   }
 ]
