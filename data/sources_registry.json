@@ -270,5 +270,18 @@
     "last_checked_at": "2026-11-09T15:37:49+00:00",
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "processing_status": "processed"
+  },
+  {
+    "source_id": "aaf54bd0fd990fed0314",
+    "pollster": "TIFA Research",
+    "title": "TIFA November 2026 national survey: preferred 2027 presidential election winner",
+    "page_url": "https://www.tifaresearch.com/kenyas-2027-electoral-landscape-political-alignment-and-the-evolving-presidential-contest/",
+    "pdf_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "published_date": "2026-11-12",
+    "first_seen_at": "2026-11-14T17:14:42+00:00",
+    "last_checked_at": "2026-11-14T17:14:42+00:00",
+    "sha256": null,
+    "processing_status": "manually_verified",
+    "notes": "Primary report verified through web retrieval; no binary content hash calculated. See manual_sources evidence record."
   }
 ]

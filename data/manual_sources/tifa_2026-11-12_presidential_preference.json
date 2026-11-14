@@ -1,0 +1,167 @@
+{
+  "evidence_id": "tifa-2026-11-12-official-preferred-winner",
+  "release_date": "2026-11-12",
+  "pollster": "TIFA Research",
+  "poll_type": "preferred_presidential_candidate",
+  "question_text": "Whether or not you have ever voted or intend to vote in the future, whom would you like to win the 2027 presidential election?",
+  "question_instruction": "Single response; do not read",
+  "figures": {
+    "William Ruto": 31,
+    "Edwin Sifuna": 31,
+    "Kalonzo Musyoka": 9,
+    "Fred Matiang'i": 5,
+    "Rigathi Gachagua": 4,
+    "Ndindi Nyoro": 1
+  },
+  "response_categories": {
+    "Other candidates": 1,
+    "Undecided": 15,
+    "None": 2,
+    "No response": 2
+  },
+  "methodology": {
+    "fieldwork_start": "2026-10-26",
+    "fieldwork_end": "2026-11-05",
+    "sample_size": 2036,
+    "survey_population": "Kenyan adults aged 18 and above, including non-voters",
+    "geographical_coverage": "All 47 counties across nine survey zones",
+    "survey_mode": "Face-to-face household interviews, mainly in Kiswahili and English",
+    "sampling_method": "Randomly selected adults, as described in the introductory comments; no microdata reviewed",
+    "weighting": null,
+    "reported_margin_of_error_percentage_points": 2.16,
+    "sponsor": "TIFA Research",
+    "disclosure_note": "Published national methodology verified in the official report, printed page 40 and introduction. Regional sample counts and weighting details are not supplied in this evidence record; regional margins are larger."
+  },
+  "evidence": {
+    "type": "official_pollster_report_and_release_page",
+    "primary_survey_report_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "official_release_page_url": "https://www.tifaresearch.com/kenyas-2027-electoral-landscape-political-alignment-and-the-evolving-presidential-contest/",
+    "source_pages": [
+      7,
+      27,
+      40
+    ],
+    "verified_on": "2026-11-14"
+  },
+  "regional_results": {
+    "source_page": 27,
+    "base": "All respondents within each zone",
+    "values": {
+      "Central Rift": {
+        "William Ruto": 59,
+        "Edwin Sifuna": 16,
+        "Kalonzo Musyoka": 2,
+        "Fred Matiang'i": 4,
+        "Rigathi Gachagua": 1,
+        "Ndindi Nyoro": 0,
+        "Other candidates": 0,
+        "Undecided": 16,
+        "None": 0,
+        "No response": 1
+      },
+      "Coast": {
+        "William Ruto": 40,
+        "Edwin Sifuna": 36,
+        "Kalonzo Musyoka": 3,
+        "Fred Matiang'i": 2,
+        "Rigathi Gachagua": 4,
+        "Ndindi Nyoro": 0,
+        "Other candidates": 1,
+        "Undecided": 12,
+        "None": 2,
+        "No response": 2
+      },
+      "Lower Eastern": {
+        "William Ruto": 20,
+        "Edwin Sifuna": 8,
+        "Kalonzo Musyoka": 55,
+        "Fred Matiang'i": 2,
+        "Rigathi Gachagua": 1,
+        "Ndindi Nyoro": 0,
+        "Other candidates": 1,
+        "Undecided": 10,
+        "None": 0,
+        "No response": 4
+      },
+      "Mt Kenya": {
+        "William Ruto": 11,
+        "Edwin Sifuna": 32,
+        "Kalonzo Musyoka": 6,
+        "Fred Matiang'i": 8,
+        "Rigathi Gachagua": 11,
+        "Ndindi Nyoro": 3,
+        "Other candidates": 2,
+        "Undecided": 21,
+        "None": 4,
+        "No response": 2
+      },
+      "Nairobi": {
+        "William Ruto": 13,
+        "Edwin Sifuna": 39,
+        "Kalonzo Musyoka": 11,
+        "Fred Matiang'i": 10,
+        "Rigathi Gachagua": 3,
+        "Ndindi Nyoro": 0,
+        "Other candidates": 1,
+        "Undecided": 17,
+        "None": 1,
+        "No response": 4
+      },
+      "Northern": {
+        "William Ruto": 62,
+        "Edwin Sifuna": 20,
+        "Kalonzo Musyoka": 3,
+        "Fred Matiang'i": 1,
+        "Rigathi Gachagua": 3,
+        "Ndindi Nyoro": 0,
+        "Other candidates": 0,
+        "Undecided": 10,
+        "None": 0,
+        "No response": 0
+      },
+      "Nyanza": {
+        "William Ruto": 35,
+        "Edwin Sifuna": 33,
+        "Kalonzo Musyoka": 5,
+        "Fred Matiang'i": 12,
+        "Rigathi Gachagua": 1,
+        "Ndindi Nyoro": 0,
+        "Other candidates": 2,
+        "Undecided": 12,
+        "None": 1,
+        "No response": 0
+      },
+      "South Rift": {
+        "William Ruto": 29,
+        "Edwin Sifuna": 31,
+        "Kalonzo Musyoka": 12,
+        "Fred Matiang'i": 5,
+        "Rigathi Gachagua": 3,
+        "Ndindi Nyoro": 1,
+        "Other candidates": 0,
+        "Undecided": 14,
+        "None": 3,
+        "No response": 1
+      },
+      "Western": {
+        "William Ruto": 25,
+        "Edwin Sifuna": 55,
+        "Kalonzo Musyoka": 0,
+        "Fred Matiang'i": 0,
+        "Rigathi Gachagua": 0,
+        "Ndindi Nyoro": 0,
+        "Other candidates": 0,
+        "Undecided": 14,
+        "None": 2,
+        "No response": 4
+      }
+    },
+    "sample_sizes": null,
+    "usage_note": "Regional observations from the same survey, not additional national polls or measured county vote shares; not fed into national averages."
+  },
+  "review_status": "PRIMARY_REPORT_VERIFIED",
+  "approved_for_public_display": true,
+  "approved_for_polling_average": true,
+  "model_eligible": true,
+  "notes": "Verified against the official TIFA report, printed pages 7, 27 and 40, and official release page. Preferred winner among all adults; not a likely-voter estimate, expected-winner prediction, or election win probability. Six named candidates are stored in figures; other/undecided/none/no response are separate response categories. Printed page 7 groups None/NR at 4%; page 27 separates None 2% and No response 2%. Published rounded national values sum to 101%; preserved without rescaling. Only the current wave is imported; historical bars in this report are not new independent polls. Included in the existing presidential preference summary under the repository comparability rules."
+}

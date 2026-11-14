@@ -1,6 +1,6 @@
 [
   {
-    "as_of": "2026-08-20",
+    "as_of": "2026-11-12",
     "poll_type": "popularity_rating",
     "candidate": "William Ruto",
     "weighted_average": 18.94,
@@ -15,7 +15,7 @@
     "source_poll_types": [
       "popularity_rating"
     ],
-    "latest_poll_value": 19.0,
+    "latest_poll_value": 19,
     "latest_poll_date": "2026-05-14",
     "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
@@ -27,7 +27,7 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-08-20",
+    "as_of": "2026-11-12",
     "poll_type": "popularity_rating",
     "candidate": "Rigathi Gachagua",
     "weighted_average": 17.93,
@@ -42,7 +42,7 @@
     "source_poll_types": [
       "popularity_rating"
     ],
-    "latest_poll_value": 19.0,
+    "latest_poll_value": 19,
     "latest_poll_date": "2026-05-14",
     "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
@@ -54,7 +54,7 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-08-20",
+    "as_of": "2026-11-12",
     "poll_type": "popularity_rating",
     "candidate": "Kalonzo Musyoka",
     "weighted_average": 16.35,
@@ -69,7 +69,7 @@
     "source_poll_types": [
       "popularity_rating"
     ],
-    "latest_poll_value": 15.0,
+    "latest_poll_value": 15,
     "latest_poll_date": "2026-05-14",
     "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
@@ -81,7 +81,7 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-08-20",
+    "as_of": "2026-11-12",
     "poll_type": "popularity_rating",
     "candidate": "Fred Matiang'i",
     "weighted_average": 12.48,
@@ -96,7 +96,7 @@
     "source_poll_types": [
       "popularity_rating"
     ],
-    "latest_poll_value": 13.0,
+    "latest_poll_value": 13,
     "latest_poll_date": "2026-05-14",
     "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
@@ -108,11 +108,11 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-08-20",
+    "as_of": "2026-11-12",
     "poll_type": "popularity_rating",
     "candidate": "Edwin Sifuna",
     "weighted_average": 2.63,
-    "lower_95": 0.0,
+    "lower_95": 0,
     "upper_95": 6.13,
     "uncertainty_margin": 3.5,
     "effective_poll_count": 2.02,
@@ -123,7 +123,7 @@
     "source_poll_types": [
       "popularity_rating"
     ],
-    "latest_poll_value": 2.0,
+    "latest_poll_value": 2,
     "latest_poll_date": "2026-05-14",
     "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
@@ -135,24 +135,25 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-08-20",
+    "as_of": "2026-11-12",
     "poll_type": "presidential_horse_race",
     "candidate": "William Ruto",
-    "weighted_average": 24.03,
-    "lower_95": 15.46,
-    "upper_95": 32.6,
-    "uncertainty_margin": 8.57,
-    "effective_poll_count": 5.88,
-    "raw_poll_count": 9,
+    "weighted_average": 26.05,
+    "lower_95": 18.39,
+    "upper_95": 33.7,
+    "uncertainty_margin": 7.66,
+    "effective_poll_count": 5.89,
+    "raw_poll_count": 10,
     "unvalidated_poll_count": 0,
     "average_scope": "model_eligible_only",
     "includes_unvalidated": false,
     "source_poll_types": [
-      "preferred_presidential_aspirant"
+      "preferred_presidential_aspirant",
+      "preferred_presidential_candidate"
     ],
-    "latest_poll_value": 31.0,
-    "latest_poll_date": "2026-08-20",
-    "latest_pollster": "Swiss Poll International",
+    "latest_poll_value": 31,
+    "latest_poll_date": "2026-11-12",
+    "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
       "Infotrak Research",
       "Stats Kenya",
@@ -165,99 +166,31 @@
       "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
       "https://www.infotrakresearch.com/2743-2/",
       "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
-      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf"
     ],
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-08-20",
-    "poll_type": "presidential_horse_race",
-    "candidate": "Fred Matiang'i",
-    "weighted_average": 13.26,
-    "lower_95": 9.76,
-    "upper_95": 16.76,
-    "uncertainty_margin": 3.5,
-    "effective_poll_count": 5.88,
-    "raw_poll_count": 9,
-    "unvalidated_poll_count": 0,
-    "average_scope": "model_eligible_only",
-    "includes_unvalidated": false,
-    "source_poll_types": [
-      "preferred_presidential_aspirant"
-    ],
-    "latest_poll_value": 11.0,
-    "latest_poll_date": "2026-08-20",
-    "latest_pollster": "Swiss Poll International",
-    "pollsters_in_average": [
-      "Infotrak Research",
-      "Stats Kenya",
-      "Swiss Poll International",
-      "TIFA Research"
-    ],
-    "source_urls": [
-      "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
-      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
-      "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
-      "https://www.infotrakresearch.com/2743-2/",
-      "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
-      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
-    ],
-    "model_status": "usable_with_caution"
-  },
-  {
-    "as_of": "2026-08-20",
-    "poll_type": "presidential_horse_race",
-    "candidate": "Kalonzo Musyoka",
-    "weighted_average": 12.07,
-    "lower_95": 5.61,
-    "upper_95": 18.53,
-    "uncertainty_margin": 6.46,
-    "effective_poll_count": 5.88,
-    "raw_poll_count": 9,
-    "unvalidated_poll_count": 0,
-    "average_scope": "model_eligible_only",
-    "includes_unvalidated": false,
-    "source_poll_types": [
-      "preferred_presidential_aspirant"
-    ],
-    "latest_poll_value": 22.0,
-    "latest_poll_date": "2026-08-20",
-    "latest_pollster": "Swiss Poll International",
-    "pollsters_in_average": [
-      "Infotrak Research",
-      "Stats Kenya",
-      "Swiss Poll International",
-      "TIFA Research"
-    ],
-    "source_urls": [
-      "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
-      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
-      "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
-      "https://www.infotrakresearch.com/2743-2/",
-      "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
-      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
-    ],
-    "model_status": "usable_with_caution"
-  },
-  {
-    "as_of": "2026-08-20",
+    "as_of": "2026-11-12",
     "poll_type": "presidential_horse_race",
     "candidate": "Edwin Sifuna",
-    "weighted_average": 11.46,
-    "lower_95": 7.42,
-    "upper_95": 15.5,
-    "uncertainty_margin": 4.04,
-    "effective_poll_count": 5.88,
-    "raw_poll_count": 9,
+    "weighted_average": 17.13,
+    "lower_95": 9.19,
+    "upper_95": 25.06,
+    "uncertainty_margin": 7.93,
+    "effective_poll_count": 5.89,
+    "raw_poll_count": 10,
     "unvalidated_poll_count": 0,
     "average_scope": "model_eligible_only",
     "includes_unvalidated": false,
     "source_poll_types": [
-      "preferred_presidential_aspirant"
+      "preferred_presidential_aspirant",
+      "preferred_presidential_candidate"
     ],
-    "latest_poll_value": 13.0,
-    "latest_poll_date": "2026-08-20",
-    "latest_pollster": "Swiss Poll International",
+    "latest_poll_value": 31,
+    "latest_poll_date": "2026-11-12",
+    "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
       "Infotrak Research",
       "Stats Kenya",
@@ -270,19 +203,94 @@
       "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
       "https://www.infotrakresearch.com/2743-2/",
       "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
-      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf"
     ],
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-08-20",
+    "as_of": "2026-11-12",
+    "poll_type": "presidential_horse_race",
+    "candidate": "Kalonzo Musyoka",
+    "weighted_average": 11.18,
+    "lower_95": 5.62,
+    "upper_95": 16.73,
+    "uncertainty_margin": 5.55,
+    "effective_poll_count": 5.89,
+    "raw_poll_count": 10,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "preferred_presidential_aspirant",
+      "preferred_presidential_candidate"
+    ],
+    "latest_poll_value": 9,
+    "latest_poll_date": "2026-11-12",
+    "latest_pollster": "TIFA Research",
+    "pollsters_in_average": [
+      "Infotrak Research",
+      "Stats Kenya",
+      "Swiss Poll International",
+      "TIFA Research"
+    ],
+    "source_urls": [
+      "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
+      "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
+      "https://www.infotrakresearch.com/2743-2/",
+      "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf"
+    ],
+    "model_status": "usable_with_caution"
+  },
+  {
+    "as_of": "2026-11-12",
+    "poll_type": "presidential_horse_race",
+    "candidate": "Fred Matiang'i",
+    "weighted_average": 10.86,
+    "lower_95": 7.36,
+    "upper_95": 14.36,
+    "uncertainty_margin": 3.5,
+    "effective_poll_count": 5.89,
+    "raw_poll_count": 10,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "preferred_presidential_aspirant",
+      "preferred_presidential_candidate"
+    ],
+    "latest_poll_value": 5,
+    "latest_poll_date": "2026-11-12",
+    "latest_pollster": "TIFA Research",
+    "pollsters_in_average": [
+      "Infotrak Research",
+      "Stats Kenya",
+      "Swiss Poll International",
+      "TIFA Research"
+    ],
+    "source_urls": [
+      "https://capitalfm.africa/kalonzo-emerges-as-leading-opposition-choice-in-2027-race-swiss-poll-shows/",
+      "https://nation.africa/kenya/news/politics/ruto-leads-in-popularity-poll-babu-owino-tipped-for-luo-kingpin-after-raila-death-infotrak-5310226",
+      "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
+      "https://www.infotrakresearch.com/2743-2/",
+      "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf"
+    ],
+    "model_status": "usable_with_caution"
+  },
+  {
+    "as_of": "2026-11-12",
     "poll_type": "presidential_horse_race",
     "candidate": "Babu Owino",
-    "weighted_average": 7.0,
-    "lower_95": 0.0,
+    "weighted_average": 7,
+    "lower_95": 0,
     "upper_95": 14.84,
     "uncertainty_margin": 7.84,
-    "effective_poll_count": 1.0,
+    "effective_poll_count": 1,
     "raw_poll_count": 1,
     "unvalidated_poll_count": 0,
     "average_scope": "model_eligible_only",
@@ -290,7 +298,7 @@
     "source_poll_types": [
       "preferred_presidential_aspirant"
     ],
-    "latest_poll_value": 7.0,
+    "latest_poll_value": 7,
     "latest_poll_date": "2025-12-28",
     "latest_pollster": "Infotrak Research",
     "pollsters_in_average": [
@@ -302,24 +310,25 @@
     "model_status": "thin_series"
   },
   {
-    "as_of": "2026-08-20",
+    "as_of": "2026-11-12",
     "poll_type": "presidential_horse_race",
     "candidate": "Rigathi Gachagua",
-    "weighted_average": 5.86,
-    "lower_95": 2.36,
-    "upper_95": 9.36,
+    "weighted_average": 5.32,
+    "lower_95": 1.82,
+    "upper_95": 8.82,
     "uncertainty_margin": 3.5,
-    "effective_poll_count": 5.88,
-    "raw_poll_count": 9,
+    "effective_poll_count": 5.89,
+    "raw_poll_count": 10,
     "unvalidated_poll_count": 0,
     "average_scope": "model_eligible_only",
     "includes_unvalidated": false,
     "source_poll_types": [
-      "preferred_presidential_aspirant"
+      "preferred_presidential_aspirant",
+      "preferred_presidential_candidate"
     ],
-    "latest_poll_value": 6.0,
-    "latest_poll_date": "2026-08-20",
-    "latest_pollster": "Swiss Poll International",
+    "latest_poll_value": 4,
+    "latest_poll_date": "2026-11-12",
+    "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
       "Infotrak Research",
       "Stats Kenya",
@@ -332,19 +341,20 @@
       "https://thekenyatimes.com/politics/ruto-in-early-lead-in-new-poll-as-opposition-split-emerges/",
       "https://www.infotrakresearch.com/2743-2/",
       "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
-      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf"
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA-Research_Political-Alignments-and-2027-Election-Prospects_14-May-2026.pdf",
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf"
     ],
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-08-20",
+    "as_of": "2026-11-12",
     "poll_type": "presidential_horse_race",
     "candidate": "Martha Karua",
     "weighted_average": 2.67,
-    "lower_95": 0.0,
+    "lower_95": 0,
     "upper_95": 6.17,
     "uncertainty_margin": 3.5,
-    "effective_poll_count": 2.0,
+    "effective_poll_count": 2,
     "raw_poll_count": 3,
     "unvalidated_poll_count": 0,
     "average_scope": "model_eligible_only",
@@ -352,7 +362,7 @@
     "source_poll_types": [
       "preferred_presidential_aspirant"
     ],
-    "latest_poll_value": 3.0,
+    "latest_poll_value": 3,
     "latest_poll_date": "2026-05-14",
     "latest_pollster": "TIFA Research",
     "pollsters_in_average": [
@@ -367,11 +377,11 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-08-20",
+    "as_of": "2026-11-12",
     "poll_type": "presidential_horse_race",
     "candidate": "David Maraga",
     "weighted_average": 1.79,
-    "lower_95": 0.0,
+    "lower_95": 0,
     "upper_95": 5.29,
     "uncertainty_margin": 3.5,
     "effective_poll_count": 2.97,
@@ -397,14 +407,41 @@
     "model_status": "usable_with_caution"
   },
   {
-    "as_of": "2026-08-20",
+    "as_of": "2026-11-12",
     "poll_type": "presidential_horse_race",
-    "candidate": "Oburu Odinga",
-    "weighted_average": 1.0,
-    "lower_95": 0.0,
+    "candidate": "Ndindi Nyoro",
+    "weighted_average": 1,
+    "lower_95": 0,
     "upper_95": 8.84,
     "uncertainty_margin": 7.84,
-    "effective_poll_count": 1.0,
+    "effective_poll_count": 1,
+    "raw_poll_count": 1,
+    "unvalidated_poll_count": 0,
+    "average_scope": "model_eligible_only",
+    "includes_unvalidated": false,
+    "source_poll_types": [
+      "preferred_presidential_candidate"
+    ],
+    "latest_poll_value": 1,
+    "latest_poll_date": "2026-11-12",
+    "latest_pollster": "TIFA Research",
+    "pollsters_in_average": [
+      "TIFA Research"
+    ],
+    "source_urls": [
+      "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf"
+    ],
+    "model_status": "thin_series"
+  },
+  {
+    "as_of": "2026-11-12",
+    "poll_type": "presidential_horse_race",
+    "candidate": "Oburu Odinga",
+    "weighted_average": 1,
+    "lower_95": 0,
+    "upper_95": 8.84,
+    "uncertainty_margin": 7.84,
+    "effective_poll_count": 1,
     "raw_poll_count": 1,
     "unvalidated_poll_count": 0,
     "average_scope": "model_eligible_only",
@@ -412,7 +449,7 @@
     "source_poll_types": [
       "preferred_presidential_aspirant"
     ],
-    "latest_poll_value": 1.0,
+    "latest_poll_value": 1,
     "latest_poll_date": "2026-03-01",
     "latest_pollster": "Stats Kenya",
     "pollsters_in_average": [
@@ -424,14 +461,14 @@
     "model_status": "thin_series"
   },
   {
-    "as_of": "2026-08-20",
+    "as_of": "2026-11-12",
     "poll_type": "presidential_horse_race",
     "candidate": "Okiya Omtata",
     "weighted_average": 0.36,
-    "lower_95": 0.0,
+    "lower_95": 0,
     "upper_95": 8.2,
     "uncertainty_margin": 7.84,
-    "effective_poll_count": 1.0,
+    "effective_poll_count": 1,
     "raw_poll_count": 1,
     "unvalidated_poll_count": 0,
     "average_scope": "model_eligible_only",

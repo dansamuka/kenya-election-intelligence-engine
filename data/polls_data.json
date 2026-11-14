@@ -92,14 +92,14 @@
     "geography": "Kenya",
     "sample_size": 600,
     "figures": {
-      "William Ruto": 25.0,
-      "Kalonzo Musyoka": 13.0,
-      "Fred Matiang'i": 15.0,
-      "Rigathi Gachagua": 2.0,
-      "Edwin Sifuna": 31.0,
+      "William Ruto": 25,
+      "Kalonzo Musyoka": 13,
+      "Fred Matiang'i": 15,
+      "Rigathi Gachagua": 2,
+      "Edwin Sifuna": 31,
       "Ndindi Nyoro": null,
-      "Martha Karua": 2.0,
-      "David Maraga": 2.0
+      "Martha Karua": 2,
+      "David Maraga": 2
     },
     "source_title": "Mulembe Nation Poll",
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
@@ -395,5 +395,55 @@
       "https://www.tuko.co.ke/politics/644815-2027-general-election-poll-shows-william-rutos-running-mate/"
     ],
     "notes": "Swiss Poll International-branded image supplied by user; six candidate percentages plus 3.3% undecided and 1.2% others sum to 100%. Release 28 Oct 2026; reported fieldwork 19–22 Oct, n=6,146, ±1.8 percentage points at 95% confidence. Two independent news articles corroborate the shares and published methodological claims, but primary survey/questionnaire, respondent selection, recruitment mode, weighting, sponsor and nonresponse detail remain unverified. This observation is displayed as methodology-held and excluded from model-eligible polling averages. Evidence metadata is in data/manual_sources/swiss_poll_international_2026-10-28_presidential_preference.json."
+  },
+  {
+    "date": "2026-11-12",
+    "fieldwork_dates": "26 October – 5 November 2026",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_candidate",
+    "question_text": "Whether or not you have ever voted or intend to vote in the future, whom would you like to win the 2027 presidential election?",
+    "geography": "Kenya",
+    "sample_size": 2036,
+    "figures": {
+      "William Ruto": 31,
+      "Edwin Sifuna": 31,
+      "Kalonzo Musyoka": 9,
+      "Fred Matiang'i": 5,
+      "Rigathi Gachagua": 4,
+      "Ndindi Nyoro": 1
+    },
+    "response_categories": {
+      "Other candidates": 1,
+      "Undecided": 15,
+      "None": 2,
+      "No response": 2
+    },
+    "source_title": "TIFA November 2026 national survey: preferred 2027 presidential election winner",
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "source_page_url": "https://www.tifaresearch.com/kenyas-2027-electoral-landscape-political-alignment-and-the-evolving-presidential-contest/",
+    "source_pages": [
+      7,
+      27,
+      40
+    ],
+    "extraction_status": "MANUALLY_VERIFIED",
+    "extraction_confidence": null,
+    "model_eligible": true,
+    "methodology_status": "PRIMARY_REPORT_VERIFIED",
+    "reported_margin_of_error_pct": 2.16,
+    "methodology": {
+      "fieldwork_start": "2026-10-26",
+      "fieldwork_end": "2026-11-05",
+      "sample_size": 2036,
+      "survey_population": "Kenyan adults aged 18 and above, including non-voters",
+      "geographical_coverage": "All 47 counties across nine survey zones",
+      "survey_mode": "Face-to-face household interviews, mainly in Kiswahili and English",
+      "sampling_method": "Randomly selected adults, as described in the introductory comments; no microdata reviewed",
+      "weighting": null,
+      "reported_margin_of_error_percentage_points": 2.16,
+      "sponsor": "TIFA Research",
+      "disclosure_note": "Published national methodology verified in the official report, printed page 40 and introduction. Regional sample counts and weighting details are not supplied in this evidence record; regional margins are larger."
+    },
+    "notes": "Verified against the official TIFA report, printed pages 7, 27 and 40, and official release page. Preferred winner among all adults; not a likely-voter estimate, expected-winner prediction, or election win probability. Six named candidates are stored in figures; other/undecided/none/no response are separate response categories. Printed page 7 groups None/NR at 4%; page 27 separates None 2% and No response 2%. Published rounded national values sum to 101%; preserved without rescaling. Only the current wave is imported; historical bars in this report are not new independent polls. Included in the existing presidential preference summary under the repository comparability rules."
   }
 ]

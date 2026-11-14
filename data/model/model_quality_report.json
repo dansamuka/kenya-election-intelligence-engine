@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-11-09T15:39:08+00:00",
+  "generated_at": "2026-11-14T17:14:42+00:00",
   "phase": "Phase 3 - Polling model",
   "model_version": "phase3.1-dual-scope-descriptive-weighted-average",
   "status": "generated_with_caveats",
   "records": {
-    "approved_poll_records": 16,
-    "model_eligible_records": 12,
+    "approved_poll_records": 17,
+    "model_eligible_records": 13,
     "model_excluded_records": 4,
-    "polling_average_rows": 15,
+    "polling_average_rows": 16,
     "all_published_average_rows": 19,
     "pollster_quality_rows": 4
   },
   "coverage": {
     "date_min": "2025-08-01",
-    "date_max": "2026-08-20",
+    "date_max": "2026-11-12",
     "pollsters": [
       "Infotrak Research",
       "Stats Kenya",
@@ -22,9 +22,10 @@
     ],
     "poll_types": [
       "popularity_rating",
-      "preferred_presidential_aspirant"
+      "preferred_presidential_aspirant",
+      "preferred_presidential_candidate"
     ],
-    "all_published_date_max": "2026-10-28",
+    "all_published_date_max": "2026-11-12",
     "all_published_pollsters": [
       "Infotrak Research",
       "Mizani Africa",

@@ -247,7 +247,7 @@
     "candidate_id": "david_maraga",
     "candidate": "David Maraga",
     "metric": "percentage",
-    "value": 2.0,
+    "value": 2,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -259,7 +259,7 @@
     "candidate_id": "edwin_sifuna",
     "candidate": "Edwin Sifuna",
     "metric": "percentage",
-    "value": 31.0,
+    "value": 31,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -271,7 +271,7 @@
     "candidate_id": "fred_matiang_i",
     "candidate": "Fred Matiang'i",
     "metric": "percentage",
-    "value": 15.0,
+    "value": 15,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -283,7 +283,7 @@
     "candidate_id": "kalonzo_musyoka",
     "candidate": "Kalonzo Musyoka",
     "metric": "percentage",
-    "value": 13.0,
+    "value": 13,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -295,7 +295,7 @@
     "candidate_id": "martha_karua",
     "candidate": "Martha Karua",
     "metric": "percentage",
-    "value": 2.0,
+    "value": 2,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -319,7 +319,7 @@
     "candidate_id": "rigathi_gachagua",
     "candidate": "Rigathi Gachagua",
     "metric": "percentage",
-    "value": 2.0,
+    "value": 2,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -331,7 +331,7 @@
     "candidate_id": "william_ruto",
     "candidate": "William Ruto",
     "metric": "percentage",
-    "value": 25.0,
+    "value": 25,
     "source_url": "https://www.infotrakresearch.com/mulembe-nation-poll-2025/",
     "model_eligible": true
   },
@@ -1210,5 +1210,77 @@
     "value": 40.2,
     "source_url": "https://touchlinenews.com/ruto-leads-2027-presidential-race-at-40-2-as-kalonzo-and-sifuna-trail-swisspoll-survey-shows/",
     "model_eligible": false
+  },
+  {
+    "poll_id": "2026_11_12_tifa_research_preferred_presidential_candidate_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_",
+    "date": "2026-11-12",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "edwin_sifuna",
+    "candidate": "Edwin Sifuna",
+    "metric": "percentage",
+    "value": 31,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2026_11_12_tifa_research_preferred_presidential_candidate_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_",
+    "date": "2026-11-12",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "fred_matiang_i",
+    "candidate": "Fred Matiang'i",
+    "metric": "percentage",
+    "value": 5,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2026_11_12_tifa_research_preferred_presidential_candidate_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_",
+    "date": "2026-11-12",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "kalonzo_musyoka",
+    "candidate": "Kalonzo Musyoka",
+    "metric": "percentage",
+    "value": 9,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2026_11_12_tifa_research_preferred_presidential_candidate_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_",
+    "date": "2026-11-12",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "ndindi_nyoro",
+    "candidate": "Ndindi Nyoro",
+    "metric": "percentage",
+    "value": 1,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2026_11_12_tifa_research_preferred_presidential_candidate_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_",
+    "date": "2026-11-12",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "rigathi_gachagua",
+    "candidate": "Rigathi Gachagua",
+    "metric": "percentage",
+    "value": 4,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
+  },
+  {
+    "poll_id": "2026_11_12_tifa_research_preferred_presidential_candidate_https_www_tifaresearch_com_wp_content_uploads_2023_03_tifa_polls_presidential_race_running_mates_and_political_parties_12_",
+    "date": "2026-11-12",
+    "pollster": "TIFA Research",
+    "poll_type": "preferred_presidential_candidate",
+    "candidate_id": "william_ruto",
+    "candidate": "William Ruto",
+    "metric": "percentage",
+    "value": 31,
+    "source_url": "https://www.tifaresearch.com/wp-content/uploads/2023/03/TIFA_Polls_Presidential-Race-Running-Mates-and-Political-Parties_12-Nov-2026.pdf",
+    "model_eligible": true
   }
 ]
