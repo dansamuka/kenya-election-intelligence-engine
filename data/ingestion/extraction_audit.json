@@ -16,12 +16,12 @@
     "pollster": "Infotrak Research",
     "title": "CountyTrak 2026: Citizen Ratings of Elected Leaders",
     "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2026/07/INFOTRAK-ELECTED-LEADERS-PERFORMANCE-RATING-2026-GP-FIN.pdf",
-    "processing_status": "needs_review",
-    "sha256": "c3de2eaacec991f50527f37dd84facd8cf4038c0441f5c9e2efff5857b0cfc7e",
+    "processing_status": "needs_review_processing_error",
+    "sha256": null,
     "feeds_public_poll_record": false,
-    "review_items": 2,
-    "last_checked_at": "2026-11-16T15:13:12+00:00",
-    "processing_error": null
+    "review_items": 3,
+    "last_checked_at": "2026-11-23T17:41:35+00:00",
+    "processing_error": "502 Server Error: Bad Gateway for url: https://www.infotrakresearch.com/wp-content/uploads/2026/07/INFOTRAK-ELECTED-LEADERS-PERFORMANCE-RATING-2026-GP-FIN.pdf"
   },
   {
     "source_id": "ab6417506c79248cd2ee",
@@ -32,7 +32,7 @@
     "sha256": "18e86b820c6982946489917ad40c4f01ce145fe87cc448f42d7de6662d1665a9",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-11-16T15:13:28+00:00",
+    "last_checked_at": "2026-11-23T17:41:54+00:00",
     "processing_error": null
   },
   {
@@ -56,7 +56,7 @@
     "sha256": "51cffd155f70819c9d7f0ad1889f9801c0148c04fae6956e4362fb1bb533fbf1",
     "feeds_public_poll_record": true,
     "review_items": 0,
-    "last_checked_at": "2026-08-03T09:51:28+00:00",
+    "last_checked_at": "2026-11-23T17:41:35+00:00",
     "processing_error": null
   },
   {
@@ -68,7 +68,7 @@
     "sha256": "7a7e3ad4c9228ffbe9dbcfbdb9be35c5754d5a202d2f6478cc024d90188ce172",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-11-16T15:13:11+00:00",
+    "last_checked_at": "2026-11-23T17:41:24+00:00",
     "processing_error": null
   },
   {
@@ -80,7 +80,7 @@
     "sha256": "bfefbc7c8a34237e0aff3fae8a3b9c9355e8c7bf97f27aba37f5e07078f7a0d2",
     "feeds_public_poll_record": false,
     "review_items": 2,
-    "last_checked_at": "2026-11-16T15:13:05+00:00",
+    "last_checked_at": "2026-11-23T17:41:17+00:00",
     "processing_error": null
   },
   {
@@ -92,7 +92,7 @@
     "sha256": "da911d45627e5c47c0ffa59bf8e4c9792bfbe9ee2b8660326281739d59565b79",
     "feeds_public_poll_record": true,
     "review_items": 0,
-    "last_checked_at": "2026-11-16T15:13:16+00:00",
+    "last_checked_at": "2026-11-23T17:41:39+00:00",
     "processing_error": null
   },
   {
@@ -104,7 +104,7 @@
     "sha256": "10706b99ed1e5cf595060fe5f554d668d2e4346adca948459c3f3f1d8d9f721b",
     "feeds_public_poll_record": false,
     "review_items": 1,
-    "last_checked_at": "2026-11-16T15:13:06+00:00",
+    "last_checked_at": "2026-11-23T17:41:18+00:00",
     "processing_error": null
   },
   {
@@ -128,7 +128,7 @@
     "sha256": "13d1b03aa57b2d51878f0ab57a0adf06ed1e362ff1c42e490e7ed13f34a1bd75",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-11-16T15:13:30+00:00",
+    "last_checked_at": "2026-11-23T17:41:56+00:00",
     "processing_error": null
   },
   {
@@ -140,7 +140,7 @@
     "sha256": "7d91fc4b0a9a282bcf632591f542da71e9a749abccba4d041f79771196c8a952",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-11-16T15:13:39+00:00",
+    "last_checked_at": "2026-11-23T17:42:08+00:00",
     "processing_error": null
   },
   {
@@ -176,7 +176,7 @@
     "sha256": "1c94ccf7ce0996dce73a8b8715b298e7647acbaa164efa17f3dd170545720ce7",
     "feeds_public_poll_record": false,
     "review_items": 0,
-    "last_checked_at": "2026-11-16T15:13:19+00:00",
+    "last_checked_at": "2026-11-23T17:41:53+00:00",
     "processing_error": null
   },
   {
@@ -236,7 +236,7 @@
     "sha256": "d2227358036302f8ce95d0c73b825975652299b767ad2b0c7c2994ac453ae16c",
     "feeds_public_poll_record": true,
     "review_items": 0,
-    "last_checked_at": "2026-11-16T15:13:10+00:00",
+    "last_checked_at": "2026-11-23T17:41:23+00:00",
     "processing_error": null
   },
   {
@@ -260,7 +260,7 @@
     "sha256": "01d6251c24986f0024ccd971401ab46cd8a92763ed81ca225fb0aab3d61b453b",
     "feeds_public_poll_record": true,
     "review_items": 1,
-    "last_checked_at": "2026-11-16T15:13:04+00:00",
+    "last_checked_at": "2026-11-23T17:41:16+00:00",
     "processing_error": null
   }
 ]

@@ -222,7 +222,7 @@
     "notes": "Candidate percentages, poll type, and date were identified."
   },
   {
-    "date": "2026-07-03",
+    "date": "2026-07-23",
     "fieldwork_dates": "22",
     "pollster": "Infotrak Research",
     "poll_type": "preferred_presidential_aspirant",
@@ -230,11 +230,14 @@
     "geography": "Kenya",
     "sample_size": 3000,
     "figures": {
-      "William Ruto": 32,
-      "Kalonzo Musyoka": 4,
-      "Fred Matiang'i": 12,
-      "Rigathi Gachagua": 4,
-      "Edwin Sifuna": 12
+      "William Ruto": 32.0,
+      "Kalonzo Musyoka": 4.0,
+      "Fred Matiang'i": 12.0,
+      "Rigathi Gachagua": 4.0,
+      "Edwin Sifuna": 12.0,
+      "Ndindi Nyoro": 5.0,
+      "Martha Karua": 1.0,
+      "David Maraga": 2.0
     },
     "source_title": "Infotrak Voice Of The People Poll July 2026",
     "source_url": "https://www.infotrakresearch.com/2743-2/",

@@ -215,7 +215,7 @@
         "value": 14.0
       },
       {
-        "date": "2026-07-03",
+        "date": "2026-07-23",
         "value": 12.0
       },
       {
@@ -266,7 +266,7 @@
         "value": 2.0
       },
       {
-        "date": "2026-07-03",
+        "date": "2026-07-23",
         "value": 32.0
       },
       {
@@ -317,7 +317,7 @@
         "value": 9.0
       },
       {
-        "date": "2026-07-03",
+        "date": "2026-07-23",
         "value": 4.0
       },
       {
@@ -368,7 +368,7 @@
         "value": 10.0
       },
       {
-        "date": "2026-07-03",
+        "date": "2026-07-23",
         "value": 12.0
       },
       {
@@ -419,7 +419,7 @@
         "value": 3.0
       },
       {
-        "date": "2026-07-03",
+        "date": "2026-07-23",
         "value": 4.0
       },
       {
@@ -431,14 +431,14 @@
   {
     "poll_type": "preferred_presidential_aspirant",
     "candidate": "Martha Karua",
-    "observations": 3,
+    "observations": 4,
     "first_date": "2025-12-02",
-    "latest_date": "2026-05-14",
+    "latest_date": "2026-07-23",
     "first_value": 2.0,
-    "latest_value": 3.0,
-    "change_from_first": 1.0,
-    "change_from_previous": 1.0,
-    "volatility": 0.47,
+    "latest_value": 1.0,
+    "change_from_first": -1.0,
+    "change_from_previous": -2.0,
+    "volatility": 0.71,
     "trend_label": "stable",
     "series": [
       {
@@ -452,33 +452,10 @@
       {
         "date": "2026-05-14",
         "value": 3.0
-      }
-    ]
-  },
-  {
-    "poll_type": "preferred_presidential_aspirant",
-    "candidate": "David Maraga",
-    "observations": 3,
-    "first_date": "2025-12-02",
-    "latest_date": "2026-03-01",
-    "first_value": 2.0,
-    "latest_value": 1.45,
-    "change_from_first": -0.55,
-    "change_from_previous": -0.55,
-    "volatility": 0.26,
-    "trend_label": "stable",
-    "series": [
-      {
-        "date": "2025-12-02",
-        "value": 2.0
       },
       {
-        "date": "2025-12-28",
-        "value": 2.0
-      },
-      {
-        "date": "2026-03-01",
-        "value": 1.45
+        "date": "2026-07-23",
+        "value": 1.0
       }
     ]
   },
@@ -498,6 +475,56 @@
       {
         "date": "2025-12-28",
         "value": 7.0
+      }
+    ]
+  },
+  {
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate": "David Maraga",
+    "observations": 4,
+    "first_date": "2025-12-02",
+    "latest_date": "2026-07-23",
+    "first_value": 2.0,
+    "latest_value": 2.0,
+    "change_from_first": 0.0,
+    "change_from_previous": 0.55,
+    "volatility": 0.24,
+    "trend_label": "stable",
+    "series": [
+      {
+        "date": "2025-12-02",
+        "value": 2.0
+      },
+      {
+        "date": "2025-12-28",
+        "value": 2.0
+      },
+      {
+        "date": "2026-03-01",
+        "value": 1.45
+      },
+      {
+        "date": "2026-07-23",
+        "value": 2.0
+      }
+    ]
+  },
+  {
+    "poll_type": "preferred_presidential_aspirant",
+    "candidate": "Ndindi Nyoro",
+    "observations": 1,
+    "first_date": "2026-07-23",
+    "latest_date": "2026-07-23",
+    "first_value": 5.0,
+    "latest_value": 5.0,
+    "change_from_first": 0.0,
+    "change_from_previous": null,
+    "volatility": 0.0,
+    "trend_label": "stable",
+    "series": [
+      {
+        "date": "2026-07-23",
+        "value": 5.0
       }
     ]
   },

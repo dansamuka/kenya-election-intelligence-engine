@@ -227,6 +227,22 @@
     "recommended_review_action": "inspect_source_relevance"
   },
   {
+    "source_id": "a9a5a08861e3de4c47a9",
+    "pollster": "Infotrak Research",
+    "title": "CountyTrak 2026: Citizen Ratings of Elected Leaders",
+    "source_url": "https://www.infotrakresearch.com/wp-content/uploads/2026/07/INFOTRAK-ELECTED-LEADERS-PERFORMANCE-RATING-2026-GP-FIN.pdf",
+    "reason": "Processing failed: 502 Server Error: Bad Gateway for url: https://www.infotrakresearch.com/wp-content/uploads/2026/07/INFOTRAK-ELECTED-LEADERS-PERFORMANCE-RATING-2026-GP-FIN.pdf",
+    "extracted_candidates": {},
+    "raw_snippet": "",
+    "created_at": "2026-11-23T17:41:35+00:00",
+    "review_priority_score": 1,
+    "review_priority": "low",
+    "review_signals": [
+      "performance"
+    ],
+    "recommended_review_action": "inspect_source_relevance"
+  },
+  {
     "source_id": "e299a44d39950380ed68",
     "pollster": "Infotrak Research",
     "title": "Infotrak Voice of the People Poll – September 2025",
